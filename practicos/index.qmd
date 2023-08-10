@@ -1,5 +1,5 @@
 ---
-title: "Talleres"
+title: "Actividades en R"
 ---
 
 En construcción

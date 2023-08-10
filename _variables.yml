@@ -1,33 +1,39 @@
-author: Andrew Heiss
+author: Kevin Carrasco (Fork from Andrew Heiss)
 
 instructor:
-  name: Dr. Andrew Heiss
-  name_no_title: Andrew Heiss
-  email: aheiss@gsu.edu
-  url: "https://www.andrewheiss.com"
-  twitter: andrewheiss
-  github: andrewheiss
-  office: "357 Andrew Young School"
+  name: Dr. Pablo Perez Ahumada
+  name_no_title: Pablo Perez
+  email: pabloperez@uchile.cl
+  url: "https://coes.cl/integrantes/pablo-perez-ahumada/"
+  twitter: pablo_perez_a
+ # github: andrewheiss
+  office: "Departamento de Sociología N° (al frente de la 328)"
   contact_policy: >-
-    E-mail and Slack are the best ways to get in contact with me. I will try to respond to all course-related e-mails and Slack messages within 24 hours (*really*), but also remember that life can be busy and chaotic for everyone (including me!), so if I don't respond right away, don't worry!
-  appointment_url: https://calendly.com/andrewheiss/
+    A través de correo
+#  appointment_url: https://calendly.com/andrewheiss/
 
+other:
+  email: kevin.carrasco@ug.uchile.cl
+
+other2:
+  email: danielaolivarescollio@gmail.com
+      
 course:
-  number: "PMAP 8521"
-  semester: "Spring 2023"
-  days: "Thursdays"
-  time: "7:15–9:45 PM"
-  location: "Aderhold Learning Center 204"
-  dates: "January 9–May 2, 2023"
-  github: "https://www.github.com/andrewheiss/evalsp23.classes.andrewheiss.com"
-  url: "https://evalsp23.classes.andrewheiss.com"
+  number: "SOC01020-1"
+  semester: "Segundo semestre 2023"
+  days: "Jueves"
+  time: "10:15 a 11:45 y 12:00 a 13:30"
+  location: "Aulario B - Sala B01"
+  dates: "Agosto 10 - Diciembre 2023"
+  github: "https://www.github.com/Kevin-carrasco/investigacion-cuantitativa"
+  url: "https://investigacion-cuantitativa.netlify.app"
   copyright_year: "2023"
-  slack: "https://gsuevalsp2023.slack.com"
+  slack: ""
 
 university:
-  name: Georgia State University
-  url: "https://www.gsu.edu"
+  name: Universidad de Chile
+  url: "https://www.uchile.cl/"
 
 school:
-  name: Andrew Young School of Policy Studies
-  url: "https://aysps.gsu.edu/"
+  name: Departamento de Sociología - Facultad de Ciencias Sociales
+  url: "https://facso.uchile.cl/"

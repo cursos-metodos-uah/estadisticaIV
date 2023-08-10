@@ -1,77 +1,42 @@
 ---
-title: "Schedule"
+title: "Planificación"
 sidebar: false
 toc: false
 page-layout: full
 ---
 
-```{r packages-data, include=FALSE}
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-
-withr::with_dir(here::here(), {
-  schedule_nested <- targets::tar_read(schedule_page_data)
-  targets::tar_load(schedule_ical_file)
-})
-
-base_url <- yaml::read_yaml(here::here("_quarto.yml"))$website$`site-url`
-ical_url_absolute <- paste0(base_url, "/", schedule_ical_file)
-```
-
-::: {.schedule-page}
-
-Here's your roadmap for the semester!
-
-- [**Content**](/content/) ({{< fa book-open-reader >}}): This page contains the readings, slides, and recorded lectures for the week. Read and watch these **before** our in-person class.
-
-- [**Example**](/example/) ({{< fa laptop-code >}}): This page contains fully annotated R code and other supplementary information that you can use as a reference for your assignments and project. This is only a reference page—you don't have to necessarily do anything here. Some sections also contain videos of me live coding the examples so you can see what it looks like to work with R in real time. This page will be *very* helpful as you work on your assignments.
-
-- [**Assignment**](/assignment/) ({{< fa pen-ruler >}}): This page contains the instructions for each assignment. Weekly reports are due by *noon* on the day of class. Other assignments are due by *11:59 PM* on the day they're listed.
-
-::: {.callout-tip}
-
-## Subscribe!
-
-You can subscribe to this calendar URL in Outlook, Google Calendar, or Apple Calendar:
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-<p class="download-btn"><a class="btn btn-danger btn-sm" href="/`r schedule_ical_file`" role="button">{{< fa calendar-alt >}} Download</a></p>
-:::
-
-::: {.g-col-12 .g-col-md-10}
-<p><input class="form-control" type="text" value="`r ical_url_absolute`" onclick="this.select()" readonly></p>
-:::
-
-:::
-
-:::
+Los tres componentes centrales del curso son las clases teóricas, los talleres y los prácticos en R. Las **clases** se realizarán los días **jueves 10:15 a 11:45** en sala **B01** del aulario B. Los **talleres** y **actividades en R** se realizarán el mismo día en el horario de **12:00 a 13:30**.
 
 
-```{r build-table, include=FALSE}
-show_table <- function(group_id) {
-  # Add a heading
-  cat(as.character(paste("\n\n###", schedule_nested$group[[group_id]], "\n\n")))
-  
-  # Make the table
-  tbl <- schedule_nested$data[[group_id]] %>% 
-    select(-subgroup) %>% 
-    kbl(escape = FALSE, align = "rlccc", table.attr = 'class="schedule-table"') %>% 
-    kable_styling() %>% 
-    column_spec(1, width = "20%", extra_css = "padding-right: 20px;") %>% 
-    column_spec(2, width = "50%") %>% 
-    column_spec(3:5, width = "10%") %>% 
-    pack_rows(index = schedule_nested$subgroup_index[[group_id]],
-              label_row_css = "border-bottom: 2px solid #000000;")
-  
-  cat(tbl)
-}
-```
+- [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y sesiones teóricas
 
-```{r show-table, echo=FALSE, results="asis"}
-walk(seq(1, nrow(schedule_nested)), ~show_table(.x))
-```
+- [**Talleres y actividades en R**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas a desarrollar en el segundo bloque de la clase, según programación al final de esta página.
 
-:::
+- [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
+
+
+
+| |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Talleres y prácticos en R | <i class="fas fa-book-reader"></i> Lecturas y material adicional
+-----|----|-----------|-----------
+<font color="orange"> **Agosto** </font> |   |   |
+Jueves 10 | Unidad 1: Formulación y diseño; Definición de conceptos y medición|  | - Leer detalladamente [programa del curso](syllabus.html)
+Jueves 17 | *No hay clases* | | 
+Jueves 24 | Unidad 1: instrumentos; tipos de investigaciones; limitaciones y potencialidad de inv. cuantitativa  | Taller 1 | 
+Jueves 31 | Unidad 2: conceptos e indicadores sociales; construcción de indicadores.  | -  | 
+<font color="orange"> **Septiembre** </font> |   |   |
+Jueves 07 | Unidad 2: Ejemplo concretos: indicadores de género (presentadora invitada: Jacinta Girardi ODEGI) | Taller 2  |
+Jueves 14 | *Receso*  |   |
+Jueves 21 |   | **Prueba 1**  |  |
+Jueves 28 | Unidad 3: fundamentos construcción de índices; ponderación | Taller 3  |
+<font color="orange"> **Octubre** </font> |   |   |
+Jueves 05 | Unidad 3: confiabilidad y validez; ejemplos de índices.  | Actividad en R 1 |
+Jueves 12 | Unidad 4: fundamentos en la construcción de escalas; Escala de Likert. | Taller 4  | 
+Jueves 19 | Unidad 4: Escalas sumatorias; confiabilidad y validez | Actividad en R 2  | 
+Jueves 26 | Unidad 4: Ejemplos construcción de escalas sumatorias. | Actividad en R 3  |
+<font color="orange"> **Noviembre** </font> |   |   |
+Jueves 02 | *Receso*. Semana de trabajo autónomo | |  |
+Jueves 09 | Unidad 5: Encuestas y cuestionarios: usos, potencialidades y limitaciones.  | Taller 5  | **Entrega de trabajo 1**: Martes 7 de noviembre 18:00
+Jueves 16 | Tipos de encuestas; tipos de preguntas; ejemplos.  | Actividad de avance trabajo 2  | 
+Jueves 23 | Tipos de encuestas; tipos de preguntas; ejemplos.  |  Taller 6 | 
+Jueves 30 | Prueba recuperativa   |   | **Entrega de trabajo 2**: Jueves 30 de noviembre 18:00
+

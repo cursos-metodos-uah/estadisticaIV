@@ -1,0 +1,11 @@
+---
+title: Trabajos
+---
+
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
+library(dplyr)
+library(tibble)
+library(pander)
+```
+
+Proximamente...

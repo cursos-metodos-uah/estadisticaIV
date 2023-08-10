@@ -1,8 +1,8 @@
 ---
-title: "Program Evaluation for Public Service"
-subtitle: "Combine research design, causal inference, and econometric tools to measure the effects of social programs"
+title: "Estrategias de investigación cuantitativa"
+subtitle: "Sociología - Facultad de Ciencias Sociales de la Universidad de Chile"
 details: |
-  PMAP 8521 • Spring 2023<br>Andrew Young School of Policy Studies<br>Georgia State University
+  SOC01020-1 • Segundo semestre 2023<br>Departamento de Sociología FACSO<br>Universidad de Chile
 sidebar: false
 toc: false
 page-layout: full
@@ -22,37 +22,38 @@ withr::with_dir(here::here(), {
 })
 ```
 
-::: {.home}
+
 
 ::: {.grid .course-details}
 
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
-### Instructor
+### Equipo docente
+
+**Profesor**
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
-- {{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
+
+**Apoyos docentes**
+
+- {{< fa user >}} &nbsp; Daniela Olivares
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other2.email >}}">{{< var other2.email >}}</a>
+- {{< fa user >}} &nbsp; Kevin Carrasco
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other.email >}}">{{< var other.email >}}</a>
+
 :::
 
 ::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
-### Course details
+### Información del curso
 
 - {{< fa calendar >}} &nbsp; {{< var course.days >}}
 - {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
 - {{< fa clock >}} &nbsp; {{< var course.time >}}
 - {{< fa location-dot >}} &nbsp; {{< var course.location >}}
-- {{< fa brands slack >}} &nbsp; [Slack]({{< var course.slack >}})
 :::
 
-::: {.g-col-12 .g-col-md-4 .contact-policy}
-### Contacting me
 
-{{< var instructor.contact_policy >}}
-:::
-
-:::
 
 ```{r echo=FALSE}
 knitr::include_graphics(here::here("files", "img", "eval-flowchart.png"), error = FALSE)

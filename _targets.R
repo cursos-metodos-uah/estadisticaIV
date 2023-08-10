@@ -2,8 +2,8 @@ library(targets)
 library(tarchetypes)
 suppressPackageStartupMessages(library(tidyverse))
 
-class_number <- "PMAP 8521"
-base_url <- "https://evalsp23.classes.andrewheiss.com/"
+class_number <- "SOC01020-1"
+base_url <- "https://investigacion-cuantitativa.netlify.app"
 page_suffix <- ".html"
 
 options(tidyverse.quiet = TRUE,
