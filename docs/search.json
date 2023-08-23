@@ -1,38 +1,31 @@
 [
   {
+    "objectID": "assignment/01-taller.html",
+    "href": "assignment/01-taller.html",
+    "title": "Taller 1. Niveles de medición y construcción de items",
+    "section": "",
+    "text": "Reforzar conocimientos sobre niveles de medición y practicar la construcción de ítems."
+  },
+  {
+    "objectID": "assignment/01-taller.html#conceptos",
+    "href": "assignment/01-taller.html#conceptos",
+    "title": "Taller 1. Niveles de medición y construcción de items",
+    "section": "Conceptos:",
+    "text": "Conceptos:\n\nTiempo dedicado a viajar de la casa al trabajo.\nIdentidad de género.\nIntención de voto en el plebiscito de salida 2023.\nGusto por el deporte.\nTiempo dedicado a estar en redes sociales virtuales.\nComposición familiar.\nIdentidad de clase.\nPercepción de seguridad.\nPercepción sobre carga académica.\nTrabajo de cuidados.\nIngresos\nSatisfacción con el barrio\nNivel de acuerdo con la educación gratuita\nResidencia"
+  },
+  {
+    "objectID": "assignment/01-taller.html#ejemplo-de-trabajo",
+    "href": "assignment/01-taller.html#ejemplo-de-trabajo",
+    "title": "Taller 1. Niveles de medición y construcción de items",
+    "section": "Ejemplo de trabajo",
+    "text": "Ejemplo de trabajo\n\n\n\n\n\n\n\n \n  \n    Conceptos \n    Preguntas \n    Alternativas \n    Nivel de medición \n    Potencialidades \n    Limitaciones \n    Opción escogida \n  \n \n\n  \n    Concepto 1 \n    Pregunta 1 \n    a) \n    Nivel 1 \n    1, 2, …, n \n    1, 2, …, n \n    Si \n  \n  \n    Concepto 1 \n    Pregunta 1 \n    b) \n    Nivel 1 \n    1, 2, …, n \n    1, 2, …, n \n    Si \n  \n  \n    Concepto 1 \n    Pregunta 2 \n    [0, +∞) \n    Nivel 2 \n    1, 2, …, n \n    1, 2, …, n \n    No. \n  \n  \n    Concepto 1 \n    Pregunta 3 \n    a) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    No \n  \n  \n    Concepto 1 \n    Pregunta 3 \n    b) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    No \n  \n  \n    Concepto 1 \n    Pregunta 3 \n    c) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    No \n  \n  \n    Concepto 2 \n    Pregunta 1 \n    a) \n    Nivel 1 \n    1, 2, …, n \n    1, 2, …, n \n    No. \n  \n  \n    Concepto 2 \n    Pregunta 1 \n    b) \n    Nivel 1 \n    1, 2, …, n \n    1, 2, …, n \n    No. \n  \n  \n    Concepto 2 \n    Pregunta 2 \n    [0, +∞) \n    Nivel 2 \n    1, 2, …, n \n    1, 2, …, n \n    Si \n  \n  \n    Concepto 2 \n    Pregunta 3 \n    a) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    No \n  \n  \n    Concepto 2 \n    Pregunta 3 \n    b) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    No \n  \n  \n    Concepto 2 \n    Pregunta 3 \n    c) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    No \n  \n  \n    Concepto 3 \n    Pregunta 1 \n    a) \n    Nivel 1 \n    1, 2, …, n \n    1, 2, …, n \n    No. \n  \n  \n    Concepto 3 \n    Pregunta 1 \n    b) \n    Nivel 1 \n    1, 2, …, n \n    1, 2, …, n \n    No. \n  \n  \n    Concepto 3 \n    Pregunta 2 \n    [0, +∞) \n    Nivel 2 \n    1, 2, …, n \n    1, 2, …, n \n    No \n  \n  \n    Concepto 3 \n    Pregunta 3 \n    a) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    Si \n  \n  \n    Concepto 3 \n    Pregunta 3 \n    b) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    Si \n  \n  \n    Concepto 3 \n    Pregunta 3 \n    c) \n    Nivel 3 \n    1, 2, …, n \n    1, 2, …, n \n    Si"
+  },
+  {
     "objectID": "assignment/index.html",
     "href": "assignment/index.html",
     "title": "Talleres",
     "section": "",
     "text": "En construcción"
-  },
-  {
-    "objectID": "content/01-content.html",
-    "href": "content/01-content.html",
-    "title": "Evaluation and the causal revolution",
-    "section": "",
-    "text": "The syllabus, content, examples, and assignments pages for this class\n Chapter 1 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapters 1 and 2 in The Effect (Huntington-Klein 2021)\n DJ Patil, “What Makes a Radical and Revolutionary Technology?”\n\n(DJ Patil is the former Chief Data Scientist of the United States under President Obama. He gave this forum address at Brigham Young University on February 13, 2018.)\n\n Stephen Goldsmith, “Next Generation of Public Employees Must Understand Data and Policy”\n Hadley Wickham, “Data Science: How is it Different To Statistics?”"
-  },
-  {
-    "objectID": "content/01-content.html#slides",
-    "href": "content/01-content.html#slides",
-    "title": "Evaluation and the causal revolution",
-    "section": "Slides",
-    "text": "Slides\n\n\n\n\n\n\nWarning\n\n\n\nImportant!!: In the “Class details” video, I say that there are three books for the class: the World Bank evaluation book, ’Metrics Matter, and Causal Inference: The Mixtape. That’s not the case this semester, since we’re using the new The Effect book, which replaces both ’Metrics Matter and the Mixtape. So ignore that part of the video. The slides are updated with the correct books, though: see here.\n\n\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nData science and public service\n\n\nEvidence, evaluation, and causation (1)\n\n\nEvidence, evaluation, and causation (2)\n\n\nClass details\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
-  },
-  {
-    "objectID": "content/01-content.html#videos",
-    "href": "content/01-content.html#videos",
-    "title": "Evaluation and the causal revolution",
-    "section": "Videos",
-    "text": "Videos\n\n\n\n\n\n\nWarning\n\n\n\nImportant!!: In the “Class details” video, I say that there are three books for the class: the World Bank evaluation book, ’Metrics Matter, and Causal Inference: The Mixtape. That’s not the case this semester, since we’re using the new The Effect book, which replaces both ’Metrics Matter and the Mixtape. So ignore that part of the video. The slides are updated with the correct books, though: see here.\n\n\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nData science and public service\nEvidence, evaluation, and causation (1)\nEvidence, evaluation, and causation (2)\nClass details\n\nYou can also watch the playlist (and skip around to different sections) here:"
-  },
-  {
-    "objectID": "content/01-content.html#in-class-stuff",
-    "href": "content/01-content.html#in-class-stuff",
-    "title": "Evaluation and the causal revolution",
-    "section": "In-class stuff",
-    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 1 in-person slides (PDF)\n\nRStudio labs:\n\nRStudio.cloud project\nProject .zip file\nLab slides 1: Markdown and universal writing (PDF)\nLab slides 2: Getting started with R and RStudio (PDF)\nLab slides 3: Data basics (PDF)\nLab slides 4: Visualize data with ggplot2 (PDF)\nLab slides 5: Transform data with dplyr (PDF)"
   },
   {
     "objectID": "content/index.html",

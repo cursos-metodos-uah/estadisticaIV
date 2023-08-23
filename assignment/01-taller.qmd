@@ -1,0 +1,89 @@
+---
+title: "Taller 1. Niveles de medición y construcción de items"
+date: "2023-08-24"
+lang: es
+website:
+  comments:
+    giscus:
+      repo: kevin-carrasco/investigacion-cuantitativa
+---
+
+```{r setup, include=FALSE, cache = TRUE}
+require("knitr")
+opts_chunk$set(warning=FALSE,
+             message=FALSE,
+             echo=TRUE,
+             cache = TRUE, fig.width=7, fig.height=5.2)
+```
+
+# Objetivo del taller
+
+Reforzar conocimientos sobre niveles de medición y practicar la
+construcción de ítems.
+
+# Instrucciones: 
+
+A continuación, se les presentarán diversos conceptos. En grupos conformados aleatoriamente por cuatro estudiantes
+
+a) Escojan tres de los conceptos enlistados al final del documento.
+
+b) Formulen tres preguntas diferentes que permitan medir cada concepto.
+
+c) Entre las tres preguntas formuladas se deben incorporar, al menos, dos niveles de medición distintos. Por ejemplo, de las tres preguntas formuladas, dos de ellas pueden tener un nivel de medición ordinal, y una de ellas un nivel de medición nominal.
+
+d) Incluir las alternativas de respuesta asociadas a cada una de las preguntas. En caso de ser numéricas, definir el rango de valores posibles. Por ejemplo: (- ∞, +∞), [0, +∞), ]0, n], etc.
+
+e) También pueden formular preguntas iguales con alternativas diferentes, siempre y cuando los niveles de medición de las formulaciones difieran.
+
+f) Definan cuál de las tres formulaciones consideran que permite medir mejor cada concepto. Justifiquen la decisión en base a las limitaciones y potencialidades de cada una.
+
+g) Se les entregará una hoja para realizar el taller. En ella deben especificar el título Taller 1, el nombre de l_s integrantes del equipo, y sus respectivas respuestas. Tendrán hasta las 13:25 para entregarlo.
+
+## Conceptos:
+
+1) Tiempo dedicado a viajar de la casa al trabajo.
+
+2) Identidad de género.
+
+3) Intención de voto en el plebiscito de salida 2023.
+
+4) Gusto por el deporte. 
+
+5) Tiempo dedicado a estar en redes sociales virtuales.
+
+6) Composición familiar.
+
+7) Identidad de clase.
+
+8) Percepción de seguridad.
+
+9) Percepción sobre carga académica.
+
+10) Trabajo de cuidados.
+
+11) Ingresos
+
+12) Satisfacción con el barrio
+
+13) Nivel de acuerdo con la educación gratuita
+
+14) Residencia
+
+
+## Ejemplo de trabajo
+
+```{r echo=FALSE, error=FALSE, message=FALSE, results='hide', warning=FALSE}
+tab0 <- read.csv(file = "../files/taller1.csv",header = 1,sep = ";",encoding = "UTF-8")
+library(dplyr)
+library(kableExtra)
+```
+
+
+```{r echo=FALSE}
+tab0 %>% 
+knitr::kable("html", booktabs = T, linesep = "",col.names =  c("Conceptos", "Preguntas", "Alternativas",  "Nivel de medición", "Potencialidades", "Limitaciones", "Opción escogida")) %>%
+    kable_styling(bootstrap_options=c("striped", "hover", "condensed", "bordered"), full_width = F, font_size=14, position = "center", html_font = "Times new roman") %>% 
+  collapse_rows(columns = 1:7)
+```
+
+

@@ -1,0 +1,19 @@
+﻿Conceptos;Preguntas;Alternativas;Nivel de medición;Potencialidades;Limitaciones;Opción escogida
+Concepto 1;Pregunta 1;a);Nivel 1;1, 2, …, n;1, 2, …, n;Si
+Concepto 1;Pregunta 1;b);Nivel 1;1, 2, …, n;1, 2, …, n;Si
+Concepto 1;Pregunta 2;[0, +∞);Nivel 2;1, 2, …, n;1, 2, …, n;No.
+Concepto 1;Pregunta 3;a);Nivel 3;1, 2, …, n;1, 2, …, n;No
+Concepto 1;Pregunta 3;b);Nivel 3;1, 2, …, n;1, 2, …, n;No
+Concepto 1;Pregunta 3;c);Nivel 3;1, 2, …, n;1, 2, …, n;No
+Concepto 2;Pregunta 1;a);Nivel 1;1, 2, …, n;1, 2, …, n;No.
+Concepto 2;Pregunta 1;b);Nivel 1;1, 2, …, n;1, 2, …, n;No.
+Concepto 2;Pregunta 2;[0, +∞);Nivel 2;1, 2, …, n;1, 2, …, n;Si
+Concepto 2;Pregunta 3;a);Nivel 3;1, 2, …, n;1, 2, …, n;No
+Concepto 2;Pregunta 3;b);Nivel 3;1, 2, …, n;1, 2, …, n;No
+Concepto 2;Pregunta 3;c);Nivel 3;1, 2, …, n;1, 2, …, n;No
+Concepto 3;Pregunta 1;a);Nivel 1;1, 2, …, n;1, 2, …, n;No.
+Concepto 3;Pregunta 1;b);Nivel 1;1, 2, …, n;1, 2, …, n;No.
+Concepto 3;Pregunta 2;[0, +∞);Nivel 2;1, 2, …, n;1, 2, …, n;No
+Concepto 3;Pregunta 3;a);Nivel 3;1, 2, …, n;1, 2, …, n;Si
+Concepto 3;Pregunta 3;b);Nivel 3;1, 2, …, n;1, 2, …, n;Si
+Concepto 3;Pregunta 3;c);Nivel 3;1, 2, …, n;1, 2, …, n;Si

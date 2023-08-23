@@ -44,8 +44,6 @@ website:
     right:
       - syllabus.qmd
       - schedule.qmd
-      - text: "Contenidos"
-        file: content/index.qmd
       - text: "Talleres"
         file: assignment/index.qmd
       - text: "Prácticos R"
@@ -61,18 +59,6 @@ website:
         aria-label: RStudio.cloud
 
   sidebar:
-    - title: "Contenidos"
-      style: "docked"
-      search: false
-      background: dark
-      contents:
-        - section: "Información general"
-          contents:
-            - content/index.qmd
-        - section: "Sesiones"
-          contents:
-            - text: "01: Sesión 1"
-              file: content/01-content.qmd
 
     - title: "Talleres"
       style: "docked"
@@ -85,7 +71,7 @@ website:
         - section: "Talleres"
           contents:
             - text: "01: Taller 1"
-              file: talleres/01-taller.qmd
+              file: assignment/01-taller.qmd
 
     - title: "Prácticos R"
       style: "docked"
