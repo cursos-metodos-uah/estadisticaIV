@@ -35,7 +35,9 @@ withr::with_dir(here::here(), {
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
 
-**Apoyos docentes**
+
+**Apoyos docente**
+
 
 - {{< fa user >}} &nbsp; Daniela Olivares
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other2.email >}}">{{< var other2.email >}}</a>

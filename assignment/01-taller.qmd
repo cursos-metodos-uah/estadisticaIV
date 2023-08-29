@@ -70,6 +70,7 @@ g) Se les entregará una hoja para realizar el taller. En ella deben especificar
 14) Residencia
 
 
+
 ## Ejemplo de trabajo
 
 ```{r echo=FALSE, error=FALSE, message=FALSE, results='hide', warning=FALSE}
