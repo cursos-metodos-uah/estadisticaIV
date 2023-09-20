@@ -2,4 +2,4 @@
 title: "Talleres"
 ---
 
-En construcción
+En esta sección se encuentran los talleres prácticos realizados en el segundo bloque de clases

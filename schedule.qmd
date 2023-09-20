@@ -26,8 +26,8 @@ Jueves 31 | Unidad 2: conceptos e indicadores sociales; construcción de indicad
 <font color="orange"> **Septiembre** </font> |   |   |
 Jueves 07 | Unidad 2: Ejemplo concretos: indicadores de género (presentadora invitada: Jacinta Girardi ODEGI) | Taller 2  |
 Jueves 14 | *Receso*  |   |
-Jueves 21 |   | **Prueba 1**  |  |
-Jueves 28 | Unidad 3: fundamentos construcción de índices; ponderación | Taller 3  |
+Jueves 21 | Unidad 3: fundamentos construcción de índices; ponderación | Taller 3 |
+Jueves 28 | **Prueba 1** |   |
 <font color="orange"> **Octubre** </font> |   |   |
 Jueves 05 | Unidad 3: confiabilidad y validez; ejemplos de índices.  | Actividad en R 1 |
 Jueves 12 | Unidad 4: fundamentos en la construcción de escalas; Escala de Likert. | Taller 4  | 

@@ -72,6 +72,8 @@ website:
           contents:
             - text: "01: Taller 1"
               file: assignment/01-taller.qmd
+            - text: "02: Taller 2"
+              file: assignment/02-taller.qmd
 
     - title: "Prácticos R"
       style: "docked"
@@ -81,7 +83,7 @@ website:
         - section: "Información general"
           contents:
             - practicos/index.qmd
-        - section: "Prácitocs R"
+        - section: "Prácticos R"
           contents:
             - text: "01: Práctico 1"
               file: practico/01-content.qmd
