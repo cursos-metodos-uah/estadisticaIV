@@ -42,6 +42,27 @@
     "text": "Ejemplo de trabajo\nIndicador: Tasa de Inflación\nDefinición: Variación porcentual de un Índice de Precios de Consumo (IPC) respecto del periodo anterior. El IPC es un indicador que mide la variación media de bienes y servicios durante un período de tiempo determinado en una economía en específico.\nVariables necesarias: Precios de los bienes y servicios incluidos en la estimación del IPC para el periodo por analizar y el periodo anterior.\nFormalización:\n\\[TI = \\frac{IPC1-IPC0}{IPC0} * 100\\]\ndonde:\nTI = Tasa de Inflación,\nIPC1 = IPC del periodo por analizar\nIPC0 = IPC del periodo anterior\nPosibles valores: (- ∞, +∞) medidos en porcentaje (%).\nInterpretación: un valor positivo indica un aumento medio relativo del conjunto de precios de los bienes y servicios incluidos en la estimación del IPC, mientras que un valor negativo indica una disminución media relativa del conjunto de precios de los bienes y servicios incluidos en la estimación del IPC. Por ejemplo, una tasa de inflación de un 3,4% indica que, en promedio, el conjunto de los precios de bienes y servicios incluidos en la estimación del IPC aumentó en un 3.4% respecto del periodo anterior. Así, si un producto X tenía un precio de $1.000 en el periodo anterior, su precio en el periodo analizado debiese aproximarse a 1.000*1.034 = $1.034.\nLimitaciones: La definición de bienes y servicios incluidos en la estimación del IPC puede estar sujeta a lo que el gobierno o l_s funcionari_s del Estado consideren indispensable en los gastos mensuales de un hogar, dejando fuera algunos que pudiesen tener igual relevancia.\nPotencialidades: Permite medir de forma precisa los requerimientos de un hogar promedio mensual en relación a sus gastos fundamentales, por lo que hace posible conocer el estado de una economía en lo que respecta a su consumo.\nEj. de PP: Transferencias directas a hogares de bajos ingresos, para facilitar la satisfacción de necesidades básicas. Subvención gubernamental del precio de los productos con mayor aumento de precios entre ambos periodos."
   },
   {
+    "objectID": "assignment/03-taller.html",
+    "href": "assignment/03-taller.html",
+    "title": "Taller 3",
+    "section": "",
+    "text": "Practicar la creación de índices sintéticos, y reforzar contenidos asociados a la validez."
+  },
+  {
+    "objectID": "assignment/03-taller.html#constructos",
+    "href": "assignment/03-taller.html#constructos",
+    "title": "Taller 3",
+    "section": "Constructos:",
+    "text": "Constructos:\n\nÍndice de Desarrollo Humano\nÍndice de Democracia.\nÍndice de victimización.\nÍndice de calidad del empleo.\nÍndice de consumo cultural.\nÍndice de actitudes hacia la violencia.\nÍndice de actitudes hacia el deporte."
+  },
+  {
+    "objectID": "assignment/03-taller.html#ejemplo-de-trabajo",
+    "href": "assignment/03-taller.html#ejemplo-de-trabajo",
+    "title": "Taller 3",
+    "section": "Ejemplo de trabajo",
+    "text": "Ejemplo de trabajo\nConstructo: Índice de confianza en instituciones\nUnidad de análisis: Sujetos/individuos\nDimensiones: 2 dimensiones: a) instituciones políticas; b) instituciones civiles\nVariables necesarias:\n¿Cuánto confía usted en las siguientes instituciones?\n\nPresidente (Ordinal; nada-poco-bastante-mucho)\nPartidos políticos (Ordinal; nada-poco-bastante-mucho)\nONGs (Ordinal; nada-poco-bastante-mucho)\nPoder judicial (Ordinal; nada-poco-bastante-mucho)\nBomberos (Ordinal; nada-poco-bastante-mucho)\nIglesia (Ordinal; nada-poco-bastante-mucho)\n\nOperacionalización:\n\nFormalización:\n\\[CI = CIC + CIP = C. Bomberos + C. ONGs + C. Iglesia + C. Poder judicial + C. Partidos + C. Presidente\\] \\[CI = CIC + CIP =  [0, 3]      +     [0, 3]   +     [0,3]     +          [0, 3]          +      [0, 3]     +       [0,3] \\]\nPosibles valores: [0, 18].\nNivel de medición: Intervalar (discutible)\nInterpretación: Menores valores indican nada o poca confianza en instituciones, mientras que los valores más altos indican bastante o mucha confianza en instituciones. Por un lado, una persona puede tener un grado de confianza en instituciones de 1 (al haber respondido “nada” de confianza en la mayoría de las instituciones y “Algo” de confianza en una de ellas), lo que da cuenta de un bajo grado de confianza en las instituciones. Por otro lado, una persona puede tener un grado de confianza en instituciones de 15 (al haber respondido “Mucha” confianza en 5 instituciones y “Nada” confianza en las otras tres), lo que da cuenta de un alto nivel de confianza en las instituciones.\nValidez: Dado que no se incorporan todas las posibles instituciones, el índice de Confianza en Instituciones creado no lograría cubrir el constructo totalmente, quedando fuera, por ejemplo, las instituciones militares o de fuerzas de orden. No obstante, permite medir de buena forma la confianza en las instituciones civiles y políticas."
+  },
+  {
     "objectID": "assignment/index.html",
     "href": "assignment/index.html",
     "title": "Talleres",

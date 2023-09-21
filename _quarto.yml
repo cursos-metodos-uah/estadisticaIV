@@ -74,6 +74,8 @@ website:
               file: assignment/01-taller.qmd
             - text: "02: Taller 2"
               file: assignment/02-taller.qmd
+            - text: "03: Taller 3"
+              file: assignment/03-taller.qmd
 
     - title: "Prácticos R"
       style: "docked"
@@ -91,7 +93,7 @@ website:
 
   page-footer:
     left: |
-      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by Kevin Carrasco <br>
       All content licensed under a {{< fa brands creative-commons >}}
       {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
       [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
