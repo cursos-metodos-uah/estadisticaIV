@@ -87,7 +87,7 @@ load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw
 
 A continuación, exploramos la base de datos casen2022
 
-```{r}
+```{r eval=FALSE}
 summarytools::dfSummary(casen2022, plain.ascii = FALSE)
 ```
 
