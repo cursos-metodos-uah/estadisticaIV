@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Estrategias de investigación cuantitativa">
+
+<title>Estrategias de investigación cuantitativa - Práctico R 1. Construcción de índices</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//files/icon-512.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+
+<meta property="og:title" content="Estrategias de investigación cuantitativa - Práctico R 1. Construcción de índices">
+<meta property="og:description" content="El Programa de las Naciones Unidas para el Desarrollo (PNUD) es la agencia de la Organización de las Naciones Unidas encargada de promover el desarrollo sostenible a nivel mundial, y uno de sus…">
+<meta property="og:image" content="https://investigacion-cuantitativa.netlify.app/files/social-image-sp23.png">
+<meta property="og:site-name" content="Estrategias de investigación cuantitativa">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="Estrategias de investigación cuantitativa - Práctico R 1. Construcción de índices">
+<meta name="twitter:description" content="El Programa de las Naciones Unidas para el Desarrollo (PNUD) es la agencia de la Organización de las Naciones Unidas encargada de promover el desarrollo sostenible a nivel mundial, y uno de sus…">
+<meta name="twitter:image" content="https://investigacion-cuantitativa.netlify.app/files/social-image-sp23.png">
+<meta name="twitter:creator" content="@KevinCarrascoQ1">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Estrategias de investigación cuantitativa</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Programa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">
+ <span class="menu-text">Planificación</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignment/index.html">
+ <span class="menu-text">Talleres</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../practicos/index.html" aria-current="page">
+ <span class="menu-text">Prácticos R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Práctico R 1. Construcción de índices</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Información general</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicos/index.html" class="sidebar-item-text sidebar-link">Actividades en R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Prácticos R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicos/01-content.html" class="sidebar-item-text sidebar-link active">01: Práctico 1</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
+  <ul>
+  <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general">Objetivo general</a></li>
+  <li><a href="#cargar-paquetes" id="toc-cargar-paquetes" class="nav-link" data-scroll-target="#cargar-paquetes">Cargar paquetes</a></li>
+  <li><a href="#datos-y-variables" id="toc-datos-y-variables" class="nav-link" data-scroll-target="#datos-y-variables">Datos y variables</a>
+  <ul class="collapse">
+  <li><a href="#cargar-base-de-datos" id="toc-cargar-base-de-datos" class="nav-link" data-scroll-target="#cargar-base-de-datos">Cargar base de datos</a></li>
+  <li><a href="#descripción-de-variables" id="toc-descripción-de-variables" class="nav-link" data-scroll-target="#descripción-de-variables">Descripción de variables</a></li>
+  </ul></li>
+  <li><a href="#medición-de-pobreza-multidimensional-en-cuatro-dimensiones-hasta-2014" id="toc-medición-de-pobreza-multidimensional-en-cuatro-dimensiones-hasta-2014" class="nav-link" data-scroll-target="#medición-de-pobreza-multidimensional-en-cuatro-dimensiones-hasta-2014">Medición de pobreza multidimensional en cuatro dimensiones (hasta 2014)</a></li>
+  <li><a href="#medición-de-pobreza-multidimensional-en-cinco-dimensiones-desde-2016" id="toc-medición-de-pobreza-multidimensional-en-cinco-dimensiones-desde-2016" class="nav-link" data-scroll-target="#medición-de-pobreza-multidimensional-en-cinco-dimensiones-desde-2016">Medición de pobreza multidimensional en cinco dimensiones (desde 2016)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Práctico R 1. Construcción de índices</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5 de octubre de 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="presentación" class="level1">
+<h1>Presentación</h1>
+<p>El Programa de las Naciones Unidas para el Desarrollo (PNUD) es la agencia de la Organización de las Naciones Unidas encargada de promover el desarrollo sostenible a nivel mundial, y uno de sus enfoques es la erradicación de la pobreza. En este contexto, el PNUD reconoce la importancia de abordar la pobreza multidimensional para lograr un desarrollo sostenible y mejorar el bienestar de las personas en todas las dimensiones de sus vidas.</p>
+<p>Desde el año 2016 Chile cuenta con la medida actual de pobreza multidimensional. El propósito de esta medida es complementar la medición de la pobreza basada en ingresos con un indicador que refleje las condiciones de vida de la población en aspectos relevantes para el bienestar social y una vida digna. Desde su creación, se ha buscado obtener un diagnóstico más completo de la pobreza y contar con una herramienta útil para el diseño, implementación, monitoreo y evaluación de políticas públicas.</p>
+<p>Inicialmente, la medida de pobreza multidimensional incluyó 4 dimensiones (Educación, Salud, Trabajo y Seguridad Social, y Vivienda) con tres indicadores por dimensión (12 indicadores en total), cada uno con igual ponderación (8,3%), por lo tanto, con dimensiones cuyo peso representan el 25% de la medida.Posteriormente, con los resultados de la encuesta Casen 2015 se incorpora una quinta dimensión de Redes y Cohesión Social y se amplía la dimensión de Vivienda para incluir el concepto de Entorno. Desde entonces, la medida ha estado compuesta por 5 dimensiones (Educación, Salud, Trabajo y Seguridad Social, Vivienda y Entorno, y Redes y Cohesión Social), manteniendo la definición de 3 indicadores por dimensión, de modo que la medida queda compuesta por 15 indicadores. Respecto del peso de las dimensiones, con el fin de favorecer cierta estabilidad de la medida, la dimensión de Redes y Cohesión Social se incorpora con un peso de 10% y se mantiene la igualdad de ponderación entre las demás dimensiones, ahora con una ponderación de 22,5%.</p>
+<section id="objetivo-general" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-general">Objetivo general</h2>
+<p>El objetivo de este ejercicio práctico es comprender y estimar el proceso de construcción de índices ponderados y no ponderados en R.</p>
+</section>
+<section id="cargar-paquetes" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-paquetes">Cargar paquetes</h2>
+<p>Como sabemos, la lógica de R es instalar librerías (solo 1 vez, con install.packages(“librería”)), y luego cargarlas cada vez que es necesario usarlas (con library(librería)). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama pacman (package manager). Lo que hace pacman es cargar la librería, y si no está instalada, la instala y la carga:</p>
+<p>Para utilizar la primera vez (si es que no está instalada):</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Y en adelante, las librerías se cargan así pacman::p_load(libreria1,libreria2,libreriaX) :</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co">#Conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>               car, <span class="co">#Para recodificar</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               summarytools <span class="co">#Para descriptivos</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               )</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="datos-y-variables" class="level2">
+<h2 class="anchored" data-anchor-id="datos-y-variables">Datos y variables</h2>
+<p>La base de datos a utilizar es la CASEN 2022 (Encuesta de Caracterización Socioeconómica Nacional). La base de datos está disponible en este <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022#basedatos">link</a> y el cuestionario en este <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022#cuestionarios">link</a>.</p>
+<p>Sin embargo, para realizar este ejercicio práctico utilizaremos una muestra aleatoria de esta base de datos para simplificar el proceso de construcción de índices. El código que crea este subset está disponible <a href="https://github.com/cursos-metodos-facso/investigacion-cuantitativa/blob/main/files/subset_casen.R">acá</a></p>
+<section id="cargar-base-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-base-de-datos">Cargar base de datos</h3>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/casen2022.RData"</span>)) <span class="co">#Cargar base de datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="descripción-de-variables" class="level3">
+<h3 class="anchored" data-anchor-id="descripción-de-variables">Descripción de variables</h3>
+<p>A continuación, exploramos la base de datos casen2022</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>summarytools<span class="sc">::</span><span class="fu">dfSummary</span>(casen2022, <span class="at">plain.ascii =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>### Data Frame Summary  
+#### casen2022  
+**Label:** Encuesta Casen 2022  
+**Dimensions:** 10000 x 19  
+**Duplicates:** 6727  
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+No   Variable                               Label                                    Stats / Values           Freqs (% of Valid)   Graph                            Valid      Missing  
+---- -------------------------------------- ---------------------------------------- ------------------------ -------------------- -------------------------------- ---------- ---------
+1    asistencia\                            Hogar carente en asistencia              Min  : 0\                0 : 9849 (98.5%)\    IIIIIIIIIIIIIIIIIII \            10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0\                1 :  151 ( 1.5%)                                      (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+2    rezago\                                Hogar carente en rezago escolar          Min  : 0\                0 : 9900 (99.0%)\    IIIIIIIIIIIIIIIIIII \            9999\      1\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0\                1 :   99 ( 1.0%)                                      (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+3    escolaridad\                           Hogar carente en escolaridad             Min  : 0\                0 : 6926 (69.3%)\    IIIIIIIIIIIII \                  9991\      9\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.3\              1 : 3065 (30.7%)     IIIIII                           (99.9%)    (0.1%)   
+                                                                                     Max  : 1                                                                                           
+
+4    malnutricion\                          Hogar carente en malnutrición en         Min  : 0\                0 : 9679 (96.9%)\    IIIIIIIIIIIIIIIIIII \            9986\      14\      
+     [haven_labelled, vctrs_vctr, double]   niños/as                                 Mean : 0\                1 :  307 ( 3.1%)                                      (99.9%)    (0.1%)   
+                                                                                     Max  : 1                                                                                           
+
+5    sist_salud\                            Hogar carente en adscripción a sistema   Min  : 0\                0 : 9561 (95.7%)\    IIIIIIIIIIIIIIIIIII \            9986\      14\      
+     [haven_labelled, vctrs_vctr, double]   de salud                                 Mean : 0\                1 :  425 ( 4.3%)                                      (99.9%)    (0.1%)   
+                                                                                     Max  : 1                                                                                           
+
+6    atencion\                              Hogar carente en atención                Min  : 0\                0 : 9471 (94.8%)\    IIIIIIIIIIIIIIIIII \             9995\      5\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.1\              1 :  524 ( 5.2%)     I                                (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+7    ocupacion\                             Hogar carente en ocupación               Min  : 0\                0 : 8999 (90.0%)\    IIIIIIIIIIIIIIIII \              10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.1\              1 : 1001 (10.0%)     II                               (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+8    seg_social\                            Hogar carente en seguridad social        Min  : 0\                0 : 6895 (69.3%)\    IIIIIIIIIIIII \                  9954\      46\      
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.3\              1 : 3059 (30.7%)     IIIIII                           (99.5%)    (0.5%)   
+                                                                                     Max  : 1                                                                                           
+
+9    jubilacion\                            Hogar carente en jubilaciones            Min  : 0\                0 : 8827 (88.3%)\    IIIIIIIIIIIIIIIII \              10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.1\              1 : 1173 (11.7%)     II                               (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+10   habitabilidad\                         Hogar carente en habitabilidad           Min  : 0\                0 : 8412 (84.2%)\    IIIIIIIIIIIIIIII \               9995\      5\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.2\              1 : 1583 (15.8%)     III                              (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+11   hacinamiento\                          Hogar carente en hacinamiento            Min  : 0\                0 : 9582 (95.9%)\    IIIIIIIIIIIIIIIIIII \            9995\      5\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0\                1 :  413 ( 4.1%)                                      (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+12   vivienda\                              Hogar carente en estado de la vivienda   Min  : 0\                0 : 8741 (87.4%)\    IIIIIIIIIIIIIIIII \              10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.1\              1 : 1259 (12.6%)     II                               (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+13   serv_basicos\                          Hogar carente en servicios básicos       Min  : 0\                0 : 9276 (92.8%)\    IIIIIIIIIIIIIIIIII \             10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.1\              1 :  724 ( 7.2%)     I                                (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+14   entorno\                               Hogar carente en entorno                 Min  : 0\                0 : 8768 (88.0%)\    IIIIIIIIIIIIIIIII \              9961\      39\      
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.1\              1 : 1193 (12.0%)     II                               (99.6%)    (0.4%)   
+                                                                                     Max  : 1                                                                                           
+
+15   ap_part_social\                        Hogar carente en apoyo y participación   Min  : 0\                0 : 9335 (93.7%)\    IIIIIIIIIIIIIIIIII \             9964\      36\      
+     [haven_labelled, vctrs_vctr, double]   social                                   Mean : 0.1\              1 :  629 ( 6.3%)     I                                (99.6%)    (0.4%)   
+                                                                                     Max  : 1                                                                                           
+
+16   trato\                                 Hogar carente en trato igualitario       Min  : 0\                0 : 8438 (84.4%)\    IIIIIIIIIIIIIIII \               10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.2\              1 : 1562 (15.6%)     III                              (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+17   seguridad\                             Hogar carente en seguridad               Min  : 0\                0 : 9145 (91.4%)\    IIIIIIIIIIIIIIIIII \             10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 0.1\              1 :  855 ( 8.6%)     I                                (100.0%)   (0.0%)   
+                                                                                     Max  : 1                                                                                           
+
+18   region\                                Región                                   Mean (sd) : 8.8 (4.2)\   16 distinct values   \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\   10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            min &lt; med &lt; max:\                             \ \ \ \ \ \ . \ \ \ \ \ \ :\     (100.0%)   (0.0%)   
+                                                                                     1 &lt; 8 &lt; 16\                                   \ \ \ \ . : . : \ \ :\                               
+                                                                                     IQR (CV) : 8 (0.5)                            : : : : : : \ \ : . :\                               
+                                                                                                                                   : : : : : : . : : :                                  
+
+19   area\                                  Área                                     Min  : 1\                1 : 7934 (79.3%)\    IIIIIIIIIIIIIII \                10000\     0\       
+     [haven_labelled, vctrs_vctr, double]                                            Mean : 1.2\              2 : 2066 (20.7%)     IIII                             (100.0%)   (0.0%)   
+                                                                                     Max  : 2                                                                                           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva se verá así:</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(<span class="fu">dfSummary</span>(casen2022, <span class="at">headings=</span><span class="cn">FALSE</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div class="container st-container">
+<table class="table table-striped table-bordered st-table st-table-striped st-table-bordered st-multiline ">
+  <thead>
+    <tr>
+      <th align="center" class="st-protect-top-border"><strong>No</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Variable</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Label</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Stats / Values</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Freqs (% of Valid)</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Graph</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Valid</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Missing</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">1</td>
+      <td align="left">asistencia
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en asistencia</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9849</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">98.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">151</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">1.5%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKAAAAA3BAMAAAB5glzlAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgOdVrGsgAAAENJREFUWMPt1TERACAMwMBaQAKtA/DvrQsOyMKRCPg1EUaUWAesDbUEBQUFBX8H8UkNrGfAnDBYgoKCgoKCEIhPyu5qJuW3AJ8FjLAAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTQrMDA6MDABH6GmAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE0KzAwOjAwcEIZGgAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">2</td>
+      <td align="left">rezago
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en rezago escolar</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9900</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">99.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">99</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">1.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKEAAAA3BAMAAACWQDfbAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgOdVrGsgAAAEFJREFUWMPt1TERACEABDEkgAOGl4B/bzR0lFzDfFZA2i1FqUasvsVvpiISiUQi8RTz52qx6kPiIBKJRCLx56LuW7ntufCS62lNAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTAzVDIxOjU2OjE0KzAwOjAwAR+hpgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0wM1QyMTo1NjoxNCswMDowMHBCGRoAAAAASUVORK5CYII="></td>
+      <td align="center">9999
+(100.0%)</td>
+      <td align="center">1
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">3</td>
+      <td align="left">escolaridad
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en escolaridad</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.3</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">6926</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">69.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">3065</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">30.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAHQAAAA3BAMAAAAveHPWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgOdVrGsgAAAEJJREFUSMdjYBhZQIkMANWqbEwyMBrVOqp1VOuoVlprpaBYEyQDDKhWHN5RJEIrjhAe1TqqdVTrqNYB1UpBsTZSAACfq3JW4jhuCwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0xMC0wM1QyMTo1NjoxNCswMDowMAEfoaYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMTAtMDNUMjE6NTY6MTQrMDA6MDBwQhkaAAAAAElFTkSuQmCC"></td>
+      <td align="center">9991
+(99.9%)</td>
+      <td align="center">9
+(0.1%)</td>
+    </tr>
+    <tr>
+      <td align="center">4</td>
+      <td align="left">malnutricion
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en malnutrición en
+niños/as</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9679</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">96.9%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">307</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">3.1%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJ4AAAA3BAMAAAAPuO5uAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgOdVrGsgAAAEZJREFUWMPt1TEVACAMxNBaQAJXB9S/NxYMALfwSAT8NRF0m1wtL8vTwMPDw8P7ynP/qLl6xJO61cvCw8PDw8Pb99w/ovMm3ayz4Xf1jloAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTQrMDA6MDABH6GmAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE0KzAwOjAwcEIZGgAAAABJRU5ErkJggg=="></td>
+      <td align="center">9986
+(99.9%)</td>
+      <td align="center">14
+(0.1%)</td>
+    </tr>
+    <tr>
+      <td align="center">5</td>
+      <td align="left">sist_salud
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en adscripción a sistema
+de salud</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9561</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">95.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">425</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">4.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJwAAAA3BAMAAAALTT5TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgOdVrGsgAAAEpJREFUWMPt1bERABAQBVEtKAEd0H9vLhAL2ITZLeDN3FzwU7KbKtTi2kDqcnJycnL/cvD0ZKgnuDi7gFx8Vk5OTk5ObsvB02NnTcYasMIdfTthAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTAzVDIxOjU2OjE0KzAwOjAwAR+hpgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0wM1QyMTo1NjoxNCswMDowMHBCGRoAAAAASUVORK5CYII="></td>
+      <td align="center">9986
+(99.9%)</td>
+      <td align="center">14
+(0.1%)</td>
+    </tr>
+    <tr>
+      <td align="center">6</td>
+      <td align="left">atencion
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en atención</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9471</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">94.8%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">524</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">5.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJoAAAA3BAMAAAAGU04UAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgPAl32JAAAAEpJREFUWMPt1cEJACAMBMG0YAmaDrT/3kLABiLnQ9ktYCDkcWZ02tC0NV+KJhoaGhraJ5p2ZZqmB7Q8usu0/CkaGhoaGtqdlaF6AeAgraP8ubXLAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTAzVDIxOjU2OjE1KzAwOjAwp2iqEgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0wM1QyMTo1NjoxNSswMDowMNY1Eq4AAAAASUVORK5CYII="></td>
+      <td align="center">9995
+(100.0%)</td>
+      <td align="center">5
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">7</td>
+      <td align="left">ocupacion
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en ocupación</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">8999</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">90.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1001</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">10.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJMAAAA3BAMAAAD6RmXeAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgPAl32JAAAAExJREFUWMNjYBgFpAAlyoEC1ChlY4rBqFGjRo0aNWrUqFGDzCgqVhOClAOBQW0UzMNUMAoag0ajRo0aNWrUqFGjRg0fo6hYTYwC4gAAaf6kF5r7ubwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTUrMDA6MDCnaKoSAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE1KzAwOjAw1jUSrgAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">8</td>
+      <td align="left">seg_social
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en seguridad social</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.3</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">6895</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">69.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">3059</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">30.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAHQAAAA3BAMAAAAveHPWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgPAl32JAAAAEJJREFUSMdjYBhZQIkMANWqbEwyMBrVOqp1VOuoVlprpaBYEyQDDKhWHN5RJEIrjhAe1TqqdVTrqNYB1UpBsTZSAACfq3JW4jhuCwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0xMC0wM1QyMTo1NjoxNSswMDowMKdoqhIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMTAtMDNUMjE6NTY6MTUrMDA6MDDWNRKuAAAAAElFTkSuQmCC"></td>
+      <td align="center">9954
+(99.5%)</td>
+      <td align="center">46
+(0.5%)</td>
+    </tr>
+    <tr>
+      <td align="center">9</td>
+      <td align="left">jubilacion
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en jubilaciones</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">8827</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">88.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1173</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">11.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJEAAAA3BAMAAAD+s7XjAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgPAl32JAAAAExJREFUSMdjYBgFxAIlioEC1CRlY0rBqEmjJo2aNGrSqEkDaRL1agRBioHAIDYJ7l2KTYLFndGoSaMmjZo0atKoSUPSJOrVCKOAMAAAbiKg+BHg318AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTUrMDA6MDCnaKoSAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE1KzAwOjAw1jUSrgAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">10</td>
+      <td align="left">habitabilidad
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en habitabilidad</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.2</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">8412</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">84.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1583</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">15.8%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIsAAAA3BAMAAADOP6TCAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgPAl32JAAAAExJREFUSMdjYBgF+IASZUABaoyyMUVg1JhRY0aNGTVm1BgqGEOlIl2QMiAwKI1B9igFxiDFlNGoMaPGjBozasyoMQNjDJWK9FGAHQAApC2XmwXmW1sAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTUrMDA6MDCnaKoSAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE1KzAwOjAw1jUSrgAAAABJRU5ErkJggg=="></td>
+      <td align="center">9995
+(100.0%)</td>
+      <td align="center">5
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">11</td>
+      <td align="left">hacinamiento
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en hacinamiento</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9582</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">95.9%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">413</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">4.1%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJwAAAA3BAMAAAALTT5TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgPAl32JAAAAEpJREFUWMPt1bERABAQBVEtKAEd0H9vLhAL2ITZLeDN3FzwU7KbKtTi2kDqcnJycnL/cvD0ZKgnuDi7gFx8Vk5OTk5ObsvB02NnTcYasMIdfTthAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTAzVDIxOjU2OjE1KzAwOjAwp2iqEgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0wM1QyMTo1NjoxNSswMDowMNY1Eq4AAAAASUVORK5CYII="></td>
+      <td align="center">9995
+(100.0%)</td>
+      <td align="center">5
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">12</td>
+      <td align="left">vivienda
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en estado de la vivienda</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">8741</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">87.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1259</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">12.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAI8AAAA3BAMAAADH1AS4AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgPAl32JAAAAExJREFUSMdjYBgFxAAlSoEC1CBlYwrBqEGjBo0aNGrQqEF0M4hqhb8gpUBg0BqE8CyFBsFjzWjUoFGDRg0aNWjUoMFuENUK/1GAHwAAo96d2bBuiycAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTUrMDA6MDCnaKoSAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE1KzAwOjAw1jUSrgAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">13</td>
+      <td align="left">serv_basicos
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en servicios básicos</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9276</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">92.8%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">724</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">7.2%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJcAAAA3BAMAAADzrcWkAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgQj1X70QAAAExJREFUWMNjYBgF5AAlagAFqGHKxlQAo4aNGjZq2Khho4YNScOoWqEIUgMIDHrDIJ6mkmHg2DQaNWzUsFHDRg0bNWwkGkbVCmUUkAYA9n6qVaKIr0MAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTYrMDA6MDCWgLCPAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE2KzAwOjAw590IMwAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">14</td>
+      <td align="left">entorno
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en entorno</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">8768</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">88.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1193</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">12.0%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJAAAAA3BAMAAAARcd7dAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgQj1X70QAAAEtJREFUSMdjYBgFxAAligHUIGVjCoHRqEGjBo0aNGrQqEH0Mohqhb8gxWDQGgT3qiKFBsFjbdSgUYNGDRo1aNSgQW8Q1Qr/UYAfAABKYp4IcHwVJAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0xMC0wM1QyMTo1NjoxNiswMDowMJaAsI8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMTAtMDNUMjE6NTY6MTYrMDA6MDDn3QgzAAAAAElFTkSuQmCC"></td>
+      <td align="center">9961
+(99.6%)</td>
+      <td align="center">39
+(0.4%)</td>
+    </tr>
+    <tr>
+      <td align="center">15</td>
+      <td align="left">ap_part_social
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en apoyo y participación
+social</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9335</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">93.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">629</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">6.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJkAAAA3BAMAAADtZPUXAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgQj1X70QAAAEtJREFUWMPt1cEJACAMBMGUYDoQ7SD235soNqCcD2W3gIGQx5nRaUVSXlptitDQ0NDQftG0K+OS0gPaPFumjZ8GGhoaGhralZWh/TqHMa10wqfvhwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0xMC0wM1QyMTo1NjoxNiswMDowMJaAsI8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMTAtMDNUMjE6NTY6MTYrMDA6MDDn3QgzAAAAAElFTkSuQmCC"></td>
+      <td align="center">9964
+(99.6%)</td>
+      <td align="center">36
+(0.4%)</td>
+    </tr>
+    <tr>
+      <td align="center">16</td>
+      <td align="left">trato
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en trato igualitario</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.2</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">8438</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">84.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">1562</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">15.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIsAAAA3BAMAAADOP6TCAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgQj1X70QAAAExJREFUSMdjYBgF+IASZUABaoyyMUVg1JhRY0aNGTVm1BgqGEOlIl2QMiAwKI1B9igFxiDFlNGoMaPGjBozasyoMQNjDJWK9FGAHQAApC2XmwXmW1sAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTYrMDA6MDCWgLCPAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE2KzAwOjAw590IMwAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">17</td>
+      <td align="left">seguridad
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Hogar carente en seguridad</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 0</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 0.1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 1</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">0</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">9145</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">91.4%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">855</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">8.6%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJUAAAA3BAMAAAD3WBWZAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgQj1X70QAAAExJREFUWMNjYBgFpAIlKgAFqFnKxpSDUbNGzRo1a9SsUbMGv1nUrDsEqQAEBrlZUC9TxSxIPBqNmjVq1qhZo2aNmjXMzaJm3TEKiAcAl3KnNm/8p+IAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTYrMDA6MDCWgLCPAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE2KzAwOjAw590IMwAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">18</td>
+      <td align="left">region
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Región</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean (sd) : 8.8 (4.2)</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">min ≤ med ≤ max:</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">1 ≤ 8 ≤ 16</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">IQR (CV) : 8 (0.5)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle">16 distinct values</td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgQj1X70QAAAL9JREFUaN7t12EOgyAMhmGuoDeYu4G9/90WukjSWBMpddHs/X4h4BMQ0FgKiWTqz1Jjq+LYW0RWMDAwMDAwMDAwMDCwR2HOb1Ecc/rdEjuYdAw7GCfYf2C6l15JWG0RsAxM1yUL02q9Mqvdj22D+mKmvR/bHDCw32L2AzqIOeffnrJBzM7+jtiszzMLq4X1Umxu79ZBTOe9uz2I2btOY20MGVgrgD0S2+/sEczv3Y/5xySIidsJDAysYUtKConkA1xCIktbJv3tAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTEwLTAzVDIxOjU2OjE2KzAwOjAwloCwjwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0xMC0wM1QyMTo1NjoxNiswMDowMOfdCDMAAAAASUVORK5CYII="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+    <tr>
+      <td align="center">19</td>
+      <td align="left">area
+[haven_labelled, vctrs_vctr, double]</td>
+      <td align="left">Área</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Min  : 1</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean : 1.2</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Max  : 2</td></tr></tbody></table></td>
+      <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">1</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">7934</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">79.3%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 2px 0 7px;margin:0;border:0" align="right">2</td><td style="padding:0 2px;border:0;" align="left">:</td><td style="padding:0 4px 0 6px;margin:0;border:0" align="right">2066</td><td style="padding:0;border:0" align="left">(</td><td style="padding:0 2px;margin:0;border:0" align="right">20.7%</td><td style="padding:0 4px 0 0;border:0" align="left">)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIMAAAA3BAMAAADd6OQ2AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5woDFTgQj1X70QAAAElJREFUSMdjYBgFyECJfKAANULZmGwwasSoEaNGjBoxYo2gQvErSD4QGFRGoHuQDCPQYsRo1IhRI0aNGDVi1AjCRlCh+B0FEAAA+AmLH2F50Y8AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMTAtMDNUMjE6NTY6MTYrMDA6MDCWgLCPAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTEwLTAzVDIxOjU2OjE2KzAwOjAw590IMwAAAABJRU5ErkJggg=="></td>
+      <td align="center">10000
+(100.0%)</td>
+      <td align="center">0
+(0.0%)</td>
+    </tr>
+  </tbody>
+</table>
+<p>Generated by <a href="https://github.com/dcomtois/summarytools">summarytools</a> 1.0.1 (<a href="https://www.r-project.org/">R</a> version 4.2.2)<br>2023-10-03</p>
+</div>
+</div>
+</div>
+<p>En esta base de datos, las variables de interés que están presentes (ej. asistencia, rezago, escolaridad) son variables dummy, es decir, variables que tienen como valores posibles 0 y 1. Donde 0 implica la ausencia de un atributo y 1 la presencia del mismo atributo.</p>
+<p>Para medir pobreza multidimensional, 1 indica la carencia de un servicio o cualidad, por ejemplo, se considera que un hogar es carente en escolaridad si al menos uno de sus integrantes mayores de 18 años ha alcanzado menos años de escolaridad que los establecidos por ley, de acuerdo a su edad. Por lo tanto, en la variable escolaridad 1) indica un hogar carente en escolaridad, que según nuestra base de datos corresponde a 3006 hogares (30.1% de nuestra sub-muestra).</p>
+</section>
+</section>
+<section id="medición-de-pobreza-multidimensional-en-cuatro-dimensiones-hasta-2014" class="level2">
+<h2 class="anchored" data-anchor-id="medición-de-pobreza-multidimensional-en-cuatro-dimensiones-hasta-2014">Medición de pobreza multidimensional en cuatro dimensiones (hasta 2014)</h2>
+<p><img src="../files/img/pobreza-cuatro-dimensiones.png" class="img-fluid"></p>
+<p>Seleccionamos solo los indicadores que eran utilizados hasta 2014</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">&lt;-</span> casen2022 <span class="sc">%&gt;%</span> <span class="fu">select</span>(asistencia, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                        rezago, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                        escolaridad, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                        malnutricion, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                        sist_salud, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                        atencion, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                        ocupacion, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                                        seg_social, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                                        jubilacion, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                                        hacinamiento, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">estado_vivienda=</span>vivienda, </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                                        serv_basicos) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">=</span> indicadores2014 <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">educ =</span> <span class="fu">mean</span>(<span class="fu">c</span>(asistencia, rezago, escolaridad)),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">salud =</span> <span class="fu">mean</span>(<span class="fu">c</span>(malnutricion, sist_salud, atencion)),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">trabajo=</span> <span class="fu">mean</span>(<span class="fu">c</span>(ocupacion, seg_social, jubilacion)),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">vivienda=</span> <span class="fu">mean</span>(<span class="fu">c</span>(hacinamiento, estado_vivienda, serv_basicos))) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">=</span> indicadores2014 <span class="sc">%&gt;%</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pobreza =</span> <span class="fu">mean</span>(<span class="fu">c</span>(educ, salud, trabajo, vivienda))) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">&lt;-</span> indicadores2014 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pobreza =</span> <span class="fu">case_when</span>(pobreza<span class="sc">&gt;=</span><span class="fl">0.25</span><span class="sc">~</span><span class="st">"si"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                                                      pobreza<span class="sc">&lt;</span><span class="fl">0.25</span><span class="sc">~</span><span class="st">"no"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                           )</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(indicadores2014<span class="sc">$</span>pobreza))<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      no       si 
+87.02806 12.97194 </code></pre>
+</div>
+</div>
+</section>
+<section id="medición-de-pobreza-multidimensional-en-cinco-dimensiones-desde-2016" class="level2">
+<h2 class="anchored" data-anchor-id="medición-de-pobreza-multidimensional-en-cinco-dimensiones-desde-2016">Medición de pobreza multidimensional en cinco dimensiones (desde 2016)</h2>
+<p><img src="../files/img/pobreza-cinco-dimensiones.png" class="img-fluid"></p>
+<p>Seleccionamos solo los indicadores que eran utilizados hasta 2014</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">&lt;-</span> casen2022 <span class="sc">%&gt;%</span> <span class="fu">select</span>(asistencia, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                        rezago, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                        escolaridad, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                        malnutricion, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                                        sist_salud, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                                        atencion, </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                                        ocupacion, </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                                        seg_social, </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                                        jubilacion, </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                                        habitabilidad, </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                                        serv_basicos,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                                        entorno,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                                        ap_part_social,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                                        trato,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                                        seguridad) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="sc">~</span>(<span class="fu">as.numeric</span>(.))) <span class="co"># Convertimos todas las variables a numéricas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">=</span> indicadores2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">educ =</span> <span class="fu">mean</span>(<span class="fu">c</span>(asistencia, rezago, escolaridad)),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">salud =</span> <span class="fu">mean</span>(<span class="fu">c</span>(malnutricion, sist_salud, atencion)),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">trabajo=</span> <span class="fu">mean</span>(<span class="fu">c</span>(ocupacion, seg_social, jubilacion)),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">vivienda=</span> <span class="fu">mean</span>(<span class="fu">c</span>(habitabilidad, serv_basicos, entorno)),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">redes_cohesion=</span> <span class="fu">mean</span>(<span class="fu">c</span>(ap_part_social, trato, seguridad))) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">=</span> indicadores2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pobreza_pond =</span> (educ<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (salud<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (trabajo<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (vivienda<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (redes_cohesion<span class="sc">*</span>.<span class="dv">1</span>)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">&lt;-</span> indicadores2016 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pobreza =</span> <span class="fu">case_when</span>(pobreza_pond<span class="sc">&gt;=</span><span class="fl">0.225</span><span class="sc">~</span><span class="st">"si"</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                                                      pobreza_pond<span class="sc">&lt;</span><span class="fl">0.225</span><span class="sc">~</span><span class="st">"no"</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                           )</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(indicadores2016<span class="sc">$</span>pobreza))<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+       no        si 
+91.348989  8.651011 </code></pre>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico R 1. Construcción de índices"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-10-05"</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="an">website:</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">  comments:</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">    giscus:</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">      repo: kevin-carrasco/investigacion-cuantitativa</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, cache = TRUE}</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"knitr"</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning=</span><span class="cn">FALSE</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">message=</span><span class="cn">FALSE</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">echo=</span><span class="cn">TRUE</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">cache =</span> <span class="cn">TRUE</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">5.2</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>El Programa de las Naciones Unidas para el Desarrollo (PNUD) es la agencia de la Organización de</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>las Naciones Unidas encargada de promover el desarrollo sostenible a nivel mundial, y uno de sus</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>enfoques es la erradicación de la pobreza. En este contexto, el PNUD reconoce la importancia de</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>abordar la pobreza multidimensional para lograr un desarrollo sostenible y mejorar el bienestar de</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>las personas en todas las dimensiones de sus vidas.</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>Desde el año 2016 Chile cuenta con la medida actual de pobreza multidimensional. El propósito de</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>esta medida es complementar la medición de la pobreza basada en ingresos con un indicador que</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>refleje las condiciones de vida de la población en aspectos relevantes para el bienestar social y una</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>vida digna. Desde su creación, se ha buscado obtener un diagnóstico más completo de la pobreza y</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>contar con una herramienta útil para el diseño, implementación, monitoreo y evaluación de políticas</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>públicas.</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>Inicialmente, la medida de pobreza multidimensional incluyó 4 dimensiones (Educación, Salud,</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>Trabajo y Seguridad Social, y Vivienda) con tres indicadores por dimensión (12 indicadores en total),</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>cada uno con igual ponderación (8,3%), por lo tanto, con dimensiones cuyo peso representan el 25%</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>de la medida.Posteriormente, con los resultados de la encuesta Casen 2015 se incorpora una quinta dimensión</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>de Redes y Cohesión Social y se amplía la dimensión de Vivienda para incluir el concepto de Entorno.</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>Desde entonces, la medida ha estado compuesta por 5 dimensiones (Educación, Salud, Trabajo y</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>Seguridad Social, Vivienda y Entorno, y Redes y Cohesión Social), manteniendo la definición de 3</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>indicadores por dimensión, de modo que la medida queda compuesta por 15 indicadores. Respecto</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>del peso de las dimensiones, con el fin de favorecer cierta estabilidad de la medida, </span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>la dimensión de Redes y Cohesión Social se incorpora con un peso de 10% y se mantiene la igualdad de</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>ponderación entre las demás dimensiones, ahora con una ponderación de 22,5%.</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo general</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>El objetivo de este ejercicio práctico es comprender y estimar el proceso de construcción de índices ponderados y no ponderados en R.</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar paquetes</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>Como sabemos, la lógica de R es instalar librerías (solo 1 vez, con install.packages("librería")), y luego cargarlas cada vez que es necesario usarlas (con library(librería)). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama pacman (package manager). Lo que hace pacman es cargar la librería, y si no está instalada, la instala y la carga:</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>Para utilizar la primera vez (si es que no está instalada):</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>Y en adelante, las librerías se cargan así pacman::p_load(libreria1,libreria2,libreriaX) :</span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co">#Conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>               car, <span class="co">#Para recodificar</span></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>               summarytools <span class="co">#Para descriptivos</span></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>               )</span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datos y variables</span></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>La base de datos a utilizar es la CASEN 2022 (Encuesta de Caracterización Socioeconómica Nacional). La base de datos está disponible en este <span class="co">[</span><span class="ot">link</span><span class="co">](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022#basedatos)</span> y el cuestionario en este <span class="co">[</span><span class="ot">link</span><span class="co">](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022#cuestionarios)</span>.</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>Sin embargo, para realizar este ejercicio práctico utilizaremos una muestra aleatoria de esta base de datos para simplificar el proceso de construcción de índices. El código que crea este subset está disponible <span class="co">[</span><span class="ot">acá</span><span class="co">](https://github.com/cursos-metodos-facso/investigacion-cuantitativa/blob/main/files/subset_casen.R)</span></span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cargar base de datos</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/casen2022.RData"</span>)) <span class="co">#Cargar base de datos</span></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a><span class="fu">### Descripción de variables</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>A continuación, exploramos la base de datos casen2022</span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>summarytools<span class="sc">::</span><span class="fu">dfSummary</span>(casen2022, <span class="at">plain.ascii =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a>Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva se verá así:</span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE }</span></span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(<span class="fu">dfSummary</span>(casen2022, <span class="at">headings=</span><span class="cn">FALSE</span>))</span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">dfSummary</span>(casen2022, <span class="at">headings =</span> <span class="cn">FALSE</span>), <span class="at">method =</span> <span class="st">"render"</span>)</span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a>En esta base de datos, las variables de interés que están presentes (ej. asistencia, rezago, escolaridad) son variables dummy, es decir, variables que tienen como valores posibles 0 y 1. Donde 0 implica la ausencia de un atributo y 1 la presencia del mismo atributo.</span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a>Para medir pobreza multidimensional, 1 indica la carencia de un servicio o cualidad, por ejemplo, se considera que un hogar es carente en escolaridad si al menos uno de sus integrantes mayores de 18 años ha alcanzado menos años de escolaridad que los establecidos por ley, de acuerdo a su edad. Por lo tanto, en la variable escolaridad 1) indica un hogar carente en escolaridad, que según nuestra base de datos corresponde a 3006 hogares (30.1% de nuestra sub-muestra).</span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medición de pobreza multidimensional en cuatro dimensiones (hasta 2014)</span></span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a><span class="al">![](../files/img/pobreza-cuatro-dimensiones.png)</span></span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a>Seleccionamos solo los indicadores que eran utilizados hasta 2014</span>
+<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">&lt;-</span> casen2022 <span class="sc">%&gt;%</span> <span class="fu">select</span>(asistencia, </span>
+<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a>                                        rezago, </span>
+<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a>                                        escolaridad, </span>
+<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a>                                        malnutricion, </span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>                                        sist_salud, </span>
+<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a>                                        atencion, </span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a>                                        ocupacion, </span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>                                        seg_social, </span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a>                                        jubilacion, </span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a>                                        hacinamiento, </span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">estado_vivienda=</span>vivienda, </span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a>                                        serv_basicos) </span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">=</span> indicadores2014 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">educ =</span> <span class="fu">mean</span>(<span class="fu">c</span>(asistencia, rezago, escolaridad)),</span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a>         <span class="at">salud =</span> <span class="fu">mean</span>(<span class="fu">c</span>(malnutricion, sist_salud, atencion)),</span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a>         <span class="at">trabajo=</span> <span class="fu">mean</span>(<span class="fu">c</span>(ocupacion, seg_social, jubilacion)),</span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a>         <span class="at">vivienda=</span> <span class="fu">mean</span>(<span class="fu">c</span>(hacinamiento, estado_vivienda, serv_basicos))) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">=</span> indicadores2014 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pobreza =</span> <span class="fu">mean</span>(<span class="fu">c</span>(educ, salud, trabajo, vivienda))) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a>indicadores2014 <span class="ot">&lt;-</span> indicadores2014 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pobreza =</span> <span class="fu">case_when</span>(pobreza<span class="sc">&gt;=</span><span class="fl">0.25</span><span class="sc">~</span><span class="st">"si"</span>,</span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a>                                                      pobreza<span class="sc">&lt;</span><span class="fl">0.25</span><span class="sc">~</span><span class="st">"no"</span>)</span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a>                           )</span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(indicadores2014<span class="sc">$</span>pobreza))<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medición de pobreza multidimensional en cinco dimensiones (desde 2016)</span></span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a><span class="al">![](../files/img/pobreza-cinco-dimensiones.png)</span></span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a>Seleccionamos solo los indicadores que eran utilizados hasta 2014</span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">&lt;-</span> casen2022 <span class="sc">%&gt;%</span> <span class="fu">select</span>(asistencia, </span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>                                        rezago, </span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>                                        escolaridad, </span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>                                        malnutricion, </span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>                                        sist_salud, </span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>                                        atencion, </span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a>                                        ocupacion, </span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a>                                        seg_social, </span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a>                                        jubilacion, </span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a>                                        habitabilidad, </span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>                                        serv_basicos,</span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>                                        entorno,</span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a>                                        ap_part_social,</span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>                                        trato,</span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a>                                        seguridad) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="sc">~</span>(<span class="fu">as.numeric</span>(.))) <span class="co"># Convertimos todas las variables a numéricas</span></span>
+<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">=</span> indicadores2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">educ =</span> <span class="fu">mean</span>(<span class="fu">c</span>(asistencia, rezago, escolaridad)),</span>
+<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a>         <span class="at">salud =</span> <span class="fu">mean</span>(<span class="fu">c</span>(malnutricion, sist_salud, atencion)),</span>
+<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a>         <span class="at">trabajo=</span> <span class="fu">mean</span>(<span class="fu">c</span>(ocupacion, seg_social, jubilacion)),</span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a>         <span class="at">vivienda=</span> <span class="fu">mean</span>(<span class="fu">c</span>(habitabilidad, serv_basicos, entorno)),</span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a>         <span class="at">redes_cohesion=</span> <span class="fu">mean</span>(<span class="fu">c</span>(ap_part_social, trato, seguridad))) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">=</span> indicadores2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-204"><a href="#cb13-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-205"><a href="#cb13-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pobreza_pond =</span> (educ<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (salud<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (trabajo<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (vivienda<span class="sc">*</span>.<span class="dv">225</span>) <span class="sc">+</span> (redes_cohesion<span class="sc">*</span>.<span class="dv">1</span>)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-207"><a href="#cb13-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-208"><a href="#cb13-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-209"><a href="#cb13-209" aria-hidden="true" tabindex="-1"></a>indicadores2016 <span class="ot">&lt;-</span> indicadores2016 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pobreza =</span> <span class="fu">case_when</span>(pobreza_pond<span class="sc">&gt;=</span><span class="fl">0.225</span><span class="sc">~</span><span class="st">"si"</span>,</span>
+<span id="cb13-210"><a href="#cb13-210" aria-hidden="true" tabindex="-1"></a>                                                      pobreza_pond<span class="sc">&lt;</span><span class="fl">0.225</span><span class="sc">~</span><span class="st">"no"</span>)</span>
+<span id="cb13-211"><a href="#cb13-211" aria-hidden="true" tabindex="-1"></a>                           )</span>
+<span id="cb13-212"><a href="#cb13-212" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb13-213"><a href="#cb13-213" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(indicadores2016<span class="sc">$</span>pobreza))<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb13-214"><a href="#cb13-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-215"><a href="#cb13-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-216"><a href="#cb13-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-217"><a href="#cb13-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-218"><a href="#cb13-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-219"><a href="#cb13-219" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/Kevin-carrasco/investigacion-cuantitativa">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

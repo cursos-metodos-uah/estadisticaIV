@@ -63,6 +63,7 @@ Y en adelante, las librerías se cargan así pacman::p_load(libreria1,libreria2,
 ```{r}
 pacman::p_load(tidyverse, #Conjunto de paquetes, sobre todo dplyr y ggplot2
                car, #Para recodificar
+               haven,
                summarytools #Para descriptivos
                )
 
@@ -87,15 +88,20 @@ load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw
 
 A continuación, exploramos la base de datos casen2022
 
-```{r eval=FALSE}
+```{r}
 summarytools::dfSummary(casen2022, plain.ascii = FALSE)
 ```
 
 Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva se verá así:
 
-```{r}
+```{r eval=FALSE }
 view(dfSummary(casen2022, headings=FALSE))
 ```
+
+```{r echo=FALSE}
+print(dfSummary(casen2022, headings = FALSE), method = "render")
+```
+
 
 En esta base de datos, las variables de interés que están presentes (ej. asistencia, rezago, escolaridad) son variables dummy, es decir, variables que tienen como valores posibles 0 y 1. Donde 0 implica la ausencia de un atributo y 1 la presencia del mismo atributo.
 
@@ -119,8 +125,7 @@ indicadores2014 <- casen2022 %>% select(asistencia,
                                         jubilacion, 
                                         hacinamiento, 
                                         estado_vivienda=vivienda, 
-                                        serv_basicos) %>% 
-  mutate_all(~(as.numeric(.))) # Convertimos todas las variables a numéricas
+                                        serv_basicos) 
 ```
 
 ```{r}
