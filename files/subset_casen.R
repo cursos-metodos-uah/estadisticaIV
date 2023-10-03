@@ -1,8 +1,9 @@
+pacman::p_load(haven, dplyr)
 
+Base_de_datos_Casen_2022_STATA <- read_dta("D:/Users/kevin/Downloads/Base de datos Casen 2022 STATA.dta/Base de datos Casen 2022 STATA.dta")
 
-casen2022 <- Base_de_datos_Casen_2022_STATA %>% filter(id_persona==1) %>%
-  select(id_vivienda,
-         asistencia=hh_d_asis,
+casen2022 <- Base_de_datos_Casen_2022_STATA %>% filter(!duplicated(folio)) %>%
+  select(asistencia=hh_d_asis,
          rezago=hh_d_rez,
          escolaridad=hh_d_esc,
          malnutricion=hh_d_mal,
@@ -12,6 +13,8 @@ casen2022 <- Base_de_datos_Casen_2022_STATA %>% filter(id_persona==1) %>%
          seg_social=hh_d_cot,
          jubilacion=hh_d_jub,
          habitabilidad=hh_d_habitab,
+         hacinamiento=hh_d_hacina,
+         vivienda=hh_d_estado,
          serv_basicos=hh_d_servbas,
          entorno=hh_d_entorno,
          ap_part_social=hh_d_appart,

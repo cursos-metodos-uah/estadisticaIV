@@ -88,7 +88,7 @@ website:
         - section: "Prácticos R"
           contents:
             - text: "01: Práctico 1"
-              file: practico/01-content.qmd
+              file: practicos/01-content.qmd
 
 
   page-footer:
