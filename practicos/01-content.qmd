@@ -1,0 +1,203 @@
+---
+title: "Práctico R 1. Construcción de índices"
+date: "2023-10-05"
+lang: es
+website:
+  comments:
+    giscus:
+      repo: kevin-carrasco/investigacion-cuantitativa
+---
+
+
+```{r setup, include=FALSE, cache = TRUE}
+require("knitr")
+opts_chunk$set(warning=FALSE,
+             message=FALSE,
+             echo=TRUE,
+             cache = TRUE, fig.width=7, fig.height=5.2)
+```
+
+# Presentación
+
+El Programa de las Naciones Unidas para el Desarrollo (PNUD) es la agencia de la Organización de
+las Naciones Unidas encargada de promover el desarrollo sostenible a nivel mundial, y uno de sus
+enfoques es la erradicación de la pobreza. En este contexto, el PNUD reconoce la importancia de
+abordar la pobreza multidimensional para lograr un desarrollo sostenible y mejorar el bienestar de
+las personas en todas las dimensiones de sus vidas.
+
+Desde el año 2016 Chile cuenta con la medida actual de pobreza multidimensional. El propósito de
+esta medida es complementar la medición de la pobreza basada en ingresos con un indicador que
+refleje las condiciones de vida de la población en aspectos relevantes para el bienestar social y una
+vida digna. Desde su creación, se ha buscado obtener un diagnóstico más completo de la pobreza y
+contar con una herramienta útil para el diseño, implementación, monitoreo y evaluación de políticas
+públicas.
+
+Inicialmente, la medida de pobreza multidimensional incluyó 4 dimensiones (Educación, Salud,
+Trabajo y Seguridad Social, y Vivienda) con tres indicadores por dimensión (12 indicadores en total),
+cada uno con igual ponderación (8,3%), por lo tanto, con dimensiones cuyo peso representan el 25%
+de la medida.Posteriormente, con los resultados de la encuesta Casen 2015 se incorpora una quinta dimensión
+de Redes y Cohesión Social y se amplía la dimensión de Vivienda para incluir el concepto de Entorno.
+Desde entonces, la medida ha estado compuesta por 5 dimensiones (Educación, Salud, Trabajo y
+Seguridad Social, Vivienda y Entorno, y Redes y Cohesión Social), manteniendo la definición de 3
+indicadores por dimensión, de modo que la medida queda compuesta por 15 indicadores. Respecto
+del peso de las dimensiones, con el fin de favorecer cierta estabilidad de la medida, 
+la dimensión de Redes y Cohesión Social se incorpora con un peso de 10% y se mantiene la igualdad de
+ponderación entre las demás dimensiones, ahora con una ponderación de 22,5%.
+
+## Objetivo general
+
+El objetivo de este ejercicio práctico es comprender y estimar el proceso de construcción de índices ponderados y no ponderados en R.
+
+## Cargar paquetes
+
+Como sabemos, la lógica de R es instalar librerías (solo 1 vez, con install.packages("librería")), y luego cargarlas cada vez que es necesario usarlas (con library(librería)). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama pacman (package manager). Lo que hace pacman es cargar la librería, y si no está instalada, la instala y la carga:
+
+Para utilizar la primera vez (si es que no está instalada):
+
+```{r eval=FALSE}
+install.packages("pacman")
+```
+
+Y en adelante, las librerías se cargan así pacman::p_load(libreria1,libreria2,libreriaX) :
+
+```{r}
+pacman::p_load(tidyverse, #Conjunto de paquetes, sobre todo dplyr y ggplot2
+               car, #Para recodificar
+               summarytools #Para descriptivos
+               )
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+
+## Datos y variables
+
+La base de datos a utilizar es la CASEN 2022 (Encuesta de Caracterización Socioeconómica Nacional). La base de datos está disponible en este [link](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022#basedatos) y el cuestionario en este [link](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022#cuestionarios).
+
+Sin embargo, para realizar este ejercicio práctico utilizaremos una muestra aleatoria de esta base de datos para simplificar el proceso de construcción de índices. El código que crea este subset está disponible [acá](https://github.com/cursos-metodos-facso/investigacion-cuantitativa/blob/main/files/subset_casen.R)
+
+### Cargar base de datos
+
+```{r }
+load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/casen2022.RData")) #Cargar base de datos
+```
+
+### Descripción de variables
+
+A continuación, exploramos la base de datos casen2022
+
+```{r}
+summarytools::dfSummary(casen2022, plain.ascii = FALSE)
+```
+
+Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva se verá así:
+
+```{r}
+view(dfSummary(casen2022, headings=FALSE))
+```
+
+En esta base de datos, las variables de interés que están presentes (ej. asistencia, rezago, escolaridad) son variables dummy, es decir, variables que tienen como valores posibles 0 y 1. Donde 0 implica la ausencia de un atributo y 1 la presencia del mismo atributo.
+
+Para medir pobreza multidimensional, 1 indica la carencia de un servicio o cualidad, por ejemplo, se considera que un hogar es carente en escolaridad si al menos uno de sus integrantes mayores de 18 años ha alcanzado menos años de escolaridad que los establecidos por ley, de acuerdo a su edad. Por lo tanto, en la variable escolaridad 1) indica un hogar carente en escolaridad, que según nuestra base de datos corresponde a 3006 hogares (30.1% de nuestra sub-muestra).
+
+## Medición de pobreza multidimensional en cuatro dimensiones (hasta 2014)
+
+![](../files/img/pobreza-cuatro-dimensiones.png)
+
+Seleccionamos solo los indicadores que eran utilizados hasta 2014
+
+```{r}
+indicadores2014 <- casen2022 %>% select(asistencia, 
+                                        rezago, 
+                                        escolaridad, 
+                                        malnutricion, 
+                                        sist_salud, 
+                                        atencion, 
+                                        ocupacion, 
+                                        seg_social, 
+                                        jubilacion, 
+                                        hacinamiento, 
+                                        estado_vivienda=vivienda, 
+                                        serv_basicos) %>% 
+  mutate_all(~(as.numeric(.))) # Convertimos todas las variables a numéricas
+```
+
+```{r}
+indicadores2014 = indicadores2014 %>% 
+  rowwise() %>%
+  mutate(educ = mean(c(asistencia, rezago, escolaridad)),
+         salud = mean(c(malnutricion, sist_salud, atencion)),
+         trabajo= mean(c(ocupacion, seg_social, jubilacion)),
+         vivienda= mean(c(hacinamiento, estado_vivienda, serv_basicos))) %>% 
+  ungroup()
+
+indicadores2014 = indicadores2014 %>% 
+  rowwise() %>%
+  mutate(pobreza = mean(c(educ, salud, trabajo, vivienda))) %>% 
+  ungroup()
+
+
+indicadores2014 <- indicadores2014 %>% mutate(pobreza = case_when(pobreza>=0.25~"si",
+                                                      pobreza<0.25~"no")
+                           )
+                          
+prop.table(table(indicadores2014$pobreza))*100
+```
+
+## Medición de pobreza multidimensional en cinco dimensiones (desde 2016)
+
+![](../files/img/pobreza-cinco-dimensiones.png)
+
+
+Seleccionamos solo los indicadores que eran utilizados hasta 2014
+
+```{r}
+indicadores2016 <- casen2022 %>% select(asistencia, 
+                                        rezago, 
+                                        escolaridad, 
+                                        malnutricion, 
+                                        sist_salud, 
+                                        atencion, 
+                                        ocupacion, 
+                                        seg_social, 
+                                        jubilacion, 
+                                        habitabilidad, 
+                                        serv_basicos,
+                                        entorno,
+                                        ap_part_social,
+                                        trato,
+                                        seguridad) %>% 
+  na.omit() %>% 
+  mutate_all(~(as.numeric(.))) # Convertimos todas las variables a numéricas
+
+```
+
+```{r}
+indicadores2016 = indicadores2016 %>% 
+  rowwise() %>%
+  mutate(educ = mean(c(asistencia, rezago, escolaridad)),
+         salud = mean(c(malnutricion, sist_salud, atencion)),
+         trabajo= mean(c(ocupacion, seg_social, jubilacion)),
+         vivienda= mean(c(habitabilidad, serv_basicos, entorno)),
+         redes_cohesion= mean(c(ap_part_social, trato, seguridad))) %>% 
+  ungroup()
+
+indicadores2016 = indicadores2016 %>% 
+  rowwise() %>%
+  mutate(pobreza_pond = (educ*.225) + (salud*.225) + (trabajo*.225) + (vivienda*.225) + (redes_cohesion*.1)) %>%  
+  ungroup()
+
+
+indicadores2016 <- indicadores2016 %>% mutate(pobreza = case_when(pobreza_pond>=0.225~"si",
+                                                      pobreza_pond<0.225~"no")
+                           )
+                          
+prop.table(table(indicadores2016$pobreza))*100
+```
+
+
+
+
+
+
