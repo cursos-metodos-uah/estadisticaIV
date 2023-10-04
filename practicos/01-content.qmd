@@ -86,20 +86,13 @@ load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw
 
 ### Descripción de variables
 
-A continuación, exploramos la base de datos casen2022
-
-```{r}
-summarytools::dfSummary(casen2022, plain.ascii = FALSE)
-```
-
-Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva se verá así:
 
 ```{r eval=FALSE }
-view(dfSummary(casen2022, headings=FALSE))
+view(dfSummary(casen2022, headings=FALSE, graph.col = FALSE))
 ```
 
 ```{r echo=FALSE}
-print(dfSummary(casen2022, headings = FALSE), method = "render")
+print(dfSummary(casen2022, headings = FALSE, graph.col = FALSE), method = "render")
 ```
 
 
@@ -125,8 +118,13 @@ indicadores2014 <- casen2022 %>% select(asistencia,
                                         jubilacion, 
                                         hacinamiento, 
                                         estado_vivienda=vivienda, 
-                                        serv_basicos) 
+                                        serv_basicos)  %>% 
+  na.omit() %>% # Eliminar Na's
+  mutate_all(~(as.numeric(.))) # Convertimos todas las variables a numéricas
+
 ```
+
+Con la función *mutate* creamos una nueva variable para cada dimensión, que contenga el promedio simple de los tres indicadores correspondientes.
 
 ```{r}
 indicadores2014 = indicadores2014 %>% 
@@ -136,26 +134,47 @@ indicadores2014 = indicadores2014 %>%
          trabajo= mean(c(ocupacion, seg_social, jubilacion)),
          vivienda= mean(c(hacinamiento, estado_vivienda, serv_basicos))) %>% 
   ungroup()
+```
 
+Luego, como la pobreza multidimensional consideraba cuatro dimensiones equivalentes (sin ponderar), es posible obtener el índice de pobreza multidimensional a partir del promedio de las cuatro dimensiones.
+
+```{r}
 indicadores2014 = indicadores2014 %>% 
   rowwise() %>%
   mutate(pobreza = mean(c(educ, salud, trabajo, vivienda))) %>% 
   ungroup()
+```
 
+Lo que nos da este resultado:
 
+```{r}
+indicadores2014 %>% select(pobreza) %>% head(10) # Primeros 10 casos
+summary(indicadores2014$pobreza) # Resumen
+```
+
+¿Cómo podemos conocer el porcentaje total de pobreza multidimensional del país?
+
+El PNUD considera como límite para el índice de cuatro dimensiones un 25% de pobreza multidimensional (lo que equivale a tener carencia en los tres indicadores de una dimensión). Por lo tanto, podemos utilizar un condicional que indique "si" existe pobreza muldimensional cuando nuestra variable "pobreza" sea mayor o igual a 0.25 y que indique que "no" existe pobreza multidimensional cuando la variable "pobreza" sea menor a 0.25. *case_when* viene en dplyr.
+
+```{r}
 indicadores2014 <- indicadores2014 %>% mutate(pobreza = case_when(pobreza>=0.25~"si",
                                                       pobreza<0.25~"no")
                            )
-                          
 prop.table(table(indicadores2014$pobreza))*100
 ```
 
+Según el análisis realizado con la submuestra aleatoria de la CASEN, considerando las cuatro dimensiones que se utilizaban hasta el 2014, existe un 12.87% de pobreza multidimensional en Chile
+
+
 ## Medición de pobreza multidimensional en cinco dimensiones (desde 2016)
+
+Veamos ahora el mismo proceso, pero considerando la quinta dimensión que fue agregada en 2016 sobre Redes y Cohesión Social.
 
 ![](../files/img/pobreza-cinco-dimensiones.png)
 
+En esta operacionalización del índice de pobreza multidimensional las cuatro dimensiones originales equivalen a un 22.5% cada una, mientras que la nueva dimensión de redes y cohesión social equivale a un 10%.
 
-Seleccionamos solo los indicadores que eran utilizados hasta 2014
+Seleccionemos solo los indicadores que son utilizados desde 2016.
 
 ```{r}
 indicadores2016 <- casen2022 %>% select(asistencia, 
@@ -172,11 +191,15 @@ indicadores2016 <- casen2022 %>% select(asistencia,
                                         entorno,
                                         ap_part_social,
                                         trato,
-                                        seguridad) %>% 
-  na.omit() %>% 
+                                        seguridad,
+                                        area,
+                                        region) %>% 
+  na.omit() %>% # Eliminar Na's
   mutate_all(~(as.numeric(.))) # Convertimos todas las variables a numéricas
 
 ```
+
+Seguimos los mismos pasos que con el índice anterior, estimando un promedio simple para cada una de las dimensiones.
 
 ```{r}
 indicadores2016 = indicadores2016 %>% 
@@ -187,22 +210,49 @@ indicadores2016 = indicadores2016 %>%
          vivienda= mean(c(habitabilidad, serv_basicos, entorno)),
          redes_cohesion= mean(c(ap_part_social, trato, seguridad))) %>% 
   ungroup()
+```
 
+Sin embargo, como en esta ocasión se trata de un índice ponderado (con dimensiones con distinto peso cada una), multiplicamos cada dimensión por su peso correspondiente y las sumamos.
+
+```{r}
 indicadores2016 = indicadores2016 %>% 
   rowwise() %>%
-  mutate(pobreza_pond = (educ*.225) + (salud*.225) + (trabajo*.225) + (vivienda*.225) + (redes_cohesion*.1)) %>%  
+  mutate(pobreza_pond = (educ*22.5) + (salud*22.5) + (trabajo*22.5) + (vivienda*22.5) + (redes_cohesion*10)) %>%  
   ungroup()
+```
+
+Lo que nos da este resultado:
+
+```{r}
+indicadores2016 %>% select(pobreza_pond) %>% head(10) # Primeros 10 casos
+summary(indicadores2016$pobreza_pond) # Resumen
+```
+
+¿Cómo podemos conocer el porcentaje total de pobreza multidimensional del país?
+
+El PNUD considera como límite para el índice de cinco dimensiones un 22.5% de pobreza multidimensional (lo que equivale a tener carencia en los tres indicadores de una dimensión). Por lo tanto, podemos utilizar un condicional que indique "si" existe pobreza muldimensional cuando nuestra variable "pobreza" sea mayor o igual a 22.5 y que indique que "no" existe pobreza multidimensional cuando la variable "pobreza" sea menor a 22.5.
 
 
-indicadores2016 <- indicadores2016 %>% mutate(pobreza = case_when(pobreza_pond>=0.225~"si",
-                                                      pobreza_pond<0.225~"no")
+```{r}
+indicadores2016 <- indicadores2016 %>% mutate(pobreza = case_when(pobreza_pond>=22.5~"si",
+                                                      pobreza_pond<22.5~"no")
                            )
                           
 prop.table(table(indicadores2016$pobreza))*100
 ```
 
+Según el análisis realizado con la submuestra aleatoria de la CASEN, considerando las cinco dimensiones que se comenzaron a utilizar en 2016, existe un 15.57% de pobreza multidimensional en Chile.
 
+### Otros
 
+Podemos utilizar otras variables de la CASEN para poder conocer cómo se distribuye la pobreza multidimensional en Chile. Por ejemplo, porcentaje de pobreza multidimensional por región: 
 
+```{r}
+prop.table(table(indicadores2016$region, indicadores2016$pobreza), margin = 1)
+```
 
+o pobreza multidimensional por zona geográfica 1) urbano 2) rural
 
+```{r}
+prop.table(table(indicadores2016$area, indicadores2016$pobreza), margin = 1)
+```
