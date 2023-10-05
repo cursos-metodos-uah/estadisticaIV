@@ -98,7 +98,7 @@ print(dfSummary(casen2022, headings = FALSE, graph.col = FALSE), method = "rende
 
 En esta base de datos, las variables de interés que están presentes (ej. asistencia, rezago, escolaridad) son variables dummy, es decir, variables que tienen como valores posibles 0 y 1. Donde 0 implica la ausencia de un atributo y 1 la presencia del mismo atributo.
 
-Para medir pobreza multidimensional, 1 indica la carencia de un servicio o cualidad, por ejemplo, se considera que un hogar es carente en escolaridad si al menos uno de sus integrantes mayores de 18 años ha alcanzado menos años de escolaridad que los establecidos por ley, de acuerdo a su edad. Por lo tanto, en la variable escolaridad 1) indica un hogar carente en escolaridad, que según nuestra base de datos corresponde a 3006 hogares (30.1% de nuestra sub-muestra).
+Para medir pobreza multidimensional, 1 indica la carencia de un servicio o cualidad, por ejemplo, se considera que un hogar es carente en escolaridad si al menos uno de sus integrantes mayores de 18 años ha alcanzado menos años de escolaridad que los establecidos por ley, de acuerdo a su edad. Por lo tanto, en la variable escolaridad 1) indica un hogar carente en escolaridad, que según nuestra base de datos corresponde a 3065 hogares (30.7% de nuestra sub-muestra).
 
 ## Medición de pobreza multidimensional en cuatro dimensiones (hasta 2014)
 
@@ -163,7 +163,7 @@ indicadores2014 <- indicadores2014 %>% mutate(pobreza = case_when(pobreza>=0.25~
 prop.table(table(indicadores2014$pobreza))*100
 ```
 
-Según el análisis realizado con la submuestra aleatoria de la CASEN, considerando las cuatro dimensiones que se utilizaban hasta el 2014, existe un 12.87% de pobreza multidimensional en Chile
+Según el análisis realizado con la submuestra aleatoria de la CASEN, considerando las cuatro dimensiones que se utilizaban hasta el 2014, existe un 12.97% de pobreza multidimensional en Chile
 
 
 ## Medición de pobreza multidimensional en cinco dimensiones (desde 2016)
@@ -241,7 +241,7 @@ indicadores2016 <- indicadores2016 %>% mutate(pobreza = case_when(pobreza_pond>=
 prop.table(table(indicadores2016$pobreza))*100
 ```
 
-Según el análisis realizado con la submuestra aleatoria de la CASEN, considerando las cinco dimensiones que se comenzaron a utilizar en 2016, existe un 15.57% de pobreza multidimensional en Chile.
+Según el análisis realizado con la submuestra aleatoria de la CASEN, considerando las cinco dimensiones que se comenzaron a utilizar en 2016, existe un 15.73% de pobreza multidimensional en Chile.
 
 ### Otros
 
