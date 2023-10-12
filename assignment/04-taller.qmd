@@ -1,0 +1,75 @@
+---
+title: "Taller 4"
+date: "2023-10-12"
+lang: es
+website:
+  comments:
+    giscus:
+      repo: kevin-carrasco/investigacion-cuantitativa
+---
+
+
+# Objetivo del taller
+
+Practicar la construcción de escalas y reflexionar en torno a la fiabilidad y la validez del instrumento.
+
+
+# Instrucciones: 
+
+Al final de esta página encontrarán un conjunto de ítems tipo Likert (1-5: grado de acuerdo, frecuencia, etc.) extraídos de diferentes encuestas sociales. En sus grupos de trabajo, ustedes deben:
+
+
+a) Escoger un conjunto de preguntas que puedan conformar dos escalas diferentes.
+
+b) Para cada escala, asignar un nombre según el concepto que se busque medir, definir la fórmula para su estimación, rango e interpretación de valores posibles. 
+
+c) Para cada escala, presentar dos ejemplos de investigaciones empíricas que, eventualmente, podrían incorporar el índice creado en sus procedimientos de análisis. 
+
+d) Para cada escala ¿qué otros indicadores podrían incluirse en su construcción? (señalar al menos dos por escala). 
+
+e) En una hoja deben especificar el título Taller 4, el nombre de l_s integrantes del equipo que están presentes en el taller, y sus respectivas respuestas. Tendrán hasta las 13:25 para realizar el taller.
+
+
+## Constructos:
+
+1) Frecuencia en que se habla de política con amig_s.
+
+2) Grado de importancia otorgado a conocer a las personas indicadas para salir adelante en la vida.
+
+3) Grado de acuerdo sobre recortar los gastos gubernamentales.
+
+4) Probabilidad de mantenerse en un trabajo no satisfactorio por el beneficio de la vida familiar.
+
+5) Grado de acuerdo con la frase “En general, Chile es mejor que el resto de los países latinoamericanos”.
+
+6) Grado de importancia asignado a tener un trabajo con altos ingresos.
+
+7) Grado de acuerdo frente a la reducción de la regulación económica por parte del gobierno.
+
+8) Grado de acuerdo frente a la frase “me siento orgullos_ de ser chilen_”.
+
+9) Frecuencia en que se trabaja por un tema que le afecta a sí mism_ o alguien de su comunidad.
+
+10) Grado de importancia otorgado a venir de una familia adinerada para salir adelante en la vida.
+
+11) Probabilidad de renunciar a una buena oportunidad laboral en beneficio de la vida familiar.
+
+12) Grado de acuerdo frente a la frase “prefiero haber nacido en Chile, en lugar de cualquier otro país latinoamericano”.
+
+13) Grado de importancia de tener un alto nivel educativo para salir adelante en la vida.
+
+14) Grado de importancia otorgado a tener un trabajo seguro.
+
+15) Frecuencia en que se intenta convencer a otr_s de lo que se piensa políticamente.
+
+16) Grado de acuerdo frente a la ampliación de tratados de libre comercio firmados por el gobierno.
+
+17) Probabilidad de trabajar menos horas para trabajar en labores domésticas.
+
+18) Grado de acuerdo con la frase “El gobierno debiese apoyar más a las empresas nacionales que a las compañías internacionales”.
+
+19) Frecuencia en que se trabaja para un partido político o candidat_.
+
+20) Grado de importancia de trabajar duro para salir adelante en la vida.
+
+21) Grado de importancia otorgado a tener buenas oportunidades para hacer carrera profesional.
