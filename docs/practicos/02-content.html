@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,10 +18,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,13 +47,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -98,18 +127,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta property="og:title" content="Estrategias de investigación cuantitativa - Práctico R 2. Construcción de escalas">
-<meta property="og:description" content="">
+<meta property="og:description" content="Para el taller práctico de hoy utilizaremos la base de datos del estudio de Martin et al.&nbsp;(2003). Individual differences in uses of humor and and their relation to psychological well-being.">
 <meta property="og:image" content="https://investigacion-cuantitativa.netlify.app/files/social-image-sp23.png">
 <meta property="og:site-name" content="Estrategias de investigación cuantitativa">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:title" content="Estrategias de investigación cuantitativa - Práctico R 2. Construcción de escalas">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Para el taller práctico de hoy utilizaremos la base de datos del estudio de Martin et al.&nbsp;(2003). Individual differences in uses of humor and and their relation to psychological well-being.">
 <meta name="twitter:image" content="https://investigacion-cuantitativa.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -120,47 +149,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">Estrategias de investigación cuantitativa</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
+    <a class="nav-link" href="../syllabus.html">
  <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html" rel="" target="">
+    <a class="nav-link" href="../schedule.html">
  <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignment/index.html" rel="" target="">
+    <a class="nav-link" href="../assignment/index.html">
  <span class="menu-text">Talleres</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../practicos/index.html" rel="" target="">
+    <a class="nav-link active" href="../practicos/index.html" aria-current="page">
  <span class="menu-text">Prácticos R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../trabajos.html" rel="" target="">
+    <a class="nav-link" href="../trabajos.html">
  <span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://rstudio.cloud" rel="" target=""><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Práctico R 2. Construcción de escalas</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Información general</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicos/index.html" class="sidebar-item-text sidebar-link">Actividades en R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Prácticos R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicos/01-content.html" class="sidebar-item-text sidebar-link">01: Práctico 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicos/02-content.html" class="sidebar-item-text sidebar-link active">02: Práctico 2</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -189,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#análisis" id="toc-análisis" class="nav-link" data-scroll-target="#análisis">Análisis</a>
   <ul class="collapse">
   <li><a href="#estimar-correlación" id="toc-estimar-correlación" class="nav-link" data-scroll-target="#estimar-correlación">Estimar correlación</a></li>
-  <li><a href="#estimar-consistencia" id="toc-estimar-consistencia" class="nav-link" data-scroll-target="#estimar-consistencia">Estimar consistencia</a>
+  <li><a href="#estimar-consistencia-interna" id="toc-estimar-consistencia-interna" class="nav-link" data-scroll-target="#estimar-consistencia-interna">Estimar consistencia interna</a>
   <ul class="collapse">
   <li><a href="#alfa-de-chronbach" id="toc-alfa-de-chronbach" class="nav-link" data-scroll-target="#alfa-de-chronbach">Alfa de Chronbach</a></li>
   <li><a href="#alfa-ordinal" id="toc-alfa-ordinal" class="nav-link" data-scroll-target="#alfa-ordinal">Alfa Ordinal</a></li>
@@ -204,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Práctico R 2. Construcción de escalas</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Práctico R 2. Construcción de escalas</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
 </div>
 
 
@@ -227,7 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="presentación" class="level1">
 <h1>Presentación</h1>
-<p>Para el taller práctico de hoy utilizaremos la base de datos del estudio de <strong>Martin et al.&nbsp;(2003)</strong>. <em>Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire</em>. En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).</p>
+<p>Para el taller práctico de hoy utilizaremos la base de datos del estudio de <strong>Martin et al.&nbsp;(2003)</strong>. <em>Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire</em>.</p>
+<p>En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).</p>
 </section>
 <section id="objetivo-general" class="level1">
 <h1>Objetivo general</h1>
@@ -238,66 +315,119 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="cargar-librerías" class="level2">
 <h2 class="anchored" data-anchor-id="cargar-librerías">Cargar librerías</h2>
 <p>Las librerías que utilizaremos esta sesión son las siguientes:</p>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-1_ba8c90b992bf8bd1a5247bdf1f2d1838">
 <details open="">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'pacman' was built under R version 4.3.1</code></pre>
-</div>
-<details open="">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               sjmisc,    <span class="co"># para descriptivos</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               remotes,   <span class="co"># para instalar paquete jogRu</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>               readr)     <span class="co"># para cargararchivo csv</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               sjmisc,    <span class="co"># para descriptivos</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               remotes,   <span class="co"># para instalar paquete jogRu</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>               readr)     <span class="co"># para cargararchivo csv</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Además, instalaremos la librería <code>jogRu</code> desde github.</p>
-<div class="cell">
+<p>Además, instalaremos la librería <code>jogRu</code> desde github, que nos permitirá calculr el alfa de Chronbach para variables ordinales.</p>
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-2_440611a51ef2659b4b3daf6cf649176e">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jogrue/jogRu"</span>, <span class="at">force =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jogrue/jogRu"</span>, <span class="at">force =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>xfun      (0.39   -&gt; 0.40   ) [CRAN]
-vctrs     (0.6.2  -&gt; 0.6.4  ) [CRAN]
-digest    (0.6.31 -&gt; 0.6.33 ) [CRAN]
-jsonlite  (1.8.4  -&gt; 1.8.7  ) [CRAN]
-htmltools (0.5.5  -&gt; 0.5.6.1) [CRAN]
-fansi     (1.0.4  -&gt; 1.0.5  ) [CRAN]
-psych     (2.3.3  -&gt; 2.3.9  ) [CRAN]
+<pre><code>yaml        (2.3.6  -&gt; 2.3.7  ) [CRAN]
+xfun        (0.34   -&gt; 0.40   ) [CRAN]
+highr       (0.9    -&gt; 0.10   ) [CRAN]
+evaluate    (0.18   -&gt; 0.22   ) [CRAN]
+fs          (1.5.2  -&gt; 1.6.3  ) [CRAN]
+vctrs       (0.6.1  -&gt; 0.6.4  ) [CRAN]
+stringi     (1.7.8  -&gt; 1.7.12 ) [CRAN]
+cli         (3.4.1  -&gt; 3.6.1  ) [CRAN]
+fastmap     (1.1.0  -&gt; 1.1.1  ) [CRAN]
+digest      (0.6.30 -&gt; 0.6.33 ) [CRAN]
+sass        (0.4.2  -&gt; 0.4.7  ) [CRAN]
+rlang       (1.1.0  -&gt; 1.1.1  ) [CRAN]
+cachem      (1.0.6  -&gt; 1.0.8  ) [CRAN]
+tinytex     (0.42   -&gt; 0.48   ) [CRAN]
+knitr       (1.41   -&gt; 1.44   ) [CRAN]
+jsonlite    (1.8.4  -&gt; 1.8.7  ) [CRAN]
+htmltools   (0.5.5  -&gt; 0.5.6.1) [CRAN]
+fontawesome (0.4.0  -&gt; 0.5.2  ) [CRAN]
+bslib       (0.4.1  -&gt; 0.5.1  ) [CRAN]
+utf8        (1.2.2  -&gt; 1.2.3  ) [CRAN]
+colorspace  (2.0-3  -&gt; 2.1-0  ) [CRAN]
+pillar      (1.8.1  -&gt; 1.9.0  ) [CRAN]
+fansi       (1.0.3  -&gt; 1.0.5  ) [CRAN]
+labeling    (0.4.2  -&gt; 0.4.3  ) [CRAN]
+withr       (2.5.0  -&gt; 2.5.1  ) [CRAN]
+isoband     (0.2.6  -&gt; 0.2.7  ) [CRAN]
+gtable      (0.3.1  -&gt; 0.3.4  ) [CRAN]
+ggplot2     (3.4.1  -&gt; 3.4.4  ) [CRAN]
+viridisLite (0.4.1  -&gt; 0.4.2  ) [CRAN]
+rmarkdown   (2.18   -&gt; 2.25   ) [CRAN]
+rstudioapi  (0.14   -&gt; 0.15.0 ) [CRAN]
+checkmate   (2.1.0  -&gt; 2.2.0  ) [CRAN]
+Formula     (1.2-4  -&gt; 1.2-5  ) [CRAN]
+viridis     (0.6.2  -&gt; 0.6.4  ) [CRAN]
+data.table  (1.14.4 -&gt; 1.14.8 ) [CRAN]
+Hmisc       (4.7-2  -&gt; 5.1-1  ) [CRAN]
+psych       (2.2.9  -&gt; 2.3.9  ) [CRAN]
+package 'yaml' successfully unpacked and MD5 sums checked
 package 'xfun' successfully unpacked and MD5 sums checked
+package 'highr' successfully unpacked and MD5 sums checked
+package 'evaluate' successfully unpacked and MD5 sums checked
+package 'fs' successfully unpacked and MD5 sums checked
 package 'vctrs' successfully unpacked and MD5 sums checked
+package 'stringi' successfully unpacked and MD5 sums checked
+package 'cli' successfully unpacked and MD5 sums checked
+package 'fastmap' successfully unpacked and MD5 sums checked
 package 'digest' successfully unpacked and MD5 sums checked
+package 'sass' successfully unpacked and MD5 sums checked
+package 'rlang' successfully unpacked and MD5 sums checked
+package 'cachem' successfully unpacked and MD5 sums checked
+package 'tinytex' successfully unpacked and MD5 sums checked
 package 'jsonlite' successfully unpacked and MD5 sums checked
 package 'htmltools' successfully unpacked and MD5 sums checked
+package 'fontawesome' successfully unpacked and MD5 sums checked
+package 'bslib' successfully unpacked and MD5 sums checked
+package 'utf8' successfully unpacked and MD5 sums checked
+package 'colorspace' successfully unpacked and MD5 sums checked
+package 'pillar' successfully unpacked and MD5 sums checked
 package 'fansi' successfully unpacked and MD5 sums checked
+package 'labeling' successfully unpacked and MD5 sums checked
+package 'withr' successfully unpacked and MD5 sums checked
+package 'isoband' successfully unpacked and MD5 sums checked
+package 'gtable' successfully unpacked and MD5 sums checked
+package 'viridisLite' successfully unpacked and MD5 sums checked
+package 'rmarkdown' successfully unpacked and MD5 sums checked
+package 'rstudioapi' successfully unpacked and MD5 sums checked
+package 'checkmate' successfully unpacked and MD5 sums checked
+package 'Formula' successfully unpacked and MD5 sums checked
+package 'viridis' successfully unpacked and MD5 sums checked
+package 'data.table' successfully unpacked and MD5 sums checked
+package 'Hmisc' successfully unpacked and MD5 sums checked
 
 The downloaded binary packages are in
-    C:\Users\danie\AppData\Local\Temp\RtmpOWTFxW\downloaded_packages
-* checking for file 'C:\Users\danie\AppData\Local\Temp\RtmpOWTFxW\remotes44f475007ad8\jogrue-jogRu-c659fcd/DESCRIPTION' ... OK
+    C:\Users\kevin\AppData\Local\Temp\RtmpiuPy4M\downloaded_packages
+* checking for file 'C:\Users\kevin\AppData\Local\Temp\RtmpiuPy4M\remotes7f041be05c5d\jogrue-jogRu-c659fcd/DESCRIPTION' ... OK
 * preparing 'jogRu':
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
 Omitted 'LazyData' from DESCRIPTION
-* building 'jogRu_2.0.tar.gz'</code></pre>
+* building 'jogRu_2.0.tar.gz'
+</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Nota
 </div>
 </div>
@@ -308,21 +438,29 @@ Nota
 </section>
 <section id="datos-y-variables" class="level2">
 <h2 class="anchored" data-anchor-id="datos-y-variables">Datos y variables</h2>
+<p>Como mencionamos, utilizaremos la base de datos del estudio Martin et al.&nbsp;(2003). <em>Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire</em>.</p>
+<p>En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala, donde cada ítem tiene valores entre 1 y 5. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:</p>
+<ul>
+<li>afiliativo : Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29</li>
+<li>autofortalecedor : Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30</li>
+<li>agresivo : Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31</li>
+<li>autodestructivo : Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32</li>
+</ul>
 <section id="cargar-base-de-datos" class="level3">
 <h3 class="anchored" data-anchor-id="cargar-base-de-datos">Cargar base de datos</h3>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-3_b7fa41b5f1de104b72431ce7e73c8ef3">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/data.csv"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/data.csv"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="visualización-de-datos" class="level3">
 <h3 class="anchored" data-anchor-id="visualización-de-datos">Visualización de datos</h3>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-4_884161d2542a99f047c9c8220800ba48">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9 Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18 Q19 Q20 Q21
@@ -349,7 +487,7 @@ Nota
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   1071 obs. of  39 variables:
@@ -394,13 +532,6 @@ Nota
  $ accuracy     : int  100 90 75 85 80 60 60 88 95 85 ...</code></pre>
 </div>
 </div>
-<p>En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala, donde cada ítem tiene valores entre 1 y 5. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:</p>
-<ul>
-<li>afiliativo : Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29</li>
-<li>autofortalecedor : Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30</li>
-<li>agresivo : Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31</li>
-<li>autodestructivo : Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32</li>
-</ul>
 </section>
 </section>
 <section id="procesamiento" class="level2">
@@ -408,31 +539,31 @@ Nota
 <section id="recodificar" class="level3">
 <h3 class="anchored" data-anchor-id="recodificar">Recodificar</h3>
 <p>Para que todas las escalas queden en el mismo orden jerárquico, es necesario invertir algunos ítems.</p>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-5_cf238b194cd3bc5c5f455c53adfd7ddd">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(Q1, Q9, Q17, Q25, Q29, <span class="co"># afiliativo</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                 Q22,                   <span class="co"># autofortalecedor</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                 Q7, Q15, Q23, Q31,     <span class="co"># agresivo</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                 Q16), <span class="sc">~</span>(<span class="dv">6</span><span class="sc">-</span>.)) <span class="sc">%&gt;%</span>      <span class="co"># autodestructivo</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> car<span class="sc">::</span><span class="fu">recode</span>(.<span class="sc">$</span>gender, <span class="st">"0 = NA;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">                              1 = 'Hombre'; 2 = 'Mujer'; 3 = 'Otro'"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>), <span class="sc">~</span>(<span class="fu">ifelse</span>(. <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> . <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, .))) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(Q1, Q9, Q17, Q25, Q29, <span class="co"># afiliativo</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                 Q22,                   <span class="co"># autofortalecedor</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                 Q7, Q15, Q23, Q31,     <span class="co"># agresivo</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                 Q16), <span class="sc">~</span>(<span class="dv">6</span><span class="sc">-</span>.)) <span class="sc">%&gt;%</span>      <span class="co"># autodestructivo</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> car<span class="sc">::</span><span class="fu">recode</span>(.<span class="sc">$</span>gender, <span class="st">"0 = NA;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">                              1 = 'Hombre'; 2 = 'Mujer'; 3 = 'Otro'"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>), <span class="sc">~</span>(<span class="fu">ifelse</span>(. <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> . <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, .))) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="crear-objetos-para-dimensiones-de-la-escala" class="level3">
 <h3 class="anchored" data-anchor-id="crear-objetos-para-dimensiones-de-la-escala">Crear objetos para dimensiones de la escala</h3>
-<p>Creamos cuatro objetos que contienen los ítems para cada dimensión de la escala.</p>
-<div class="cell">
+<p>Creamos cuatro objetos que contienen los ítems de cada dimensión de la escala.</p>
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-6_870a935b6b9da06899c89bfab3225e93">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>afiliativo       <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q1, Q5, Q9, Q13, Q17, Q21, Q25, Q29)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>autofortalecedor <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>agresivo         <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>autodestructivo  <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>afiliativo       <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>autofortalecedor <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>agresivo         <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>autodestructivo  <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -441,15 +572,15 @@ Nota
 <h2 class="anchored" data-anchor-id="explorar-datos">Explorar datos</h2>
 <section id="descriptivos" class="level3">
 <h3 class="anchored" data-anchor-id="descriptivos">Descriptivos</h3>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-7_dd6874904b3f2bcc8b5909dbd6b9852c">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Afiliativo Autofortalecedor Agresivo Autodestructivo
@@ -457,8 +588,8 @@ Nota
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frecuencias por género</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>gender)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frecuencias por género</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>gender)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -467,12 +598,12 @@ Hombre  Mujer   Otro
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión por género</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión por género</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
@@ -490,11 +621,11 @@ Hombre  Mujer   Otro
 <section id="estimar-correlación" class="level3">
 <h3 class="anchored" data-anchor-id="estimar-correlación">Estimar correlación</h3>
 <p>Se debe estimar la correlación de cada dimensión de la escala por separado.</p>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-8_63af5d0c400d45438131025a4f6c66f1">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Afiliativo</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(afiliativo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Afiliativo</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(afiliativo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Q1        Q5        Q9       Q13       Q17       Q21       Q25
@@ -518,8 +649,8 @@ Q29 1.0000000</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Autofortalecedor</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autofortalecedor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Autofortalecedor</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autofortalecedor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Q2        Q6       Q10       Q14       Q18       Q22       Q26
@@ -543,8 +674,8 @@ Q30 1.0000000</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agresivo</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(agresivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agresivo</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(agresivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Q3        Q7       Q11       Q15       Q19       Q23       Q27
@@ -568,8 +699,8 @@ Q31 1.0000000</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Autodestructivo</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autodestructivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Autodestructivo</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autodestructivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Q4        Q8       Q12       Q16       Q20       Q24       Q28
@@ -594,8 +725,8 @@ Q32 1.0000000</code></pre>
 </div>
 <p>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</p>
 </section>
-<section id="estimar-consistencia" class="level3">
-<h3 class="anchored" data-anchor-id="estimar-consistencia">Estimar consistencia</h3>
+<section id="estimar-consistencia-interna" class="level3">
+<h3 class="anchored" data-anchor-id="estimar-consistencia-interna">Estimar consistencia interna</h3>
 <section id="alfa-de-chronbach" class="level4">
 <h4 class="anchored" data-anchor-id="alfa-de-chronbach">Alfa de Chronbach</h4>
 <p>Primero, estimaremos la consistencia interna de cada dimensión con un <strong>alfa de Chronbach</strong>. El alfa de Chronbach, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:</p>
@@ -614,12 +745,12 @@ Q32 1.0000000</code></pre>
 <ul>
 <li>Consideraremos el 0.6 como punto de corte.</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Nota
 </div>
 </div>
@@ -628,10 +759,10 @@ Nota
 </div>
 </div>
 <p>Asimismo, esperamos que la correlación de cada ítem respecto del total sea al menos de .4 (media) y, ojalá, de al menos .6 (alta). Ítems con correlaciones muy bajas podrían eliminarse, especialmente si el alfa de Chronbach aumenta en caso de que el ítem sea eliminado.</p>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-9_0f8f4b834ccb8fbcf85c4f1c6bfbcd17">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(afiliativo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(afiliativo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -681,7 +812,7 @@ Q29 0.06 0.11 0.20 0.34 0.28    0</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autofortalecedor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autofortalecedor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -731,7 +862,7 @@ Q30 0.02 0.09 0.16 0.35 0.39    0</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(agresivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(agresivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -781,7 +912,7 @@ Q31 0.10 0.22 0.24 0.22 0.20    0</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autodestructivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autodestructivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -831,8 +962,8 @@ Q32 0.18 0.22 0.29 0.23 0.09    0</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -957,10 +1088,10 @@ Q32 0.18 0.22 0.29 0.23 0.09    0</code></pre>
 <section id="alfa-ordinal" class="level4">
 <h4 class="anchored" data-anchor-id="alfa-ordinal">Alfa Ordinal</h4>
 <p>Como se señaló, el alfa de Chronbach está diseñado para variables continuas. Por ello, podemos calcular el alfa ordinal para las puntuaciones de cada ítem. Para esto, utilizaremos la función <code>ordinal_alpha()</code>de <code>jogRu</code>, que estima el alfa ordinal a partir de correlación policórica (según lo propuesto por Zumbo et al.(2007)).</p>
-<div class="cell">
+<div class="cell" data-hash="02-content_cache/html/unnamed-chunk-10_9f2732b75b84cf33e75a4393f5eb5210">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(afiliativo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(afiliativo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -998,7 +1129,7 @@ Q29 0.67  0.60   0.56</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autofortalecedor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autofortalecedor)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1036,7 +1167,7 @@ Q30 0.61  0.53   0.47</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(agresivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(agresivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1074,7 +1205,7 @@ Q31 0.74  0.70   0.63</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autodestructivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autodestructivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1112,8 +1243,8 @@ Q32 0.77  0.73   0.67</code></pre>
 </div>
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1235,23 +1366,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -1367,92 +1484,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1492,236 +1523,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb47" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico R 2. Construcción de escalas"</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-10-19"</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="an">website:</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co">  comments:</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co">    giscus:</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co">      repo: kevin-carrasco/investigacion-cuantitativa</span></span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, cache = TRUE}</span></span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"knitr"</span>)</span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning=</span><span class="cn">FALSE</span>,</span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">message=</span><span class="cn">FALSE</span>,</span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">echo=</span><span class="cn">TRUE</span>,</span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">cache =</span> <span class="cn">TRUE</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">5.2</span>)</span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
-<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>Para el taller práctico de hoy utilizaremos la base de datos del estudio de **Martin et al. (2003)**. *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*. En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).</span>
-<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo general</span></span>
-<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>El objetivo de este ejercicio práctico es comprender y estimar el proceso de construcción y validación de escalas en R.</span>
-<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ejercicio práctico</span></span>
-<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar librerías</span></span>
-<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>Las librerías que utilizaremos esta sesión son las siguientes:</span>
-<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
-<span id="cb47-41"><a href="#cb47-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb47-42"><a href="#cb47-42" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
-<span id="cb47-43"><a href="#cb47-43" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
-<span id="cb47-44"><a href="#cb47-44" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
-<span id="cb47-45"><a href="#cb47-45" aria-hidden="true" tabindex="-1"></a>               sjmisc,    <span class="co"># para descriptivos</span></span>
-<span id="cb47-46"><a href="#cb47-46" aria-hidden="true" tabindex="-1"></a>               remotes,   <span class="co"># para instalar paquete jogRu</span></span>
-<span id="cb47-47"><a href="#cb47-47" aria-hidden="true" tabindex="-1"></a>               readr)     <span class="co"># para cargararchivo csv</span></span>
-<span id="cb47-48"><a href="#cb47-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-49"><a href="#cb47-49" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb47-50"><a href="#cb47-50" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span>
-<span id="cb47-51"><a href="#cb47-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-52"><a href="#cb47-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-53"><a href="#cb47-53" aria-hidden="true" tabindex="-1"></a>Además, instalaremos la librería <span class="in">`jogRu`</span> desde github.</span>
-<span id="cb47-54"><a href="#cb47-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-55"><a href="#cb47-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
-<span id="cb47-56"><a href="#cb47-56" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jogrue/jogRu"</span>, <span class="at">force =</span> T)</span>
-<span id="cb47-57"><a href="#cb47-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-58"><a href="#cb47-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-59"><a href="#cb47-59" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb47-60"><a href="#cb47-60" aria-hidden="true" tabindex="-1"></a>Si pregunta *These packages have more recent versions available. It is recommended to update all of them.Which would you like to update?* SIEMPRE PONER 3: None.</span>
-<span id="cb47-61"><a href="#cb47-61" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb47-62"><a href="#cb47-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-63"><a href="#cb47-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-64"><a href="#cb47-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datos y variables</span></span>
-<span id="cb47-65"><a href="#cb47-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-66"><a href="#cb47-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-67"><a href="#cb47-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cargar base de datos</span></span>
-<span id="cb47-68"><a href="#cb47-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-69"><a href="#cb47-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
-<span id="cb47-70"><a href="#cb47-70" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/data.csv"</span>))</span>
-<span id="cb47-71"><a href="#cb47-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-72"><a href="#cb47-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-73"><a href="#cb47-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-74"><a href="#cb47-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualización de datos</span></span>
-<span id="cb47-75"><a href="#cb47-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-78"><a href="#cb47-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-79"><a href="#cb47-79" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
-<span id="cb47-80"><a href="#cb47-80" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span>
-<span id="cb47-81"><a href="#cb47-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-82"><a href="#cb47-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-83"><a href="#cb47-83" aria-hidden="true" tabindex="-1"></a>En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala, donde cada ítem tiene valores entre 1 y 5. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:</span>
-<span id="cb47-84"><a href="#cb47-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-85"><a href="#cb47-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>afiliativo       : Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29</span>
-<span id="cb47-86"><a href="#cb47-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>autofortalecedor : Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30</span>
-<span id="cb47-87"><a href="#cb47-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>agresivo         : Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31</span>
-<span id="cb47-88"><a href="#cb47-88" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>autodestructivo  : Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32</span>
-<span id="cb47-89"><a href="#cb47-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-90"><a href="#cb47-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-91"><a href="#cb47-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Procesamiento</span></span>
-<span id="cb47-92"><a href="#cb47-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-93"><a href="#cb47-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-94"><a href="#cb47-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### Recodificar</span></span>
-<span id="cb47-95"><a href="#cb47-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-96"><a href="#cb47-96" aria-hidden="true" tabindex="-1"></a>Para que todas las escalas queden en el mismo orden jerárquico, es necesario invertir algunos ítems.</span>
-<span id="cb47-97"><a href="#cb47-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-98"><a href="#cb47-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
-<span id="cb47-99"><a href="#cb47-99" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb47-100"><a href="#cb47-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(Q1, Q9, Q17, Q25, Q29, <span class="co"># afiliativo</span></span>
-<span id="cb47-101"><a href="#cb47-101" aria-hidden="true" tabindex="-1"></a>                 Q22,                   <span class="co"># autofortalecedor</span></span>
-<span id="cb47-102"><a href="#cb47-102" aria-hidden="true" tabindex="-1"></a>                 Q7, Q15, Q23, Q31,     <span class="co"># agresivo</span></span>
-<span id="cb47-103"><a href="#cb47-103" aria-hidden="true" tabindex="-1"></a>                 Q16), <span class="sc">~</span>(<span class="dv">6</span><span class="sc">-</span>.)) <span class="sc">%&gt;%</span>      <span class="co"># autodestructivo</span></span>
-<span id="cb47-104"><a href="#cb47-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> car<span class="sc">::</span><span class="fu">recode</span>(.<span class="sc">$</span>gender, <span class="st">"0 = NA;</span></span>
-<span id="cb47-105"><a href="#cb47-105" aria-hidden="true" tabindex="-1"></a><span class="st">                              1 = 'Hombre'; 2 = 'Mujer'; 3 = 'Otro'"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-106"><a href="#cb47-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>), <span class="sc">~</span>(<span class="fu">ifelse</span>(. <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> . <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, .))) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-107"><a href="#cb47-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb47-108"><a href="#cb47-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-109"><a href="#cb47-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-110"><a href="#cb47-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-111"><a href="#cb47-111" aria-hidden="true" tabindex="-1"></a><span class="fu">### Crear objetos para dimensiones de la escala</span></span>
-<span id="cb47-112"><a href="#cb47-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-113"><a href="#cb47-113" aria-hidden="true" tabindex="-1"></a>Creamos cuatro objetos que contienen los ítems para cada dimensión de la escala.</span>
-<span id="cb47-114"><a href="#cb47-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-117"><a href="#cb47-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-118"><a href="#cb47-118" aria-hidden="true" tabindex="-1"></a>afiliativo       <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q1, Q5, Q9, Q13, Q17, Q21, Q25, Q29)</span>
-<span id="cb47-119"><a href="#cb47-119" aria-hidden="true" tabindex="-1"></a>autofortalecedor <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30)</span>
-<span id="cb47-120"><a href="#cb47-120" aria-hidden="true" tabindex="-1"></a>agresivo         <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31)</span>
-<span id="cb47-121"><a href="#cb47-121" aria-hidden="true" tabindex="-1"></a>autodestructivo  <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32)</span>
-<span id="cb47-122"><a href="#cb47-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-123"><a href="#cb47-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-124"><a href="#cb47-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-125"><a href="#cb47-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Explorar datos</span></span>
-<span id="cb47-126"><a href="#cb47-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-127"><a href="#cb47-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-128"><a href="#cb47-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Descriptivos</span></span>
-<span id="cb47-129"><a href="#cb47-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-132"><a href="#cb47-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-133"><a href="#cb47-133" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión</span></span>
-<span id="cb47-134"><a href="#cb47-134" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb47-135"><a href="#cb47-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
-<span id="cb47-136"><a href="#cb47-136" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
-<span id="cb47-137"><a href="#cb47-137" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
-<span id="cb47-138"><a href="#cb47-138" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span>
-<span id="cb47-139"><a href="#cb47-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-140"><a href="#cb47-140" aria-hidden="true" tabindex="-1"></a><span class="co"># Frecuencias por género</span></span>
-<span id="cb47-141"><a href="#cb47-141" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>gender)</span>
-<span id="cb47-142"><a href="#cb47-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-143"><a href="#cb47-143" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión por género</span></span>
-<span id="cb47-144"><a href="#cb47-144" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-145"><a href="#cb47-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
-<span id="cb47-146"><a href="#cb47-146" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
-<span id="cb47-147"><a href="#cb47-147" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
-<span id="cb47-148"><a href="#cb47-148" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span>
-<span id="cb47-149"><a href="#cb47-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-150"><a href="#cb47-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-151"><a href="#cb47-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-152"><a href="#cb47-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## Análisis</span></span>
-<span id="cb47-153"><a href="#cb47-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-154"><a href="#cb47-154" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar correlación</span></span>
-<span id="cb47-155"><a href="#cb47-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-156"><a href="#cb47-156" aria-hidden="true" tabindex="-1"></a>Se debe estimar la correlación de cada dimensión de la escala por separado.</span>
-<span id="cb47-157"><a href="#cb47-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-160"><a href="#cb47-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-161"><a href="#cb47-161" aria-hidden="true" tabindex="-1"></a><span class="co"># Afiliativo</span></span>
-<span id="cb47-162"><a href="#cb47-162" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(afiliativo)</span>
-<span id="cb47-163"><a href="#cb47-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-164"><a href="#cb47-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Autofortalecedor</span></span>
-<span id="cb47-165"><a href="#cb47-165" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autofortalecedor)</span>
-<span id="cb47-166"><a href="#cb47-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-167"><a href="#cb47-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Agresivo</span></span>
-<span id="cb47-168"><a href="#cb47-168" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(agresivo)</span>
-<span id="cb47-169"><a href="#cb47-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-170"><a href="#cb47-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Autodestructivo</span></span>
-<span id="cb47-171"><a href="#cb47-171" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autodestructivo)</span>
-<span id="cb47-172"><a href="#cb47-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-173"><a href="#cb47-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-174"><a href="#cb47-174" aria-hidden="true" tabindex="-1"></a>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</span>
-<span id="cb47-175"><a href="#cb47-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-176"><a href="#cb47-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-177"><a href="#cb47-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar consistencia</span></span>
-<span id="cb47-178"><a href="#cb47-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-179"><a href="#cb47-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-180"><a href="#cb47-180" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa de Chronbach</span></span>
-<span id="cb47-181"><a href="#cb47-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-182"><a href="#cb47-182" aria-hidden="true" tabindex="-1"></a>Primero, estimaremos la consistencia interna de cada dimensión con un **alfa de Chronbach**. El alfa de Chronbach, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:</span>
-<span id="cb47-183"><a href="#cb47-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-184"><a href="#cb47-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Puede aumentarse artificialmente incorporando ítems parecidos;</span>
-<span id="cb47-185"><a href="#cb47-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Asume que el constructo es unidimensional;</span>
-<span id="cb47-186"><a href="#cb47-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es afectado por número de ítems, el número de alternativas de respuesta y la varianza del test (Domínguez-Lara &amp; Merino-Soto, 2015). </span>
-<span id="cb47-187"><a href="#cb47-187" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb47-188"><a href="#cb47-188" aria-hidden="true" tabindex="-1"></a>Para interpretarlo hay que considerar:</span>
-<span id="cb47-189"><a href="#cb47-189" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb47-190"><a href="#cb47-190" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mínimo para investigación básica exploratoria: &gt; .7</span>
-<span id="cb47-191"><a href="#cb47-191" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mínimo para investigación asociativa: &gt; .8</span>
-<span id="cb47-192"><a href="#cb47-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Investigación con decisiones muy importantes: &gt; .9 (Nunnally &amp; Bernstein, 1994). </span>
-<span id="cb47-193"><a href="#cb47-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-194"><a href="#cb47-194" aria-hidden="true" tabindex="-1"></a>A mayor valor, más consistente es la escala:</span>
-<span id="cb47-195"><a href="#cb47-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-196"><a href="#cb47-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Consideraremos el 0.6 como punto de corte.</span>
-<span id="cb47-197"><a href="#cb47-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-198"><a href="#cb47-198" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb47-199"><a href="#cb47-199" aria-hidden="true" tabindex="-1"></a>ADVERTENCIA: el alfa de Chronbarch es para variables con nivel de medición intervalar. Lo óptimo para variables ordinales es Alfa Ordinal u Omega (Ventura-León &amp; Caycho-Rodríguez, 2017).</span>
-<span id="cb47-200"><a href="#cb47-200" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb47-201"><a href="#cb47-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-202"><a href="#cb47-202" aria-hidden="true" tabindex="-1"></a>Asimismo, esperamos que la correlación de cada ítem respecto del total sea al menos de .4 (media) y, ojalá, de al menos .6 (alta). Ítems con correlaciones muy bajas podrían eliminarse, especialmente si el alfa de Chronbach aumenta en caso de que el ítem sea eliminado. </span>
-<span id="cb47-203"><a href="#cb47-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-204"><a href="#cb47-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-207"><a href="#cb47-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-208"><a href="#cb47-208" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(afiliativo)</span>
-<span id="cb47-209"><a href="#cb47-209" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autofortalecedor)</span>
-<span id="cb47-210"><a href="#cb47-210" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(agresivo)</span>
-<span id="cb47-211"><a href="#cb47-211" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autodestructivo)</span>
-<span id="cb47-212"><a href="#cb47-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-213"><a href="#cb47-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
-<span id="cb47-214"><a href="#cb47-214" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
-<span id="cb47-215"><a href="#cb47-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-216"><a href="#cb47-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-217"><a href="#cb47-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-218"><a href="#cb47-218" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa Ordinal</span></span>
-<span id="cb47-219"><a href="#cb47-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-220"><a href="#cb47-220" aria-hidden="true" tabindex="-1"></a>Como se señaló, el alfa de Chronbach está diseñado para variables continuas. Por ello, podemos calcular el alfa ordinal para las puntuaciones de cada ítem. Para esto, utilizaremos la función <span class="in">`ordinal_alpha()`</span>de <span class="in">`jogRu`</span>, que estima el alfa ordinal a partir de correlación policórica (según lo propuesto por Zumbo et al.(2007)). </span>
-<span id="cb47-221"><a href="#cb47-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-224"><a href="#cb47-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-225"><a href="#cb47-225" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(afiliativo)</span>
-<span id="cb47-226"><a href="#cb47-226" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autofortalecedor)</span>
-<span id="cb47-227"><a href="#cb47-227" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(agresivo)</span>
-<span id="cb47-228"><a href="#cb47-228" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autodestructivo)</span>
-<span id="cb47-229"><a href="#cb47-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-230"><a href="#cb47-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
-<span id="cb47-231"><a href="#cb47-231" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
-<span id="cb47-232"><a href="#cb47-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-233"><a href="#cb47-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-234"><a href="#cb47-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-235"><a href="#cb47-235" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb45" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico R 2. Construcción de escalas"</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-10-19"</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="an">website:</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">  comments:</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">    giscus:</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">      repo: kevin-carrasco/investigacion-cuantitativa</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, cache = TRUE}</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"knitr"</span>)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning=</span><span class="cn">FALSE</span>,</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">message=</span><span class="cn">FALSE</span>,</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">echo=</span><span class="cn">TRUE</span>,</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">cache =</span> <span class="cn">TRUE</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">5.2</span>)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>Para el taller práctico de hoy utilizaremos la base de datos del estudio de **Martin et al. (2003)**. *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*. </span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).</span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo general</span></span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>El objetivo de este ejercicio práctico es comprender y estimar el proceso de construcción y validación de escalas en R.</span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ejercicio práctico</span></span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar librerías</span></span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a>Las librerías que utilizaremos esta sesión son las siguientes:</span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a>               sjmisc,    <span class="co"># para descriptivos</span></span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>               remotes,   <span class="co"># para instalar paquete jogRu</span></span>
+<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a>               readr)     <span class="co"># para cargararchivo csv</span></span>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a>Además, instalaremos la librería <span class="in">`jogRu`</span> desde github, que nos permitirá calculr el alfa de Chronbach para variables ordinales.</span>
+<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jogrue/jogRu"</span>, <span class="at">force =</span> T)</span>
+<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a>Si pregunta *These packages have more recent versions available. It is recommended to update all of them.Which would you like to update?* SIEMPRE PONER 3: None.</span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-63"><a href="#cb45-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datos y variables</span></span>
+<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a>Como mencionamos, utilizaremos la base de datos del estudio Martin et al. (2003). *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*.</span>
+<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a>En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala, donde cada ítem tiene valores entre 1 y 5. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:</span>
+<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>afiliativo       : Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29</span>
+<span id="cb45-71"><a href="#cb45-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>autofortalecedor : Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30</span>
+<span id="cb45-72"><a href="#cb45-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>agresivo         : Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31</span>
+<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>autodestructivo  : Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32</span>
+<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cargar base de datos</span></span>
+<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb45-79"><a href="#cb45-79" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/data.csv"</span>))</span>
+<span id="cb45-80"><a href="#cb45-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-81"><a href="#cb45-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-82"><a href="#cb45-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-83"><a href="#cb45-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualización de datos</span></span>
+<span id="cb45-84"><a href="#cb45-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-87"><a href="#cb45-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-88"><a href="#cb45-88" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
+<span id="cb45-89"><a href="#cb45-89" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span>
+<span id="cb45-90"><a href="#cb45-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-91"><a href="#cb45-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-92"><a href="#cb45-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-93"><a href="#cb45-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Procesamiento</span></span>
+<span id="cb45-94"><a href="#cb45-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-95"><a href="#cb45-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-96"><a href="#cb45-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### Recodificar</span></span>
+<span id="cb45-97"><a href="#cb45-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-98"><a href="#cb45-98" aria-hidden="true" tabindex="-1"></a>Para que todas las escalas queden en el mismo orden jerárquico, es necesario invertir algunos ítems.</span>
+<span id="cb45-99"><a href="#cb45-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-100"><a href="#cb45-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb45-101"><a href="#cb45-101" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb45-102"><a href="#cb45-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(Q1, Q9, Q17, Q25, Q29, <span class="co"># afiliativo</span></span>
+<span id="cb45-103"><a href="#cb45-103" aria-hidden="true" tabindex="-1"></a>                 Q22,                   <span class="co"># autofortalecedor</span></span>
+<span id="cb45-104"><a href="#cb45-104" aria-hidden="true" tabindex="-1"></a>                 Q7, Q15, Q23, Q31,     <span class="co"># agresivo</span></span>
+<span id="cb45-105"><a href="#cb45-105" aria-hidden="true" tabindex="-1"></a>                 Q16), <span class="sc">~</span>(<span class="dv">6</span><span class="sc">-</span>.)) <span class="sc">%&gt;%</span>      <span class="co"># autodestructivo</span></span>
+<span id="cb45-106"><a href="#cb45-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> car<span class="sc">::</span><span class="fu">recode</span>(.<span class="sc">$</span>gender, <span class="st">"0 = NA;</span></span>
+<span id="cb45-107"><a href="#cb45-107" aria-hidden="true" tabindex="-1"></a><span class="st">                              1 = 'Hombre'; 2 = 'Mujer'; 3 = 'Otro'"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-108"><a href="#cb45-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>), <span class="sc">~</span>(<span class="fu">ifelse</span>(. <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> . <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, .))) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-109"><a href="#cb45-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb45-110"><a href="#cb45-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-111"><a href="#cb45-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-112"><a href="#cb45-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-113"><a href="#cb45-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### Crear objetos para dimensiones de la escala</span></span>
+<span id="cb45-114"><a href="#cb45-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-115"><a href="#cb45-115" aria-hidden="true" tabindex="-1"></a>Creamos cuatro objetos que contienen los ítems de cada dimensión de la escala.</span>
+<span id="cb45-116"><a href="#cb45-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-119"><a href="#cb45-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-120"><a href="#cb45-120" aria-hidden="true" tabindex="-1"></a>afiliativo       <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29)</span>
+<span id="cb45-121"><a href="#cb45-121" aria-hidden="true" tabindex="-1"></a>autofortalecedor <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30)</span>
+<span id="cb45-122"><a href="#cb45-122" aria-hidden="true" tabindex="-1"></a>agresivo         <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31)</span>
+<span id="cb45-123"><a href="#cb45-123" aria-hidden="true" tabindex="-1"></a>autodestructivo  <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32)</span>
+<span id="cb45-124"><a href="#cb45-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-125"><a href="#cb45-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-126"><a href="#cb45-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-127"><a href="#cb45-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## Explorar datos</span></span>
+<span id="cb45-128"><a href="#cb45-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-129"><a href="#cb45-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-130"><a href="#cb45-130" aria-hidden="true" tabindex="-1"></a><span class="fu">### Descriptivos</span></span>
+<span id="cb45-131"><a href="#cb45-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-134"><a href="#cb45-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-135"><a href="#cb45-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión</span></span>
+<span id="cb45-136"><a href="#cb45-136" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb45-137"><a href="#cb45-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
+<span id="cb45-138"><a href="#cb45-138" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
+<span id="cb45-139"><a href="#cb45-139" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
+<span id="cb45-140"><a href="#cb45-140" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span>
+<span id="cb45-141"><a href="#cb45-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-142"><a href="#cb45-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Frecuencias por género</span></span>
+<span id="cb45-143"><a href="#cb45-143" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>gender)</span>
+<span id="cb45-144"><a href="#cb45-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-145"><a href="#cb45-145" aria-hidden="true" tabindex="-1"></a><span class="co"># Medias para cada dimensión por género</span></span>
+<span id="cb45-146"><a href="#cb45-146" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-147"><a href="#cb45-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Afiliativo =</span> <span class="fu">mean</span>(affiliative),</span>
+<span id="cb45-148"><a href="#cb45-148" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autofortalecedor =</span> <span class="fu">mean</span>(selfenhancing),</span>
+<span id="cb45-149"><a href="#cb45-149" aria-hidden="true" tabindex="-1"></a>            <span class="at">Agresivo =</span> <span class="fu">mean</span>(agressive),</span>
+<span id="cb45-150"><a href="#cb45-150" aria-hidden="true" tabindex="-1"></a>            <span class="at">Autodestructivo =</span> <span class="fu">mean</span>(selfdefeating))</span>
+<span id="cb45-151"><a href="#cb45-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-152"><a href="#cb45-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-153"><a href="#cb45-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-154"><a href="#cb45-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-155"><a href="#cb45-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Análisis</span></span>
+<span id="cb45-156"><a href="#cb45-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-157"><a href="#cb45-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar correlación</span></span>
+<span id="cb45-158"><a href="#cb45-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-159"><a href="#cb45-159" aria-hidden="true" tabindex="-1"></a>Se debe estimar la correlación de cada dimensión de la escala por separado.</span>
+<span id="cb45-160"><a href="#cb45-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-163"><a href="#cb45-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-164"><a href="#cb45-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Afiliativo</span></span>
+<span id="cb45-165"><a href="#cb45-165" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(afiliativo)</span>
+<span id="cb45-166"><a href="#cb45-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-167"><a href="#cb45-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Autofortalecedor</span></span>
+<span id="cb45-168"><a href="#cb45-168" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autofortalecedor)</span>
+<span id="cb45-169"><a href="#cb45-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-170"><a href="#cb45-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Agresivo</span></span>
+<span id="cb45-171"><a href="#cb45-171" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(agresivo)</span>
+<span id="cb45-172"><a href="#cb45-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-173"><a href="#cb45-173" aria-hidden="true" tabindex="-1"></a><span class="co"># Autodestructivo</span></span>
+<span id="cb45-174"><a href="#cb45-174" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(autodestructivo)</span>
+<span id="cb45-175"><a href="#cb45-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-176"><a href="#cb45-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-177"><a href="#cb45-177" aria-hidden="true" tabindex="-1"></a>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</span>
+<span id="cb45-178"><a href="#cb45-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-179"><a href="#cb45-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-180"><a href="#cb45-180" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar consistencia interna</span></span>
+<span id="cb45-181"><a href="#cb45-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-182"><a href="#cb45-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-183"><a href="#cb45-183" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa de Chronbach</span></span>
+<span id="cb45-184"><a href="#cb45-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-185"><a href="#cb45-185" aria-hidden="true" tabindex="-1"></a>Primero, estimaremos la consistencia interna de cada dimensión con un **alfa de Chronbach**. El alfa de Chronbach, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:</span>
+<span id="cb45-186"><a href="#cb45-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-187"><a href="#cb45-187" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Puede aumentarse artificialmente incorporando ítems parecidos;</span>
+<span id="cb45-188"><a href="#cb45-188" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Asume que el constructo es unidimensional;</span>
+<span id="cb45-189"><a href="#cb45-189" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es afectado por número de ítems, el número de alternativas de respuesta y la varianza del test (Domínguez-Lara &amp; Merino-Soto, 2015). </span>
+<span id="cb45-190"><a href="#cb45-190" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb45-191"><a href="#cb45-191" aria-hidden="true" tabindex="-1"></a>Para interpretarlo hay que considerar:</span>
+<span id="cb45-192"><a href="#cb45-192" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb45-193"><a href="#cb45-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mínimo para investigación básica exploratoria: &gt; .7</span>
+<span id="cb45-194"><a href="#cb45-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mínimo para investigación asociativa: &gt; .8</span>
+<span id="cb45-195"><a href="#cb45-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Investigación con decisiones muy importantes: &gt; .9 (Nunnally &amp; Bernstein, 1994). </span>
+<span id="cb45-196"><a href="#cb45-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-197"><a href="#cb45-197" aria-hidden="true" tabindex="-1"></a>A mayor valor, más consistente es la escala:</span>
+<span id="cb45-198"><a href="#cb45-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-199"><a href="#cb45-199" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Consideraremos el 0.6 como punto de corte.</span>
+<span id="cb45-200"><a href="#cb45-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-201"><a href="#cb45-201" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb45-202"><a href="#cb45-202" aria-hidden="true" tabindex="-1"></a>ADVERTENCIA: el alfa de Chronbarch es para variables con nivel de medición intervalar. Lo óptimo para variables ordinales es Alfa Ordinal u Omega (Ventura-León &amp; Caycho-Rodríguez, 2017).</span>
+<span id="cb45-203"><a href="#cb45-203" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb45-204"><a href="#cb45-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-205"><a href="#cb45-205" aria-hidden="true" tabindex="-1"></a>Asimismo, esperamos que la correlación de cada ítem respecto del total sea al menos de .4 (media) y, ojalá, de al menos .6 (alta). Ítems con correlaciones muy bajas podrían eliminarse, especialmente si el alfa de Chronbach aumenta en caso de que el ítem sea eliminado. </span>
+<span id="cb45-206"><a href="#cb45-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-207"><a href="#cb45-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-210"><a href="#cb45-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-211"><a href="#cb45-211" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(afiliativo)</span>
+<span id="cb45-212"><a href="#cb45-212" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autofortalecedor)</span>
+<span id="cb45-213"><a href="#cb45-213" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(agresivo)</span>
+<span id="cb45-214"><a href="#cb45-214" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autodestructivo)</span>
+<span id="cb45-215"><a href="#cb45-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-216"><a href="#cb45-216" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
+<span id="cb45-217"><a href="#cb45-217" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
+<span id="cb45-218"><a href="#cb45-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-219"><a href="#cb45-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-220"><a href="#cb45-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-221"><a href="#cb45-221" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa Ordinal</span></span>
+<span id="cb45-222"><a href="#cb45-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-223"><a href="#cb45-223" aria-hidden="true" tabindex="-1"></a>Como se señaló, el alfa de Chronbach está diseñado para variables continuas. Por ello, podemos calcular el alfa ordinal para las puntuaciones de cada ítem. Para esto, utilizaremos la función <span class="in">`ordinal_alpha()`</span>de <span class="in">`jogRu`</span>, que estima el alfa ordinal a partir de correlación policórica (según lo propuesto por Zumbo et al.(2007)). </span>
+<span id="cb45-224"><a href="#cb45-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-227"><a href="#cb45-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-228"><a href="#cb45-228" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(afiliativo)</span>
+<span id="cb45-229"><a href="#cb45-229" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autofortalecedor)</span>
+<span id="cb45-230"><a href="#cb45-230" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(agresivo)</span>
+<span id="cb45-231"><a href="#cb45-231" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autodestructivo)</span>
+<span id="cb45-232"><a href="#cb45-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-233"><a href="#cb45-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
+<span id="cb45-234"><a href="#cb45-234" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
+<span id="cb45-235"><a href="#cb45-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-236"><a href="#cb45-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-237"><a href="#cb45-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-238"><a href="#cb45-238" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
     <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/Kevin-carrasco/investigacion-cuantitativa">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
   </div>
 </footer>
