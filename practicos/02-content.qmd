@@ -19,7 +19,9 @@ opts_chunk$set(warning=FALSE,
 
 # Presentación
 
-Para el taller práctico de hoy utilizaremos la base de datos del estudio de **Martin et al. (2003)**. *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*. En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).
+Para el taller práctico de hoy utilizaremos la base de datos del estudio de **Martin et al. (2003)**. *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*. 
+
+En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).
 
 
 # Objetivo general
@@ -34,7 +36,7 @@ El objetivo de este ejercicio práctico es comprender y estimar el proceso de co
 
 Las librerías que utilizaremos esta sesión son las siguientes:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # install.packages("pacman") # Cargar sólo si no la tenemos instalada
 library(pacman)
 pacman::p_load(tidyverse, # conjunto de paquetes, sobre todo dplyr y ggplot2
@@ -48,7 +50,7 @@ options(scipen = 999) # para desactivar notacion cientifica
 rm(list = ls())       # para limpiar el entorno de trabajo
 ```
 
-Además, instalaremos la librería `jogRu` desde github.
+Además, instalaremos la librería `jogRu` desde github, que nos permitirá calculr el alfa de Chronbach para variables ordinales.
 
 ```{r, message=FALSE, warning=FALSE}
 remotes::install_github("jogrue/jogRu", force = T)
@@ -60,6 +62,15 @@ Si pregunta *These packages have more recent versions available. It is recommend
 
 
 ## Datos y variables
+
+Como mencionamos, utilizaremos la base de datos del estudio Martin et al. (2003). *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*.
+
+En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala, donde cada ítem tiene valores entre 1 y 5. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:
+
+- afiliativo       : Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29
+- autofortalecedor : Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30
+- agresivo         : Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31
+- autodestructivo  : Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32
 
 
 ### Cargar base de datos
@@ -75,13 +86,6 @@ data <- read.csv(url("https://github.com/cursos-metodos-facso/investigacion-cuan
 head(data)
 str(data)
 ```
-
-En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala, donde cada ítem tiene valores entre 1 y 5. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:
-
-- afiliativo       : Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29
-- autofortalecedor : Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30
-- agresivo         : Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31
-- autodestructivo  : Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32
 
 
 ## Procesamiento
@@ -106,10 +110,10 @@ data = data %>%
 
 ### Crear objetos para dimensiones de la escala
 
-Creamos cuatro objetos que contienen los ítems para cada dimensión de la escala.
+Creamos cuatro objetos que contienen los ítems de cada dimensión de la escala.
 
 ```{r}
-afiliativo       <- data %>% select(Q1, Q5, Q9, Q13, Q17, Q21, Q25, Q29)
+afiliativo       <- data %>% select(Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29)
 autofortalecedor <- data %>% select(Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30)
 agresivo         <- data %>% select(Q3, Q7, Q11, Q15, Q19, Q23, Q27, Q31)
 autodestructivo  <- data %>% select(Q4, Q8, Q12, Q16, Q20, Q24, Q28, Q32)
@@ -141,6 +145,7 @@ data %>% group_by(gender) %>%
 ```
 
 
+
 ## Análisis
 
 ### Estimar correlación
@@ -164,10 +169,10 @@ cor(autodestructivo)
 Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.
 
 
-## Estimar consistencia
+### Estimar consistencia interna
 
 
-### Alfa de Chronbach
+#### Alfa de Chronbach
 
 Primero, estimaremos la consistencia interna de cada dimensión con un **alfa de Chronbach**. El alfa de Chronbach, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:
 
@@ -203,7 +208,7 @@ psych::alpha(data %>% select(1:32))
 ```
 
 
-### Alfa Ordinal
+#### Alfa Ordinal
 
 Como se señaló, el alfa de Chronbach está diseñado para variables continuas. Por ello, podemos calcular el alfa ordinal para las puntuaciones de cada ítem. Para esto, utilizaremos la función `ordinal_alpha()`de `jogRu`, que estima el alfa ordinal a partir de correlación policórica (según lo propuesto por Zumbo et al.(2007)). 
 

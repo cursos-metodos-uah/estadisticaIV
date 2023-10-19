@@ -189,11 +189,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#análisis" id="toc-análisis" class="nav-link" data-scroll-target="#análisis">Análisis</a>
   <ul class="collapse">
   <li><a href="#estimar-correlación" id="toc-estimar-correlación" class="nav-link" data-scroll-target="#estimar-correlación">Estimar correlación</a></li>
-  </ul></li>
   <li><a href="#estimar-consistencia" id="toc-estimar-consistencia" class="nav-link" data-scroll-target="#estimar-consistencia">Estimar consistencia</a>
   <ul class="collapse">
   <li><a href="#alfa-de-chronbach" id="toc-alfa-de-chronbach" class="nav-link" data-scroll-target="#alfa-de-chronbach">Alfa de Chronbach</a></li>
   <li><a href="#alfa-ordinal" id="toc-alfa-ordinal" class="nav-link" data-scroll-target="#alfa-ordinal">Alfa Ordinal</a></li>
+  </ul></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -282,8 +282,8 @@ package 'htmltools' successfully unpacked and MD5 sums checked
 package 'fansi' successfully unpacked and MD5 sums checked
 
 The downloaded binary packages are in
-    C:\Users\danie\AppData\Local\Temp\Rtmp23ocKh\downloaded_packages
-* checking for file 'C:\Users\danie\AppData\Local\Temp\Rtmp23ocKh\remotes5d501f1d545a\jogrue-jogRu-c659fcd/DESCRIPTION' ... OK
+    C:\Users\danie\AppData\Local\Temp\RtmpOWTFxW\downloaded_packages
+* checking for file 'C:\Users\danie\AppData\Local\Temp\RtmpOWTFxW\remotes44f475007ad8\jogrue-jogRu-c659fcd/DESCRIPTION' ... OK
 * preparing 'jogRu':
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
@@ -594,22 +594,25 @@ Q32 1.0000000</code></pre>
 </div>
 <p>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</p>
 </section>
-</section>
-<section id="estimar-consistencia" class="level2">
-<h2 class="anchored" data-anchor-id="estimar-consistencia">Estimar consistencia</h2>
-<section id="alfa-de-chronbach" class="level3">
-<h3 class="anchored" data-anchor-id="alfa-de-chronbach">Alfa de Chronbach</h3>
+<section id="estimar-consistencia" class="level3">
+<h3 class="anchored" data-anchor-id="estimar-consistencia">Estimar consistencia</h3>
+<section id="alfa-de-chronbach" class="level4">
+<h4 class="anchored" data-anchor-id="alfa-de-chronbach">Alfa de Chronbach</h4>
 <p>Primero, estimaremos la consistencia interna de cada dimensión con un <strong>alfa de Chronbach</strong>. El alfa de Chronbach, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:</p>
 <ul>
 <li>Puede aumentarse artificialmente incorporando ítems parecidos;</li>
 <li>Asume que el constructo es unidimensional;</li>
 <li>Es afectado por número de ítems, el número de alternativas de respuesta y la varianza del test (Domínguez-Lara &amp; Merino-Soto, 2015).</li>
 </ul>
-<p>Para interpretarlo, hay que considerar:</p>
+<p>Para interpretarlo hay que considerar:</p>
 <ul>
 <li>Mínimo para investigación básica exploratoria: &gt; .7</li>
 <li>Mínimo para investigación asociativa: &gt; .8</li>
 <li>Investigación con decisiones muy importantes: &gt; .9 (Nunnally &amp; Bernstein, 1994).</li>
+</ul>
+<p>A mayor valor, más consistente es la escala:</p>
+<ul>
+<li>Consideraremos el 0.6 como punto de corte.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -951,8 +954,8 @@ Q32 0.18 0.22 0.29 0.23 0.09    0</code></pre>
 </div>
 </div>
 </section>
-<section id="alfa-ordinal" class="level3">
-<h3 class="anchored" data-anchor-id="alfa-ordinal">Alfa Ordinal</h3>
+<section id="alfa-ordinal" class="level4">
+<h4 class="anchored" data-anchor-id="alfa-ordinal">Alfa Ordinal</h4>
 <p>Como se señaló, el alfa de Chronbach está diseñado para variables continuas. Por ello, podemos calcular el alfa ordinal para las puntuaciones de cada ítem. Para esto, utilizaremos la función <code>ordinal_alpha()</code>de <code>jogRu</code>, que estima el alfa ordinal a partir de correlación policórica (según lo propuesto por Zumbo et al.(2007)).</p>
 <div class="cell">
 <details open="">
@@ -1199,6 +1202,7 @@ Q32 0.51  0.50   0.46</code></pre>
 
 <!-- -->
 
+</section>
 </section>
 </section>
 </section>
@@ -1654,10 +1658,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb47-174"><a href="#cb47-174" aria-hidden="true" tabindex="-1"></a>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</span>
 <span id="cb47-175"><a href="#cb47-175" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-176"><a href="#cb47-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-177"><a href="#cb47-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estimar consistencia</span></span>
+<span id="cb47-177"><a href="#cb47-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar consistencia</span></span>
 <span id="cb47-178"><a href="#cb47-178" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-179"><a href="#cb47-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-180"><a href="#cb47-180" aria-hidden="true" tabindex="-1"></a><span class="fu">### Alfa de Chronbach</span></span>
+<span id="cb47-180"><a href="#cb47-180" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa de Chronbach</span></span>
 <span id="cb47-181"><a href="#cb47-181" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-182"><a href="#cb47-182" aria-hidden="true" tabindex="-1"></a>Primero, estimaremos la consistencia interna de cada dimensión con un **alfa de Chronbach**. El alfa de Chronbach, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:</span>
 <span id="cb47-183"><a href="#cb47-183" aria-hidden="true" tabindex="-1"></a></span>
@@ -1665,46 +1669,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb47-185"><a href="#cb47-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Asume que el constructo es unidimensional;</span>
 <span id="cb47-186"><a href="#cb47-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es afectado por número de ítems, el número de alternativas de respuesta y la varianza del test (Domínguez-Lara &amp; Merino-Soto, 2015). </span>
 <span id="cb47-187"><a href="#cb47-187" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb47-188"><a href="#cb47-188" aria-hidden="true" tabindex="-1"></a>Para interpretarlo, hay que considerar:</span>
+<span id="cb47-188"><a href="#cb47-188" aria-hidden="true" tabindex="-1"></a>Para interpretarlo hay que considerar:</span>
 <span id="cb47-189"><a href="#cb47-189" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb47-190"><a href="#cb47-190" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mínimo para investigación básica exploratoria: &gt; .7</span>
 <span id="cb47-191"><a href="#cb47-191" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mínimo para investigación asociativa: &gt; .8</span>
 <span id="cb47-192"><a href="#cb47-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Investigación con decisiones muy importantes: &gt; .9 (Nunnally &amp; Bernstein, 1994). </span>
 <span id="cb47-193"><a href="#cb47-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-194"><a href="#cb47-194" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb47-195"><a href="#cb47-195" aria-hidden="true" tabindex="-1"></a>ADVERTENCIA: el alfa de Chronbarch es para variables con nivel de medición intervalar. Lo óptimo para variables ordinales es Alfa Ordinal u Omega (Ventura-León &amp; Caycho-Rodríguez, 2017).</span>
-<span id="cb47-196"><a href="#cb47-196" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb47-194"><a href="#cb47-194" aria-hidden="true" tabindex="-1"></a>A mayor valor, más consistente es la escala:</span>
+<span id="cb47-195"><a href="#cb47-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-196"><a href="#cb47-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Consideraremos el 0.6 como punto de corte.</span>
 <span id="cb47-197"><a href="#cb47-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-198"><a href="#cb47-198" aria-hidden="true" tabindex="-1"></a>Asimismo, esperamos que la correlación de cada ítem respecto del total sea al menos de .4 (media) y, ojalá, de al menos .6 (alta). Ítems con correlaciones muy bajas podrían eliminarse, especialmente si el alfa de Chronbach aumenta en caso de que el ítem sea eliminado. </span>
-<span id="cb47-199"><a href="#cb47-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-200"><a href="#cb47-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-203"><a href="#cb47-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-204"><a href="#cb47-204" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(afiliativo)</span>
-<span id="cb47-205"><a href="#cb47-205" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autofortalecedor)</span>
-<span id="cb47-206"><a href="#cb47-206" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(agresivo)</span>
-<span id="cb47-207"><a href="#cb47-207" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autodestructivo)</span>
-<span id="cb47-208"><a href="#cb47-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-209"><a href="#cb47-209" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
-<span id="cb47-210"><a href="#cb47-210" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
-<span id="cb47-211"><a href="#cb47-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-198"><a href="#cb47-198" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb47-199"><a href="#cb47-199" aria-hidden="true" tabindex="-1"></a>ADVERTENCIA: el alfa de Chronbarch es para variables con nivel de medición intervalar. Lo óptimo para variables ordinales es Alfa Ordinal u Omega (Ventura-León &amp; Caycho-Rodríguez, 2017).</span>
+<span id="cb47-200"><a href="#cb47-200" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb47-201"><a href="#cb47-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-202"><a href="#cb47-202" aria-hidden="true" tabindex="-1"></a>Asimismo, esperamos que la correlación de cada ítem respecto del total sea al menos de .4 (media) y, ojalá, de al menos .6 (alta). Ítems con correlaciones muy bajas podrían eliminarse, especialmente si el alfa de Chronbach aumenta en caso de que el ítem sea eliminado. </span>
+<span id="cb47-203"><a href="#cb47-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-204"><a href="#cb47-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-207"><a href="#cb47-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb47-208"><a href="#cb47-208" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(afiliativo)</span>
+<span id="cb47-209"><a href="#cb47-209" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autofortalecedor)</span>
+<span id="cb47-210"><a href="#cb47-210" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(agresivo)</span>
+<span id="cb47-211"><a href="#cb47-211" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(autodestructivo)</span>
 <span id="cb47-212"><a href="#cb47-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-213"><a href="#cb47-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-214"><a href="#cb47-214" aria-hidden="true" tabindex="-1"></a><span class="fu">### Alfa Ordinal</span></span>
-<span id="cb47-215"><a href="#cb47-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-216"><a href="#cb47-216" aria-hidden="true" tabindex="-1"></a>Como se señaló, el alfa de Chronbach está diseñado para variables continuas. Por ello, podemos calcular el alfa ordinal para las puntuaciones de cada ítem. Para esto, utilizaremos la función <span class="in">`ordinal_alpha()`</span>de <span class="in">`jogRu`</span>, que estima el alfa ordinal a partir de correlación policórica (según lo propuesto por Zumbo et al.(2007)). </span>
+<span id="cb47-213"><a href="#cb47-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
+<span id="cb47-214"><a href="#cb47-214" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
+<span id="cb47-215"><a href="#cb47-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-216"><a href="#cb47-216" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-217"><a href="#cb47-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-220"><a href="#cb47-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb47-221"><a href="#cb47-221" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(afiliativo)</span>
-<span id="cb47-222"><a href="#cb47-222" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autofortalecedor)</span>
-<span id="cb47-223"><a href="#cb47-223" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(agresivo)</span>
-<span id="cb47-224"><a href="#cb47-224" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autodestructivo)</span>
-<span id="cb47-225"><a href="#cb47-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-226"><a href="#cb47-226" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
-<span id="cb47-227"><a href="#cb47-227" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
-<span id="cb47-228"><a href="#cb47-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-218"><a href="#cb47-218" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa Ordinal</span></span>
+<span id="cb47-219"><a href="#cb47-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-220"><a href="#cb47-220" aria-hidden="true" tabindex="-1"></a>Como se señaló, el alfa de Chronbach está diseñado para variables continuas. Por ello, podemos calcular el alfa ordinal para las puntuaciones de cada ítem. Para esto, utilizaremos la función <span class="in">`ordinal_alpha()`</span>de <span class="in">`jogRu`</span>, que estima el alfa ordinal a partir de correlación policórica (según lo propuesto por Zumbo et al.(2007)). </span>
+<span id="cb47-221"><a href="#cb47-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-224"><a href="#cb47-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb47-225"><a href="#cb47-225" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(afiliativo)</span>
+<span id="cb47-226"><a href="#cb47-226" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autofortalecedor)</span>
+<span id="cb47-227"><a href="#cb47-227" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(agresivo)</span>
+<span id="cb47-228"><a href="#cb47-228" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(autodestructivo)</span>
 <span id="cb47-229"><a href="#cb47-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-230"><a href="#cb47-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-231"><a href="#cb47-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-230"><a href="#cb47-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Para toda la escala </span></span>
+<span id="cb47-231"><a href="#cb47-231" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">32</span>))</span>
+<span id="cb47-232"><a href="#cb47-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb47-233"><a href="#cb47-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-234"><a href="#cb47-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-235"><a href="#cb47-235" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
