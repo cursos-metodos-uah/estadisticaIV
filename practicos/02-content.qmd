@@ -19,12 +19,12 @@ opts_chunk$set(warning=FALSE,
 
 # Presentación
 
-Para el taller práctico de hoy utilizaremos la base de datos del estudio de Martin et al. (2003). *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*. En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).
+Para el taller práctico de hoy utilizaremos la base de datos del estudio de **Martin et al. (2003)**. *Individual differences in uses of humor and and their relation to psychological well-being. Development of the Humor Styles Questionnaire*. En este artículo se describe el desarrollo y la validación inicial del Cuestionario de Estilos de Humor, que evalúa cuatro dimensiones relacionadas con las diferencias individuales en el uso del humor. Estas son: usos relativamente benignos del humor para mejorar uno mismo (Autofortalecedor) y para mejorar las relaciones con otros (Afiliativo), uso del humor para mejorar uno mismo a expensas de los demás (Agresivo) y uso del humor para mejorar las relaciones a expensas de uno mismo (Autodestructivo).
 
 
 # Objetivo general
 
-El objetivo de este ejercicio práctico es comprender y estimar el proceso de construcción de escalas en R.
+El objetivo de este ejercicio práctico es comprender y estimar el proceso de construcción y validación de escalas en R.
 
 
 # Ejercicio práctico
@@ -65,8 +65,6 @@ Si pregunta *These packages have more recent versions available. It is recommend
 ### Cargar base de datos
 
 ```{r }
-# data <- read_csv("C:/Users/danie/Downloads/Actividad_en_R_2/input/data/data.csv") # Cargar base de datos
-
 data <- read.csv(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/data.csv"))
 ```
 
@@ -75,9 +73,10 @@ data <- read.csv(url("https://github.com/cursos-metodos-facso/investigacion-cuan
 
 ```{r}
 head(data)
+str(data)
 ```
 
-En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:
+En estos datos podemos ver una serie de ítems que corresponden a diferentes dimensiones de la escala, donde cada ítem tiene valores entre 1 y 5. De acuerdo con el paper, los ítems se ordenan de esta forma de acuerdo con los tipos de humor:
 
 - afiliativo       : Q1, Q5, Q9 , Q13, Q17, Q21, Q25, Q29
 - autofortalecedor : Q2, Q6, Q10, Q14, Q18, Q22, Q26, Q30
@@ -92,7 +91,7 @@ En estos datos podemos ver una serie de ítems que corresponden a diferentes dim
 
 Para que todas las escalas queden en el mismo orden jerárquico, es necesario invertir algunos ítems.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 data = data %>% 
   mutate_at(vars(Q1, Q9, Q17, Q25, Q29, # afiliativo
                  Q22,                   # autofortalecedor
@@ -106,6 +105,8 @@ data = data %>%
 
 
 ### Crear objetos para dimensiones de la escala
+
+Creamos cuatro objetos que contienen los ítems para cada dimensión de la escala.
 
 ```{r}
 afiliativo       <- data %>% select(Q1, Q5, Q9, Q13, Q17, Q21, Q25, Q29)
@@ -160,23 +161,29 @@ cor(agresivo)
 cor(autodestructivo)
 ```
 
+Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.
+
 
 ## Estimar consistencia
 
 
 ### Alfa de Chronbach
 
-Primero, estimaremos la consistencia interna de cada dimensión con un alfa de Chronbach. El **alfa de Chronbach**, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:
+Primero, estimaremos la consistencia interna de cada dimensión con un **alfa de Chronbach**. El alfa de Chronbach, es un estadístico que permite estimar la fiabilidad de un test por consistencia interna. Su ventaja es que es fácil de estimar. Sus desventajas, sin embargo, son que:
 
 - Puede aumentarse artificialmente incorporando ítems parecidos;
 - Asume que el constructo es unidimensional;
 - Es afectado por número de ítems, el número de alternativas de respuesta y la varianza del test (Domínguez-Lara & Merino-Soto, 2015). 
  
-Para interpretarlo, hay que considerar:
+Para interpretarlo hay que considerar:
  
 - Mínimo para investigación básica exploratoria: > .7
 - Mínimo para investigación asociativa: > .8
 - Investigación con decisiones muy importantes: > .9 (Nunnally & Bernstein, 1994). 
+
+A mayor valor, más consistente es la escala:
+
+- Consideraremos el 0.6 como punto de corte.
 
 ::: callout-note
 ADVERTENCIA: el alfa de Chronbarch es para variables con nivel de medición intervalar. Lo óptimo para variables ordinales es Alfa Ordinal u Omega (Ventura-León & Caycho-Rodríguez, 2017).
