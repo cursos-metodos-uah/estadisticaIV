@@ -9,6 +9,14 @@ website:
 ---
 
 
+```{r setup, include=FALSE, cache = TRUE}
+require("knitr")
+opts_chunk$set(warning=FALSE,
+             message=FALSE,
+             echo=TRUE,
+             cache = TRUE, fig.width=7, fig.height=5.2)
+```
+
 # Presentación
 
 Para el taller práctico de hoy utilizaremos la base de datos del estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social [COES](https://coes.cl/).
@@ -29,7 +37,7 @@ Las librerías que utilizaremos esta sesión son las siguientes:
 
 ```{r, message=FALSE, warning=FALSE}
 # install.packages("pacman") # Cargar sólo si no la tenemos instalada
-library(pacman)
+#library(pacman)
 pacman::p_load(tidyverse, # conjunto de paquetes, sobre todo dplyr y ggplot2
                car,       # para recodificar
                psych,     # para Alfa de Chronbach
@@ -73,14 +81,13 @@ Como mencionamos, utilizaremos la base de datos de ELSOC, específicamente el m�
 ### Cargar base de datos
 
 ```{r }
-load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/ELSOC_Long_2016_2022_v1.00.RData")) #Cargar base de datos
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) #Cargar base de datos
 ```
 
 
 ### Visualización de datos
 
 ```{r}
-head(elsoc_long_2016_2022.2)
 dim(elsoc_long_2016_2022.2)
 ```
 
