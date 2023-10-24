@@ -1,0 +1,177 @@
+---
+title: "Práctico R 3. Repaso construcción de indices y escalas"
+date: "2023-10-26"
+lang: es
+website:
+  comments:
+    giscus:
+      repo: kevin-carrasco/investigacion-cuantitativa
+---
+
+
+# Presentación
+
+Para el taller práctico de hoy utilizaremos la base de datos del estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social [COES](https://coes.cl/).
+
+El Estudio Longitudinal Social del Chile [ELSOC](https://coes.cl/encuesta-panel/), único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad con un alcance nacional, donde se obtuvo una muestra inicial de **2927** casos en el año 2016 y mantiene **1728** en 2022.
+
+# Objetivo general
+
+El objetivo de este ejercicio práctico es reforzar y estimar el proceso de cosntrucción de índices ponderados y no ponderados, así como también la construcción y validación de escalas en R.
+
+
+# Ejercicio práctico
+
+
+## Cargar librerías
+
+Las librerías que utilizaremos esta sesión son las siguientes:
+
+```{r, message=FALSE, warning=FALSE}
+# install.packages("pacman") # Cargar sólo si no la tenemos instalada
+library(pacman)
+pacman::p_load(tidyverse, # conjunto de paquetes, sobre todo dplyr y ggplot2
+               car,       # para recodificar
+               psych,     # para Alfa de Chronbach
+               sjmisc    # para descriptivos
+               )
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls())       # para limpiar el entorno de trabajo
+```
+
+
+## Datos y variables
+
+Como mencionamos, utilizaremos la base de datos de ELSOC, específicamente el módulo de **Satisfacción residencial**. Este módulo incluye dos conceptos: 
+
+1) Satisfacción con la vivienda (2 items) 
+
+* Tamaño de la vivienda
+
+* Calidad de la vivienda
+
+2) satisfacción con el barrio (8 items):
+
+* conectividad del barrio
+
+* proximidad con el comercio
+
+* proximidad con colegios
+
+* proximidad con familiares 
+
+* proximidad con la principal actividad de trabajo
+
+* limpieza del barrio
+
+* cantidad de áreas verdes 
+
+* seguridad del barrio.
+
+
+### Cargar base de datos
+
+```{r }
+load(url("https://github.com/cursos-metodos-facso/investigacion-cuantitativa/raw/main/files/data/ELSOC_Long_2016_2022_v1.00.RData")) #Cargar base de datos
+```
+
+
+### Visualización de datos
+
+```{r}
+head(elsoc_long_2016_2022.2)
+dim(elsoc_long_2016_2022.2)
+```
+
+Debido a la naturaleza longitudinal de ELSOC, la base de datos contiene 18035 casos (las mismas personas durante 6 años) y 750 variables (las mismas variables en 6 periodos distintos). Por lo tanto, para simplificar el proceso de análisis de este práctico trabajaremos solo con los casos y variables de quienes participaron en la primera ola (2016)
+
+## Filtrar base de datos
+
+```{r}
+table(elsoc_long_2016_2022.2$ola)
+
+data <- elsoc_long_2016_2022.2 %>% filter(ola==1) %>%  # Seleccionamos solo los casos de la ola 1
+  select(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08, #satisfacción con el barrio
+         t07_01, t07_02) # satisfacción con la vivienda
+
+head(data)
+table(data$t06_01)
+table(data$t06_05)
+table(data$t07_01)
+```
+
+Podemos ver que tenemos valores de 1 a 5, que según el libro de códigos corresponden a: Totalmente insatisfecho | Insatisfecho | Ni satisfecho ni insatisfecho | Satisfecho | Totalmente satisfecho.
+
+Y además valores -999 y -888 que corresponde a "No sabe" y "No responde".
+
+### Recodificar
+
+Recodificamos los valores -888 en NA
+
+```{r, message=FALSE, warning=FALSE}
+data = data %>% 
+  set_na(., na = c(-888, -999)) %>% 
+  na.omit()
+```
+
+## Medición de satisfacción residencial con índice no ponderado
+
+Con la función *mutate* creamos una nueva variable que contenga el promedio simple de indicadores (suponinendo que cada item tiene el mismo peso).
+
+```{r}
+data = data %>% 
+  rowwise() %>%
+  mutate(satisfaccion_nopond = mean(c(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08, 
+                                      t07_01, t07_02))
+         ) %>% 
+  ungroup()
+```
+
+
+```{r}
+summary(data$satisfaccion_nopond)
+```
+
+## Medición de satisfacción residencial con índice ponderado
+
+si consideramos la dimensión de satisfacción con la vivienda como un indicador de mayor relevancia, podríamos suponer que ambos items de esta dimensión (tamaño y calidad) tienen el mismo peso que los 8 items de satisfacción con el barrio (es decir, que mientras cada item de satisfacción con el barrio equivale a un 6.25%, los items de satisfacción con la vivienda equivalen a un 25% cada uno).
+
+Para estimar este índnice, primero separamos los items por dimensión:
+
+```{r}
+data = data %>% 
+  rowwise() %>%
+  mutate(barrio = mean(c(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08)),
+         vivienda = mean(c(t07_01, t07_02))
+         ) %>% 
+  ungroup()
+```
+
+Luego, estimamos el índice otorgándole un 50% de peso a cada dimensión:
+
+```{r}
+data = data %>% 
+  rowwise() %>%
+  mutate(satisfaccion_pond = (barrio*0.5) + (vivienda*0.5)) %>%  
+  ungroup()
+```
+
+```{r}
+summary(data$satisfaccion_pond)
+```
+
+Podemos comparar:
+
+indice ponderado:
+
+```{r}
+summary(data$satisfaccion_pond)
+```
+
+indice no ponderado:
+
+```{r}
+summary(data$satisfaccion_nopond)
+```
+
