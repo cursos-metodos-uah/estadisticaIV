@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,9 +18,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -127,12 +98,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <meta property="og:title" content="Estrategias de investigación cuantitativa - Práctico R 3. Repaso construcción de indices y escalas">
-<meta property="og:description" content="Para el taller práctico de hoy utilizaremos la base de datos del estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social COES.">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://investigacion-cuantitativa.netlify.app/files/social-image-sp23.png">
 <meta property="og:site-name" content="Estrategias de investigación cuantitativa">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:title" content="Estrategias de investigación cuantitativa - Práctico R 3. Repaso construcción de indices y escalas">
-<meta name="twitter:description" content="Para el taller práctico de hoy utilizaremos la base de datos del estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social COES.">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://investigacion-cuantitativa.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
@@ -149,92 +120,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Estrategias de investigación cuantitativa</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
  <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html">
+    <a class="nav-link" href="../schedule.html" rel="" target="">
  <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignment/index.html">
+    <a class="nav-link" href="../assignment/index.html" rel="" target="">
  <span class="menu-text">Talleres</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../practicos/index.html" aria-current="page">
+    <a class="nav-link active" href="../practicos/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Prácticos R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../trabajos.html">
+    <a class="nav-link" href="../trabajos.html" rel="" target="">
  <span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
+    <a class="nav-link" href="https://rstudio.cloud" rel="" target=""><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Práctico R 3. Repaso construcción de indices y escalas</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Prácticos R</a></li><li class="breadcrumb-item"><a href="../practicos/03-content.html">03: Práctico 3</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Información general</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Información general</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practicos/index.html" class="sidebar-item-text sidebar-link">Actividades en R</a>
+  <a href="../practicos/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Actividades en R</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Prácticos R</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Prácticos R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practicos/01-content.html" class="sidebar-item-text sidebar-link">01: Práctico 1</a>
+  <a href="../practicos/01-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01: Práctico 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practicos/02-content.html" class="sidebar-item-text sidebar-link">02: Práctico 2</a>
+  <a href="../practicos/02-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02: Práctico 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../practicos/03-content.html" class="sidebar-item-text sidebar-link active">03: Práctico 3</a>
+  <a href="../practicos/03-content.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">03: Práctico 3</span></a>
   </div>
 </li>
       </ul>
@@ -242,6 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -250,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a></li>
   <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general">Objetivo general</a></li>
-  <li><a href="#ejercicio-práctico" id="toc-ejercicio-práctico" class="nav-link" data-scroll-target="#ejercicio-práctico">Ejercicio práctico</a>
+  <li><a href="#ejercicio-práctico-índices" id="toc-ejercicio-práctico-índices" class="nav-link" data-scroll-target="#ejercicio-práctico-índices">Ejercicio práctico Índices</a>
   <ul>
   <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">Cargar librerías</a></li>
   <li><a href="#datos-y-variables" id="toc-datos-y-variables" class="nav-link" data-scroll-target="#datos-y-variables">Datos y variables</a>
@@ -265,6 +247,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#medición-de-satisfacción-residencial-con-índice-no-ponderado" id="toc-medición-de-satisfacción-residencial-con-índice-no-ponderado" class="nav-link" data-scroll-target="#medición-de-satisfacción-residencial-con-índice-no-ponderado">Medición de satisfacción residencial con índice no ponderado</a></li>
   <li><a href="#medición-de-satisfacción-residencial-con-índice-ponderado" id="toc-medición-de-satisfacción-residencial-con-índice-ponderado" class="nav-link" data-scroll-target="#medición-de-satisfacción-residencial-con-índice-ponderado">Medición de satisfacción residencial con índice ponderado</a></li>
   </ul></li>
+  <li><a href="#ejercicio-práctico-escalas" id="toc-ejercicio-práctico-escalas" class="nav-link" data-scroll-target="#ejercicio-práctico-escalas">Ejercicio práctico Escalas</a>
+  <ul>
+  <li><a href="#cargar-librerías-1" id="toc-cargar-librerías-1" class="nav-link" data-scroll-target="#cargar-librerías-1">Cargar librerías</a></li>
+  <li><a href="#datos-y-variables-1" id="toc-datos-y-variables-1" class="nav-link" data-scroll-target="#datos-y-variables-1">Datos y variables</a></li>
+  <li><a href="#filtrar-base-de-datos-1" id="toc-filtrar-base-de-datos-1" class="nav-link" data-scroll-target="#filtrar-base-de-datos-1">Filtrar base de datos</a>
+  <ul class="collapse">
+  <li><a href="#recodificar-1" id="toc-recodificar-1" class="nav-link" data-scroll-target="#recodificar-1">Recodificar</a></li>
+  </ul></li>
+  <li><a href="#análisis" id="toc-análisis" class="nav-link" data-scroll-target="#análisis">Análisis</a>
+  <ul class="collapse">
+  <li><a href="#estimar-correlación" id="toc-estimar-correlación" class="nav-link" data-scroll-target="#estimar-correlación">Estimar correlación</a></li>
+  <li><a href="#estimar-consistencia-interna" id="toc-estimar-consistencia-interna" class="nav-link" data-scroll-target="#estimar-consistencia-interna">Estimar consistencia interna</a>
+  <ul class="collapse">
+  <li><a href="#alfa-de-chronbach" id="toc-alfa-de-chronbach" class="nav-link" data-scroll-target="#alfa-de-chronbach">Alfa de Chronbach</a></li>
+  <li><a href="#alfa-ordinal" id="toc-alfa-ordinal" class="nav-link" data-scroll-target="#alfa-ordinal">Alfa Ordinal</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -273,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Práctico R 3. Repaso construcción de indices y escalas</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Práctico R 3. Repaso construcción de indices y escalas</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
 </div>
 
 
@@ -296,15 +296,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="presentación" class="level1">
 <h1>Presentación</h1>
-<p>Para el taller práctico de hoy utilizaremos la base de datos del estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social <a href="https://coes.cl/">COES</a>.</p>
-<p>El Estudio Longitudinal Social del Chile <a href="https://coes.cl/encuesta-panel/">ELSOC</a>, único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad con un alcance nacional, donde se obtuvo una muestra inicial de <strong>2927</strong> casos en el año 2016 y mantiene <strong>1728</strong> en 2022.</p>
+<p>Para el taller práctico de hoy utilizaremos la base de datos del Estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social <a href="https://coes.cl/">COES</a>.</p>
+<p>El Estudio Longitudinal Social del Chile <a href="https://coes.cl/encuesta-panel/">ELSOC</a>, único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad, tiene una representación de la población nacional urbana, donde se obtuvo una muestra original de <strong>2927</strong> casos en el año 2016 y mantiene <strong>1728</strong> en 2022, además de una muestra de refresco en 2018.</p>
 </section>
 <section id="objetivo-general" class="level1">
 <h1>Objetivo general</h1>
-<p>El objetivo de este ejercicio práctico es reforzar y estimar el proceso de cosntrucción de índices ponderados y no ponderados, así como también la construcción y validación de escalas en R.</p>
+<p>El objetivo de este ejercicio práctico es reforzar y estimar el proceso de construcción de índices ponderados y no ponderados, así como también la construcción y validación de escalas en R.</p>
 </section>
-<section id="ejercicio-práctico" class="level1">
-<h1>Ejercicio práctico</h1>
+<section id="ejercicio-práctico-índices" class="level1">
+<h1>Ejercicio práctico Índices</h1>
 <section id="cargar-librerías" class="level2">
 <h2 class="anchored" data-anchor-id="cargar-librerías">Cargar librerías</h2>
 <p>Las librerías que utilizaremos esta sesión son las siguientes:</p>
@@ -312,21 +312,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <details open="">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pacman)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               sjmisc    <span class="co"># para descriptivos</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               )</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               sjmisc)    <span class="co"># para descriptivos</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="datos-y-variables" class="level2">
 <h2 class="anchored" data-anchor-id="datos-y-variables">Datos y variables</h2>
-<p>Como mencionamos, utilizaremos la base de datos de ELSOC, específicamente el módulo de <strong>Satisfacción residencial</strong>. Este módulo incluye dos conceptos:</p>
+<p>Para el ejercicio de índices, utilizaremos la base de datos de ELSOC, específicamente el módulo de <strong>Satisfacción residencial</strong>. Este módulo incluye dos conceptos:</p>
 <ol type="1">
 <li>Satisfacción con la vivienda (2 items)</li>
 </ol>
@@ -469,7 +468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="medición-de-satisfacción-residencial-con-índice-ponderado" class="level2">
 <h2 class="anchored" data-anchor-id="medición-de-satisfacción-residencial-con-índice-ponderado">Medición de satisfacción residencial con índice ponderado</h2>
-<p>si consideramos la dimensión de satisfacción con la vivienda como un indicador de mayor relevancia, podríamos suponer que ambos items de esta dimensión (tamaño y calidad) tienen el mismo peso que los 8 items de satisfacción con el barrio (es decir, que mientras cada item de satisfacción con el barrio equivale a un 6.25%, los items de satisfacción con la vivienda equivalen a un 25% cada uno).</p>
+<p>si consideramos la dimensión de satisfacción con la vivienda como un indicador de mayor relevancia, podríamos suponer que ambos ítems de esta dimensión (tamaño y calidad) tienen el mismo peso que los 8 ítems de satisfacción con el barrio (es decir, que mientras cada ítem de satisfacción con el barrio equivale a un 6.25%, los items de satisfacción con la vivienda equivalen a un 25% cada uno).</p>
 <p>Para estimar este índnice, primero separamos los items por dimensión:</p>
 <div class="cell">
 <details open="">
@@ -525,10 +524,355 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   1.000   3.182   3.545   3.489   3.909   5.000 </code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="ejercicio-práctico-escalas" class="level1">
+<h1>Ejercicio práctico Escalas</h1>
+<section id="cargar-librerías-1" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-librerías-1">Cargar librerías</h2>
+<p>Las librerías que utilizaremos este ejercicio son las siguientes:</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(pacman)</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="co"># tidyverse, # conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>               <span class="co"># car,       # para recodificar</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>               <span class="co"># psych,     # para Alfa de Chronbach</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>               <span class="co"># sjmisc,    # para descriptivos</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>               remotes)   <span class="co"># para instalar paquete jogRu  </span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># options(scipen = 999) # para desactivar notacion cientifica</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># rm(list = ls())       # para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Además, instalaremos la librería <code>jogRu</code> desde github, que nos permitirá calcular el alfa de Chronbach para variables ordinales.</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jogrue/jogRu"</span>, <span class="at">force =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>xfun      (0.39   -&gt; 0.40   ) [CRAN]
+vctrs     (0.6.2  -&gt; 0.6.4  ) [CRAN]
+digest    (0.6.31 -&gt; 0.6.33 ) [CRAN]
+jsonlite  (1.8.4  -&gt; 1.8.7  ) [CRAN]
+htmltools (0.5.5  -&gt; 0.5.6.1) [CRAN]
+utf8      (1.2.3  -&gt; 1.2.4  ) [CRAN]
+fansi     (1.0.4  -&gt; 1.0.5  ) [CRAN]
+psych     (2.3.3  -&gt; 2.3.9  ) [CRAN]
+package 'xfun' successfully unpacked and MD5 sums checked
+package 'vctrs' successfully unpacked and MD5 sums checked
+package 'digest' successfully unpacked and MD5 sums checked
+package 'jsonlite' successfully unpacked and MD5 sums checked
+package 'htmltools' successfully unpacked and MD5 sums checked
+package 'utf8' successfully unpacked and MD5 sums checked
+package 'fansi' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\danie\AppData\Local\Temp\Rtmp6Ln95u\downloaded_packages
+* checking for file 'C:\Users\danie\AppData\Local\Temp\Rtmp6Ln95u\remotes4c0c5c232704\jogrue-jogRu-c659fcd/DESCRIPTION' ... OK
+* preparing 'jogRu':
+* checking DESCRIPTION meta-information ... OK
+* checking for LF line-endings in source and make files and shell scripts
+* checking for empty or unneeded directories
+Omitted 'LazyData' from DESCRIPTION
+* building 'jogRu_2.0.tar.gz'</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si pregunta <em>These packages have more recent versions available. It is recommended to update all of them.Which would you like to update?</em> SIEMPRE PONER 3: None.</p>
+</div>
+</div>
+</section>
+<section id="datos-y-variables-1" class="level2">
+<h2 class="anchored" data-anchor-id="datos-y-variables-1">Datos y variables</h2>
+<p>Para el ejercicio de escalas, utilizaremos nuevamente la base de datos de ELSOC (que ya se enceuntra cargada), específicamente el módulo de <strong>Salud y Bienestar</strong>. De este módulo utilizaremos un concepto en particular llamado <em>Estado de ánimo: sintomatología depresiva</em> con los ítems:</p>
+<ul>
+<li>Frecuencia: Poco interés o alegría</li>
+<li>Frecuencia: Decaimiento, pesadez o desesperanza</li>
+<li>Frecuencia: Dificultad para dormir o exceso de sueño</li>
+<li>Frecuencia: Cansancio o sensación de falta de energía</li>
+<li>Frecuencia: Apetito disminuido o aumentado</li>
+<li>Frecuencia: Dificultad para concentrarse</li>
+<li>Frecuencia: Mala opinión de sí mismo</li>
+<li>Frecuencia: Enlentecimiento físico</li>
+<li>Frecuencia: Pensamiento de muerte o dañarse</li>
+</ul>
+<p>Esta escala tiene solamente una dimensión, por lo que no es necesario crear objetos que contengan a cada dimensión (como vimos la clase pasada).</p>
+</section>
+<section id="filtrar-base-de-datos-1" class="level2">
+<h2 class="anchored" data-anchor-id="filtrar-base-de-datos-1">Filtrar base de datos</h2>
+<p>Al igual que en el ejercicio anterior, filtraremos la base de datos para quedarnos con las observaciones correspondientes solamente a la ola 1, y además seleccionaremos los ítems de interés.</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span>  <span class="co"># seleccionamos solo los casos de la ola 1</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09) <span class="co"># items sintomatologia depresiva</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  s11_01 s11_02 s11_03 s11_04 s11_05 s11_06 s11_07 s11_08 s11_09
+1      5      3      3      5      4      3      3      3      1
+2      2      2      3      2      3      4      3      4      2
+3      2      2      3      3      4      5      4      1      2
+4      1      3      3      1      1      2      3      5      1
+5      1      1      1      2      1      3      1      2      1
+6      1      1      1      1      1      1      1      1      1</code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_01)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   5    1 1279 1196  158  192   96 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_02)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   5    1 1302 1316  135  120   48 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_03)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   3    1 1336 1014  179  265  129 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_04)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   1    1  887 1414  223  261  140 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_05)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   4    5 1474  968  161  206  109 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_06)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   5    3 1819  752  138  131   79 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_07)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   4    4 2093  613   85   85   43 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_08)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   5    9 2110  563   92   95   53 </code></pre>
+</div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_09)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-999 -888    1    2    3    4    5 
+   3    3 2508  307   46   35   25 </code></pre>
+</div>
+</div>
+<p>Estos ítems cuentan con las mismas categorías de respuesta: (1) Nunca, (2) Algunos dias, (3) Mas de la mitad de los dias, (4) Casi todos los dias, y (5) Todos los dias. Además de los valores codificados como -888 y -999.</p>
+<section id="recodificar-1" class="level3">
+<h3 class="anchored" data-anchor-id="recodificar-1">Recodificar</h3>
+<p>Recodificamos los valores -888 y -999 en NA y eliminamos los NAs.</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">999</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="análisis" class="level2">
+<h2 class="anchored" data-anchor-id="análisis">Análisis</h2>
+<section id="estimar-correlación" class="level3">
+<h3 class="anchored" data-anchor-id="estimar-correlación">Estimar correlación</h3>
+<p>Dado que la escala tiene solamente una dimensión, estimaremos la correlación de toda la escala.</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>          s11_01    s11_02    s11_03    s11_04    s11_05    s11_06    s11_07
+s11_01 1.0000000 0.4853523 0.3737498 0.3725855 0.3574690 0.3049018 0.3021299
+s11_02 0.4853523 1.0000000 0.4994332 0.5552978 0.4226467 0.4138983 0.4251018
+s11_03 0.3737498 0.4994332 1.0000000 0.5592702 0.4858813 0.3902507 0.3691240
+s11_04 0.3725855 0.5552978 0.5592702 1.0000000 0.5169337 0.4585532 0.4035490
+s11_05 0.3574690 0.4226467 0.4858813 0.5169337 1.0000000 0.4119218 0.3685431
+s11_06 0.3049018 0.4138983 0.3902507 0.4585532 0.4119218 1.0000000 0.4286404
+s11_07 0.3021299 0.4251018 0.3691240 0.4035490 0.3685431 0.4286404 1.0000000
+s11_08 0.3007859 0.3936463 0.3492633 0.3940693 0.3572599 0.4228090 0.5060767
+s11_09 0.2347939 0.3884992 0.3026768 0.3330739 0.3040960 0.3445456 0.5080698
+          s11_08    s11_09
+s11_01 0.3007859 0.2347939
+s11_02 0.3936463 0.3884992
+s11_03 0.3492633 0.3026768
+s11_04 0.3940693 0.3330739
+s11_05 0.3572599 0.3040960
+s11_06 0.4228090 0.3445456
+s11_07 0.5060767 0.5080698
+s11_08 1.0000000 0.4560839
+s11_09 0.4560839 1.0000000</code></pre>
+</div>
+</div>
+<p>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</p>
+</section>
+<section id="estimar-consistencia-interna" class="level3">
+<h3 class="anchored" data-anchor-id="estimar-consistencia-interna">Estimar consistencia interna</h3>
+<section id="alfa-de-chronbach" class="level4">
+<h4 class="anchored" data-anchor-id="alfa-de-chronbach">Alfa de Chronbach</h4>
+<p>Primero, estimaremos la consistencia interna de cada dimensión con un <strong>Alfa de Chronbach</strong>.</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Reliability analysis   
+Call: psych::alpha(x = data2)
+
+  raw_alpha std.alpha G6(smc) average_r S/N    ase mean   sd median_r
+      0.85      0.86    0.85       0.4 6.1 0.0039  1.7 0.64     0.39
+
+    95% confidence boundaries 
+         lower alpha upper
+Feldt     0.85  0.85  0.86
+Duhachek  0.85  0.85  0.86
+
+ Reliability if an item is dropped:
+       raw_alpha std.alpha G6(smc) average_r S/N alpha se  var.r med.r
+s11_01      0.85      0.85    0.85      0.42 5.8   0.0041 0.0050  0.41
+s11_02      0.83      0.84    0.83      0.39 5.1   0.0046 0.0062  0.37
+s11_03      0.84      0.84    0.83      0.40 5.3   0.0045 0.0058  0.40
+s11_04      0.83      0.84    0.83      0.39 5.1   0.0047 0.0051  0.39
+s11_05      0.84      0.84    0.84      0.40 5.4   0.0044 0.0065  0.39
+s11_06      0.84      0.84    0.84      0.40 5.4   0.0044 0.0072  0.39
+s11_07      0.84      0.84    0.83      0.40 5.3   0.0044 0.0065  0.39
+s11_08      0.84      0.84    0.84      0.40 5.4   0.0043 0.0067  0.40
+s11_09      0.85      0.85    0.84      0.42 5.7   0.0042 0.0051  0.41
+
+ Item statistics 
+          n raw.r std.r r.cor r.drop mean   sd
+s11_01 2888  0.62  0.61  0.53   0.49  1.8 1.01
+s11_02 2888  0.74  0.74  0.71   0.66  1.7 0.85
+s11_03 2888  0.73  0.70  0.66   0.62  1.9 1.13
+s11_04 2888  0.77  0.75  0.72   0.67  2.1 1.07
+s11_05 2888  0.71  0.69  0.63   0.59  1.8 1.07
+s11_06 2888  0.68  0.68  0.62   0.57  1.6 0.96
+s11_07 2888  0.67  0.70  0.65   0.58  1.4 0.80
+s11_08 2888  0.66  0.68  0.62   0.56  1.4 0.85
+s11_09 2888  0.58  0.63  0.56   0.50  1.2 0.61
+
+Non missing response frequency for each item
+          1    2    3    4    5 miss
+s11_01 0.44 0.41 0.05 0.06 0.03    0
+s11_02 0.45 0.45 0.05 0.04 0.02    0
+s11_03 0.46 0.35 0.06 0.09 0.04    0
+s11_04 0.31 0.48 0.08 0.09 0.05    0
+s11_05 0.51 0.33 0.05 0.07 0.04    0
+s11_06 0.63 0.26 0.05 0.05 0.03    0
+s11_07 0.72 0.21 0.03 0.03 0.01    0
+s11_08 0.73 0.19 0.03 0.03 0.02    0
+s11_09 0.86 0.10 0.02 0.01 0.01    0</code></pre>
+</div>
+</div>
+</section>
+<section id="alfa-ordinal" class="level4">
+<h4 class="anchored" data-anchor-id="alfa-ordinal">Alfa Ordinal</h4>
+<p>Ahora, estimaremos la consistencia interna de cada dimensión con un <strong>Alfa Ordinal</strong>, ya que en estricto rigor estamos trabajando con una variable ordinal.</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Reliability analysis   
+Call: psych::alpha(x = psych::polychoric(x)$rho)
+
+  raw_alpha std.alpha G6(smc) average_r S/N median_r
+      0.91      0.91    0.91      0.53  10     0.51
+
+    95% confidence boundaries 
+      lower alpha upper
+Feldt  0.78  0.91  0.98
+
+ Reliability if an item is dropped:
+       raw_alpha std.alpha G6(smc) average_r S/N  var.r med.r
+s11_01      0.90      0.90    0.90      0.54 9.5 0.0042  0.53
+s11_02      0.89      0.89    0.89      0.51 8.5 0.0050  0.49
+s11_03      0.90      0.90    0.90      0.53 9.0 0.0052  0.51
+s11_04      0.90      0.90    0.89      0.52 8.7 0.0049  0.51
+s11_05      0.90      0.90    0.90      0.53 9.1 0.0057  0.52
+s11_06      0.90      0.90    0.90      0.53 9.0 0.0059  0.50
+s11_07      0.90      0.90    0.89      0.52 8.7 0.0044  0.51
+s11_08      0.90      0.90    0.90      0.53 8.9 0.0050  0.51
+s11_09      0.90      0.90    0.90      0.53 9.0 0.0040  0.51
+
+ Item statistics 
+          r r.cor r.drop
+s11_01 0.70  0.65   0.61
+s11_02 0.81  0.79   0.75
+s11_03 0.75  0.72   0.68
+s11_04 0.79  0.76   0.73
+s11_05 0.74  0.70   0.66
+s11_06 0.75  0.71   0.68
+s11_07 0.78  0.76   0.72
+s11_08 0.76  0.72   0.69
+s11_09 0.76  0.73   0.68</code></pre>
+</div>
+</div>
 
 
 <!-- -->
 
+</section>
+</section>
 </section>
 </section>
 
@@ -560,9 +904,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -678,6 +1036,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -717,195 +1161,312 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb27" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico R 3. Repaso construcción de indices y escalas"</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-10-26"</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="an">website:</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">  comments:</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">    giscus:</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">      repo: kevin-carrasco/investigacion-cuantitativa</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, cache = TRUE}</span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"knitr"</span>)</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning=</span><span class="cn">FALSE</span>,</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">message=</span><span class="cn">FALSE</span>,</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">echo=</span><span class="cn">TRUE</span>,</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">cache =</span> <span class="cn">TRUE</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">5.2</span>)</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>Para el taller práctico de hoy utilizaremos la base de datos del estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social <span class="co">[</span><span class="ot">COES</span><span class="co">](https://coes.cl/)</span>.</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>El Estudio Longitudinal Social del Chile <span class="co">[</span><span class="ot">ELSOC</span><span class="co">](https://coes.cl/encuesta-panel/)</span>, único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad con un alcance nacional, donde se obtuvo una muestra inicial de **2927** casos en el año 2016 y mantiene **1728** en 2022.</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo general</span></span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>El objetivo de este ejercicio práctico es reforzar y estimar el proceso de cosntrucción de índices ponderados y no ponderados, así como también la construcción y validación de escalas en R.</span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ejercicio práctico</span></span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar librerías</span></span>
-<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>Las librerías que utilizaremos esta sesión son las siguientes:</span>
-<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
-<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
-<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pacman)</span></span>
-<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
-<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
-<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
-<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>               sjmisc    <span class="co"># para descriptivos</span></span>
-<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>               )</span>
-<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span>
-<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datos y variables</span></span>
-<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>Como mencionamos, utilizaremos la base de datos de ELSOC, específicamente el módulo de **Satisfacción residencial**. Este módulo incluye dos conceptos: </span>
-<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a>1) Satisfacción con la vivienda (2 items) </span>
-<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Tamaño de la vivienda</span>
-<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-60"><a href="#cb27-60" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Calidad de la vivienda</span>
-<span id="cb27-61"><a href="#cb27-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-62"><a href="#cb27-62" aria-hidden="true" tabindex="-1"></a>2) satisfacción con el barrio (8 items):</span>
-<span id="cb27-63"><a href="#cb27-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-64"><a href="#cb27-64" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>conectividad del barrio</span>
-<span id="cb27-65"><a href="#cb27-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-66"><a href="#cb27-66" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con el comercio</span>
-<span id="cb27-67"><a href="#cb27-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-68"><a href="#cb27-68" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con colegios</span>
-<span id="cb27-69"><a href="#cb27-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-70"><a href="#cb27-70" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con familiares </span>
-<span id="cb27-71"><a href="#cb27-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-72"><a href="#cb27-72" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con la principal actividad de trabajo</span>
-<span id="cb27-73"><a href="#cb27-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-74"><a href="#cb27-74" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>limpieza del barrio</span>
-<span id="cb27-75"><a href="#cb27-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-76"><a href="#cb27-76" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>cantidad de áreas verdes </span>
-<span id="cb27-77"><a href="#cb27-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-78"><a href="#cb27-78" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>seguridad del barrio.</span>
-<span id="cb27-79"><a href="#cb27-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-80"><a href="#cb27-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-81"><a href="#cb27-81" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cargar base de datos</span></span>
-<span id="cb27-82"><a href="#cb27-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-83"><a href="#cb27-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
-<span id="cb27-84"><a href="#cb27-84" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://dataverse.harvard.edu/api/access/datafile/7245118"</span>)) <span class="co">#Cargar base de datos</span></span>
-<span id="cb27-85"><a href="#cb27-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-86"><a href="#cb27-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-87"><a href="#cb27-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-88"><a href="#cb27-88" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualización de datos</span></span>
-<span id="cb27-89"><a href="#cb27-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-92"><a href="#cb27-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-93"><a href="#cb27-93" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_long_2016_2022<span class="fl">.2</span>)</span>
-<span id="cb27-94"><a href="#cb27-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-95"><a href="#cb27-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-96"><a href="#cb27-96" aria-hidden="true" tabindex="-1"></a>Debido a la naturaleza longitudinal de ELSOC, la base de datos contiene 18035 casos (las mismas personas durante 6 años) y 750 variables (las mismas variables en 6 periodos distintos). Por lo tanto, para simplificar el proceso de análisis de este práctico trabajaremos solo con los casos y variables de quienes participaron en la primera ola (2016)</span>
-<span id="cb27-97"><a href="#cb27-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-98"><a href="#cb27-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filtrar base de datos</span></span>
-<span id="cb27-99"><a href="#cb27-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-102"><a href="#cb27-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-103"><a href="#cb27-103" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(elsoc_long_2016_2022<span class="fl">.2</span><span class="sc">$</span>ola)</span>
-<span id="cb27-104"><a href="#cb27-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-105"><a href="#cb27-105" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span>  <span class="co"># Seleccionamos solo los casos de la ola 1</span></span>
-<span id="cb27-106"><a href="#cb27-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08, <span class="co">#satisfacción con el barrio</span></span>
-<span id="cb27-107"><a href="#cb27-107" aria-hidden="true" tabindex="-1"></a>         t07_01, t07_02) <span class="co"># satisfacción con la vivienda</span></span>
-<span id="cb27-108"><a href="#cb27-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-109"><a href="#cb27-109" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
-<span id="cb27-110"><a href="#cb27-110" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>t06_01)</span>
-<span id="cb27-111"><a href="#cb27-111" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>t06_05)</span>
-<span id="cb27-112"><a href="#cb27-112" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>t07_01)</span>
-<span id="cb27-113"><a href="#cb27-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-114"><a href="#cb27-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-115"><a href="#cb27-115" aria-hidden="true" tabindex="-1"></a>Podemos ver que tenemos valores de 1 a 5, que según el libro de códigos corresponden a: Totalmente insatisfecho | Insatisfecho | Ni satisfecho ni insatisfecho | Satisfecho | Totalmente satisfecho.</span>
-<span id="cb27-116"><a href="#cb27-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-117"><a href="#cb27-117" aria-hidden="true" tabindex="-1"></a>Y además valores -999 y -888 que corresponde a "No sabe" y "No responde".</span>
-<span id="cb27-118"><a href="#cb27-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-119"><a href="#cb27-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Recodificar</span></span>
-<span id="cb27-120"><a href="#cb27-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-121"><a href="#cb27-121" aria-hidden="true" tabindex="-1"></a>Recodificamos los valores -888 en NA</span>
-<span id="cb27-122"><a href="#cb27-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-123"><a href="#cb27-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
-<span id="cb27-124"><a href="#cb27-124" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb27-125"><a href="#cb27-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">999</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-126"><a href="#cb27-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb27-127"><a href="#cb27-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-128"><a href="#cb27-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-129"><a href="#cb27-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medición de satisfacción residencial con índice no ponderado</span></span>
-<span id="cb27-130"><a href="#cb27-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-131"><a href="#cb27-131" aria-hidden="true" tabindex="-1"></a>Con la función *mutate* creamos una nueva variable que contenga el promedio simple de indicadores (suponinendo que cada item tiene el mismo peso).</span>
-<span id="cb27-132"><a href="#cb27-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-135"><a href="#cb27-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-136"><a href="#cb27-136" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb27-137"><a href="#cb27-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb27-138"><a href="#cb27-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">satisfaccion_nopond =</span> <span class="fu">mean</span>(<span class="fu">c</span>(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08, </span>
-<span id="cb27-139"><a href="#cb27-139" aria-hidden="true" tabindex="-1"></a>                                      t07_01, t07_02))</span>
-<span id="cb27-140"><a href="#cb27-140" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-141"><a href="#cb27-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb27-142"><a href="#cb27-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-143"><a href="#cb27-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-144"><a href="#cb27-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-147"><a href="#cb27-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-148"><a href="#cb27-148" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_nopond)</span>
-<span id="cb27-149"><a href="#cb27-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-150"><a href="#cb27-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-151"><a href="#cb27-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medición de satisfacción residencial con índice ponderado</span></span>
-<span id="cb27-152"><a href="#cb27-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-153"><a href="#cb27-153" aria-hidden="true" tabindex="-1"></a>si consideramos la dimensión de satisfacción con la vivienda como un indicador de mayor relevancia, podríamos suponer que ambos items de esta dimensión (tamaño y calidad) tienen el mismo peso que los 8 items de satisfacción con el barrio (es decir, que mientras cada item de satisfacción con el barrio equivale a un 6.25%, los items de satisfacción con la vivienda equivalen a un 25% cada uno).</span>
-<span id="cb27-154"><a href="#cb27-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-155"><a href="#cb27-155" aria-hidden="true" tabindex="-1"></a>Para estimar este índnice, primero separamos los items por dimensión:</span>
-<span id="cb27-156"><a href="#cb27-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-159"><a href="#cb27-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-160"><a href="#cb27-160" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb27-161"><a href="#cb27-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb27-162"><a href="#cb27-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">barrio =</span> <span class="fu">mean</span>(<span class="fu">c</span>(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08)),</span>
-<span id="cb27-163"><a href="#cb27-163" aria-hidden="true" tabindex="-1"></a>         <span class="at">vivienda =</span> <span class="fu">mean</span>(<span class="fu">c</span>(t07_01, t07_02))</span>
-<span id="cb27-164"><a href="#cb27-164" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-165"><a href="#cb27-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb27-166"><a href="#cb27-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-167"><a href="#cb27-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-168"><a href="#cb27-168" aria-hidden="true" tabindex="-1"></a>Luego, estimamos el índice otorgándole un 50% de peso a cada dimensión:</span>
-<span id="cb27-169"><a href="#cb27-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-172"><a href="#cb27-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-173"><a href="#cb27-173" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb27-174"><a href="#cb27-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb27-175"><a href="#cb27-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">satisfaccion_pond =</span> (barrio<span class="sc">*</span><span class="fl">0.5</span>) <span class="sc">+</span> (vivienda<span class="sc">*</span><span class="fl">0.5</span>)) <span class="sc">%&gt;%</span>  </span>
-<span id="cb27-176"><a href="#cb27-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb27-177"><a href="#cb27-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-178"><a href="#cb27-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-181"><a href="#cb27-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-182"><a href="#cb27-182" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_pond)</span>
-<span id="cb27-183"><a href="#cb27-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-184"><a href="#cb27-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-185"><a href="#cb27-185" aria-hidden="true" tabindex="-1"></a>Podemos comparar:</span>
-<span id="cb27-186"><a href="#cb27-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-187"><a href="#cb27-187" aria-hidden="true" tabindex="-1"></a>indice ponderado:</span>
-<span id="cb27-188"><a href="#cb27-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-191"><a href="#cb27-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-192"><a href="#cb27-192" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_pond)</span>
-<span id="cb27-193"><a href="#cb27-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-194"><a href="#cb27-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-195"><a href="#cb27-195" aria-hidden="true" tabindex="-1"></a>indice no ponderado:</span>
-<span id="cb27-196"><a href="#cb27-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-199"><a href="#cb27-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-200"><a href="#cb27-200" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_nopond)</span>
-<span id="cb27-201"><a href="#cb27-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb57" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico R 3. Repaso construcción de indices y escalas"</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-10-26"</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="an">website:</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co">  comments:</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co">    giscus:</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co">      repo: kevin-carrasco/investigacion-cuantitativa</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, cache = TRUE}</span></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"knitr"</span>)</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">warning=</span><span class="cn">FALSE</span>,</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">message=</span><span class="cn">FALSE</span>,</span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">echo=</span><span class="cn">TRUE</span>,</span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">cache =</span> <span class="cn">TRUE</span>, <span class="at">fig.width=</span><span class="dv">7</span>, <span class="at">fig.height=</span><span class="fl">5.2</span>)</span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>Para el taller práctico de hoy utilizaremos la base de datos del Estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social <span class="co">[</span><span class="ot">COES</span><span class="co">](https://coes.cl/)</span>.</span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>El Estudio Longitudinal Social del Chile <span class="co">[</span><span class="ot">ELSOC</span><span class="co">](https://coes.cl/encuesta-panel/)</span>, único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad, tiene una representación de la población nacional urbana, donde se obtuvo una muestra original de **2927** casos en el año 2016 y mantiene **1728** en 2022, además de una muestra de refresco en 2018.</span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo general</span></span>
+<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a>El objetivo de este ejercicio práctico es reforzar y estimar el proceso de construcción de índices ponderados y no ponderados, así como también la construcción y validación de escalas en R.</span>
+<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ejercicio práctico Índices</span></span>
+<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar librerías</span></span>
+<span id="cb57-35"><a href="#cb57-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-36"><a href="#cb57-36" aria-hidden="true" tabindex="-1"></a>Las librerías que utilizaremos esta sesión son las siguientes:</span>
+<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb57-39"><a href="#cb57-39" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
+<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb57-41"><a href="#cb57-41" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
+<span id="cb57-43"><a href="#cb57-43" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para Alfa de Chronbach</span></span>
+<span id="cb57-44"><a href="#cb57-44" aria-hidden="true" tabindex="-1"></a>               sjmisc)    <span class="co"># para descriptivos</span></span>
+<span id="cb57-45"><a href="#cb57-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-46"><a href="#cb57-46" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb57-47"><a href="#cb57-47" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())       <span class="co"># para limpiar el entorno de trabajo</span></span>
+<span id="cb57-48"><a href="#cb57-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-49"><a href="#cb57-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-50"><a href="#cb57-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-51"><a href="#cb57-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datos y variables</span></span>
+<span id="cb57-52"><a href="#cb57-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-53"><a href="#cb57-53" aria-hidden="true" tabindex="-1"></a>Para el ejercicio de índices, utilizaremos la base de datos de ELSOC, específicamente el módulo de **Satisfacción residencial**. Este módulo incluye dos conceptos: </span>
+<span id="cb57-54"><a href="#cb57-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-55"><a href="#cb57-55" aria-hidden="true" tabindex="-1"></a>1) Satisfacción con la vivienda (2 items) </span>
+<span id="cb57-56"><a href="#cb57-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Tamaño de la vivienda</span>
+<span id="cb57-58"><a href="#cb57-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Calidad de la vivienda</span>
+<span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a>2) satisfacción con el barrio (8 items):</span>
+<span id="cb57-62"><a href="#cb57-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-63"><a href="#cb57-63" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>conectividad del barrio</span>
+<span id="cb57-64"><a href="#cb57-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-65"><a href="#cb57-65" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con el comercio</span>
+<span id="cb57-66"><a href="#cb57-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-67"><a href="#cb57-67" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con colegios</span>
+<span id="cb57-68"><a href="#cb57-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-69"><a href="#cb57-69" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con familiares </span>
+<span id="cb57-70"><a href="#cb57-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-71"><a href="#cb57-71" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>proximidad con la principal actividad de trabajo</span>
+<span id="cb57-72"><a href="#cb57-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-73"><a href="#cb57-73" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>limpieza del barrio</span>
+<span id="cb57-74"><a href="#cb57-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-75"><a href="#cb57-75" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>cantidad de áreas verdes </span>
+<span id="cb57-76"><a href="#cb57-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-77"><a href="#cb57-77" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>seguridad del barrio.</span>
+<span id="cb57-78"><a href="#cb57-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-79"><a href="#cb57-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-80"><a href="#cb57-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cargar base de datos</span></span>
+<span id="cb57-81"><a href="#cb57-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-82"><a href="#cb57-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb57-83"><a href="#cb57-83" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://dataverse.harvard.edu/api/access/datafile/7245118"</span>)) <span class="co">#Cargar base de datos</span></span>
+<span id="cb57-84"><a href="#cb57-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-85"><a href="#cb57-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-86"><a href="#cb57-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-87"><a href="#cb57-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualización de datos</span></span>
+<span id="cb57-88"><a href="#cb57-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-91"><a href="#cb57-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-92"><a href="#cb57-92" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_long_2016_2022<span class="fl">.2</span>)</span>
+<span id="cb57-93"><a href="#cb57-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-94"><a href="#cb57-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-95"><a href="#cb57-95" aria-hidden="true" tabindex="-1"></a>Debido a la naturaleza longitudinal de ELSOC, la base de datos contiene 18035 casos (las mismas personas durante 6 años) y 750 variables (las mismas variables en 6 periodos distintos). Por lo tanto, para simplificar el proceso de análisis de este práctico trabajaremos solo con los casos y variables de quienes participaron en la primera ola (2016)</span>
+<span id="cb57-96"><a href="#cb57-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-97"><a href="#cb57-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filtrar base de datos</span></span>
+<span id="cb57-98"><a href="#cb57-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-101"><a href="#cb57-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-102"><a href="#cb57-102" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(elsoc_long_2016_2022<span class="fl">.2</span><span class="sc">$</span>ola)</span>
+<span id="cb57-103"><a href="#cb57-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-104"><a href="#cb57-104" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span>  <span class="co"># Seleccionamos solo los casos de la ola 1</span></span>
+<span id="cb57-105"><a href="#cb57-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08, <span class="co">#satisfacción con el barrio</span></span>
+<span id="cb57-106"><a href="#cb57-106" aria-hidden="true" tabindex="-1"></a>         t07_01, t07_02) <span class="co"># satisfacción con la vivienda</span></span>
+<span id="cb57-107"><a href="#cb57-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-108"><a href="#cb57-108" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
+<span id="cb57-109"><a href="#cb57-109" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>t06_01)</span>
+<span id="cb57-110"><a href="#cb57-110" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>t06_05)</span>
+<span id="cb57-111"><a href="#cb57-111" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>t07_01)</span>
+<span id="cb57-112"><a href="#cb57-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-113"><a href="#cb57-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-114"><a href="#cb57-114" aria-hidden="true" tabindex="-1"></a>Podemos ver que tenemos valores de 1 a 5, que según el libro de códigos corresponden a: Totalmente insatisfecho | Insatisfecho | Ni satisfecho ni insatisfecho | Satisfecho | Totalmente satisfecho.</span>
+<span id="cb57-115"><a href="#cb57-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-116"><a href="#cb57-116" aria-hidden="true" tabindex="-1"></a>Y además valores -999 y -888 que corresponde a "No sabe" y "No responde".</span>
+<span id="cb57-117"><a href="#cb57-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-118"><a href="#cb57-118" aria-hidden="true" tabindex="-1"></a><span class="fu">### Recodificar</span></span>
+<span id="cb57-119"><a href="#cb57-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-120"><a href="#cb57-120" aria-hidden="true" tabindex="-1"></a>Recodificamos los valores -888 en NA</span>
+<span id="cb57-121"><a href="#cb57-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-122"><a href="#cb57-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb57-123"><a href="#cb57-123" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb57-124"><a href="#cb57-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">999</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-125"><a href="#cb57-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb57-126"><a href="#cb57-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-127"><a href="#cb57-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-128"><a href="#cb57-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medición de satisfacción residencial con índice no ponderado</span></span>
+<span id="cb57-129"><a href="#cb57-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-130"><a href="#cb57-130" aria-hidden="true" tabindex="-1"></a>Con la función *mutate* creamos una nueva variable que contenga el promedio simple de indicadores (suponinendo que cada item tiene el mismo peso).</span>
+<span id="cb57-131"><a href="#cb57-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-134"><a href="#cb57-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-135"><a href="#cb57-135" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb57-136"><a href="#cb57-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-137"><a href="#cb57-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">satisfaccion_nopond =</span> <span class="fu">mean</span>(<span class="fu">c</span>(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08, </span>
+<span id="cb57-138"><a href="#cb57-138" aria-hidden="true" tabindex="-1"></a>                                      t07_01, t07_02))</span>
+<span id="cb57-139"><a href="#cb57-139" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-140"><a href="#cb57-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb57-141"><a href="#cb57-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-142"><a href="#cb57-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-143"><a href="#cb57-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-146"><a href="#cb57-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-147"><a href="#cb57-147" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_nopond)</span>
+<span id="cb57-148"><a href="#cb57-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-149"><a href="#cb57-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-150"><a href="#cb57-150" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medición de satisfacción residencial con índice ponderado</span></span>
+<span id="cb57-151"><a href="#cb57-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-152"><a href="#cb57-152" aria-hidden="true" tabindex="-1"></a>si consideramos la dimensión de satisfacción con la vivienda como un indicador de mayor relevancia, podríamos suponer que ambos ítems de esta dimensión (tamaño y calidad) tienen el mismo peso que los 8 ítems de satisfacción con el barrio (es decir, que mientras cada ítem de satisfacción con el barrio equivale a un 6.25%, los items de satisfacción con la vivienda equivalen a un 25% cada uno).</span>
+<span id="cb57-153"><a href="#cb57-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-154"><a href="#cb57-154" aria-hidden="true" tabindex="-1"></a>Para estimar este índnice, primero separamos los items por dimensión:</span>
+<span id="cb57-155"><a href="#cb57-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-158"><a href="#cb57-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-159"><a href="#cb57-159" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb57-160"><a href="#cb57-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-161"><a href="#cb57-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">barrio =</span> <span class="fu">mean</span>(<span class="fu">c</span>(t06_01, t06_02, t06_03, t06_04, t06_05, t06_06, t06_07, t06_07, t06_08)),</span>
+<span id="cb57-162"><a href="#cb57-162" aria-hidden="true" tabindex="-1"></a>         <span class="at">vivienda =</span> <span class="fu">mean</span>(<span class="fu">c</span>(t07_01, t07_02))</span>
+<span id="cb57-163"><a href="#cb57-163" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-164"><a href="#cb57-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb57-165"><a href="#cb57-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-166"><a href="#cb57-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-167"><a href="#cb57-167" aria-hidden="true" tabindex="-1"></a>Luego, estimamos el índice otorgándole un 50% de peso a cada dimensión:</span>
+<span id="cb57-168"><a href="#cb57-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-171"><a href="#cb57-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-172"><a href="#cb57-172" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb57-173"><a href="#cb57-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-174"><a href="#cb57-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">satisfaccion_pond =</span> (barrio<span class="sc">*</span><span class="fl">0.5</span>) <span class="sc">+</span> (vivienda<span class="sc">*</span><span class="fl">0.5</span>)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb57-175"><a href="#cb57-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb57-176"><a href="#cb57-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-177"><a href="#cb57-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-180"><a href="#cb57-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-181"><a href="#cb57-181" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_pond)</span>
+<span id="cb57-182"><a href="#cb57-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-183"><a href="#cb57-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-184"><a href="#cb57-184" aria-hidden="true" tabindex="-1"></a>Podemos comparar:</span>
+<span id="cb57-185"><a href="#cb57-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-186"><a href="#cb57-186" aria-hidden="true" tabindex="-1"></a>indice ponderado:</span>
+<span id="cb57-187"><a href="#cb57-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-190"><a href="#cb57-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-191"><a href="#cb57-191" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_pond)</span>
+<span id="cb57-192"><a href="#cb57-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-193"><a href="#cb57-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-194"><a href="#cb57-194" aria-hidden="true" tabindex="-1"></a>indice no ponderado:</span>
+<span id="cb57-195"><a href="#cb57-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-198"><a href="#cb57-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-199"><a href="#cb57-199" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>satisfaccion_nopond)</span>
+<span id="cb57-200"><a href="#cb57-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-201"><a href="#cb57-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-202"><a href="#cb57-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-203"><a href="#cb57-203" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ejercicio práctico Escalas</span></span>
+<span id="cb57-204"><a href="#cb57-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-205"><a href="#cb57-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-206"><a href="#cb57-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar librerías</span></span>
+<span id="cb57-207"><a href="#cb57-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-208"><a href="#cb57-208" aria-hidden="true" tabindex="-1"></a>Las librerías que utilizaremos este ejercicio son las siguientes:</span>
+<span id="cb57-209"><a href="#cb57-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-210"><a href="#cb57-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb57-211"><a href="#cb57-211" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") # Cargar sólo si no la tenemos instalada</span></span>
+<span id="cb57-212"><a href="#cb57-212" aria-hidden="true" tabindex="-1"></a><span class="co"># library(pacman)</span></span>
+<span id="cb57-213"><a href="#cb57-213" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(<span class="co"># tidyverse, # conjunto de paquetes, sobre todo dplyr y ggplot2</span></span>
+<span id="cb57-214"><a href="#cb57-214" aria-hidden="true" tabindex="-1"></a>               <span class="co"># car,       # para recodificar</span></span>
+<span id="cb57-215"><a href="#cb57-215" aria-hidden="true" tabindex="-1"></a>               <span class="co"># psych,     # para Alfa de Chronbach</span></span>
+<span id="cb57-216"><a href="#cb57-216" aria-hidden="true" tabindex="-1"></a>               <span class="co"># sjmisc,    # para descriptivos</span></span>
+<span id="cb57-217"><a href="#cb57-217" aria-hidden="true" tabindex="-1"></a>               remotes)   <span class="co"># para instalar paquete jogRu  </span></span>
+<span id="cb57-218"><a href="#cb57-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-219"><a href="#cb57-219" aria-hidden="true" tabindex="-1"></a><span class="co"># options(scipen = 999) # para desactivar notacion cientifica</span></span>
+<span id="cb57-220"><a href="#cb57-220" aria-hidden="true" tabindex="-1"></a><span class="co"># rm(list = ls())       # para limpiar el entorno de trabajo</span></span>
+<span id="cb57-221"><a href="#cb57-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-222"><a href="#cb57-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-223"><a href="#cb57-223" aria-hidden="true" tabindex="-1"></a>Además, instalaremos la librería <span class="in">`jogRu`</span> desde github, que nos permitirá calcular el alfa de Chronbach para variables ordinales.</span>
+<span id="cb57-224"><a href="#cb57-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-225"><a href="#cb57-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb57-226"><a href="#cb57-226" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jogrue/jogRu"</span>, <span class="at">force =</span> T)</span>
+<span id="cb57-227"><a href="#cb57-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-228"><a href="#cb57-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-229"><a href="#cb57-229" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb57-230"><a href="#cb57-230" aria-hidden="true" tabindex="-1"></a>Si pregunta *These packages have more recent versions available. It is recommended to update all of them.Which would you like to update?* SIEMPRE PONER 3: None.</span>
+<span id="cb57-231"><a href="#cb57-231" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb57-232"><a href="#cb57-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-233"><a href="#cb57-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-234"><a href="#cb57-234" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datos y variables</span></span>
+<span id="cb57-235"><a href="#cb57-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-236"><a href="#cb57-236" aria-hidden="true" tabindex="-1"></a>Para el ejercicio de escalas, utilizaremos nuevamente la base de datos de ELSOC (que ya se enceuntra cargada), específicamente el módulo de **Salud y Bienestar**. De este módulo utilizaremos un concepto en particular llamado *Estado de ánimo: sintomatología depresiva* con los ítems:</span>
+<span id="cb57-237"><a href="#cb57-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-238"><a href="#cb57-238" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Poco interés o alegría</span>
+<span id="cb57-239"><a href="#cb57-239" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Decaimiento, pesadez o desesperanza</span>
+<span id="cb57-240"><a href="#cb57-240" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Dificultad para dormir o exceso de sueño</span>
+<span id="cb57-241"><a href="#cb57-241" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Cansancio o sensación de falta de energía</span>
+<span id="cb57-242"><a href="#cb57-242" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Apetito disminuido o aumentado</span>
+<span id="cb57-243"><a href="#cb57-243" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Dificultad para concentrarse</span>
+<span id="cb57-244"><a href="#cb57-244" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Mala opinión de sí mismo</span>
+<span id="cb57-245"><a href="#cb57-245" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Enlentecimiento físico</span>
+<span id="cb57-246"><a href="#cb57-246" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Frecuencia: Pensamiento de muerte o dañarse</span>
+<span id="cb57-247"><a href="#cb57-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-248"><a href="#cb57-248" aria-hidden="true" tabindex="-1"></a>Esta escala tiene solamente una dimensión, por lo que no es necesario crear objetos que contengan a cada dimensión (como vimos la clase pasada).</span>
+<span id="cb57-249"><a href="#cb57-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-250"><a href="#cb57-250" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filtrar base de datos</span></span>
+<span id="cb57-251"><a href="#cb57-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-252"><a href="#cb57-252" aria-hidden="true" tabindex="-1"></a>Al igual que en el ejercicio anterior, filtraremos la base de datos para quedarnos con las observaciones correspondientes solamente a la ola 1, y además seleccionaremos los ítems de interés.</span>
+<span id="cb57-253"><a href="#cb57-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-256"><a href="#cb57-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-257"><a href="#cb57-257" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ola<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span>  <span class="co"># seleccionamos solo los casos de la ola 1</span></span>
+<span id="cb57-258"><a href="#cb57-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09) <span class="co"># items sintomatologia depresiva</span></span>
+<span id="cb57-259"><a href="#cb57-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-260"><a href="#cb57-260" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data2)</span>
+<span id="cb57-261"><a href="#cb57-261" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_01)</span>
+<span id="cb57-262"><a href="#cb57-262" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_02)</span>
+<span id="cb57-263"><a href="#cb57-263" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_03)</span>
+<span id="cb57-264"><a href="#cb57-264" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_04)</span>
+<span id="cb57-265"><a href="#cb57-265" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_05)</span>
+<span id="cb57-266"><a href="#cb57-266" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_06)</span>
+<span id="cb57-267"><a href="#cb57-267" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_07)</span>
+<span id="cb57-268"><a href="#cb57-268" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_08)</span>
+<span id="cb57-269"><a href="#cb57-269" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>s11_09)</span>
+<span id="cb57-270"><a href="#cb57-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-271"><a href="#cb57-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-272"><a href="#cb57-272" aria-hidden="true" tabindex="-1"></a>Estos ítems cuentan con las mismas categorías de respuesta: (1) Nunca, (2) Algunos dias, (3) Mas de la mitad de los dias, (4) Casi todos los dias, y (5) Todos los dias. Además de los valores codificados como -888 y -999.</span>
+<span id="cb57-273"><a href="#cb57-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-274"><a href="#cb57-274" aria-hidden="true" tabindex="-1"></a><span class="fu">### Recodificar</span></span>
+<span id="cb57-275"><a href="#cb57-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-276"><a href="#cb57-276" aria-hidden="true" tabindex="-1"></a>Recodificamos los valores -888 y -999 en NA y eliminamos los NAs.</span>
+<span id="cb57-277"><a href="#cb57-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-278"><a href="#cb57-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE}</span></span>
+<span id="cb57-279"><a href="#cb57-279" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb57-280"><a href="#cb57-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">999</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-281"><a href="#cb57-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb57-282"><a href="#cb57-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-283"><a href="#cb57-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-284"><a href="#cb57-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-285"><a href="#cb57-285" aria-hidden="true" tabindex="-1"></a><span class="fu">## Análisis</span></span>
+<span id="cb57-286"><a href="#cb57-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-287"><a href="#cb57-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-288"><a href="#cb57-288" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar correlación</span></span>
+<span id="cb57-289"><a href="#cb57-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-290"><a href="#cb57-290" aria-hidden="true" tabindex="-1"></a>Dado que la escala tiene solamente una dimensión, estimaremos la correlación de toda la escala.</span>
+<span id="cb57-291"><a href="#cb57-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-294"><a href="#cb57-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-295"><a href="#cb57-295" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data2)</span>
+<span id="cb57-296"><a href="#cb57-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-297"><a href="#cb57-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-298"><a href="#cb57-298" aria-hidden="true" tabindex="-1"></a>Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.</span>
+<span id="cb57-299"><a href="#cb57-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-300"><a href="#cb57-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-301"><a href="#cb57-301" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estimar consistencia interna</span></span>
+<span id="cb57-302"><a href="#cb57-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-303"><a href="#cb57-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-304"><a href="#cb57-304" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa de Chronbach</span></span>
+<span id="cb57-305"><a href="#cb57-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-306"><a href="#cb57-306" aria-hidden="true" tabindex="-1"></a>Primero, estimaremos la consistencia interna de cada dimensión con un **Alfa de Chronbach**.</span>
+<span id="cb57-307"><a href="#cb57-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-310"><a href="#cb57-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-311"><a href="#cb57-311" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(data2)</span>
+<span id="cb57-312"><a href="#cb57-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb57-313"><a href="#cb57-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-314"><a href="#cb57-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-315"><a href="#cb57-315" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alfa Ordinal</span></span>
+<span id="cb57-316"><a href="#cb57-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-317"><a href="#cb57-317" aria-hidden="true" tabindex="-1"></a>Ahora, estimaremos la consistencia interna de cada dimensión con un **Alfa Ordinal**, ya que en estricto rigor estamos trabajando con una variable ordinal.</span>
+<span id="cb57-318"><a href="#cb57-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-321"><a href="#cb57-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-322"><a href="#cb57-322" aria-hidden="true" tabindex="-1"></a>jogRu<span class="sc">::</span><span class="fu">ordinal_alpha</span>(data2)</span>
+<span id="cb57-323"><a href="#cb57-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/Kevin-carrasco/investigacion-cuantitativa">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
   </div>
 </footer>

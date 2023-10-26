@@ -50,7 +50,7 @@ options(scipen = 999) # para desactivar notacion cientifica
 rm(list = ls())       # para limpiar el entorno de trabajo
 ```
 
-Además, instalaremos la librería `jogRu` desde github, que nos permitirá calculr el alfa de Chronbach para variables ordinales.
+Además, instalaremos la librería `jogRu` desde github, que nos permitirá calcular el alfa de Chronbach para variables ordinales.
 
 ```{r, message=FALSE, warning=FALSE}
 remotes::install_github("jogrue/jogRu", force = T)

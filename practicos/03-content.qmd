@@ -19,16 +19,16 @@ opts_chunk$set(warning=FALSE,
 
 # Presentación
 
-Para el taller práctico de hoy utilizaremos la base de datos del estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social [COES](https://coes.cl/).
+Para el taller práctico de hoy utilizaremos la base de datos del Estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social [COES](https://coes.cl/).
 
-El Estudio Longitudinal Social del Chile [ELSOC](https://coes.cl/encuesta-panel/), único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad con un alcance nacional, donde se obtuvo una muestra inicial de **2927** casos en el año 2016 y mantiene **1728** en 2022.
+El Estudio Longitudinal Social del Chile [ELSOC](https://coes.cl/encuesta-panel/), único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad, tiene una representación de la población nacional urbana, donde se obtuvo una muestra original de **2927** casos en el año 2016 y mantiene **1728** en 2022, además de una muestra de refresco en 2018.
 
 # Objetivo general
 
-El objetivo de este ejercicio práctico es reforzar y estimar el proceso de cosntrucción de índices ponderados y no ponderados, así como también la construcción y validación de escalas en R.
+El objetivo de este ejercicio práctico es reforzar y estimar el proceso de construcción de índices ponderados y no ponderados, así como también la construcción y validación de escalas en R.
 
 
-# Ejercicio práctico
+# Ejercicio práctico Índices
 
 
 ## Cargar librerías
@@ -37,12 +37,11 @@ Las librerías que utilizaremos esta sesión son las siguientes:
 
 ```{r, message=FALSE, warning=FALSE}
 # install.packages("pacman") # Cargar sólo si no la tenemos instalada
-#library(pacman)
+library(pacman)
 pacman::p_load(tidyverse, # conjunto de paquetes, sobre todo dplyr y ggplot2
                car,       # para recodificar
                psych,     # para Alfa de Chronbach
-               sjmisc    # para descriptivos
-               )
+               sjmisc)    # para descriptivos
 
 options(scipen = 999) # para desactivar notacion cientifica
 rm(list = ls())       # para limpiar el entorno de trabajo
@@ -51,7 +50,7 @@ rm(list = ls())       # para limpiar el entorno de trabajo
 
 ## Datos y variables
 
-Como mencionamos, utilizaremos la base de datos de ELSOC, específicamente el módulo de **Satisfacción residencial**. Este módulo incluye dos conceptos: 
+Para el ejercicio de índices, utilizaremos la base de datos de ELSOC, específicamente el módulo de **Satisfacción residencial**. Este módulo incluye dos conceptos: 
 
 1) Satisfacción con la vivienda (2 items) 
 
@@ -142,7 +141,7 @@ summary(data$satisfaccion_nopond)
 
 ## Medición de satisfacción residencial con índice ponderado
 
-si consideramos la dimensión de satisfacción con la vivienda como un indicador de mayor relevancia, podríamos suponer que ambos items de esta dimensión (tamaño y calidad) tienen el mismo peso que los 8 items de satisfacción con el barrio (es decir, que mientras cada item de satisfacción con el barrio equivale a un 6.25%, los items de satisfacción con la vivienda equivalen a un 25% cada uno).
+si consideramos la dimensión de satisfacción con la vivienda como un indicador de mayor relevancia, podríamos suponer que ambos ítems de esta dimensión (tamaño y calidad) tienen el mismo peso que los 8 ítems de satisfacción con el barrio (es decir, que mientras cada ítem de satisfacción con el barrio equivale a un 6.25%, los items de satisfacción con la vivienda equivalen a un 25% cada uno).
 
 Para estimar este índnice, primero separamos los items por dimensión:
 
@@ -180,5 +179,120 @@ indice no ponderado:
 
 ```{r}
 summary(data$satisfaccion_nopond)
+```
+
+
+# Ejercicio práctico Escalas
+
+
+## Cargar librerías
+
+Las librerías que utilizaremos este ejercicio son las siguientes:
+
+```{r, message=FALSE, warning=FALSE}
+# install.packages("pacman") # Cargar sólo si no la tenemos instalada
+# library(pacman)
+pacman::p_load(# tidyverse, # conjunto de paquetes, sobre todo dplyr y ggplot2
+               # car,       # para recodificar
+               # psych,     # para Alfa de Chronbach
+               # sjmisc,    # para descriptivos
+               remotes)   # para instalar paquete jogRu  
+
+# options(scipen = 999) # para desactivar notacion cientifica
+# rm(list = ls())       # para limpiar el entorno de trabajo
+```
+
+Además, instalaremos la librería `jogRu` desde github, que nos permitirá calcular el alfa de Chronbach para variables ordinales.
+
+```{r, message=FALSE, warning=FALSE}
+remotes::install_github("jogrue/jogRu", force = T)
+```
+
+::: callout-note
+Si pregunta *These packages have more recent versions available. It is recommended to update all of them.Which would you like to update?* SIEMPRE PONER 3: None.
+:::
+
+
+## Datos y variables
+
+Para el ejercicio de escalas, utilizaremos nuevamente la base de datos de ELSOC (que ya se enceuntra cargada), específicamente el módulo de **Salud y Bienestar**. De este módulo utilizaremos un concepto en particular llamado *Estado de ánimo: sintomatología depresiva* con los ítems:
+
+- Frecuencia: Poco interés o alegría
+- Frecuencia: Decaimiento, pesadez o desesperanza
+- Frecuencia: Dificultad para dormir o exceso de sueño
+- Frecuencia: Cansancio o sensación de falta de energía
+- Frecuencia: Apetito disminuido o aumentado
+- Frecuencia: Dificultad para concentrarse
+- Frecuencia: Mala opinión de sí mismo
+- Frecuencia: Enlentecimiento físico
+- Frecuencia: Pensamiento de muerte o dañarse
+
+Esta escala tiene solamente una dimensión, por lo que no es necesario crear objetos que contengan a cada dimensión (como vimos la clase pasada).
+
+## Filtrar base de datos
+
+Al igual que en el ejercicio anterior, filtraremos la base de datos para quedarnos con las observaciones correspondientes solamente a la ola 1, y además seleccionaremos los ítems de interés.
+
+```{r}
+data2 <- elsoc_long_2016_2022.2 %>% filter(ola==1) %>%  # seleccionamos solo los casos de la ola 1
+  select(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09) # items sintomatologia depresiva
+
+head(data2)
+table(data2$s11_01)
+table(data2$s11_02)
+table(data2$s11_03)
+table(data2$s11_04)
+table(data2$s11_05)
+table(data2$s11_06)
+table(data2$s11_07)
+table(data2$s11_08)
+table(data2$s11_09)
+```
+
+Estos ítems cuentan con las mismas categorías de respuesta: (1) Nunca, (2) Algunos dias, (3) Mas de la mitad de los dias, (4) Casi todos los dias, y (5) Todos los dias. Además de los valores codificados como -888 y -999.
+
+### Recodificar
+
+Recodificamos los valores -888 y -999 en NA y eliminamos los NAs.
+
+```{r, message=FALSE, warning=FALSE}
+data2 <- data2 %>% 
+  set_na(., na = c(-888, -999)) %>% 
+  na.omit()
+```
+
+
+## Análisis
+
+
+### Estimar correlación
+
+Dado que la escala tiene solamente una dimensión, estimaremos la correlación de toda la escala.
+
+```{r}
+cor(data2)
+```
+
+Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.
+
+
+### Estimar consistencia interna
+
+
+#### Alfa de Chronbach
+
+Primero, estimaremos la consistencia interna de cada dimensión con un **Alfa de Chronbach**.
+
+```{r}
+psych::alpha(data2)
+```
+
+
+#### Alfa Ordinal
+
+Ahora, estimaremos la consistencia interna de cada dimensión con un **Alfa Ordinal**, ya que en estricto rigor estamos trabajando con una variable ordinal.
+
+```{r}
+jogRu::ordinal_alpha(data2)
 ```
 
