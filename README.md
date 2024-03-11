@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-# Estrategias de investigación cuantitativa
+# R para el análisis de datos
 
-Sitio web: [https://investigacion-cuantitativa.netlify.app](https://investigacion-cuantitativa.netlify.app)  
+Sitio web: [https://R-data-analisis.netlify.app](https://R-data-analisis.netlify.app)  
