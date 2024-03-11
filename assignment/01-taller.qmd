@@ -1,90 +1,187 @@
 ---
-title: "Taller 1. Niveles de medición y construcción de items"
-date: "2023-08-24"
+title: "Práctico 1. Aproximación inicial a R"
+subtitle: "R para análisis estadístico"
+linktitle: "Práctico 1: Aproximación R"
+date: "2023-03-17"
 lang: es
-website:
-  comments:
-    giscus:
-      repo: kevin-carrasco/investigacion-cuantitativa
 ---
 
-```{r setup, include=FALSE, cache = TRUE}
-require("knitr")
-opts_chunk$set(warning=FALSE,
-             message=FALSE,
-             echo=TRUE,
-             cache = TRUE, fig.width=7, fig.height=5.2)
+# Presentación
+
+## Objetivos de la práctica
+
+Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
+
+## R y Rstudio
+
+### Guía de instalación
+
+1. Acceder a la página de [posit](https://posit.co/), desarrollador del software desde octubre de 2022. Link directo a la descarga [acá](https://posit.co/download/rstudio-desktop/).
+
+2. Instalar R y Rstudio
+
+![](images/installR1.png)
+
+  a) Descargar R 
+    
+  - Seleccionamos sistema operativo según corresponda
+    
+  ![](images/installR2.png)
+    
+  - Descargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.2.2
+  
+  ![](images/installR3.png)
+
+
+  b) Descargar RStudio
+    
+  - Descarga directa en la página de inicio
+    
+  c) Instalar ambos archivos siguiendo las instrucciones de instalación
+
+3. Abrir RStudio. Se debería ver similar a esto:
+
+![](images/installR4.png)
+
+4. Recomendaciones generales:
+
+- evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables
+
+- al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:
+
+1. Código completo hasta que se produce el problema
+
+2. Indicar línea del código donde se produce el problema
+
+3. Adjuntar el resultado del output de la información de la sesión (sessionInfo())
+
+## Primeros pasos
+
+En primer lugar vamos a abrir un archivo de R (*script*). Esto se puede hacer manualmente con File -> new file -> R script o directamente con ctrl + shift + N
+
+Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.
+
+### 0. Ejemplos
+
+R puede ser una calculadora
+
+```{r}
+10 + 5 # ¿cuánto es 10 + 5?
 ```
 
-# Objetivo del taller
+```{r}
+10 * 5 # ¿cuánto es 10 * 5?
+```
 
-Reforzar conocimientos sobre niveles de medición y practicar la
-construcción de ítems.
+Se pueden crear objetos y asignarles valores
 
-# Instrucciones: 
+```{r}
+a <- 28
+b <- 8
 
-A continuación, se les presentarán diversos conceptos. En grupos conformados aleatoriamente por cuatro estudiantes
+a + b
+```
 
-a) Escojan tres de los conceptos enlistados al final del documento.
+O asignar operaciones a un objeto
 
-b) Formulen tres preguntas diferentes que permitan medir cada concepto.
+```{r}
+c <- a + b
+```
 
-c) Entre las tres preguntas formuladas se deben incorporar, al menos, dos niveles de medición distintos. Por ejemplo, de las tres preguntas formuladas, dos de ellas pueden tener un nivel de medición ordinal, y una de ellas un nivel de medición nominal.
+Sin embargo, la mayor parte del tiempo usamos funciones que ya existen en R
 
-d) Incluir las alternativas de respuesta asociadas a cada una de las preguntas. En caso de ser numéricas, definir el rango de valores posibles. Por ejemplo: (- ∞, +∞), [0, +∞), ]0, n], etc.
+```{r}
+sum(28,8)
+```
+```{r}
+round(10.14536) #aproximar
+```
 
-e) También pueden formular preguntas iguales con alternativas diferentes, siempre y cuando los niveles de medición de las formulaciones difieran.
+Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)
 
-f) Definan cuál de las tres formulaciones consideran que permite medir mejor cada concepto. Justifiquen la decisión en base a las limitaciones y potencialidades de cada una.
+### 1. Librerías principales (de R) a utilizar
 
-g) Se les entregará una hoja para realizar el taller. En ella deben especificar el título Taller 1, el nombre de l_s integrantes del equipo, y sus respectivas respuestas. Tendrán hasta las 13:25 para entregarlo.
-
-## Conceptos:
-
-1) Tiempo dedicado a viajar de la casa al trabajo.
-
-2) Identidad de género.
-
-3) Intención de voto en el plebiscito de salida 2023.
-
-4) Gusto por el deporte. 
-
-5) Tiempo dedicado a estar en redes sociales virtuales.
-
-6) Composición familiar.
-
-7) Identidad de clase.
-
-8) Percepción de seguridad.
-
-9) Percepción sobre carga académica.
-
-10) Trabajo de cuidados.
-
-11) Ingresos
-
-12) Satisfacción con el barrio
-
-13) Nivel de acuerdo con la educación gratuita
-
-14) Residencia
+La lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
 
 
+Para utilizar la primera vez (si es que no está instalada):
 
-## Ejemplo de trabajo
+```{r eval=FALSE}
+install.packages("pacman")
+```
 
-```{r echo=FALSE, error=FALSE, message=FALSE, results='hide', warning=FALSE}
-tab0 <- read.csv(file = "../files/taller1.csv",header = 1,sep = ";",encoding = "UTF-8")
-library(dplyr)
-library(kableExtra)
+Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:
+
+
+```{r}
+pacman::p_load(dplyr, guaguas)
 ```
 
 
-```{r echo=FALSE}
-tab0 %>% 
-knitr::kable("html", booktabs = T, linesep = "",col.names =  c("Conceptos", "Preguntas", "Alternativas",  "Nivel de medición", "Potencialidades", "Limitaciones", "Opción escogida")) %>%
-    kable_styling(bootstrap_options=c("striped", "hover", "condensed", "bordered"), full_width = F, font_size=14, position = "center", html_font = "Times new roman") %>% 
-  collapse_rows(columns = 1:7)
+Para esta sesión las librerías que vamos a utilizar son:
+
+- `dplyr`: ajuste general de datos
+
+- `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
+
+### 2. Cargar base de datos
+
+**Ajustar espacio de trabajo**
+
+Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:
+
+```{r}
+rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
+options(scipen=999) # valores sin notación científica
+```
+
+La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
+
+**Datos**
+
+Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)
+
+```{r}
+base <- guaguas
+```
+
+Conocemos las dimensiones de la base de datos
+
+```{r}
+dim(base)
+```
+
+Son 858782 casos y 5 variables. Los nombres de estas variables son:
+
+```{r}
+names(base)
+```
+
+Y la base se ve así:
+
+```{r}
+head(base)
+```
+
+Ahora probemos algunas funciones para seguir explorando la base
+
+```{r}
+table(base$sexo)
+```
+
+Podemos ver la cantidad de nombres "F" (femenino), "M" (masculino) e "I" (indefinido) inscritos entre 1920 y 2021.
+
+Pueden buscar sus nombres y probar, utilizamos la funcion *filter* del paquete *dplyr*
+
+```{r}
+filter(base, nombre=="Kevin")
+```
+
+E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron
+
+```{r}
+d <- filter(base, nombre=="Kevin" & anio==1996)
+sum(d$n)
 ```
 
 

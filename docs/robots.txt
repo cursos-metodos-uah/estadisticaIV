@@ -1,1 +1,1 @@
-Sitemap: https://investigacion-cuantitativa.netlify.app/sitemap.xml
+Sitemap: https://R-analisis-datos.netlify.app/sitemap.xml

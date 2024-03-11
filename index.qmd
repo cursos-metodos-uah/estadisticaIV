@@ -1,8 +1,8 @@
 ---
-title: "Estrategias de investigación cuantitativa"
-subtitle: "Sociología - Facultad de Ciencias Sociales de la Universidad de Chile"
+title: "R para análisis estadístico"
+subtitle: "Departamento de Sociología - Facultad de Ciencias Sociales de la Universidad Alberto Hurtado"
 details: |
-  SOC01020-1 • Segundo semestre 2023<br>Departamento de Sociología FACSO<br>Universidad de Chile
+  CSSOCIAL 6607-SOC1(1052) • Primer semestre 2024<br>Departamento de Sociología<br>Universidad Alberto Hurtado
 sidebar: false
 toc: false
 page-layout: full
@@ -36,12 +36,10 @@ withr::with_dir(here::here(), {
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
 
 
-**Apoyos docente**
+**Ayudante**
 
 
-- {{< fa user >}} &nbsp; Daniela Olivares
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other2.email >}}">{{< var other2.email >}}</a>
-- {{< fa user >}} &nbsp; Kevin Carrasco
+- {{< fa user >}} &nbsp; Javiera Whomper
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other.email >}}">{{< var other.email >}}</a>
 
 :::

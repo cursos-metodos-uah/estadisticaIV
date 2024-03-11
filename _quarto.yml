@@ -20,12 +20,12 @@ execute:
 
 bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
-description-meta: "Estrategias de investigación cuantitativa"
+description-meta: "R para Análisis estadístico"
 
 website:
-  title: "Estrategias de investigación cuantitativa"
-  site-url: "https://investigacion-cuantitativa.netlify.app"
-  description: "Carrera de Sociología de la Facultad de Ciencias Sociales de la Universidad de Chile"
+  title: "R para Análisis estadístico"
+  site-url: "https://R-analisis-datos.netlify.app"
+  description: "Departamento de Sociología de la Universidad Alberto"
   favicon: "/files/icon-512.png"
 
   twitter-card:
@@ -40,14 +40,16 @@ website:
 
   navbar:
     pinned: true
-    background: "#27cf1b"
+    background: "#093b69"
     right:
       - syllabus.qmd
       - schedule.qmd
-      - text: "Talleres"
-        file: assignment/index.qmd
-      - text: "Prácticos R"
+      - text: "Clases"
+        file: content/index.qmd
+      - text: "Prácticos"
         file: practicos/index.qmd
+      - text: "Herramientas"
+        file: herramientas/index.qmd
       - trabajos.qmd
 #      - text: "News"
 #        file: news/index.qmd
@@ -60,28 +62,34 @@ website:
 
   sidebar:
 
-    - title: "Talleres"
+    - title: "Clases"
       style: "docked"
       search: false
       background: dark
       contents:
         - section: "Información general"
           contents:
-            - assignment/index.qmd
+            - content/index.qmd
+        - section: "Clases"
+          contents:
+            - text: "01: Clase 1"
+              file: content/01-content.qmd
+
+    - title: "Prácticos"
+      style: "docked"
+      search: false
+      background: dark
+      contents:
+        - section: "Información general"
+          contents:
+            - practicos/index.qmd
         - section: "Talleres"
           contents:
-            - text: "01: Taller 1"
-              file: assignment/01-taller.qmd
-            - text: "02: Taller 2"
-              file: assignment/02-taller.qmd
-            - text: "03: Taller 3"
-              file: assignment/03-taller.qmd
-            - text: "04: Taller 4"
-              file: assignment/04-taller.qmd
-            - text: "05: Taller 5"
-              file: assignment/05-taller.qmd
+            - text: "01: Práctico 1"
+              file: practicos/01-content.qmd
 
-    - title: "Prácticos R"
+
+    - title: "Herramientas"
       style: "docked"
       search: false
       background: dark
@@ -93,10 +101,6 @@ website:
           contents:
             - text: "01: Práctico 1"
               file: practicos/01-content.qmd
-            - text: "02: Práctico 2"
-              file: practicos/02-content.qmd
-            - text: "03: Práctico 3"
-              file: practicos/03-content.qmd
 
 
   page-footer:

@@ -1,13 +1,13 @@
 author: Kevin Carrasco (Fork from Andrew Heiss)
 
 instructor:
-  name: Dr. Pablo Perez Ahumada
-  name_no_title: Pablo Perez
-  email: pabloperez@uchile.cl
-  url: "https://coes.cl/integrantes/pablo-perez-ahumada/"
-  twitter: pablo_perez_a
+  name: Kevin Carrasco
+  name_no_title: Kevin Carrasco
+  email: kevin.carrasco@ug.uchile.cl
+  url: "https://coes.cl/integrantes/kevin-carrasco-quintanilla/"
+  twitter: kevincarrascoq1
  # github: andrewheiss
-  office: "Departamento de Sociología N° 319"
+#  office: "Departamento de Sociología N° 319"
   contact_policy: >-
     A través de correo
 #  appointment_url: https://calendly.com/andrewheiss/
@@ -15,25 +15,23 @@ instructor:
 other:
   email: kevin.carrasco@ug.uchile.cl
 
-other2:
-  email: danielaolivarescollio@gmail.com
 
 course:
-  number: "SOC01020-1"
-  semester: "Segundo semestre 2023"
-  days: "Jueves"
-  time: "10:15 a 11:45 y 12:00 a 13:30"
-  location: "Aulario B - Sala B01"
-  dates: "Agosto 10 - Diciembre 2023"
-  github: "https://www.github.com/Kevin-carrasco/investigacion-cuantitativa"
-  url: "https://investigacion-cuantitativa.netlify.app"
-  copyright_year: "2023"
+  number: "CSSOCIAL 6607-SOC1(1052)"
+  semester: "Primer semestre 2024"
+  days: "Martes"
+  time: "16:00 a 17:20 y 17:30 a 18:50"
+  location: "Sala E67"
+  dates: "Marzo 12 - Julio 15 2024"
+  github: "https://github.com/Kevin-carrasco/R-data-analisis"
+  url: "https://R-Data-Analisis.netlify.app"
+  copyright_year: "2024"
   slack: ""
 
 university:
-  name: Universidad de Chile
-  url: "https://www.uchile.cl/"
+  name: Universidad Alberto Hurtado
+  url: "https://www.uahurtado.cl/"
 
 school:
   name: Departamento de Sociología - Facultad de Ciencias Sociales
-  url: "https://facso.uchile.cl/"
+  url: "https://sociologia.uahurtado.cl/"
