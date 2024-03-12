@@ -39,9 +39,19 @@ Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de 
     
   c) Instalar ambos archivos siguiendo las instrucciones de instalación
 
-3. Abrir RStudio. Se debería ver similar a esto:
+3. Abrir RStudio. Se debería ver similar a esto (o en blanco):
 
 ![](images/installR4.png)
+
+::: callout-note
+
+Alternativa a lo anterior: https://posit.cloud/
+
+- Versión online de Rstudio
+
+- Utilizar en caso de problemas con PC
+
+:::
 
 4. Recomendaciones generales:
 
@@ -114,7 +124,7 @@ Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_l
 
 
 ```{r}
-pacman::p_load(dplyr, guaguas)
+pacman::p_load(dplyr, guaguas, ggplot2)
 ```
 
 
@@ -123,6 +133,8 @@ Para esta sesión las librerías que vamos a utilizar son:
 - `dplyr`: ajuste general de datos
 
 - `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
+
+- `ggplot2`: Visualización de datos
 
 ### 2. Cargar base de datos
 
@@ -183,4 +195,60 @@ E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que
 d <- filter(base, nombre=="Kevin" & anio==1996)
 sum(d$n)
 ```
+Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo
 
+```{r}
+datos <- filter(base, nombre=="Kevin")
+ggplot(datos, aes(x = anio, y = n)) +
+  geom_line() + 
+  labs(x = "Año", y = "Número de personas", title = "Número de personas llamadas Kevin por año")
+```
+
+¿Qué puede explicar el peak de "Kevins" previo a los 2000?
+
+spoiler: [link](https://es.wikipedia.org/wiki/Backstreet_Boys)
+
+## Otro ejemplo
+
+```{r}
+
+guaguas %>% 
+  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1960 & anio <= 1979) %>% 
+  ggplot(aes(anio, n, color = nombre)) + 
+  geom_line() +
+  labs(x = "año", y = "total inscripciones", color = "nombre", 
+       title = "Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979")
+```
+
+# Parte 2
+
+## Github
+
+1. Acceder a la página de [github](https://github.com/)
+
+Registrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)
+
+![](images/github1.png)
+
+2. Descargar e instalar Github Desktop
+
+![](images/github2.png)
+
+## Zotero
+
+1. Acceder a la página de [zotero](https://www.zotero.org/)
+
+Vamos a Log in
+
+![](images/zotero1.png)
+
+Y creamos una cuenta gratis
+
+![](images/zotero2.png)
+
+Finalmente volvemos al inicio y descargamos el programa:
+
+![](images/zotero3.png)
+
+
+# Próxima clase: Integración de todos estos programas + Quarto

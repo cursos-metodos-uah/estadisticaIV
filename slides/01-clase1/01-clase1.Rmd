@@ -282,7 +282,13 @@ Más info:
 ]
 
 ---
+## Así se ve Rstudio
 
+.center[
+![:scale 80%](../../files/img/installR4.png)
+]
+
+---
 
 .center[
 ![:scale 79%](../../files/img/Curva_de_aprendizaje.png)
@@ -301,6 +307,71 @@ Más info:
 - Investigación reproducible: Permite documentar los resultados obtenidos paso a paso, mostrando el flujo completo de procesamiento de los datos por medio de **scripts**
 
 - **Integración con otros softwares**
+
+---
+
+## Alternativas o extensiones de R
+
+.center[
+![:scale 60%](../../files/img/quarto.png)
+]
+
+---
+## Así se ve Quarto
+
+.center[
+![:scale 41%](../../files/img/quarto2.png)
+]
+
+---
+# Zotero
+
+.pull-left[
+- Gestor de bibliografía
+
+- Código abierto
+
+- Gratis
+
+- Integración con R
+
+- Acceso desde cualquier equipo
+]
+
+.pull-right[
+![:scale 100%](../../files/img/zotero.png)
+]
+
+---
+
+# Github
+
+.pull-left[
+- Repositorio en línea
+
+- Control de versiones
+
+- Gratis
+
+- Integración con R
+
+- Acceso desde cualquier equipo
+]
+
+.pull-right[
+![:scale 100%](../../files/img/github.png)
+]
+
+
+
+---
+class: center
+
+## Protocolo de trabajo reproducible
+
+![:scale 41%](../../files/img/ipo-hex.png)
+
+.small[.right[fuente: [lisa-coes.com/ipo-repro](https://lisa-coes.com/ipo-repro)]]
 
 ---
 class: front
