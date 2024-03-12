@@ -1,5 +1,5 @@
 ---
-title: "Actividades en R"
+title: "Actividades prácticas en R"
 ---
 
-En construcción
+En esta sección encontrarán todas las sesiones prácticas de R, realizadas durante el segundo bloque de clases, y que son fundamentales para la correcta realización de los trabajos.

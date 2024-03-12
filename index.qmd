@@ -39,7 +39,7 @@ withr::with_dir(here::here(), {
 **Ayudante**
 
 
-- {{< fa user >}} &nbsp; Javiera Whomper
+- {{< fa user >}} &nbsp; Javiera Womper
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other.email >}}">{{< var other.email >}}</a>
 
 :::
