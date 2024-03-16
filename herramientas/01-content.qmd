@@ -1,0 +1,90 @@
+---
+title: "Github"
+subtitle: "R para análisis estadístico"
+linktitle: "Github"
+date: "2023-03-17"
+lang: es
+---
+
+# Github
+
+## Descripción
+
+Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software). 
+
+::: callout-note
+
+El 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.
+
+:::
+
+## Repositorios
+
+Un repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.
+
+Los repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.
+
+## Principales términos
+
+| Término          | Definición                                                                                           |
+|---------------|------------------------------------------------------------------------------------------------------|
+| Branch        | 	Una versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.|
+| Clonar        |	Para descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.                                                                                   |
+| Fork          | Un nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.|
+| Merge         | Para aplicar los cambios de una rama y en otra.                                       |
+| Pull request  | Una solicitud para combinar los cambios de una branch en otra.                                             |
+| Remote        | Un repositorio almacenado en GitHub, no en el equipo.                                                 |
+| Upstream      | La branch de un repositorio original que se ha *forkeado* o clonado. La branch correspondiente de la branch clonada o *forkeada* se denomina «descendente».                                            |
+
+
+## Crear cuenta e instalación
+
+1. Acceder a la página de [github](https://github.com/)
+
+Registrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)
+
+![](images/github1.png)
+
+La personalización de la cuenta se puede saltar haciendo click en **skip** abajo de la selección de opciones
+
+2. Descargar e instalar Github Desktop
+
+![](images/github2.png)
+
+## Crear repositorio
+
+En la página principal de [github](https://github.com/) hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios
+
+![](images/repos.png)
+
+Una vez accedemos a Tus repositorios hacemos click en New/Nuevo
+
+![](images/repos2.png)
+
+Luego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio
+
+![](images/repos3.png)
+
+## Github desktop
+
+Una vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.
+
+Para todas las siguientes veces, las instrucciones son estas:
+
+1- Apretamos Repositorio actual en la esquina superior izquierda
+
+2- Apretamos añadir
+
+3- Apretamos clonar repositorio...
+
+![](images/clonar.png)
+
+
+4- Seleccionamos nuestro repositorio
+
+5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.
+
+![](images/clonar2.png)
+
+
+

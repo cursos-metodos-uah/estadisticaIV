@@ -241,7 +241,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#parte-2" id="toc-parte-2" class="nav-link" data-scroll-target="#parte-2">Parte 2</a>
   <ul>
   <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">Github</a></li>
-  <li><a href="#zotero" id="toc-zotero" class="nav-link" data-scroll-target="#zotero">Zotero</a></li>
+  <li><a href="#descripción" id="toc-descripción" class="nav-link" data-scroll-target="#descripción">Descripción</a></li>
+  <li><a href="#repositorios" id="toc-repositorios" class="nav-link" data-scroll-target="#repositorios">Repositorios</a></li>
+  <li><a href="#principales-términos" id="toc-principales-términos" class="nav-link" data-scroll-target="#principales-términos">Principales términos</a></li>
+  <li><a href="#crear-cuenta-e-instalación" id="toc-crear-cuenta-e-instalación" class="nav-link" data-scroll-target="#crear-cuenta-e-instalación">Crear cuenta e instalación</a></li>
+  <li><a href="#crear-repositorio" id="toc-crear-repositorio" class="nav-link" data-scroll-target="#crear-repositorio">Crear repositorio</a></li>
+  <li><a href="#github-desktop" id="toc-github-desktop" class="nav-link" data-scroll-target="#github-desktop">Github desktop</a></li>
+  <li><a href="#rproject" id="toc-rproject" class="nav-link" data-scroll-target="#rproject">Rproject</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#vuelta-a-github-desktop" id="toc-vuelta-a-github-desktop" class="nav-link" data-scroll-target="#vuelta-a-github-desktop">Vuelta a Github desktop</a></li>
+  <li><a href="#vuelta-a-github.com" id="toc-vuelta-a-github.com" class="nav-link" data-scroll-target="#vuelta-a-github.com">Vuelta a github.com</a></li>
   </ul></li>
   <li><a href="#próxima-clase-integración-de-todos-estos-programas-quarto" id="toc-próxima-clase-integración-de-todos-estos-programas-quarto" class="nav-link" data-scroll-target="#próxima-clase-integración-de-todos-estos-programas-quarto">Próxima clase: Integración de todos estos programas + Quarto</a></li>
   </ul>
@@ -578,27 +587,179 @@ Nota
 <h1>Parte 2</h1>
 <section id="github" class="level2">
 <h2 class="anchored" data-anchor-id="github">Github</h2>
+</section>
+<section id="descripción" class="level2">
+<h2 class="anchored" data-anchor-id="descripción">Descripción</h2>
+<p>Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.</p>
+</div>
+</div>
+</section>
+<section id="repositorios" class="level2">
+<h2 class="anchored" data-anchor-id="repositorios">Repositorios</h2>
+<p>Un repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.</p>
+<p>Los repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.</p>
+</section>
+<section id="principales-términos" class="level2">
+<h2 class="anchored" data-anchor-id="principales-términos">Principales términos</h2>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 87%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Branch</td>
+<td>Una versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.</td>
+</tr>
+<tr class="even">
+<td>Clonar</td>
+<td>Para descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.</td>
+</tr>
+<tr class="odd">
+<td>Fork</td>
+<td>Un nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.</td>
+</tr>
+<tr class="even">
+<td>Merge</td>
+<td>Para aplicar los cambios de una rama y en otra.</td>
+</tr>
+<tr class="odd">
+<td>Pull request</td>
+<td>Una solicitud para combinar los cambios de una branch en otra.</td>
+</tr>
+<tr class="even">
+<td>Remote</td>
+<td>Un repositorio almacenado en GitHub, no en el equipo.</td>
+</tr>
+<tr class="odd">
+<td>Upstream</td>
+<td>La branch de un repositorio original que se ha <em>forkeado</em> o clonado. La branch correspondiente de la branch clonada o <em>forkeada</em> se denomina «descendente».</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="crear-cuenta-e-instalación" class="level2">
+<h2 class="anchored" data-anchor-id="crear-cuenta-e-instalación">Crear cuenta e instalación</h2>
 <ol type="1">
 <li>Acceder a la página de <a href="https://github.com/">github</a></li>
 </ol>
 <p>Registrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)</p>
 <p><img src="images/github1.png" class="img-fluid"></p>
+<p>La personalización de la cuenta se puede saltar haciendo click en <strong>skip</strong> abajo de la selección de opciones</p>
 <ol start="2" type="1">
 <li>Descargar e instalar Github Desktop</li>
 </ol>
 <p><img src="images/github2.png" class="img-fluid"></p>
 </section>
-<section id="zotero" class="level2">
-<h2 class="anchored" data-anchor-id="zotero">Zotero</h2>
+<section id="crear-repositorio" class="level2">
+<h2 class="anchored" data-anchor-id="crear-repositorio">Crear repositorio</h2>
+<p>En la página principal de <a href="https://github.com/">github</a> hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios</p>
+<p><img src="images/repos.png" class="img-fluid"></p>
+<p>Una vez accedemos a Tus repositorios hacemos click en New/Nuevo</p>
+<p><img src="images/repos2.png" class="img-fluid"></p>
+<p>Luego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio</p>
+<p><img src="images/repos3.png" class="img-fluid"></p>
+</section>
+<section id="github-desktop" class="level2">
+<h2 class="anchored" data-anchor-id="github-desktop">Github desktop</h2>
+<p>Una vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.</p>
+<p>Para todas las siguientes veces, las instrucciones son estas:</p>
+<p>1- Apretamos Repositorio actual en la esquina superior izquierda</p>
+<p>2- Apretamos añadir</p>
+<p>3- Apretamos clonar repositorio…</p>
+<p><img src="images/clonar.png" class="img-fluid"></p>
+<p>4- Seleccionamos nuestro repositorio</p>
+<p>5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.</p>
+<p><img src="images/clonar2.png" class="img-fluid"></p>
+</section>
+<section id="rproject" class="level2">
+<h2 class="anchored" data-anchor-id="rproject">Rproject</h2>
+<p>Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la <strong>reproducibilidad</strong>. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el <a href="https://lisa-coes.com/ipo-repro/">protocolo IPO</a>.</p>
+<p>Para crear un Rproject:</p>
 <ol type="1">
-<li>Acceder a la página de <a href="https://www.zotero.org/">zotero</a></li>
+<li><p>Abrir Rstudio</p></li>
+<li><p>Seleccionar Archivo -&gt; Nuevo proyecto</p></li>
 </ol>
-<p>Vamos a Log in</p>
-<p><img src="images/zotero1.png" class="img-fluid"></p>
-<p>Y creamos una cuenta gratis</p>
-<p><img src="images/zotero2.png" class="img-fluid"></p>
-<p>Finalmente volvemos al inicio y descargamos el programa:</p>
-<p><img src="images/zotero3.png" class="img-fluid"></p>
+<p><img src="images/project.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li><p>Seleccionamos la opción de directorio existente</p></li>
+<li><p>Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior</p></li>
+<li><p>Apretamos el botón de crear proyecto</p></li>
+</ol>
+</section>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Para crear un documento Quarto (.qmd)</p>
+<ol type="1">
+<li>archivo -&gt; nuevo archivo -&gt; Quarto Document</li>
+</ol>
+<p><img src="images/quarto.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Ponemos un título a nuestro nuevo documento y opcionalmente nuestro nombre como autor</li>
+</ol>
+<p><img src="images/quarto2.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Esta vez como ejemplo no editaremos el documento y <em>renderizaremos</em> el ejemplo que nos da R. Para eso apretamos el botón <strong>render</strong></li>
+</ol>
+<p><img src="images/quarto3.png" class="img-fluid"></p>
+<p><strong>Renderizar</strong> es el proceso mediante el cual R transforma nuestro <em>código</em> de quarto en un documento dinámico según el output que especifiquemos. En este caso fue .html, pero también puede ser .pdf, .txt o .doc (no recomendado)</p>
+<ol start="4" type="1">
+<li>Al apretar render nos pedirá guardar nuestro script .qmd. Al hacerlo, nos aseguraremos de que lo guardamos en la misma carpeta del repositorio y Rproject, así como también de que no contenga espacios, ñ o tíldes.</li>
+</ol>
+</section>
+<section id="vuelta-a-github-desktop" class="level2">
+<h2 class="anchored" data-anchor-id="vuelta-a-github-desktop">Vuelta a Github desktop</h2>
+<p>Ahora que tenemos nuestro documento renderizado en nuestro computador lo que nos interesa es subir todos los cambios que hicimos en nuestro repositorio a Github.</p>
+<ol type="1">
+<li>Volvemos a abrir Github Desktop y podemos notar que en la barra de la izquierda han aparecido todos los cambios que hemos hecho en el repositorio: el archivo .Rproj (Rproject), el script .qmd y el .html creado al renderizar. Los demás se crean automáticamente en el proceso de renderizado.</li>
+</ol>
+<p><img src="images/desktop.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li><p>Le ponemos un nombre al Commit</p></li>
+<li><p>Apretamos Commit to main para guardar los cambios</p></li>
+</ol>
+<p>Un <strong>Commit</strong> es una acción de compromiso. Se refiere a que un autor/investigador se hará cargo de los cambios que se hicieron.</p>
+<ol start="4" type="1">
+<li>Luego apretamos Publish Brand o Push origin según corresponda. Con esta acción actualizamos el repositorio en línea de Github.</li>
+</ol>
+</section>
+<section id="vuelta-a-github.com" class="level2">
+<h2 class="anchored" data-anchor-id="vuelta-a-github.com">Vuelta a github.com</h2>
+<ol type="1">
+<li>Podemos ver que en el repositorio en línea de github.com ya están arriba los documentos que creamos recién.</li>
+</ol>
+<p><img src="images/pages.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li><p>Ahora lo que nos interesa es crear una página de internet que nos permita visualizar el documento de Quarto que acabamos de crear. Para eso vamos a la opción Settings/ajustes</p></li>
+<li><p>Una vez en settings nos dirigimos a la sección de páginas (pages)</p></li>
+</ol>
+<p><img src="images/pages2.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li><p>Luego en la sección Branch apretamos el botón none/ninguno</p></li>
+<li><p>Seleccionamos la opción Main y luego Save/guardar. Con esto hacemos que github haga un <em>deploy</em> de nuestro repositorio, específicamente de nuestra <em>main branch</em>.</p></li>
+<li><p>Si actualizamos la página luego de uno o dos minutos, podemos ver que Github creo un sitio web para el repositorio. En este caso el enlace es <a href="https://kevincarrascoq.github.io/R-data-analisis/">https://kevincarrascoq.github.io/R-data-analisis/</a>. Que incluye primero el nombre usuario seguido de github.io y luego el nombre del repositorio /R-data/analisis.</p></li>
+</ol>
+<p>Sin embargo, este enlace funciona como página principal de nuestro repositorio (más adelante veremos cómo editarla). En este momento, para llegar a nuestro documento renderizado de quarto, debemos agregar el nombre del archivo en el enlace que nos da Github, que en este caso es R-data-analisis.html.</p>
+<ol start="7" type="1">
+<li>Por lo tanto, el enlace a nuestro documento es <a href="https://kevincarrascoq.github.io/R-data-analisis/R-data-analisis.html">https://kevincarrascoq.github.io/R-data-analisis/R-data-analisis.html</a></li>
+</ol>
 </section>
 </section>
 <section id="próxima-clase-integración-de-todos-estos-programas-quarto" class="level1">
@@ -1119,34 +1280,166 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-257"><a href="#cb30-257" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-258"><a href="#cb30-258" aria-hidden="true" tabindex="-1"></a><span class="fu">## Github</span></span>
 <span id="cb30-259"><a href="#cb30-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-260"><a href="#cb30-260" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Acceder a la página de <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/)</span></span>
+<span id="cb30-260"><a href="#cb30-260" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descripción</span></span>
 <span id="cb30-261"><a href="#cb30-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-262"><a href="#cb30-262" aria-hidden="true" tabindex="-1"></a>Registrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)</span>
+<span id="cb30-262"><a href="#cb30-262" aria-hidden="true" tabindex="-1"></a>Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software). </span>
 <span id="cb30-263"><a href="#cb30-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-264"><a href="#cb30-264" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/github1.png)</span></span>
+<span id="cb30-264"><a href="#cb30-264" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
 <span id="cb30-265"><a href="#cb30-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-266"><a href="#cb30-266" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Descargar e instalar Github Desktop</span>
+<span id="cb30-266"><a href="#cb30-266" aria-hidden="true" tabindex="-1"></a>El 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.</span>
 <span id="cb30-267"><a href="#cb30-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-268"><a href="#cb30-268" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/github2.png)</span></span>
+<span id="cb30-268"><a href="#cb30-268" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb30-269"><a href="#cb30-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-270"><a href="#cb30-270" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zotero</span></span>
+<span id="cb30-270"><a href="#cb30-270" aria-hidden="true" tabindex="-1"></a><span class="fu">## Repositorios</span></span>
 <span id="cb30-271"><a href="#cb30-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-272"><a href="#cb30-272" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Acceder a la página de <span class="co">[</span><span class="ot">zotero</span><span class="co">](https://www.zotero.org/)</span></span>
+<span id="cb30-272"><a href="#cb30-272" aria-hidden="true" tabindex="-1"></a>Un repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.</span>
 <span id="cb30-273"><a href="#cb30-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-274"><a href="#cb30-274" aria-hidden="true" tabindex="-1"></a>Vamos a Log in</span>
+<span id="cb30-274"><a href="#cb30-274" aria-hidden="true" tabindex="-1"></a>Los repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.</span>
 <span id="cb30-275"><a href="#cb30-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-276"><a href="#cb30-276" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero1.png)</span></span>
+<span id="cb30-276"><a href="#cb30-276" aria-hidden="true" tabindex="-1"></a><span class="fu">## Principales términos</span></span>
 <span id="cb30-277"><a href="#cb30-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-278"><a href="#cb30-278" aria-hidden="true" tabindex="-1"></a>Y creamos una cuenta gratis</span>
-<span id="cb30-279"><a href="#cb30-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-280"><a href="#cb30-280" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero2.png)</span></span>
-<span id="cb30-281"><a href="#cb30-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-282"><a href="#cb30-282" aria-hidden="true" tabindex="-1"></a>Finalmente volvemos al inicio y descargamos el programa:</span>
-<span id="cb30-283"><a href="#cb30-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-284"><a href="#cb30-284" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/zotero3.png)</span></span>
-<span id="cb30-285"><a href="#cb30-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-286"><a href="#cb30-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-287"><a href="#cb30-287" aria-hidden="true" tabindex="-1"></a><span class="fu"># Próxima clase: Integración de todos estos programas + Quarto</span></span>
+<span id="cb30-278"><a href="#cb30-278" aria-hidden="true" tabindex="-1"></a>| Término          | Definición                                                                                           |</span>
+<span id="cb30-279"><a href="#cb30-279" aria-hidden="true" tabindex="-1"></a>|---------------|------------------------------------------------------------------------------------------------------|</span>
+<span id="cb30-280"><a href="#cb30-280" aria-hidden="true" tabindex="-1"></a>| Branch        |   Una versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.|</span>
+<span id="cb30-281"><a href="#cb30-281" aria-hidden="true" tabindex="-1"></a>| Clonar        |   Para descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.                                                                                   |</span>
+<span id="cb30-282"><a href="#cb30-282" aria-hidden="true" tabindex="-1"></a>| Fork          | Un nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.|</span>
+<span id="cb30-283"><a href="#cb30-283" aria-hidden="true" tabindex="-1"></a>| Merge         | Para aplicar los cambios de una rama y en otra.                                       |</span>
+<span id="cb30-284"><a href="#cb30-284" aria-hidden="true" tabindex="-1"></a>| Pull request  | Una solicitud para combinar los cambios de una branch en otra.                                             |</span>
+<span id="cb30-285"><a href="#cb30-285" aria-hidden="true" tabindex="-1"></a>| Remote        | Un repositorio almacenado en GitHub, no en el equipo.                                                 |</span>
+<span id="cb30-286"><a href="#cb30-286" aria-hidden="true" tabindex="-1"></a>| Upstream      | La branch de un repositorio original que se ha *forkeado* o clonado. La branch correspondiente de la branch clonada o *forkeada* se denomina «descendente».                                            |</span>
+<span id="cb30-287"><a href="#cb30-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-288"><a href="#cb30-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-289"><a href="#cb30-289" aria-hidden="true" tabindex="-1"></a><span class="fu">## Crear cuenta e instalación</span></span>
+<span id="cb30-290"><a href="#cb30-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-291"><a href="#cb30-291" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Acceder a la página de <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/)</span></span>
+<span id="cb30-292"><a href="#cb30-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-293"><a href="#cb30-293" aria-hidden="true" tabindex="-1"></a>Registrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)</span>
+<span id="cb30-294"><a href="#cb30-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-295"><a href="#cb30-295" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/github1.png)</span></span>
+<span id="cb30-296"><a href="#cb30-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-297"><a href="#cb30-297" aria-hidden="true" tabindex="-1"></a>La personalización de la cuenta se puede saltar haciendo click en **skip** abajo de la selección de opciones</span>
+<span id="cb30-298"><a href="#cb30-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-299"><a href="#cb30-299" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Descargar e instalar Github Desktop</span>
+<span id="cb30-300"><a href="#cb30-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-301"><a href="#cb30-301" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/github2.png)</span></span>
+<span id="cb30-302"><a href="#cb30-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-303"><a href="#cb30-303" aria-hidden="true" tabindex="-1"></a><span class="fu">## Crear repositorio</span></span>
+<span id="cb30-304"><a href="#cb30-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-305"><a href="#cb30-305" aria-hidden="true" tabindex="-1"></a>En la página principal de <span class="co">[</span><span class="ot">github</span><span class="co">](https://github.com/)</span> hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios</span>
+<span id="cb30-306"><a href="#cb30-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-307"><a href="#cb30-307" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/repos.png)</span></span>
+<span id="cb30-308"><a href="#cb30-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-309"><a href="#cb30-309" aria-hidden="true" tabindex="-1"></a>Una vez accedemos a Tus repositorios hacemos click en New/Nuevo</span>
+<span id="cb30-310"><a href="#cb30-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-311"><a href="#cb30-311" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/repos2.png)</span></span>
+<span id="cb30-312"><a href="#cb30-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-313"><a href="#cb30-313" aria-hidden="true" tabindex="-1"></a>Luego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio</span>
+<span id="cb30-314"><a href="#cb30-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-315"><a href="#cb30-315" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/repos3.png)</span></span>
+<span id="cb30-316"><a href="#cb30-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-317"><a href="#cb30-317" aria-hidden="true" tabindex="-1"></a><span class="fu">## Github desktop</span></span>
+<span id="cb30-318"><a href="#cb30-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-319"><a href="#cb30-319" aria-hidden="true" tabindex="-1"></a>Una vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.</span>
+<span id="cb30-320"><a href="#cb30-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-321"><a href="#cb30-321" aria-hidden="true" tabindex="-1"></a>Para todas las siguientes veces, las instrucciones son estas:</span>
+<span id="cb30-322"><a href="#cb30-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-323"><a href="#cb30-323" aria-hidden="true" tabindex="-1"></a>1- Apretamos Repositorio actual en la esquina superior izquierda</span>
+<span id="cb30-324"><a href="#cb30-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-325"><a href="#cb30-325" aria-hidden="true" tabindex="-1"></a>2- Apretamos añadir</span>
+<span id="cb30-326"><a href="#cb30-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-327"><a href="#cb30-327" aria-hidden="true" tabindex="-1"></a>3- Apretamos clonar repositorio...</span>
+<span id="cb30-328"><a href="#cb30-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-329"><a href="#cb30-329" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clonar.png)</span></span>
+<span id="cb30-330"><a href="#cb30-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-331"><a href="#cb30-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-332"><a href="#cb30-332" aria-hidden="true" tabindex="-1"></a>4- Seleccionamos nuestro repositorio</span>
+<span id="cb30-333"><a href="#cb30-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-334"><a href="#cb30-334" aria-hidden="true" tabindex="-1"></a>5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.</span>
+<span id="cb30-335"><a href="#cb30-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-336"><a href="#cb30-336" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clonar2.png)</span></span>
+<span id="cb30-337"><a href="#cb30-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-338"><a href="#cb30-338" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rproject</span></span>
+<span id="cb30-339"><a href="#cb30-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-340"><a href="#cb30-340" aria-hidden="true" tabindex="-1"></a>Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la **reproducibilidad**. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el <span class="co">[</span><span class="ot">protocolo IPO</span><span class="co">](https://lisa-coes.com/ipo-repro/)</span>.</span>
+<span id="cb30-341"><a href="#cb30-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-342"><a href="#cb30-342" aria-hidden="true" tabindex="-1"></a>Para crear un Rproject:</span>
+<span id="cb30-343"><a href="#cb30-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-344"><a href="#cb30-344" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Abrir Rstudio</span>
+<span id="cb30-345"><a href="#cb30-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-346"><a href="#cb30-346" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Seleccionar Archivo -&gt; Nuevo proyecto</span>
+<span id="cb30-347"><a href="#cb30-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-348"><a href="#cb30-348" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/project.png)</span></span>
+<span id="cb30-349"><a href="#cb30-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-350"><a href="#cb30-350" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Seleccionamos la opción de directorio existente</span>
+<span id="cb30-351"><a href="#cb30-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-352"><a href="#cb30-352" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior</span>
+<span id="cb30-353"><a href="#cb30-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-354"><a href="#cb30-354" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Apretamos el botón de crear proyecto</span>
+<span id="cb30-355"><a href="#cb30-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-356"><a href="#cb30-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-357"><a href="#cb30-357" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto</span></span>
+<span id="cb30-358"><a href="#cb30-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-359"><a href="#cb30-359" aria-hidden="true" tabindex="-1"></a>Para crear un documento Quarto (.qmd)</span>
+<span id="cb30-360"><a href="#cb30-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-361"><a href="#cb30-361" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>archivo -&gt; nuevo archivo -&gt; Quarto Document</span>
+<span id="cb30-362"><a href="#cb30-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-363"><a href="#cb30-363" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/quarto.png)</span></span>
+<span id="cb30-364"><a href="#cb30-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-365"><a href="#cb30-365" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Ponemos un título a nuestro nuevo documento y opcionalmente nuestro nombre como autor</span>
+<span id="cb30-366"><a href="#cb30-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-367"><a href="#cb30-367" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/quarto2.png)</span></span>
+<span id="cb30-368"><a href="#cb30-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-369"><a href="#cb30-369" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Esta vez como ejemplo no editaremos el documento y *renderizaremos* el ejemplo que nos da R. Para eso apretamos el botón **render**</span>
+<span id="cb30-370"><a href="#cb30-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-371"><a href="#cb30-371" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/quarto3.png)</span></span>
+<span id="cb30-372"><a href="#cb30-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-373"><a href="#cb30-373" aria-hidden="true" tabindex="-1"></a>**Renderizar** es el proceso mediante el cual R transforma nuestro *código* de quarto en un documento dinámico según el output que especifiquemos. En este caso fue .html, pero también puede ser .pdf, .txt o .doc (no recomendado)</span>
+<span id="cb30-374"><a href="#cb30-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-375"><a href="#cb30-375" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Al apretar render nos pedirá guardar nuestro script .qmd. Al hacerlo, nos aseguraremos de que lo guardamos en la misma carpeta del repositorio y Rproject, así como también de que no contenga espacios, ñ o tíldes.</span>
+<span id="cb30-376"><a href="#cb30-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-377"><a href="#cb30-377" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vuelta a Github desktop</span></span>
+<span id="cb30-378"><a href="#cb30-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-379"><a href="#cb30-379" aria-hidden="true" tabindex="-1"></a>Ahora que tenemos nuestro documento renderizado en nuestro computador lo que nos interesa es subir todos los cambios que hicimos en nuestro repositorio a Github.</span>
+<span id="cb30-380"><a href="#cb30-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-381"><a href="#cb30-381" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Volvemos a abrir Github Desktop y podemos notar que en la barra de la izquierda han aparecido todos los cambios que hemos hecho en el repositorio: el archivo .Rproj (Rproject), el script .qmd y el .html creado al renderizar. Los demás se crean automáticamente en el proceso de renderizado.</span>
+<span id="cb30-382"><a href="#cb30-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-383"><a href="#cb30-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-384"><a href="#cb30-384" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/desktop.png)</span></span>
+<span id="cb30-385"><a href="#cb30-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-386"><a href="#cb30-386" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Le ponemos un nombre al Commit</span>
+<span id="cb30-387"><a href="#cb30-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-388"><a href="#cb30-388" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Apretamos Commit to main para guardar los cambios</span>
+<span id="cb30-389"><a href="#cb30-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-390"><a href="#cb30-390" aria-hidden="true" tabindex="-1"></a>Un **Commit** es una acción de compromiso. Se refiere a que un autor/investigador se hará cargo de los cambios que se hicieron.</span>
+<span id="cb30-391"><a href="#cb30-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-392"><a href="#cb30-392" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Luego apretamos Publish Brand o Push origin según corresponda. Con esta acción actualizamos el repositorio en línea de Github.</span>
+<span id="cb30-393"><a href="#cb30-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-394"><a href="#cb30-394" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vuelta a github.com</span></span>
+<span id="cb30-395"><a href="#cb30-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-396"><a href="#cb30-396" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Podemos ver que en el repositorio en línea de github.com ya están arriba los documentos que creamos recién.</span>
+<span id="cb30-397"><a href="#cb30-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-398"><a href="#cb30-398" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/pages.png)</span></span>
+<span id="cb30-399"><a href="#cb30-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-400"><a href="#cb30-400" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Ahora lo que nos interesa es crear una página de internet que nos permita visualizar el documento de Quarto que acabamos de crear. Para eso vamos a la opción Settings/ajustes</span>
+<span id="cb30-401"><a href="#cb30-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-402"><a href="#cb30-402" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Una vez en settings nos dirigimos a la sección de páginas (pages)</span>
+<span id="cb30-403"><a href="#cb30-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-404"><a href="#cb30-404" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/pages2.png)</span></span>
+<span id="cb30-405"><a href="#cb30-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-406"><a href="#cb30-406" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Luego en la sección Branch apretamos el botón none/ninguno</span>
+<span id="cb30-407"><a href="#cb30-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-408"><a href="#cb30-408" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Seleccionamos la opción Main y luego Save/guardar. Con esto hacemos que github haga un *deploy* de nuestro repositorio, específicamente de nuestra *main branch*.</span>
+<span id="cb30-409"><a href="#cb30-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-410"><a href="#cb30-410" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Si actualizamos la página luego de uno o dos minutos, podemos ver que Github creo un sitio web para el repositorio. En este caso el enlace es <span class="co">[</span><span class="ot">https://kevincarrascoq.github.io/R-data-analisis/</span><span class="co">](https://kevincarrascoq.github.io/R-data-analisis/)</span>. Que incluye primero el nombre usuario seguido de github.io y luego el nombre del repositorio /R-data/analisis. </span>
+<span id="cb30-411"><a href="#cb30-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-412"><a href="#cb30-412" aria-hidden="true" tabindex="-1"></a>Sin embargo, este enlace funciona como página principal de nuestro repositorio (más adelante veremos cómo editarla). En este momento, para llegar a nuestro documento renderizado de quarto, debemos agregar el nombre del archivo en el enlace que nos da Github, que en este caso es R-data-analisis.html.</span>
+<span id="cb30-413"><a href="#cb30-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-414"><a href="#cb30-414" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Por lo tanto, el enlace a nuestro documento es <span class="co">[</span><span class="ot">https://kevincarrascoq.github.io/R-data-analisis/R-data-analisis.html</span><span class="co">](https://kevincarrascoq.github.io/R-data-analisis/R-data-analisis.html)</span></span>
+<span id="cb30-415"><a href="#cb30-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-416"><a href="#cb30-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-417"><a href="#cb30-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-418"><a href="#cb30-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-419"><a href="#cb30-419" aria-hidden="true" tabindex="-1"></a><span class="fu"># Próxima clase: Integración de todos estos programas + Quarto</span></span>
 </code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

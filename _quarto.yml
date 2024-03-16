@@ -96,11 +96,11 @@ website:
       contents:
         - section: "Información general"
           contents:
-            - practicos/index.qmd
-        - section: "Prácticos R"
+            - herramientas/index.qmd
+        - section: "Herramientas"
           contents:
-            - text: "01: Práctico 1"
-              file: practicos/01-content.qmd
+            - text: "Github"
+              file: herramientas/01-content.qmd
 
 
   page-footer:
