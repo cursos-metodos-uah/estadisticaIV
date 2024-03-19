@@ -28,19 +28,98 @@ Vamos a Log in
 
 ![](images/zotero1.png)
 
-Y creamos una cuenta gratis
+2. Y creamos una cuenta gratis
 
 ![](images/zotero2.png)
 
-Finalmente volvemos al inicio y descargamos el programa:
+3. Finalmente volvemos al inicio y descargamos el programa:
 
 ![](images/zotero3.png)
 
 
+### Veamos cómo se ve zotero
 
+![](images/zotero4.png)
 
+Zotero es un gestor bibliográfico que nos permite almacenar referencias bibliográficas.
 
-### Quarto
+- Es posible crear distintas bibliotecas personales (esquina superior izquierda) o grupales (abajo). Se recomienda separar las bibliotecas por temas o proyectos
+
+- Al visualizar una referencia bibliográfica nos muestra todos los **metadatos**: Título, autores, nombre de la revista, año de publicación, DOI, ISBN de la revista, número de páginas, etc.
+
+- El dato central que nos va a servir en esta parte del proceso es el DOI
+
+::: callout-note
+
+DOI: Digital Object Identifier (Identificador de objetos digitales)
+
+El DOI consiste en un código alfanumérico que identifica en la web un artículo y que lo recupera incluso si éste se ubica en un servidor distinto al que fue alojado en un principio. Se evita así el típico problema de los enlaces rotos, muy habitual en macrowebs como las universitarias.
+
+![](images/doi.png)
+
+:::
+
+4. Para crear una biblioteca en zotero vamos a Archivo -> Nueva colección y le ponemos un nombre que no tenga tíldes, ñ o espacios
+
+![](images/zotero5.png)
+
+En este caso mi biblioteca se llama "percepcion-desigualdad".
+
+5. Zotero tiene dos funciones para agregar referencias botón verde "Nuevo elemento" o varita mágica "añadir elemento por identificador". Esta vez vamos por la segunda opción
+
+6. Buscamos un paper que nos interese: en este caso busqué el paper [The paradox of inequality: income inequality and belief in meritocracy go hand in hand](https://academic.oup.com/ser/article-abstract/19/1/7/5299221?redirectedFrom=fulltext) de Jonathan Mijs (2021). Su DOI es [https://doi.org/10.1093/ser/mwy051](https://doi.org/10.1093/ser/mwy051)
+
+7. Usamos la función Añadir elemento por identificador para agregar nuestra referencia a zotero
+
+![](images/zotero6.png)
+
+¿Cuál es la forma más eficiente de buscar bibliografía sobre un mismo tema?
+
+## Researchrabbit
+
+Research Rabbit es una plataforma que a partir de un paper busca otros similares, cruzando referencias y autores. Además, tiene una ventaja: Se vincula con Zotero
+
+1. Ingresar a la página [https://researchrabbitapp.com/](https://researchrabbitapp.com/).
+
+2. Crear cuenta
+
+![](images/research.png)
+
+3. Una vez dentro apretamos "Import Zotero Collection" y seleccionamos nuestra biblioteca
+
+![](images/research2.png)
+
+4. Así se ve research rabbit
+
+![](images/research3.png)
+
+5. Podemos revisar el abstract de algún paper y, si nos interesa, lo agregamos a nuestra biblioteca
+
+![](images/research4.png)
+
+6. Después volvemos a Zotero, actualizamos y aparece nuestro nuevo paper
+
+![](images/zotero7.png)
+
+Ahora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zotero con R
+
+7. Vamos a este [link](https://github.com/retorquere/zotero-better-bibtex/releases/tag/v6.7.169) y descargamos zotero-better-bibtex-6.7.169.xpi
+
+8. Volvemos a Zotero --> Herramientas --> Complementos --> La tuerca en la esquina superior derecha --> Instalar Add-on desde archivo --> Seleccionamos el archivo que acabamos de descargar
+
+![](images/zotero9.png)
+
+9. Paso final: exportamos nuestra biblioteca. Click derecho en nuestra biblioteca --> Exportar colección
+
+![](images/zotero8.png)
+
+10. Seleccionamos formato: Better BibTeX y marcamos la casilla "Keep updated". Esto último actualizará el archivo automáticamente cuando agreguemos nueva bibliografía
+
+![](images/zotero10.png)
+
+11. Guardamos nuestro archivo .bib en la misma carpeta de nuestro poryecto de trabajo
+
+## Quarto
 
 +-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 |Código                                                                         | Así se ve                                                                     |

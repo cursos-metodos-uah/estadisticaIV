@@ -239,11 +239,6 @@ class: inverse, middle, right
 ]
 
 ---
-
-
-
-
----
 class: center
 
 ## Protocolo de trabajo reproducible
@@ -267,7 +262,7 @@ class: front
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 1: Introducción]
+## .yellow[Sesión 2: Construcción de reportes automáticos, reproducibles e integrados con código]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 
