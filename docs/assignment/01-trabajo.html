@@ -8,7 +8,7 @@
 
 <meta name="description" content="R para Análisis estadístico">
 
-<title>R para Análisis estadístico - Taller 3</title>
+<title>R para Análisis estadístico - Trabajo 1. Reporte en Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,22 +63,20 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="R para Análisis estadístico - Taller 3">
-<meta property="og:description" content="">
+<meta property="og:title" content="R para Análisis estadístico - Trabajo 1. Reporte en Quarto">
+<meta property="og:description" content="R para análisis estadístico">
 <meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta property="og:site-name" content="R para Análisis estadístico">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="R para Análisis estadístico - Taller 3">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="R para Análisis estadístico - Trabajo 1. Reporte en Quarto">
+<meta name="twitter:description" content="R para análisis estadístico">
 <meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -116,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Herramientas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignment/index.html" rel="" target="">
+    <a class="nav-link active" href="../assignment/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item compact">
@@ -130,21 +128,71 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-trabajo.html">Trabajos</a></li><li class="breadcrumb-item"><a href="../assignment/01-trabajo.html">Trabajo 1</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Información general</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trabajos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Trabajos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/01-trabajo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Trabajo 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#objetivo-del-taller" id="toc-objetivo-del-taller" class="nav-link active" data-scroll-target="#objetivo-del-taller">Objetivo del taller</a></li>
-  <li><a href="#instrucciones" id="toc-instrucciones" class="nav-link" data-scroll-target="#instrucciones">Instrucciones:</a>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
   <ul class="collapse">
-  <li><a href="#constructos" id="toc-constructos" class="nav-link" data-scroll-target="#constructos">Constructos:</a></li>
-  <li><a href="#ejemplo-de-trabajo" id="toc-ejemplo-de-trabajo" class="nav-link" data-scroll-target="#ejemplo-de-trabajo">Ejemplo de trabajo</a></li>
+  <li><a href="#objetivos-del-trabajo" id="toc-objetivos-del-trabajo" class="nav-link" data-scroll-target="#objetivos-del-trabajo">Objetivos del trabajo</a></li>
+  <li><a href="#secciones-del-trabajo" id="toc-secciones-del-trabajo" class="nav-link" data-scroll-target="#secciones-del-trabajo">Secciones del trabajo</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -153,66 +201,34 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7">Taller 3</h1>
+<h1 class="title display-7">Trabajo 1. Reporte en Quarto</h1>
+<p class="subtitle lead">R para análisis estadístico</p>
 
 <div class="date-block bg-assignment text-white p-2">
-  <p class="date">Due by 11:59 PM on jueves, 21 de septiembre de 2023</p>
+  <p class="date">Due by 11:59 PM on martes, 19 de marzo de 2024</p>
 </div>
 </header>
 
-<section id="objetivo-del-taller" class="level1">
-<h1>Objetivo del taller</h1>
-<p>Practicar la creación de índices sintéticos, y reforzar contenidos asociados a la validez.</p>
+<section id="presentación" class="level1">
+<h1>Presentación</h1>
+<section id="objetivos-del-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-del-trabajo">Objetivos del trabajo</h2>
+<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
 </section>
-<section id="instrucciones" class="level1">
-<h1>Instrucciones:</h1>
-<p>A continuación, se les presentarán diversos constructos. En sus grupos de trabajo, ustedes deben:</p>
-<ol type="a">
-<li><p>Escoger uno de los constructos enlistados.</p></li>
-<li><p>Definir la unidad de análisis para cada uno (sujetos/individuos, países, etc.).</p></li>
-<li><p>Para cada uno de ellos, definir dimensiones (al menos dos) e indicadores (al menos tres por cada dimensión).</p></li>
-<li><p>Para el caso de los indicadores, deben presentar el rango de valores posibles e identificar su nivel de medición.</p></li>
-<li><p>Elaborar un diagrama que refleje la operacionalización de cada constructo, dando cuenta de sus dimensiones e indicadores.</p></li>
-<li><p>A partir de los indicadores definidos, construir un índice sintético no ponderado que permita medir el constructo multidimensionalmente. Para ello, deben especificar la fórmula en base a la cual se estiman los valores del índice.</p></li>
-<li><p>Presentar los posibles valores que puede adoptar el índice construido, así como su nivel de medición. Señalar valores mínimo y máximo teórico, y proveer una breve interpretación de los posibles valores adoptados. En caso de estandarizar los valores, justificar tal decisión y señalar el rango de valores estandarizados.</p></li>
-<li><p>Reflexionar en torno a la validez del constructo ¿En qué medida el constructo permite medir el concepto? ¿Qué elementos están quedando fuera de la medición?</p></li>
-<li><p>En una hoja deben especificar el título Taller 3, el nombre de l_s integrantes del equipo que están presentes en el taller, y sus respectivas respuestas. Tendrán hasta las 13:25 para realizar el taller.</p></li>
-</ol>
-<section id="constructos" class="level2">
-<h2 class="anchored" data-anchor-id="constructos">Constructos:</h2>
+<section id="secciones-del-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="secciones-del-trabajo">Secciones del trabajo</h2>
+<ul>
+<li><p>Título: Breve, lo principal es hacer alusión al objeto central del estudio.</p></li>
+<li><p>Introducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (<strong>MÁXIMO</strong> 1000 palabras)</p></li>
+</ul>
+<p>Es importante considerar</p>
 <ol type="1">
-<li><p>Índice de Desarrollo Humano</p></li>
-<li><p>Índice de Democracia.</p></li>
-<li><p>Índice de victimización.</p></li>
-<li><p>Índice de calidad del empleo.</p></li>
-<li><p>Índice de consumo cultural.</p></li>
-<li><p>Índice de actitudes hacia la violencia.</p></li>
-<li><p>Índice de actitudes hacia el deporte.</p></li>
+<li><p>Relevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).</p></li>
+<li><p>Precisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.</p></li>
+<li><p>Precisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”</p></li>
+<li><p>Se deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio</p></li>
+<li><p>El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p></li>
 </ol>
-</section>
-<section id="ejemplo-de-trabajo" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplo-de-trabajo">Ejemplo de trabajo</h2>
-<p>Constructo: Índice de confianza en instituciones</p>
-<p>Unidad de análisis: Sujetos/individuos</p>
-<p>Dimensiones: 2 dimensiones: a) instituciones políticas; b) instituciones civiles</p>
-<p>Variables necesarias:</p>
-<p>¿Cuánto confía usted en las siguientes instituciones?</p>
-<ol type="a">
-<li><p>Presidente (Ordinal; nada-poco-bastante-mucho)</p></li>
-<li><p>Partidos políticos (Ordinal; nada-poco-bastante-mucho)</p></li>
-<li><p>ONGs (Ordinal; nada-poco-bastante-mucho)</p></li>
-<li><p>Poder judicial (Ordinal; nada-poco-bastante-mucho)</p></li>
-<li><p>Bomberos (Ordinal; nada-poco-bastante-mucho)</p></li>
-<li><p>Iglesia (Ordinal; nada-poco-bastante-mucho)</p></li>
-</ol>
-<p>Operacionalización:</p>
-<p><img src="../files/operacionalizacion.png" class="img-fluid"></p>
-<p>Formalización:</p>
-<p><span class="math display">\[CI = CIC + CIP = C. Bomberos + C. ONGs + C. Iglesia + C. Poder judicial + C. Partidos + C. Presidente\]</span> <span class="math display">\[CI = CIC + CIP =  [0, 3]      +     [0, 3]   +     [0,3]     +          [0, 3]          +      [0, 3]     +       [0,3] \]</span></p>
-<p>Posibles valores: [0, 18].</p>
-<p>Nivel de medición: Intervalar (discutible)</p>
-<p>Interpretación: Menores valores indican nada o poca confianza en instituciones, mientras que los valores más altos indican bastante o mucha confianza en instituciones. Por un lado, una persona puede tener un grado de confianza en instituciones de 1 (al haber respondido “nada” de confianza en la mayoría de las instituciones y “Algo” de confianza en una de ellas), lo que da cuenta de un bajo grado de confianza en las instituciones. Por otro lado, una persona puede tener un grado de confianza en instituciones de 15 (al haber respondido “Mucha” confianza en 5 instituciones y “Nada” confianza en las otras tres), lo que da cuenta de un alto nivel de confianza en las instituciones.</p>
-<p>Validez: Dado que no se incorporan todas las posibles instituciones, el índice de Confianza en Instituciones creado no lograría cubrir el constructo totalmente, quedando fuera, por ejemplo, las instituciones militares o de fuerzas de orden. No obstante, permite medir de buena forma la confianza en las instituciones civiles y políticas.</p>
 
 
 </section>

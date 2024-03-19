@@ -1,0 +1,32 @@
+---
+title: "Trabajo 1. Reporte en Quarto"
+subtitle: "R para análisis estadístico"
+linktitle: "Trabajo 1. Reporte en Quarto"
+date: "2024-03-19"
+lang: es
+---
+
+# Presentación
+
+## Objetivos del trabajo
+
+El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.
+
+
+## Secciones del trabajo
+
+- Título: Breve, lo principal es hacer alusión al objeto central del estudio.
+
+- Introducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (**MÁXIMO** 1000 palabras)
+
+Es importante considerar
+
+1. Relevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).
+
+2. Precisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.
+
+3. Precisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”
+
+4. Se deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio
+
+5. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.

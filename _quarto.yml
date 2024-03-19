@@ -50,7 +50,8 @@ website:
         file: practicos/index.qmd
       - text: "Herramientas"
         file: herramientas/index.qmd
-      - trabajos.qmd
+      - text: "Trabajos"
+        file: assignment/index.qmd
 #      - text: "News"
 #        file: news/index.qmd
 #      - icon: slack
@@ -105,6 +106,19 @@ website:
           contents:
             - text: "Github"
               file: herramientas/01-content.qmd
+
+    - title: "Trabajos"
+      style: "docked"
+      search: false
+      background: dark
+      contents:
+        - section: "Información general"
+          contents:
+            - assignment/index.qmd
+        - section: "Trabajos"
+          contents:
+            - text: "Trabajo 1"
+              file: assignment/01-trabajo.qmd
 
 
   page-footer:
