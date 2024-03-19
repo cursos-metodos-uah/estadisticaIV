@@ -117,9 +117,12 @@ Ahora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zot
 
 ![](images/zotero10.png)
 
-11. Guardamos nuestro archivo .bib en la misma carpeta de nuestro poryecto de trabajo
+11. Guardamos nuestro archivo .bib en la misma carpeta de nuestro proyecto de trabajo
+
 
 ## Quarto
+
+La escritura en Quarto tiene algunos códigos o funciones, aquí un resumen de su mayoría:
 
 +-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 |Código                                                                         | Así se ve                                                                     |
@@ -159,6 +162,52 @@ Ahora solo nos interesa lograr una cosa más: vincular nuestra biblioteca de Zot
 |                                                                               |                                                                               |
 |                                                                               |  -  de lista                                                                  |
 +-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+
+1. Abrimos nuestro Rproject y creamos un nuevo documento de Quarto file --> new file --> Quarto document
+
+2. Editamos el yaml, agregando bibliography: percepcion-desigualdad.bib y link-citations: yes
+
+::: callout-note
+
+YAML: Lenguaje de programación. Es un formato de serialización de datos que proporcionan un mecanismo de intercambio de datos legible por humanos. Dan formato a los datos de manera estandarizada para su intercambio entre aplicaciones de software.
+
+
+![](images/yaml.png)
+
+:::
+
+3. Comenzamos a escribir la introducción de nuestra investigación
+
+4. Para insertar referencias:
+
+Se pueden insertar citas usando el comando Insert -> Citation o usando la sintaxis directamente (por ejemplo, [@cita] o @cita).
+
+Las citas van entre corchetes y están separadas por punto y coma. Cada cita debe tener una clave, compuesta por '@' + el identificador de la cita en zotero. 
+
+![](images/zotero11.png)
+
+En este caso, `[@mijsParadoxInequalityIncome2021a]`
+
+Aquí hay otros ejemplos:
+
+La investigación sobre percepción de desigualdad económica ha tenido un auge durante los últimos años `[ver @mijsParadoxInequalityIncome2021a; también @crucesBiasedPerceptionsIncome2013]`.
+
+Específicamente, se ha encontrado evidencia sobre que... `[@mijsParadoxInequalityIncome2021a]`. De todas formas, `@crucesBiasedPerceptionsIncome2013` plantea que...
+
+Así mismo, Mijs señala que... `[-@mijsParadoxInequalityIncome2021a]`
+
+Aunque ambos concluyen que... `[@mijsParadoxInequalityIncome2021a; @crucesBiasedPerceptionsIncome2013]`
+
+![](images/quarto4.png)
+
+5. Luego renderizamos y se debería ver así:
+
+![](images/quarto5.png)
+
+
+Con referencias automáticas!
+
+6. Ahora que tenemos la introducción de nuestra investigación podemos subirla a Github Pages a través de Github Desktop.
 
 
 
