@@ -1,7 +1,7 @@
 ---
-title: "Metodología I"
+title: "R para análisis de datos"
 author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2023"
+date: "1er Sem 2024"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -47,6 +47,7 @@ xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css"))
 xaringanExtra::use_scribble()
 ```
 
+
 <!---
 Para correr en ATOM
 - open terminal, abrir R (simplemente, R y enter)
@@ -57,18 +58,18 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 
 .pull-left[
-# Metodología I
+# R para el análisis de datos
 ## **Kevin Carrasco**
-## Magister Ciencias Sociales FACSO - UChile
-## 1er Sem 2023 
-## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
+## Sociología - UAH
+## 1er Sem 2024 
+## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
-    
+
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 2: Operacionalización de variables ]
+## .yellow[Sesión 2: Construcción de reportes automáticos, reproducibles e integrados con código]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 
@@ -86,397 +87,187 @@ class: animated, fadeIn
 class: inverse, bottom, right, animated, slideInRight
 
 
-# .red[Sesión 2]
-<br>
+# .red[Construcción de reportes automáticos, reproducibles e integrados con código]
 
-Repaso sesión anterior
-
-Medidas de tendencia central
-
-Tipos de diseños de investigación
-
-Operacionalización de variables
-<br>
-<br>
-<br>
-<br>
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 2]
-<br>
-
-.yellow[Repaso sesión anterior]
-
-Medidas de tendencia central
-
-Tipos de diseños de investigación
-
-Operacionalización de variables
-<br>
-<br>
-<br>
-<br>
----
-
-## Datos y variables
-
-- discretas (Rango finito de valores):
-
-      - Dicotómicas
-      - Politómicas
-
-- continuas:
-
-      - Rango (teóricamente) infinito de valores.
 
 ---
-## Escalas de medición de variables
+class: inverse, middle, right
 
-- NOIR: Nominal, Ordinal, Intervalar, Razón
+# Repaso sesión anterior
 
-.small[
-| Tipo       	| Características                     	        | Propiedad de números 	| Ejemplo|
-|------------	|----------------------------------------------|---------------	|-----------	|
-| *Nominal*    	| Uso de números en lugar de palabras 	| Identidad            	| Nacionalidad      	|
-| *Ordinal*    	| Números se usan para ordenar series 	| + ranking            	| Nivel educacional 	|
-| *Intervalar* 	| Intervalos iguales entre números    	| + igualdad           	| Temperatura       	|
-| *Razón*      	| Cero real                           	| + aditividad         	| Distancia         	|
+- Foco en reproducibilidad, reporte, visualización y análisis de resultados.
+
+- Sitio web del curso
+
+# .center[[**R-data-analisis.netlify.app**](https://R-data-analisis.netlify.app/)]
+
+---
+
+# Reproducibilidad
+
+- Es la posibilidad de **regenerar** de manera independiente los resultados usando los materiales originales de una investigación ya publicada.
+
+- En términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos.
+
+---
+## ¿Qué porcentaje de los estudios publicados son reproducibles?
+
+.pull-left-wide[
+![:scale 95%](../../files/img/reproducibility_science.png)
+]
+.pull-right-narrow[
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+... alrededor de un **40%!** (... varía por disciplina)
+]
+---
+## ¿Qué porcentaje de los estudios publicados son reproducibles?
+
+.pull-left[
+![:scale 100%](../../files/img/breznau.png)
+]
+.pull-right[
+
+Breznau, et. al, (2023) coordinó una investigación con 161 investigadores de 73 equipos de investigación.
+
+Los equipos informaron tanto hallazgos numéricos como conclusiones sustanciales muy diversas
+]
+---
+
+##Alternativa: Ciencia abierta
+
+<br>
+
+![](../../files/img/flujo-herramientas.png)
+---
+class: middle center
+Más info:
+
+# lisa-coes.com
+
+# Documental "Paywall: The Business of Scholarship" [Youtube](https://www.youtube.com/watch?v=HM_nWsdbNvQ&ab_channel=JasonSchmitt)
+
+---
+
+# Todo un mundo de posibilidades
+
+.center[![:scale 50%](../../files/img/logos.png)]
+
+---
+# Github
+
+.pull-left[
+- Repositorio en línea
+
+- Control de versiones
+
+- Gratis
+
+- Integración con R
+
+- Acceso desde cualquier equipo
+]
+
+.pull-right[
+![:scale 100%](../../files/img/github.png)
 ]
 
 ---
-## Tipos de datos en relación a escalas de medición.
 
-* **Datos categóricos**:
+## Alternativas o extensiones de R
 
-    - pueden ser medidos sólo mediante escalas nominales, u ordinales en caso de orden de rango
-
-* **Datos continuos**:
-    - Medidos en escalas intervalares o de razón
-    - Pueden ser transformados a datos categóricos
-    
+.center[
+![:scale 60%](../../files/img/quarto.png)
+]
 ---
-class: inverse, bottom, right
+## Así se ve Quarto
 
-
-# .red[Sesión 2]
-<br>
-
-Repaso sesión anterior
-
-.yellow[Medidas de tendencia central]
-
-Tipos de diseños de investigación
-
-Operacionalización de variables
-<br>
-<br>
-<br>
-<br>
----
-
-Introducción y bases de la investigación cuantitativa
-
-Introducción a R y RStudio
-<br>
-<br>
-<br>
-<br>
----
-
-# Introducción y bases de la investigación cuantitativa
-
-* Ciencia como método de investigación
-
-* Permite lidiar con la **incertidumbre**
-
-* Foco en la teoría
-
-* Explicar lo que es, no lo que debería ser
-
-* Conocer y explicar grupos de personas de manera general, no individuos por sí solos
+.center[
+![:scale 80%](../../files/img/quarto3.png)
+]
 
 ---
-class: roja, center, middle
+## Así se ve Quarto
 
-# Introducción y bases de la investigación cuantitativa:
-
-## Datos y Variables
-
----
-##.yellow[Datos] y variables
-
-* Los datos miden al menos una *característica* de a los menos una *unidad*  en a lo menos *un punto en el tiempo*
-
---
- + Ejemplo: La esperanza de vida en Chile el 2017 fue de 79,9 años
-
-   - Característica (variable) : esperanza de vida
-
-   - Unidad: Años
-
-   - Punto en el tiempo: 2017
+.center[
+![:scale 41%](../../files/img/quarto2.png)
+]
 
 ---
-##.yellow[Datos] y variables
+class: inverse, middle, right
 
-* Base de Datos
+# Esta sesión
 
-* Forma "rectangular" de almacenamiento de datos:
+- Zotero
 
-.center[![:scale 60%](../../files/img/ObservacionesyVariables.png)]
+- Research Rabbit
 
----
-##.yellow[Datos] y variables
-
-  - cada .blue[fila] representa una unidad o caso (ej: un entrevistad_)
-
-  - cada .orange[columna] una variable (ej: edad)
-
-  - cada .purple[variable] posee valores numéricos
-
-  - los valores numéricos pueden estar asociados a una etiqueta (ej: 1=Mujer)
-  
----
-##.yellow[Datos] y variables
-
-### Ejemplos de estudios / bases de datos
-
-1. [Encuesta Centro de Estudios Públicos](https://www.cepchile.cl/cep/site/edic/base/port/encuestacep.html)
-
-2. [Encuesta CASEN](http://observatorio.ministeriodesarrollosocial.gob.cl/casen-multidimensional/casen/casen_2017.php)
-
-3. [Encuesta Lapop](https://www.vanderbilt.edu/lapop-espanol/)
-
-4. [ELSOC](https://coes.cl/encuesta-panel/)
+- Documentos dinámicos
 
 ---
-## Datos y .yellow[variables]
+class: inverse, middle, right
 
-- Una variable representa cualquier cosa o propiedad que varia y a la cuál se le asigna un valor. Es decir:
+# Esta sesión
 
-- $Variable \neq Constante$
+- .red[Zotero]
 
-- Pueden ser visibles o no visibles/latentes. (Ej: peso / inteligencia)
+- Research Rabbit
 
----
-## Datos y .yellow[variables]
-
-- discretas (Rango finito de valores):
-
-      - Dicotómicas
-      - Politómicas
-
-- continuas:
-
-      - Rango (teóricamente) infinito de valores.
+- Documentos dinámicos
 
 ---
-## Escalas de medición de variables
+# Zotero
 
-- NOIR: Nominal, Ordinal, Intervalar, Razón
+.pull-left[
+- Gestor de bibliografía
 
-.small[
-| Tipo       	| Características                     	        | Propiedad de números 	| Ejemplo|
-|------------	|----------------------------------------------|---------------	|-----------	|
-| *Nominal*    	| Uso de números en lugar de palabras 	| Identidad            	| Nacionalidad      	|
-| *Ordinal*    	| Números se usan para ordenar series 	| + ranking            	| Nivel educacional 	|
-| *Intervalar* 	| Intervalos iguales entre números    	| + igualdad           	| Temperatura       	|
-| *Razón*      	| Cero real                           	| + aditividad         	| Distancia         	|
+- Código abierto
+
+- Gratis
+
+- Integración con R
+
+- Acceso desde cualquier equipo
+]
+
+.pull-right[
+![:scale 100%](../../files/img/zotero.png)
 ]
 
 ---
 
 
-## Medidas de tendencia Central
-
-* **Moda**: valor que ocurre más frecuentemente
-
---
-
-* **Mediana**: valor medio de la distribución ordenada. Si N es par, entonces es el promedio de los valores medios
-
---
-* **Media** o promedio aritmético: suma de los valores dividido por el total de casos
-
----
-.pull-left-narrow[
-## Dispersión:
-### Varianza
-]
-
-.pull-right-wide[
-
-![:scale 100%](../../files/img/varianza1.png)
-]
-
----
-.pull-left-narrow[
-## Dispersión:
-### Varianza
-]
-
-.pull-right-wide[
-
-![:scale 100%](../../files/img/varianza3.png)
-]
-
 
 
 ---
-.pull-left-narrow[
-## Dispersión:
-### Varianza
-]
+class: center
 
-.pull-right-wide[
+## Protocolo de trabajo reproducible
 
-![:scale 100%](../../files/img/varianza2.png)
-]
----
-## Dispersión:
+![:scale 41%](../../files/img/ipo-hex.png)
 
-![:scale 100%](../../files/img/varianza_formula.png)
----
-class: inverse, middle, center
-
-#La **VARIANZA** equivale al promedio de la suma de las diferencias del promedio al cuadrado
+.small[.right[fuente: [lisa-coes.com/ipo-repro](https://lisa-coes.com/ipo-repro)]]
 
 ---
-##  Desviación Estándar
-
-.pull-left-narrow[
-![](../../files/img/desviacion_estandar.png)
-
-]
-
-.pull-right-wide[
-  - Raiz Cuadrada de la varianza.
-
-
-  - Expresada  en la mismas unidades que los puntajes de la escala original
-]
-
-
-
----
-class: middle, center
-
-# Más sobre datos, variables y varianza en:
-
-##-  [Moore: 1.Comprensión de los datos (1-54)](https://multivariada.netlify.app/docs/lecturas/moore_comprensiondelosdatos.pdf)
-
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 2]
-<br>
-
-Repaso sesión anterior
-
-Medidas de tendencia central
-
-.yellow[Tipos de diseños de investigación]
-
-Operacionalización de variables
-<br>
-<br>
-<br>
-<br>
-
----
-## Tipos de diseños de investigación
-
-Un diseño de investigación es un plan estructurado y ordenado, que está orientado a responder empíricamente (con evidencia observable) una pregunta de investigación.
-
-¿Qué aspecto de la teoría se va a investigar? ¿Cómo se levantarán los datos? ¿cómo se analizará la información obtenida?
-
-Todo diseño de investigación busca **obtener conclusiones basadas en la evidencia empírica y un correcto tratamiento de los datos**
-
----
-## Tipos de diseños de investigación
-
-Según el grado de intervención del investigador/a:
-
-* **Experimentales**: Manipulación o tratamiento de fenómenos y/o información para investigar causalidad
-
-* **Observacionales**: Descripción *objetiva* de un fenómeno
-
----
-## Tipos de diseños de investigación
-
-Según los objetivos de investigación:
-
-* **Descriptivos**: describir conceptos nuevos, asociaciones o agrupaciones entre conceptos
-
-* **Causales**: conocer efectos causales o encontrar causas que expliquen un fenómeno a partir de los datos observados
-
----
-## Tipos de diseños de investigación
-
-Según el tiempo de estudio:
-
-* **Transversal**: Los datos se toman en un momento determinado y no hay manipulación de variables.
-
-* **Longitudinales**:
-      - panel: estudio del mismo grupo de personas a través del tiempo
-      - Tendencia: estudio de la misma población, pero distinto grupo de personas
-
----
-class: inverse, bottom, right
-
-
-# .red[Sesión 2]
-<br>
-
-Repaso sesión anterior
-
-Medidas de tendencia central
-
-
-Tipos de diseños de investigación
-
-.yellow[Operacionalización de variables]
-<br>
-<br>
-<br>
-<br>
-
----
-## Operacionalización de variables
-
-Guía de trabajo en:
-
-
-# .center[[**metod1-mcs.netlify.app/resource/02-resource.html**](https://metod1-mcs.netlify.app/resource/02-resource.html)]
-
----
-
-.center[![:scale 58%](../../files/img/conferencia-Ciencia-Abierta3.png)]
-
-<br>
-<br>
-<br>
----
-
-
 class: front
 
 .pull-left[
-# Metodología I
+# R para análisis de datos
 ## **Kevin Carrasco**
-## Magister en Ciencias Sociales FACSO - UChile
-## 1er Sem 2023 
-## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
+## Sociología - UAH
+## 1er Sem 2024
+## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
     
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 2: Operacionalización de variables ]
+## .yellow[Sesión 1: Introducción]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 
