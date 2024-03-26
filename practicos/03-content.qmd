@@ -59,6 +59,7 @@ El documento de **código de preparación** posee 5 partes, más una sección de
 
 
 
+
 Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos.
 
 En el ejemplo vamos a procesar variables de confianza en instituciones políticas y variables de caracterización sociodemográfica utilizando los datos de la encuesta [Latinobarómetro](https://www.latinobarometro.org/lat.jsp) .
@@ -271,11 +272,6 @@ proc_data <- proc_data %>% rename("conf_gob"=p13st_e, # Confianza en el gobierno
 
 ```
 
-**nota**: recodificación más rápida si estamos segur-s de todos los valores
-
-```{r eval=FALSE}
-proc_data <- proc_data %>% mutate_at(vars(starts_with("conf")), ~(4-.))
-```
 
 Además de cambiar el nombre, queremos cambiar las etiquetas de las variables.
 
