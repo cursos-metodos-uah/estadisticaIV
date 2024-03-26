@@ -324,9 +324,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol></li>
 <li>Generación de base de datos preparada para el análisis.</li>
 </ol>
+<div class="alert alert-info">
+<p><strong>De rutas, estructura de carpetas y otros </strong></p>
+<ul>
+<li><p><strong>Encontrando la ruta a carpeta local</strong>: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar “Propiedades”, en la ventana emergente debería aparecer la ruta hacia la carpeta en “Ubicación”. Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)</p></li>
+<li><p><strong>Sobre los “slashes” (<code>\</code> o <code>/</code>)</strong>: en la ruta las carpetas y el archivo final aparecen separados por slashes, que según el sistema utilizado pueden ser <em>slash</em> (<code>/</code>) o <em>backslash</em> (<code>\</code>). En R por defecto se usa <em>slash</em>, pero en Windows <em>backslash</em>, por lo que si se usa Windows hay que reemplazarlos por <em>backslash</em> o también puede ser por un doble <em>slash</em> (<code>//</code>).</p></li>
+<li><p>Por temas de compatibilidad general, en las rutas se recomienda evitar tildes, eñes, espacios, mayúsculas y guiones bajos (_).</p></li>
+<li><p><strong>Estructura de carpetas</strong>: para mantener el orden se sugiere seguir un protocolo de estructura de carpetas de proyecto, para lo que recomendamos el protocolo <a href="https://lisa-coes.com/ipo-protocol/">IPO</a>, y que se adapta al flujo de trabajo presentado anteriormente. Básicamente son tres carpetas: <strong>input</strong>, <strong>procesamiento</strong>, <strong>output</strong>. En la carpeta input crear la subcarpeta data-orig para guardar datos originales, y data-proc para los procesados. En procesamiento se guardan los archivos de código y en output las tablas y los gráficos.</p></li>
+</ul>
+<p><img src="../files/img/ipo-hex.png" class="img-fluid"></p>
+<div>
+
+
+
 <p>Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos.</p>
 <p>En el ejemplo vamos a procesar variables de confianza en instituciones políticas y variables de caracterización sociodemográfica utilizando los datos de la encuesta <a href="https://www.latinobarometro.org/lat.jsp">Latinobarómetro</a> .</p>
-</section>
+</div></div></section>
 </section>
 <section id="antecedentes-de-los-datos-a-utilizar" class="level2">
 <h2 class="anchored" data-anchor-id="antecedentes-de-los-datos-a-utilizar">Antecedentes de los datos a utilizar</h2>
@@ -391,9 +404,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>latinobarometro2020 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"../files/data/external_data/latinobarometro2020.dta"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (elsoc_2016):</p>
+<p>La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (latinobarometro2020):</p>
 <p><img src="images/basecargada.png" class="img-fluid"></p>
-<p>Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, 20204 casos y 408 variables).</p>
+<p>Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, 20204, 408 ).</p>
 <div class="cell">
 <details open="">
 <summary>Código</summary>
@@ -1152,18 +1165,7 @@ conf_inst    1,162  2.420   2.489    0  12
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(proc_data,<span class="at">file =</span> <span class="st">"files/data/latinobarometro_proc.RData"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="alert alert-info">
-<p><strong>De rutas, estructura de carpetas y otros </strong></p>
-<ul>
-<li><p><strong>Encontrando la ruta a carpeta local</strong>: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar “Propiedades”, en la ventana emergente debería aparecer la ruta hacia la carpeta en “Ubicación”. Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)</p></li>
-<li><p><strong>Sobre los “slashes” (<code>\</code> o <code>/</code>)</strong>: en la ruta las carpetas y el archivo final aparecen separados por slashes, que según el sistema utilizado pueden ser <em>slash</em> (<code>/</code>) o <em>backslash</em> (<code>\</code>). En R por defecto se usa <em>slash</em>, pero en Windows <em>backslash</em>, por lo que si se usa Windows hay que reemplazarlos por <em>backslash</em> o también puede ser por un doble <em>slash</em> (<code>//</code>).</p></li>
-<li><p>Por temas de compatibilidad general, en las rutas se recomienda evitar tildes, eñes, espacios, mayúsculas y guiones bajos (_).</p></li>
-<li><p><strong>Estructura de carpetas</strong>: para mantener el orden se sugiere seguir un protocolo de estructura de carpetas de proyecto, para lo que recomendamos el protocolo <a href="https://lisa-coes.com/ipo-protocol/">IPO</a>, y que se adapta al flujo de trabajo presentado al principio de este práctico. Básicamente son tres carpetas: <strong>input</strong>, <strong>procesamiento</strong>, <strong>output</strong>. En la carpeta input crear la subcarpeta data-orig para guardar datos originales, y data-proc para los procesados. En procesamiento se guardan los archivos de código y en output las tablas y los gráficos.</p></li>
-</ul>
-<div>
-
-
-</div></div></section>
+</section>
 <section id="descriptivos-básicos-de-las-variables" class="level2">
 <h2 class="anchored" data-anchor-id="descriptivos-básicos-de-las-variables">Descriptivos básicos de las variables</h2>
 <p>Podemos conocer ciertas medidas de tendencia central utilizando algunas funciones de <code>dplyr</code></p>
@@ -1202,14 +1204,8 @@ conf_inst    1,162  2.420   2.489    0  12
 <div class="cell">
 <details open="">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>#refugeeswelcome</code></pre>
-</div>
-<details open="">
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>conf_inst, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>conf_inst, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -1307,7 +1303,7 @@ conf_inst    1,162  2.420   2.489    0  12
 <td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">1</span></td>
 <td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">1162</span></td> 
 </tr>
-<tr><td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="15">χ<sup>2</sup>=37.850 · df=24 · Cramer's V=0.128 · Fisher's p=0.151</td> 
+<tr><td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="15">χ<sup>2</sup>=37.850 · df=24 · Cramer's V=0.128 · Fisher's p=0.138</td> 
 </tr>
  
 </tbody></table>
@@ -1606,555 +1602,559 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb83" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico 3. Operacionalización de variables"</span></span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "R data analisis"</span></span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="an">linktitle:</span><span class="co"> "Práctico 3: Operacionalización"</span></span>
-<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-03-26"</span></span>
-<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
-<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la práctica</span></span>
-<span id="cb83-12"><a href="#cb83-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-13"><a href="#cb83-13" aria-hidden="true" tabindex="-1"></a>El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder analizar e interpretar los datos.</span>
-<span id="cb83-14"><a href="#cb83-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a>Por temas de orden y reproducibilidad, en este curso vamos a separar en **dos momentos** el trabajo con datos, y dos archivos de código correspondientes:</span>
-<span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-17"><a href="#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Preparación** corresponde a lo que se conoce generalmente como "limpieza", es decir, realizar las modificaciones necesarias para poder efectuar los análisis. Estas modificaciones previas al análisis son necesarias ya que los datos originales con los que se va a trabajar en general no vienen perfectamente adaptados a los análisis que se quieren hacer. Por lo tanto, en cuanto a datos también hacemos la distinción entre datos originales y datos preparados (o procesados).</span>
-<span id="cb83-18"><a href="#cb83-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-19"><a href="#cb83-19" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Análisis**: se relaciona tanto con análisis descriptivos asociados a las preguntas de investigación y como también modelamiento de datos para contrastar hipótesis de investigación.</span>
-<span id="cb83-20"><a href="#cb83-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-21"><a href="#cb83-21" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Los procesos de preparación y análisis vinculados a datos y resultados se presentan en el siguiente esquema:{#flujo}</span></span>
-<span id="cb83-22"><a href="#cb83-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-23"><a href="#cb83-23" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/produccion.png)</span></span>
-<span id="cb83-24"><a href="#cb83-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-25"><a href="#cb83-25" aria-hidden="true" tabindex="-1"></a>Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada uno en un _archivo de código_.</span>
-<span id="cb83-26"><a href="#cb83-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-27"><a href="#cb83-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sidenote"</span><span class="kw">&gt;</span>**Archivo de código R**: archivo con extensión .R donde se almacena el código de análisis. Para generarlo desde RStudio: _File &gt; New File &gt; R Script_ (o ctrl+shift+N), y para grabarlo  _File &gt; Save (o ctrl+s)_, y darle nombre la primera vez (recordar: sin tilde ni ñ, y evitar espacios) <span class="kw">&lt;/span&gt;</span></span>
-<span id="cb83-28"><a href="#cb83-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-29"><a href="#cb83-29" aria-hidden="true" tabindex="-1"></a>El documento de **código de preparación** posee 5 partes, más una sección de identificación inicial:</span>
-<span id="cb83-30"><a href="#cb83-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-31"><a href="#cb83-31" aria-hidden="true" tabindex="-1"></a><span class="ss">0. </span>Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento</span>
-<span id="cb83-32"><a href="#cb83-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Librerías: cargar librerías a utilizar</span>
-<span id="cb83-33"><a href="#cb83-33" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Datos: carga de datos</span>
-<span id="cb83-34"><a href="#cb83-34" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Selección de variables a utilizar</span>
-<span id="cb83-35"><a href="#cb83-35" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Procesamiento de variables: en este punto, por cada variable se realiza lo siguiente:</span>
-<span id="cb83-36"><a href="#cb83-36" aria-hidden="true" tabindex="-1"></a>    a. Descriptivo básico</span>
-<span id="cb83-37"><a href="#cb83-37" aria-hidden="true" tabindex="-1"></a>    b. Recodificación: datos perdidos y valores (en caso de ser necesario)</span>
-<span id="cb83-38"><a href="#cb83-38" aria-hidden="true" tabindex="-1"></a>    c. Etiquetamiento: de variable y valores (en caso de ser necesario)</span>
-<span id="cb83-39"><a href="#cb83-39" aria-hidden="true" tabindex="-1"></a>    e. Otros ajustes</span>
-<span id="cb83-40"><a href="#cb83-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-41"><a href="#cb83-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-42"><a href="#cb83-42" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Generación de base de datos preparada para el análisis.</span>
-<span id="cb83-43"><a href="#cb83-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-44"><a href="#cb83-44" aria-hidden="true" tabindex="-1"></a>Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos.</span>
-<span id="cb83-45"><a href="#cb83-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-46"><a href="#cb83-46" aria-hidden="true" tabindex="-1"></a>En el ejemplo vamos a procesar variables de confianza en instituciones políticas y variables de caracterización sociodemográfica utilizando los datos de la encuesta <span class="co">[</span><span class="ot">Latinobarómetro</span><span class="co">](https://www.latinobarometro.org/lat.jsp)</span> .</span>
-<span id="cb83-47"><a href="#cb83-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-48"><a href="#cb83-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Antecedentes de los datos a utilizar</span></span>
-<span id="cb83-49"><a href="#cb83-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-50"><a href="#cb83-50" aria-hidden="true" tabindex="-1"></a>Latinobarómetro es un estudio de opinión pública que aplica anualmente alrededor de 20.000 entrevistas en 18 países de América Latina representando a más de 600 millones de habitantes</span>
-<span id="cb83-51"><a href="#cb83-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-52"><a href="#cb83-52" aria-hidden="true" tabindex="-1"></a>  "Los gobiernos latinoamericanos, que venían en declive junto con sus democracias desde inicios de la década de 2010, como reflejan los datos de Latinobarómetro, llegaron a fines de 2018 al annus horribilis con la caída de Nicaragua y Venezuela desde su condición de democracias para entrar en la categoría de autocracias y dictadura. </span>
-<span id="cb83-53"><a href="#cb83-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-54"><a href="#cb83-54" aria-hidden="true" tabindex="-1"></a>  De los hiperpresidentes de la primera década del siglo con altos niveles de crecimiento en todos los países y altos niveles de aprobación, la región pasó en la segunda década a los subpresidentes, con una baja en aprobación de gobierno a la mitad, en menos de 10 años. Este rechazo al desempeño de las elites gobernantes, indica su fracaso a fines de 2019 en varios países de la región." (Latinobarómetro, informe 2021, p. 7)</span>
-<span id="cb83-55"><a href="#cb83-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-56"><a href="#cb83-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-57"><a href="#cb83-57" aria-hidden="true" tabindex="-1"></a>El presente ejercicio tiene por objetivo el procesar los datos para obtener las variables relevantes para el estudio de la **Confianza en instituciones políticas**, entendida como el grado en que los individuos confian en distintas instituciones políticas a nivel nacional, como el gobierno, la justicia, los partidos políticos, etc. Para ello, junto con variables de confianza, consideraremos también variables de estatus (educación), y variables de caracterización sociodemográfica (sexo y edad).</span>
-<span id="cb83-58"><a href="#cb83-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-59"><a href="#cb83-59" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación de datos Latinobarómetro 2020</span></span>
-<span id="cb83-60"><a href="#cb83-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-61"><a href="#cb83-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Librerías principales (de R) a utilizar en el análisis{#librerias}</span></span>
-<span id="cb83-62"><a href="#cb83-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-63"><a href="#cb83-63" aria-hidden="true" tabindex="-1"></a>Como sabemos, la lógica de R es instalar librerías (solo 1 vez, con <span class="in">`install.packages("librería")`</span>), y luego cargarlas cada vez que es necesario usarlas (con <span class="in">`library(librería)`</span>). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama <span class="in">`pacman`</span> (package manager). Lo que hace <span class="in">`pacman`</span> es cargar la librería, y si no está instalada, la instala y la carga:</span>
-<span id="cb83-64"><a href="#cb83-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-65"><a href="#cb83-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-66"><a href="#cb83-66" aria-hidden="true" tabindex="-1"></a>Para utilizar la primera vez (si es que no está instalada):</span>
-<span id="cb83-67"><a href="#cb83-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-68"><a href="#cb83-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb83-69"><a href="#cb83-69" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
-<span id="cb83-70"><a href="#cb83-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-71"><a href="#cb83-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-72"><a href="#cb83-72" aria-hidden="true" tabindex="-1"></a>Y en adelante, las librerías se cargan así <span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sidenote"</span><span class="kw">&gt;</span> pacman::p_load(libreria1,libreria2,libreriaX) <span class="kw">&lt;/span&gt;</span>:</span>
-<span id="cb83-73"><a href="#cb83-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-74"><a href="#cb83-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-77"><a href="#cb83-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-78"><a href="#cb83-78" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, sjmisc, car, sjlabelled, stargazer, haven)</span>
-<span id="cb83-79"><a href="#cb83-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-80"><a href="#cb83-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-81"><a href="#cb83-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-82"><a href="#cb83-82" aria-hidden="true" tabindex="-1"></a>Para esta sesión vamos a utilizar Las librerías que vamos a utilizar son:</span>
-<span id="cb83-83"><a href="#cb83-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-84"><a href="#cb83-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`dplyr`</span>: ajuste general de datos</span>
-<span id="cb83-85"><a href="#cb83-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`sjmisc`</span>: descripción y exploración de base de datos</span>
-<span id="cb83-86"><a href="#cb83-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`car`</span>: principalmente la función <span class="in">`recode`</span> para recodificar/agrupar valores de variable</span>
-<span id="cb83-87"><a href="#cb83-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`stargazer`</span>: para tabla descriptiva</span>
-<span id="cb83-88"><a href="#cb83-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-89"><a href="#cb83-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-90"><a href="#cb83-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Cargar base de datos</span></span>
-<span id="cb83-91"><a href="#cb83-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-92"><a href="#cb83-92" aria-hidden="true" tabindex="-1"></a>**Ajustar espacio de trabajo**</span>
-<span id="cb83-93"><a href="#cb83-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-94"><a href="#cb83-94" aria-hidden="true" tabindex="-1"></a>Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:</span>
-<span id="cb83-95"><a href="#cb83-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-98"><a href="#cb83-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-99"><a href="#cb83-99" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       <span class="co"># borrar todos los objetos en el espacio de trabajo</span></span>
-<span id="cb83-100"><a href="#cb83-100" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># valores sin notación científica</span></span>
-<span id="cb83-101"><a href="#cb83-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-102"><a href="#cb83-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-103"><a href="#cb83-103" aria-hidden="true" tabindex="-1"></a>La función <span class="in">`rm(list=ls())`</span> permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función <span class="in">`options(scipen=999)`</span> desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.</span>
-<span id="cb83-104"><a href="#cb83-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-105"><a href="#cb83-105" aria-hidden="true" tabindex="-1"></a>**Datos**</span>
-<span id="cb83-106"><a href="#cb83-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-107"><a href="#cb83-107" aria-hidden="true" tabindex="-1"></a>Las bases de datos se pueden cargar de un archivo local o en línea. Para este caso utilizaremos un archivo en línea que viene en formato RData: **latinobarometro2020.RData**. &lt;span class="sidenote"&gt;**Abrir bases de datos en otros formatos**: Los formatos mas comunes en que se almacenan las bases de datos son .dta (Stata),  .sav (Spss) y RData (R). Para abrir desde R utlilizamos la librería <span class="in">`haven`</span> y sus funciones read_dta y read_sav según corresponda. Ej: <span class="in">`datos &lt;- read_dta("base_casen.dta")`</span>. Recordar antes instalar/cargar la librería: <span class="in">`pacman::p_load(haven)`</span>   <span class="kw">&lt;/span&gt;</span></span>
-<span id="cb83-108"><a href="#cb83-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-109"><a href="#cb83-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE, }</span></span>
-<span id="cb83-110"><a href="#cb83-110" aria-hidden="true" tabindex="-1"></a><span class="co">#cargamos la base de datos desde internet</span></span>
-<span id="cb83-111"><a href="#cb83-111" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"</span>))</span>
-<span id="cb83-112"><a href="#cb83-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-113"><a href="#cb83-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-114"><a href="#cb83-114" aria-hidden="true" tabindex="-1"></a>o de manera local:</span>
-<span id="cb83-115"><a href="#cb83-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-118"><a href="#cb83-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-119"><a href="#cb83-119" aria-hidden="true" tabindex="-1"></a>latinobarometro2020 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"../files/data/external_data/latinobarometro2020.dta"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
-<span id="cb83-120"><a href="#cb83-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-121"><a href="#cb83-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-122"><a href="#cb83-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-123"><a href="#cb83-123" aria-hidden="true" tabindex="-1"></a>La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (elsoc_2016):</span>
-<span id="cb83-124"><a href="#cb83-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-125"><a href="#cb83-125" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/basecargada.png)</span></span>
-<span id="cb83-126"><a href="#cb83-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-127"><a href="#cb83-127" aria-hidden="true" tabindex="-1"></a>Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, <span class="in">`r dim(latinobarometro2020)[1]`</span> casos y <span class="in">`r dim(latinobarometro2020)[2]`</span> variables).</span>
-<span id="cb83-128"><a href="#cb83-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-131"><a href="#cb83-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-132"><a href="#cb83-132" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(latinobarometro2020) <span class="co"># dimension de la base</span></span>
-<span id="cb83-133"><a href="#cb83-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-134"><a href="#cb83-134" aria-hidden="true" tabindex="-1"></a>Y si se quiere revisar en formato de planilla de datos:</span>
-<span id="cb83-135"><a href="#cb83-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-138"><a href="#cb83-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-139"><a href="#cb83-139" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(latinobarometro2020)</span>
-<span id="cb83-140"><a href="#cb83-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-141"><a href="#cb83-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-142"><a href="#cb83-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Selección de variables a utilizar</span></span>
-<span id="cb83-143"><a href="#cb83-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-144"><a href="#cb83-144" aria-hidden="true" tabindex="-1"></a>Este paso consiste en crear un subset reducido de datos que contenga solo las variables de interés. Para ello:</span>
-<span id="cb83-145"><a href="#cb83-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-146"><a href="#cb83-146" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Se identifica el nombre de las variables que registran la información de preguntas o items del instrumento: esto aparece en el libro de códigos y/o en el cuestionario, o también se puede hacer buscando en la base de datos mediante alguna palabra clave asociada a la pregunta. Por ejemplo, si queremos buscar variables asociadas a educación, utilizamos la función <span class="in">`find_var`</span> (de <span class="in">`sjmisc`</span>, librería que cargamos en el paso 1), que nos entrega nombre de la variable en columna var.name. Por ejemplo, si buscamos alguna variable asociada al concepto _Confianza_:</span>
-<span id="cb83-147"><a href="#cb83-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-150"><a href="#cb83-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-151"><a href="#cb83-151" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="at">data =</span> latinobarometro2020,<span class="st">"Confianza"</span>)</span>
-<span id="cb83-152"><a href="#cb83-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-153"><a href="#cb83-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-154"><a href="#cb83-154" aria-hidden="true" tabindex="-1"></a>Nos informa que hay una serie de variables relacionadas con confianza interpersonal y con instituciones. Probemos con la variable <span class="in">`p13st_e`</span>.</span>
-<span id="cb83-155"><a href="#cb83-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-156"><a href="#cb83-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-157"><a href="#cb83-157" aria-hidden="true" tabindex="-1"></a>Mediante la función <span class="in">`select`</span> de <span class="in">`dplyr`</span>, seleccionamos cada una de nuestras variables de interés y creamos una nueva base con el nombre <span class="in">`proc_data`</span>, donde "proc" hace referencia a base procesada:</span>
-<span id="cb83-158"><a href="#cb83-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-161"><a href="#cb83-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-162"><a href="#cb83-162" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> latinobarometro2020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(p13st_e, <span class="co"># Confianza en el Gobierno</span></span>
-<span id="cb83-163"><a href="#cb83-163" aria-hidden="true" tabindex="-1"></a>                          p13st_d, <span class="co"># Confianza en el congreso</span></span>
-<span id="cb83-164"><a href="#cb83-164" aria-hidden="true" tabindex="-1"></a>                          p13st_f, <span class="co"># Confianza en el Poder Judicial</span></span>
-<span id="cb83-165"><a href="#cb83-165" aria-hidden="true" tabindex="-1"></a>                          p13st_g, <span class="co"># Confianza en los partidos políticos</span></span>
-<span id="cb83-166"><a href="#cb83-166" aria-hidden="true" tabindex="-1"></a>                          reeduc_1,<span class="co"># nivel educacional</span></span>
-<span id="cb83-167"><a href="#cb83-167" aria-hidden="true" tabindex="-1"></a>                          sexo,<span class="co"># sexo</span></span>
-<span id="cb83-168"><a href="#cb83-168" aria-hidden="true" tabindex="-1"></a>                          edad,<span class="co"># edad</span></span>
-<span id="cb83-169"><a href="#cb83-169" aria-hidden="true" tabindex="-1"></a>                          idenpa) <span class="co"># pais </span></span>
-<span id="cb83-170"><a href="#cb83-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-171"><a href="#cb83-171" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprobar</span></span>
-<span id="cb83-172"><a href="#cb83-172" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_data)</span>
-<span id="cb83-173"><a href="#cb83-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-174"><a href="#cb83-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-175"><a href="#cb83-175" aria-hidden="true" tabindex="-1"></a>Mediante el comando <span class="in">`get_label`</span> obtenemos el atributo label de las variables.</span>
-<span id="cb83-176"><a href="#cb83-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-179"><a href="#cb83-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-180"><a href="#cb83-180" aria-hidden="true" tabindex="-1"></a>sjlabelled<span class="sc">::</span><span class="fu">get_label</span>(proc_data)</span>
-<span id="cb83-181"><a href="#cb83-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-182"><a href="#cb83-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-183"><a href="#cb83-183" aria-hidden="true" tabindex="-1"></a>Podemos ver que son largas o con códigos poco informativos, por lo tanto, es necesario cambiarlas por etiquetas más cortas y de fácil identificación.</span>
-<span id="cb83-184"><a href="#cb83-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-185"><a href="#cb83-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb83-186"><a href="#cb83-186" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"</span>))</span>
-<span id="cb83-187"><a href="#cb83-187" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> latinobarometro2020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(p13st_e, <span class="co"># Confianza en el Gobierno</span></span>
-<span id="cb83-188"><a href="#cb83-188" aria-hidden="true" tabindex="-1"></a>                          p13st_d, <span class="co"># Confianza en el congreso</span></span>
-<span id="cb83-189"><a href="#cb83-189" aria-hidden="true" tabindex="-1"></a>                          p13st_f, <span class="co"># Confianza en el Poder Judicial</span></span>
-<span id="cb83-190"><a href="#cb83-190" aria-hidden="true" tabindex="-1"></a>                          p13st_g, <span class="co"># Confianza en los partidos políticos</span></span>
-<span id="cb83-191"><a href="#cb83-191" aria-hidden="true" tabindex="-1"></a>                          reeduc_1,<span class="co"># nivel educacional</span></span>
-<span id="cb83-192"><a href="#cb83-192" aria-hidden="true" tabindex="-1"></a>                          sexo,<span class="co"># sexo</span></span>
-<span id="cb83-193"><a href="#cb83-193" aria-hidden="true" tabindex="-1"></a>                          edad,<span class="co"># edad</span></span>
-<span id="cb83-194"><a href="#cb83-194" aria-hidden="true" tabindex="-1"></a>                          idenpa) <span class="co"># pais </span></span>
-<span id="cb83-195"><a href="#cb83-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-196"><a href="#cb83-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-197"><a href="#cb83-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-198"><a href="#cb83-198" aria-hidden="true" tabindex="-1"></a>Para facilitar el análisis, vamos a filtrar la base de datos para quedarnos solo con los casos de Chile. Para esto utilizamos la función <span class="in">`filter`</span> de <span class="in">`dplyr`</span>. Si revisamos el libro de códigos, el identificador de Chile es 152</span>
-<span id="cb83-199"><a href="#cb83-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-202"><a href="#cb83-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-203"><a href="#cb83-203" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(idenpa<span class="sc">==</span><span class="dv">152</span>)</span>
-<span id="cb83-204"><a href="#cb83-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-205"><a href="#cb83-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-206"><a href="#cb83-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Procesamiento de variables</span></span>
-<span id="cb83-207"><a href="#cb83-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-208"><a href="#cb83-208" aria-hidden="true" tabindex="-1"></a>Para el procesamiento de cada variable se seguirá el siguiente flujo de trabajo:</span>
-<span id="cb83-209"><a href="#cb83-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-210"><a href="#cb83-210" aria-hidden="true" tabindex="-1"></a>a. Descriptivo general</span>
-<span id="cb83-211"><a href="#cb83-211" aria-hidden="true" tabindex="-1"></a>b. Recodificación: de casos perdidos y otros valores (en caso necesario)</span>
-<span id="cb83-212"><a href="#cb83-212" aria-hidden="true" tabindex="-1"></a>c. Etiquetado: cambio de nombres de variables y valores (en caso necesario)</span>
-<span id="cb83-213"><a href="#cb83-213" aria-hidden="true" tabindex="-1"></a>d. Otros ajustes</span>
-<span id="cb83-214"><a href="#cb83-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-215"><a href="#cb83-215" aria-hidden="true" tabindex="-1"></a>Y se recomienda también un descriptivo final para revisar que el procesamiento de cada variable está ok.</span>
-<span id="cb83-216"><a href="#cb83-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-217"><a href="#cb83-217" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.1 Confianza en el Gobierno</span></span>
-<span id="cb83-218"><a href="#cb83-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-219"><a href="#cb83-219" aria-hidden="true" tabindex="-1"></a>En Latinobarómetro, lass variables que permiten medir la Confianza en instituciones políticas en Chile son las siguientes:</span>
-<span id="cb83-220"><a href="#cb83-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-221"><a href="#cb83-221" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_e`</span><span class="co">]</span>: "P13ST.E Confianza en el Gobierno" (1 = Mucha; 4 = Ninguna)</span>
-<span id="cb83-222"><a href="#cb83-222" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_d`</span><span class="co">]</span>: "P13ST.D Confianza en el Congreso" (1 = Mucha; 4 = Ninguna)</span>
-<span id="cb83-223"><a href="#cb83-223" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_f`</span><span class="co">]</span>: "P13ST.F Confianza en el Poder Judicial" (1 = Mucha; 4 = Ninguna)</span>
-<span id="cb83-224"><a href="#cb83-224" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_g`</span><span class="co">]</span>: "P13ST.G Confianza en los Partidos Políticos" (1 = Mucha; 4 = Ninguna) </span>
-<span id="cb83-225"><a href="#cb83-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-226"><a href="#cb83-226" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
-<span id="cb83-227"><a href="#cb83-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-228"><a href="#cb83-228" aria-hidden="true" tabindex="-1"></a>Para los descriptivos se utilizará la función <span class="in">`frq`</span>, de la librería <span class="in">`sjmisc`</span>:</span>
-<span id="cb83-229"><a href="#cb83-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-232"><a href="#cb83-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-233"><a href="#cb83-233" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>p13st_e)</span>
-<span id="cb83-234"><a href="#cb83-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-235"><a href="#cb83-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-236"><a href="#cb83-236" aria-hidden="true" tabindex="-1"></a>En esta variable vemos valores asociados a la opción "No contesta" (-2) y "No sabe" (-1), que corresponde definirlos como casos perdidos (en el caso de R, como casos NA). El resto de los valores y etiquetas se encuentran en un orden contraintuitivo (mayor valor indica menos confianza), así que en la recodificiación nos haremos cargo de los casos perdidos y de reordenar las categorías.</span>
-<span id="cb83-237"><a href="#cb83-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-238"><a href="#cb83-238" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_</span>
-<span id="cb83-239"><a href="#cb83-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-240"><a href="#cb83-240" aria-hidden="true" tabindex="-1"></a>Para recodificar utilizamos la función <span class="in">`recode`</span>, de la librería <span class="in">`car`</span></span>
-<span id="cb83-241"><a href="#cb83-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-244"><a href="#cb83-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-245"><a href="#cb83-245" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_e <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_e, <span class="st">"c(-2,-1)=NA"</span>)</span>
-<span id="cb83-246"><a href="#cb83-246" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_d <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_d, <span class="st">"c(-2,-1)=NA"</span>)</span>
-<span id="cb83-247"><a href="#cb83-247" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_f <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_f, <span class="st">"c(-2,-1)=NA"</span>)</span>
-<span id="cb83-248"><a href="#cb83-248" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_g <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_g, <span class="st">"c(-2,-1)=NA"</span>)</span>
-<span id="cb83-249"><a href="#cb83-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-250"><a href="#cb83-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-251"><a href="#cb83-251" aria-hidden="true" tabindex="-1"></a>**nota**: con la función <span class="in">`set_na`</span> de la librería <span class="in">`sjmisc`</span> podemos recodificar toda la base de datos con un solo código, pero debemos estar completamente segur-s de que estos valores no tienen otra categoría asociada en otra variable.</span>
-<span id="cb83-252"><a href="#cb83-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-253"><a href="#cb83-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb83-254"><a href="#cb83-254" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>))</span>
-<span id="cb83-255"><a href="#cb83-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-256"><a href="#cb83-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-257"><a href="#cb83-257" aria-hidden="true" tabindex="-1"></a>Para reordenar las categorías volvemos a utilizar la función <span class="in">`recode`</span>, de la librería <span class="in">`car`</span></span>
-<span id="cb83-258"><a href="#cb83-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-261"><a href="#cb83-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-262"><a href="#cb83-262" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_e <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_e, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
-<span id="cb83-263"><a href="#cb83-263" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_d <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_d, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
-<span id="cb83-264"><a href="#cb83-264" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_f <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_f, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
-<span id="cb83-265"><a href="#cb83-265" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_g <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_g, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
-<span id="cb83-266"><a href="#cb83-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-267"><a href="#cb83-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-268"><a href="#cb83-268" aria-hidden="true" tabindex="-1"></a>_c - Etiquetado_</span>
-<span id="cb83-269"><a href="#cb83-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-270"><a href="#cb83-270" aria-hidden="true" tabindex="-1"></a>Vamos a dar un nombre más sustantivo a las variables con la función <span class="in">`rename`</span>, de la librería <span class="in">`dplyr`</span>:</span>
-<span id="cb83-271"><a href="#cb83-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-274"><a href="#cb83-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-275"><a href="#cb83-275" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="st">"conf_gob"</span><span class="ot">=</span>p13st_e, <span class="co"># Confianza en el gobierno</span></span>
-<span id="cb83-276"><a href="#cb83-276" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"conf_cong"</span><span class="ot">=</span>p13st_d, <span class="co"># Confianza en el congreso</span></span>
-<span id="cb83-277"><a href="#cb83-277" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"conf_jud"</span><span class="ot">=</span>p13st_f, <span class="co"># Confianza en el Poder Judicial</span></span>
-<span id="cb83-278"><a href="#cb83-278" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"conf_partpol"</span><span class="ot">=</span>p13st_g) <span class="co"># Confianza en los partidos políticos </span></span>
-<span id="cb83-279"><a href="#cb83-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-280"><a href="#cb83-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-281"><a href="#cb83-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-282"><a href="#cb83-282" aria-hidden="true" tabindex="-1"></a>**nota**: recodificación más rápida si estamos segur-s de todos los valores</span>
-<span id="cb83-283"><a href="#cb83-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-284"><a href="#cb83-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb83-285"><a href="#cb83-285" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"conf"</span>)), <span class="sc">~</span>(<span class="dv">4</span><span class="sc">-</span>.))</span>
-<span id="cb83-286"><a href="#cb83-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-287"><a href="#cb83-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-288"><a href="#cb83-288" aria-hidden="true" tabindex="-1"></a>Además de cambiar el nombre, queremos cambiar las etiquetas de las variables.</span>
-<span id="cb83-289"><a href="#cb83-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-292"><a href="#cb83-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-293"><a href="#cb83-293" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_gob <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_gob,<span class="at">label =</span> <span class="st">"Confianza: Gobierno"</span>)</span>
-<span id="cb83-294"><a href="#cb83-294" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_gob)</span>
-<span id="cb83-295"><a href="#cb83-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-296"><a href="#cb83-296" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_cong  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_cong, <span class="at">label =</span> <span class="st">"Confianza: Congreso"</span>)</span>
-<span id="cb83-297"><a href="#cb83-297" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_cong)</span>
-<span id="cb83-298"><a href="#cb83-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-299"><a href="#cb83-299" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_jud  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_jud, <span class="at">label =</span> <span class="st">"Confianza: Poder judicial"</span>)</span>
-<span id="cb83-300"><a href="#cb83-300" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_jud)</span>
-<span id="cb83-301"><a href="#cb83-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-302"><a href="#cb83-302" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_partpol  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_partpol, <span class="at">label =</span> <span class="st">"Confianza: Partidos politicos"</span>)</span>
-<span id="cb83-303"><a href="#cb83-303" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_partpol)</span>
-<span id="cb83-304"><a href="#cb83-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-305"><a href="#cb83-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-306"><a href="#cb83-306" aria-hidden="true" tabindex="-1"></a>_d. Otros ajustes_</span>
-<span id="cb83-307"><a href="#cb83-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-308"><a href="#cb83-308" aria-hidden="true" tabindex="-1"></a>Para este caso vamos a crear una variable que sea la suma de los cuatro items de confianza.</span>
-<span id="cb83-309"><a href="#cb83-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-312"><a href="#cb83-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-313"><a href="#cb83-313" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_inst <span class="ot">&lt;-</span> (proc_data<span class="sc">$</span>conf_gob<span class="sc">+</span>proc_data<span class="sc">$</span>conf_cong<span class="sc">+</span>proc_data<span class="sc">$</span>conf_jud<span class="sc">+</span>proc_data<span class="sc">$</span>conf_partpol)</span>
-<span id="cb83-314"><a href="#cb83-314" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(proc_data<span class="sc">$</span>conf_inst)</span>
-<span id="cb83-315"><a href="#cb83-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-316"><a href="#cb83-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-319"><a href="#cb83-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-320"><a href="#cb83-320" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_inst)</span>
-<span id="cb83-321"><a href="#cb83-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-322"><a href="#cb83-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-323"><a href="#cb83-323" aria-hidden="true" tabindex="-1"></a>Vemos que una etiqueta de la variable anterior.</span>
-<span id="cb83-324"><a href="#cb83-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-327"><a href="#cb83-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-328"><a href="#cb83-328" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_inst  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_inst, <span class="at">label =</span> <span class="st">"Confianza en instituciones"</span>)</span>
-<span id="cb83-329"><a href="#cb83-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-330"><a href="#cb83-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-331"><a href="#cb83-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-332"><a href="#cb83-332" aria-hidden="true" tabindex="-1"></a>_Revisión final_</span>
-<span id="cb83-333"><a href="#cb83-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-334"><a href="#cb83-334" aria-hidden="true" tabindex="-1"></a>Nuevamente un descriptivo de cada variable para confirmar que el procesamiento está ok:</span>
-<span id="cb83-335"><a href="#cb83-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-338"><a href="#cb83-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-339"><a href="#cb83-339" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_gob)</span>
-<span id="cb83-340"><a href="#cb83-340" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_cong)</span>
-<span id="cb83-341"><a href="#cb83-341" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_inst)</span>
-<span id="cb83-342"><a href="#cb83-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-343"><a href="#cb83-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-344"><a href="#cb83-344" aria-hidden="true" tabindex="-1"></a>Vemos que los valores (labels) de cada categoría de las primeras variables que recodificamos no se corresponden con el nuevo valor. Para re-etiquetar valores usamos la función <span class="in">`set_labels`</span>, de la librería <span class="in">`sjlabelled`</span></span>
-<span id="cb83-345"><a href="#cb83-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-348"><a href="#cb83-348" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-349"><a href="#cb83-349" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_gob <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_gob,</span>
-<span id="cb83-350"><a href="#cb83-350" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb83-351"><a href="#cb83-351" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
-<span id="cb83-352"><a href="#cb83-352" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
-<span id="cb83-353"><a href="#cb83-353" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
-<span id="cb83-354"><a href="#cb83-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-355"><a href="#cb83-355" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_cong <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_cong,</span>
-<span id="cb83-356"><a href="#cb83-356" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb83-357"><a href="#cb83-357" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
-<span id="cb83-358"><a href="#cb83-358" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
-<span id="cb83-359"><a href="#cb83-359" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
-<span id="cb83-360"><a href="#cb83-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-361"><a href="#cb83-361" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_jud <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_jud,</span>
-<span id="cb83-362"><a href="#cb83-362" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb83-363"><a href="#cb83-363" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
-<span id="cb83-364"><a href="#cb83-364" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
-<span id="cb83-365"><a href="#cb83-365" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
-<span id="cb83-366"><a href="#cb83-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-367"><a href="#cb83-367" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_partpol <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_partpol,</span>
-<span id="cb83-368"><a href="#cb83-368" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb83-369"><a href="#cb83-369" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
-<span id="cb83-370"><a href="#cb83-370" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
-<span id="cb83-371"><a href="#cb83-371" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
-<span id="cb83-372"><a href="#cb83-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-373"><a href="#cb83-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-374"><a href="#cb83-374" aria-hidden="true" tabindex="-1"></a>y volvemos a revisar</span>
-<span id="cb83-375"><a href="#cb83-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-378"><a href="#cb83-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-379"><a href="#cb83-379" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_gob)</span>
-<span id="cb83-380"><a href="#cb83-380" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_cong)</span>
-<span id="cb83-381"><a href="#cb83-381" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-382"><a href="#cb83-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-383"><a href="#cb83-383" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 4.2. Educación</span></span>
-<span id="cb83-384"><a href="#cb83-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-385"><a href="#cb83-385" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`reeduc_1`</span><span class="co">]</span> = REEDUC.1 Nivel de estudios alcanzado - Entrevistado (recodificado)</span>
-<span id="cb83-386"><a href="#cb83-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-387"><a href="#cb83-387" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
-<span id="cb83-388"><a href="#cb83-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-391"><a href="#cb83-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-392"><a href="#cb83-392" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>reeduc_1)</span>
-<span id="cb83-393"><a href="#cb83-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-394"><a href="#cb83-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-395"><a href="#cb83-395" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_</span>
-<span id="cb83-396"><a href="#cb83-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-397"><a href="#cb83-397" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vemos que no hay datos perdidos</span>
-<span id="cb83-398"><a href="#cb83-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-399"><a href="#cb83-399" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Valores</span>
-<span id="cb83-400"><a href="#cb83-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-401"><a href="#cb83-401" aria-hidden="true" tabindex="-1"></a>Para hacer más fácil el análisis, recodificamos en tres categorías (en este caso decisión arbitraria. Se debería tener una razón teórica para recodificar)</span>
-<span id="cb83-402"><a href="#cb83-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-403"><a href="#cb83-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-404"><a href="#cb83-404" aria-hidden="true" tabindex="-1"></a><span class="in">1.  Analfabeto                                =   Educacion basica    =   1</span></span>
-<span id="cb83-405"><a href="#cb83-405" aria-hidden="true" tabindex="-1"></a><span class="in">2   Básica incompleta                         =   Educacion basica    =   1</span></span>
-<span id="cb83-406"><a href="#cb83-406" aria-hidden="true" tabindex="-1"></a><span class="in">3.  Básica completa                           =   Educacion basica    =   1</span></span>
-<span id="cb83-407"><a href="#cb83-407" aria-hidden="true" tabindex="-1"></a><span class="in">4.  Secundaria, media, técnica incompleta     =   Educacion media     =   2</span></span>
-<span id="cb83-408"><a href="#cb83-408" aria-hidden="true" tabindex="-1"></a><span class="in">5.  Secundaria, media, técnica completa       =   Educacion media     =   2</span></span>
-<span id="cb83-409"><a href="#cb83-409" aria-hidden="true" tabindex="-1"></a><span class="in">6.  Superior incompleta                       =   Educacion superior  =   3</span></span>
-<span id="cb83-410"><a href="#cb83-410" aria-hidden="true" tabindex="-1"></a><span class="in">7.  Superior completa                         =   Educacion superior  =   3</span></span>
-<span id="cb83-411"><a href="#cb83-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-412"><a href="#cb83-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-415"><a href="#cb83-415" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-416"><a href="#cb83-416" aria-hidden="true" tabindex="-1"></a><span class="co"># recodificacion usando funcion 'recode' de la libreria car</span></span>
-<span id="cb83-417"><a href="#cb83-417" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>reeduc_1 <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_data<span class="sc">$</span>reeduc_1, <span class="st">"c(1,2,3)=1; c(4,5)=2; c(6,7)=3"</span>)</span>
-<span id="cb83-418"><a href="#cb83-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-419"><a href="#cb83-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-420"><a href="#cb83-420" aria-hidden="true" tabindex="-1"></a>Comprobar con un nuevo descriptivo:</span>
-<span id="cb83-421"><a href="#cb83-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-424"><a href="#cb83-424" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-425"><a href="#cb83-425" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>reeduc_1)</span>
-<span id="cb83-426"><a href="#cb83-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-427"><a href="#cb83-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-428"><a href="#cb83-428" aria-hidden="true" tabindex="-1"></a>Se observa que los valores coinciden con la recodificación (los casos se acumulan entre las categorías 1 y 3), pero las etiquetas ahora no coinciden; se soluciona en el siguiente paso.</span>
-<span id="cb83-429"><a href="#cb83-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-430"><a href="#cb83-430" aria-hidden="true" tabindex="-1"></a>_c. Etiquetado_</span>
-<span id="cb83-431"><a href="#cb83-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-432"><a href="#cb83-432" aria-hidden="true" tabindex="-1"></a>Para re-etiquetar valores usamos la función <span class="in">`set_labels`</span>, de la librería <span class="in">`sjlabelled`</span></span>
-<span id="cb83-433"><a href="#cb83-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-436"><a href="#cb83-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-437"><a href="#cb83-437" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>reeduc_1 <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>reeduc_1,</span>
-<span id="cb83-438"><a href="#cb83-438" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Educacion basica"</span><span class="ot">=</span><span class="dv">1</span>,</span>
-<span id="cb83-439"><a href="#cb83-439" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educacion media"</span><span class="ot">=</span><span class="dv">2</span>,</span>
-<span id="cb83-440"><a href="#cb83-440" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educacion superior"</span><span class="ot">=</span><span class="dv">3</span>))</span>
-<span id="cb83-441"><a href="#cb83-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-442"><a href="#cb83-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-443"><a href="#cb83-443" aria-hidden="true" tabindex="-1"></a>Luego renombramos la variable con un nombre más sustantivo</span>
-<span id="cb83-444"><a href="#cb83-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-447"><a href="#cb83-447" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-448"><a href="#cb83-448" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> <span class="fu">rename</span>(proc_data,<span class="st">"educacion"</span><span class="ot">=</span>reeduc_1)</span>
-<span id="cb83-449"><a href="#cb83-449" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-450"><a href="#cb83-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-451"><a href="#cb83-451" aria-hidden="true" tabindex="-1"></a>Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.</span>
-<span id="cb83-452"><a href="#cb83-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-455"><a href="#cb83-455" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-456"><a href="#cb83-456" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>educacion)</span>
-<span id="cb83-457"><a href="#cb83-457" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>educacion <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>educacion,<span class="at">label =</span> <span class="st">"Educación"</span>)</span>
-<span id="cb83-458"><a href="#cb83-458" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-459"><a href="#cb83-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-460"><a href="#cb83-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-461"><a href="#cb83-461" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.3. Sexo</span></span>
-<span id="cb83-462"><a href="#cb83-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-463"><a href="#cb83-463" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`sexo`</span><span class="co">]</span>  =   SEXO Sexo</span>
-<span id="cb83-464"><a href="#cb83-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-465"><a href="#cb83-465" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
-<span id="cb83-466"><a href="#cb83-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-469"><a href="#cb83-469" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-470"><a href="#cb83-470" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>sexo)</span>
-<span id="cb83-471"><a href="#cb83-471" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-472"><a href="#cb83-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-473"><a href="#cb83-473" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_</span>
-<span id="cb83-474"><a href="#cb83-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-475"><a href="#cb83-475" aria-hidden="true" tabindex="-1"></a>En general esta variable no tiene problemas de casos perdidos ni de etiquetas, pero de todas maneras vamos a hacer un cambio de acuerdo a convenciones en análisis de datos, donde por lo general hombres tienen valor 0 y mujeres 1:</span>
-<span id="cb83-476"><a href="#cb83-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-479"><a href="#cb83-479" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-480"><a href="#cb83-480" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>sexo <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_data<span class="sc">$</span>sexo, <span class="st">"1=0;2=1"</span>)</span>
-<span id="cb83-481"><a href="#cb83-481" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-482"><a href="#cb83-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-483"><a href="#cb83-483" aria-hidden="true" tabindex="-1"></a>_c. Etiquetado_</span>
-<span id="cb83-484"><a href="#cb83-484" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-485"><a href="#cb83-485" aria-hidden="true" tabindex="-1"></a>Y ahora cambiamos las etiquetas de acuerdo a la recodificación anterior:</span>
-<span id="cb83-486"><a href="#cb83-486" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-489"><a href="#cb83-489" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-490"><a href="#cb83-490" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>sexo <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>sexo,</span>
-<span id="cb83-491"><a href="#cb83-491" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Hombre"</span><span class="ot">=</span><span class="dv">0</span>,</span>
-<span id="cb83-492"><a href="#cb83-492" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mujer"</span><span class="ot">=</span><span class="dv">1</span>))</span>
-<span id="cb83-493"><a href="#cb83-493" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-494"><a href="#cb83-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-495"><a href="#cb83-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-496"><a href="#cb83-496" aria-hidden="true" tabindex="-1"></a>También queremos cambiar la etiqueta de la variable.</span>
-<span id="cb83-497"><a href="#cb83-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-500"><a href="#cb83-500" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-501"><a href="#cb83-501" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>sexo)</span>
-<span id="cb83-502"><a href="#cb83-502" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>sexo <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>sexo,<span class="at">label =</span> <span class="st">"Sexo"</span>)</span>
-<span id="cb83-503"><a href="#cb83-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-504"><a href="#cb83-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-505"><a href="#cb83-505" aria-hidden="true" tabindex="-1"></a>Revisar con un nuevo descriptivo:</span>
-<span id="cb83-506"><a href="#cb83-506" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-509"><a href="#cb83-509" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-510"><a href="#cb83-510" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>sexo)</span>
-<span id="cb83-511"><a href="#cb83-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-512"><a href="#cb83-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-513"><a href="#cb83-513" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.4 Edad</span></span>
-<span id="cb83-514"><a href="#cb83-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-515"><a href="#cb83-515" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`edad`</span><span class="co">]</span>  =   EDAD Edad.</span>
-<span id="cb83-516"><a href="#cb83-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-517"><a href="#cb83-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-518"><a href="#cb83-518" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
-<span id="cb83-519"><a href="#cb83-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-522"><a href="#cb83-522" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-523"><a href="#cb83-523" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>edad)</span>
-<span id="cb83-524"><a href="#cb83-524" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-525"><a href="#cb83-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-526"><a href="#cb83-526" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_: no es necesario en este caso</span>
-<span id="cb83-527"><a href="#cb83-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-528"><a href="#cb83-528" aria-hidden="true" tabindex="-1"></a>_c. Etiquetado_</span>
-<span id="cb83-529"><a href="#cb83-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-530"><a href="#cb83-530" aria-hidden="true" tabindex="-1"></a>Cambio la etiqueta de la variable.</span>
-<span id="cb83-531"><a href="#cb83-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-534"><a href="#cb83-534" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-535"><a href="#cb83-535" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>edad)</span>
-<span id="cb83-536"><a href="#cb83-536" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>edad <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>edad,<span class="at">label =</span> <span class="st">"Edad"</span>)</span>
-<span id="cb83-537"><a href="#cb83-537" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-538"><a href="#cb83-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-539"><a href="#cb83-539" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Generación de base de datos procesada para el análisis</span></span>
-<span id="cb83-540"><a href="#cb83-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-541"><a href="#cb83-541" aria-hidden="true" tabindex="-1"></a>Antes de guardar la base procesada, revisamos nuevamente todas las variables con una tabla descriptiva general mediante la función <span class="in">`stargazer`</span> (de la librería homónima)</span>
-<span id="cb83-542"><a href="#cb83-542" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-543"><a href="#cb83-543" aria-hidden="true" tabindex="-1"></a>Primero vamos a reformatear el objeto proc_data como base de datos (as.data.frame), paso necesario para que sea reconocido como tal por <span class="in">`stargazer`</span></span>
-<span id="cb83-544"><a href="#cb83-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-545"><a href="#cb83-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-548"><a href="#cb83-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-549"><a href="#cb83-549" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(proc_data)</span>
-<span id="cb83-550"><a href="#cb83-550" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(proc_data, <span class="at">type=</span><span class="st">"text"</span>)</span>
-<span id="cb83-551"><a href="#cb83-551" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-552"><a href="#cb83-552" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"alert alert-info"</span><span class="kw">&gt;</span></span>
-<span id="cb83-553"><a href="#cb83-553" aria-hidden="true" tabindex="-1"></a>Si se desea modificar las columnas que aparecen en la tabla se puede ocupar la opción <span class="in">`summary.stat`</span>, donde se pueden especificar:</span>
-<span id="cb83-554"><a href="#cb83-554" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-555"><a href="#cb83-555" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"max" maximum</span>
-<span id="cb83-556"><a href="#cb83-556" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"mean" mean</span>
-<span id="cb83-557"><a href="#cb83-557" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"median" median</span>
-<span id="cb83-558"><a href="#cb83-558" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"min" minimum</span>
-<span id="cb83-559"><a href="#cb83-559" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"n" number of observations</span>
-<span id="cb83-560"><a href="#cb83-560" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"p25" 25th percentile</span>
-<span id="cb83-561"><a href="#cb83-561" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"p75" 75th percentile</span>
-<span id="cb83-562"><a href="#cb83-562" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"sd" standard deviation</span>
-<span id="cb83-563"><a href="#cb83-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-564"><a href="#cb83-564" aria-hidden="true" tabindex="-1"></a>Por ejemplo, si quiero una tabla solo con promedio, n, sd y p75: <span class="in">`stargazer(data, type="text", summary.stat = c("mean", "n", "sd", "p75"))`</span></span>
-<span id="cb83-565"><a href="#cb83-565" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-566"><a href="#cb83-566" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
-<span id="cb83-567"><a href="#cb83-567" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-568"><a href="#cb83-568" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Guardar base de datos procesada: en carpeta local <span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sidenote"</span><span class="kw">&gt;</span>La ruta hacia su carpeta local si está trabajando en windows debería ser algo como "C:/Users/Lenovo/Clases/y aquí nombre del archivo a grabar<span class="kw">&lt;/span&gt;</span></span>
-<span id="cb83-569"><a href="#cb83-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-570"><a href="#cb83-570" aria-hidden="true" tabindex="-1"></a>El comando para guardar es <span class="in">`save`</span>:</span>
-<span id="cb83-571"><a href="#cb83-571" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-572"><a href="#cb83-572" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb83-573"><a href="#cb83-573" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(proc_data,<span class="at">file =</span> <span class="st">"[ruta hacia carpeta local en su computador]/ELSOC_ess_merit2016.RData"</span>)</span>
-<span id="cb83-574"><a href="#cb83-574" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-575"><a href="#cb83-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-576"><a href="#cb83-576" aria-hidden="true" tabindex="-1"></a>En este caso, seguimos una estructura de carpetas de datos, separando en una carpeta los datos originales, y en otra (proc) los datos procesados:</span>
-<span id="cb83-577"><a href="#cb83-577" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-578"><a href="#cb83-578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-579"><a href="#cb83-579" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb83-580"><a href="#cb83-580" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(proc_data,<span class="at">file =</span> <span class="st">"files/data/latinobarometro_proc.RData"</span>)</span>
-<span id="cb83-581"><a href="#cb83-581" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-582"><a href="#cb83-582" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-583"><a href="#cb83-583" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"alert alert-info"</span><span class="kw">&gt;</span></span>
-<span id="cb83-584"><a href="#cb83-584" aria-hidden="true" tabindex="-1"></a>**De rutas, estructura de carpetas y otros **</span>
-<span id="cb83-585"><a href="#cb83-585" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-586"><a href="#cb83-586" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Encontrando la ruta a carpeta local**: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar "Propiedades", en la ventana emergente debería aparecer la ruta hacia la carpeta en "Ubicación". Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)</span>
-<span id="cb83-587"><a href="#cb83-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-588"><a href="#cb83-588" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sobre los "slashes" (`\` o `/`)**: en la ruta las carpetas y el archivo final aparecen separados por slashes, que según el sistema utilizado pueden ser _slash_ (`/`) o _backslash_ (`\`). En R por defecto se usa _slash_, pero en Windows _backslash_, por lo que si se usa Windows hay que reemplazarlos por _backslash_ o también puede ser por un doble _slash_ (<span class="in">`//`</span>).</span>
-<span id="cb83-589"><a href="#cb83-589" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-590"><a href="#cb83-590" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Por temas de compatibilidad general, en las rutas se recomienda evitar tildes, eñes, espacios, mayúsculas y guiones bajos (_).</span>
-<span id="cb83-591"><a href="#cb83-591" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-592"><a href="#cb83-592" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Estructura de carpetas**: para mantener el orden se sugiere seguir un protocolo de estructura de carpetas de proyecto, para lo que recomendamos el protocolo [IPO](https://lisa-coes.com/ipo-protocol/), y que se adapta al flujo de trabajo presentado al principio de este práctico. Básicamente son tres carpetas: **input**, **procesamiento**, **output**. En la carpeta input crear la subcarpeta data-orig para guardar datos originales, y data-proc para los procesados. En procesamiento se guardan los archivos de código y en output las tablas y los gráficos.</span>
-<span id="cb83-593"><a href="#cb83-593" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-594"><a href="#cb83-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-595"><a href="#cb83-595" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
-<span id="cb83-596"><a href="#cb83-596" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-597"><a href="#cb83-597" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-598"><a href="#cb83-598" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descriptivos básicos de las variables</span></span>
-<span id="cb83-599"><a href="#cb83-599" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-600"><a href="#cb83-600" aria-hidden="true" tabindex="-1"></a>Podemos conocer ciertas medidas de tendencia central utilizando algunas funciones de <span class="in">`dplyr`</span></span>
-<span id="cb83-601"><a href="#cb83-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-602"><a href="#cb83-602" aria-hidden="true" tabindex="-1"></a><span class="fu">### Media por grupos</span></span>
-<span id="cb83-603"><a href="#cb83-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-606"><a href="#cb83-606" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-607"><a href="#cb83-607" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(conf_inst, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb83-608"><a href="#cb83-608" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-609"><a href="#cb83-609" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-612"><a href="#cb83-612" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-613"><a href="#cb83-613" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(educacion) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(conf_inst, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb83-614"><a href="#cb83-614" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-615"><a href="#cb83-615" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-616"><a href="#cb83-616" aria-hidden="true" tabindex="-1"></a><span class="fu">### Representación</span></span>
-<span id="cb83-617"><a href="#cb83-617" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-620"><a href="#cb83-620" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-621"><a href="#cb83-621" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb83-622"><a href="#cb83-622" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>conf_inst, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
-<span id="cb83-623"><a href="#cb83-623" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb81" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctico 3. Operacionalización de variables"</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "R data analisis"</span></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="an">linktitle:</span><span class="co"> "Práctico 3: Operacionalización"</span></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2024-03-26"</span></span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Presentación</span></span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la práctica</span></span>
+<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-13"><a href="#cb81-13" aria-hidden="true" tabindex="-1"></a>El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder analizar e interpretar los datos.</span>
+<span id="cb81-14"><a href="#cb81-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-15"><a href="#cb81-15" aria-hidden="true" tabindex="-1"></a>Por temas de orden y reproducibilidad, en este curso vamos a separar en **dos momentos** el trabajo con datos, y dos archivos de código correspondientes:</span>
+<span id="cb81-16"><a href="#cb81-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-17"><a href="#cb81-17" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Preparación** corresponde a lo que se conoce generalmente como "limpieza", es decir, realizar las modificaciones necesarias para poder efectuar los análisis. Estas modificaciones previas al análisis son necesarias ya que los datos originales con los que se va a trabajar en general no vienen perfectamente adaptados a los análisis que se quieren hacer. Por lo tanto, en cuanto a datos también hacemos la distinción entre datos originales y datos preparados (o procesados).</span>
+<span id="cb81-18"><a href="#cb81-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-19"><a href="#cb81-19" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>**Análisis**: se relaciona tanto con análisis descriptivos asociados a las preguntas de investigación y como también modelamiento de datos para contrastar hipótesis de investigación.</span>
+<span id="cb81-20"><a href="#cb81-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-21"><a href="#cb81-21" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Los procesos de preparación y análisis vinculados a datos y resultados se presentan en el siguiente esquema:{#flujo}</span></span>
+<span id="cb81-22"><a href="#cb81-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-23"><a href="#cb81-23" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/produccion.png)</span></span>
+<span id="cb81-24"><a href="#cb81-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-25"><a href="#cb81-25" aria-hidden="true" tabindex="-1"></a>Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada uno en un _archivo de código_.</span>
+<span id="cb81-26"><a href="#cb81-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-27"><a href="#cb81-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sidenote"</span><span class="kw">&gt;</span>**Archivo de código R**: archivo con extensión .R donde se almacena el código de análisis. Para generarlo desde RStudio: _File &gt; New File &gt; R Script_ (o ctrl+shift+N), y para grabarlo  _File &gt; Save (o ctrl+s)_, y darle nombre la primera vez (recordar: sin tilde ni ñ, y evitar espacios) <span class="kw">&lt;/span&gt;</span></span>
+<span id="cb81-28"><a href="#cb81-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-29"><a href="#cb81-29" aria-hidden="true" tabindex="-1"></a>El documento de **código de preparación** posee 5 partes, más una sección de identificación inicial:</span>
+<span id="cb81-30"><a href="#cb81-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-31"><a href="#cb81-31" aria-hidden="true" tabindex="-1"></a><span class="ss">0. </span>Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento</span>
+<span id="cb81-32"><a href="#cb81-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Librerías: cargar librerías a utilizar</span>
+<span id="cb81-33"><a href="#cb81-33" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Datos: carga de datos</span>
+<span id="cb81-34"><a href="#cb81-34" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Selección de variables a utilizar</span>
+<span id="cb81-35"><a href="#cb81-35" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Procesamiento de variables: en este punto, por cada variable se realiza lo siguiente:</span>
+<span id="cb81-36"><a href="#cb81-36" aria-hidden="true" tabindex="-1"></a>    a. Descriptivo básico</span>
+<span id="cb81-37"><a href="#cb81-37" aria-hidden="true" tabindex="-1"></a>    b. Recodificación: datos perdidos y valores (en caso de ser necesario)</span>
+<span id="cb81-38"><a href="#cb81-38" aria-hidden="true" tabindex="-1"></a>    c. Etiquetamiento: de variable y valores (en caso de ser necesario)</span>
+<span id="cb81-39"><a href="#cb81-39" aria-hidden="true" tabindex="-1"></a>    e. Otros ajustes</span>
+<span id="cb81-40"><a href="#cb81-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-41"><a href="#cb81-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-42"><a href="#cb81-42" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Generación de base de datos preparada para el análisis.</span>
+<span id="cb81-43"><a href="#cb81-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-44"><a href="#cb81-44" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"alert alert-info"</span><span class="kw">&gt;</span></span>
+<span id="cb81-45"><a href="#cb81-45" aria-hidden="true" tabindex="-1"></a>**De rutas, estructura de carpetas y otros **</span>
+<span id="cb81-46"><a href="#cb81-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-47"><a href="#cb81-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Encontrando la ruta a carpeta local**: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar "Propiedades", en la ventana emergente debería aparecer la ruta hacia la carpeta en "Ubicación". Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)</span>
+<span id="cb81-48"><a href="#cb81-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-49"><a href="#cb81-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sobre los "slashes" (`\` o `/`)**: en la ruta las carpetas y el archivo final aparecen separados por slashes, que según el sistema utilizado pueden ser _slash_ (`/`) o _backslash_ (`\`). En R por defecto se usa _slash_, pero en Windows _backslash_, por lo que si se usa Windows hay que reemplazarlos por _backslash_ o también puede ser por un doble _slash_ (<span class="in">`//`</span>).</span>
+<span id="cb81-50"><a href="#cb81-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-51"><a href="#cb81-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Por temas de compatibilidad general, en las rutas se recomienda evitar tildes, eñes, espacios, mayúsculas y guiones bajos (_).</span>
+<span id="cb81-52"><a href="#cb81-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-53"><a href="#cb81-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Estructura de carpetas**: para mantener el orden se sugiere seguir un protocolo de estructura de carpetas de proyecto, para lo que recomendamos el protocolo [IPO](https://lisa-coes.com/ipo-protocol/), y que se adapta al flujo de trabajo presentado anteriormente. Básicamente son tres carpetas: **input**, **procesamiento**, **output**. En la carpeta input crear la subcarpeta data-orig para guardar datos originales, y data-proc para los procesados. En procesamiento se guardan los archivos de código y en output las tablas y los gráficos.</span>
+<span id="cb81-54"><a href="#cb81-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-55"><a href="#cb81-55" aria-hidden="true" tabindex="-1"></a><span class="al">![](../files/img/ipo-hex.png)</span></span>
+<span id="cb81-56"><a href="#cb81-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-57"><a href="#cb81-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-58"><a href="#cb81-58" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
+<span id="cb81-59"><a href="#cb81-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-60"><a href="#cb81-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-61"><a href="#cb81-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-62"><a href="#cb81-62" aria-hidden="true" tabindex="-1"></a>Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos.</span>
+<span id="cb81-63"><a href="#cb81-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-64"><a href="#cb81-64" aria-hidden="true" tabindex="-1"></a>En el ejemplo vamos a procesar variables de confianza en instituciones políticas y variables de caracterización sociodemográfica utilizando los datos de la encuesta <span class="co">[</span><span class="ot">Latinobarómetro</span><span class="co">](https://www.latinobarometro.org/lat.jsp)</span> .</span>
+<span id="cb81-65"><a href="#cb81-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-66"><a href="#cb81-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Antecedentes de los datos a utilizar</span></span>
+<span id="cb81-67"><a href="#cb81-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-68"><a href="#cb81-68" aria-hidden="true" tabindex="-1"></a>Latinobarómetro es un estudio de opinión pública que aplica anualmente alrededor de 20.000 entrevistas en 18 países de América Latina representando a más de 600 millones de habitantes</span>
+<span id="cb81-69"><a href="#cb81-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-70"><a href="#cb81-70" aria-hidden="true" tabindex="-1"></a>  "Los gobiernos latinoamericanos, que venían en declive junto con sus democracias desde inicios de la década de 2010, como reflejan los datos de Latinobarómetro, llegaron a fines de 2018 al annus horribilis con la caída de Nicaragua y Venezuela desde su condición de democracias para entrar en la categoría de autocracias y dictadura. </span>
+<span id="cb81-71"><a href="#cb81-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-72"><a href="#cb81-72" aria-hidden="true" tabindex="-1"></a>  De los hiperpresidentes de la primera década del siglo con altos niveles de crecimiento en todos los países y altos niveles de aprobación, la región pasó en la segunda década a los subpresidentes, con una baja en aprobación de gobierno a la mitad, en menos de 10 años. Este rechazo al desempeño de las elites gobernantes, indica su fracaso a fines de 2019 en varios países de la región." (Latinobarómetro, informe 2021, p. 7)</span>
+<span id="cb81-73"><a href="#cb81-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-74"><a href="#cb81-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-75"><a href="#cb81-75" aria-hidden="true" tabindex="-1"></a>El presente ejercicio tiene por objetivo el procesar los datos para obtener las variables relevantes para el estudio de la **Confianza en instituciones políticas**, entendida como el grado en que los individuos confian en distintas instituciones políticas a nivel nacional, como el gobierno, la justicia, los partidos políticos, etc. Para ello, junto con variables de confianza, consideraremos también variables de estatus (educación), y variables de caracterización sociodemográfica (sexo y edad).</span>
+<span id="cb81-76"><a href="#cb81-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-77"><a href="#cb81-77" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación de datos Latinobarómetro 2020</span></span>
+<span id="cb81-78"><a href="#cb81-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-79"><a href="#cb81-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Librerías principales (de R) a utilizar en el análisis{#librerias}</span></span>
+<span id="cb81-80"><a href="#cb81-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-81"><a href="#cb81-81" aria-hidden="true" tabindex="-1"></a>Como sabemos, la lógica de R es instalar librerías (solo 1 vez, con <span class="in">`install.packages("librería")`</span>), y luego cargarlas cada vez que es necesario usarlas (con <span class="in">`library(librería)`</span>). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama <span class="in">`pacman`</span> (package manager). Lo que hace <span class="in">`pacman`</span> es cargar la librería, y si no está instalada, la instala y la carga:</span>
+<span id="cb81-82"><a href="#cb81-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-83"><a href="#cb81-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-84"><a href="#cb81-84" aria-hidden="true" tabindex="-1"></a>Para utilizar la primera vez (si es que no está instalada):</span>
+<span id="cb81-85"><a href="#cb81-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-86"><a href="#cb81-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb81-87"><a href="#cb81-87" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb81-88"><a href="#cb81-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-89"><a href="#cb81-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-90"><a href="#cb81-90" aria-hidden="true" tabindex="-1"></a>Y en adelante, las librerías se cargan así <span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sidenote"</span><span class="kw">&gt;</span> pacman::p_load(libreria1,libreria2,libreriaX) <span class="kw">&lt;/span&gt;</span>:</span>
+<span id="cb81-91"><a href="#cb81-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-92"><a href="#cb81-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-95"><a href="#cb81-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-96"><a href="#cb81-96" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, sjmisc, car, sjlabelled, stargazer, haven)</span>
+<span id="cb81-97"><a href="#cb81-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-98"><a href="#cb81-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-99"><a href="#cb81-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-100"><a href="#cb81-100" aria-hidden="true" tabindex="-1"></a>Para esta sesión vamos a utilizar Las librerías que vamos a utilizar son:</span>
+<span id="cb81-101"><a href="#cb81-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-102"><a href="#cb81-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`dplyr`</span>: ajuste general de datos</span>
+<span id="cb81-103"><a href="#cb81-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`sjmisc`</span>: descripción y exploración de base de datos</span>
+<span id="cb81-104"><a href="#cb81-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`car`</span>: principalmente la función <span class="in">`recode`</span> para recodificar/agrupar valores de variable</span>
+<span id="cb81-105"><a href="#cb81-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`stargazer`</span>: para tabla descriptiva</span>
+<span id="cb81-106"><a href="#cb81-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-107"><a href="#cb81-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-108"><a href="#cb81-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Cargar base de datos</span></span>
+<span id="cb81-109"><a href="#cb81-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-110"><a href="#cb81-110" aria-hidden="true" tabindex="-1"></a>**Ajustar espacio de trabajo**</span>
+<span id="cb81-111"><a href="#cb81-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-112"><a href="#cb81-112" aria-hidden="true" tabindex="-1"></a>Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:</span>
+<span id="cb81-113"><a href="#cb81-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-116"><a href="#cb81-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-117"><a href="#cb81-117" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       <span class="co"># borrar todos los objetos en el espacio de trabajo</span></span>
+<span id="cb81-118"><a href="#cb81-118" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># valores sin notación científica</span></span>
+<span id="cb81-119"><a href="#cb81-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-120"><a href="#cb81-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-121"><a href="#cb81-121" aria-hidden="true" tabindex="-1"></a>La función <span class="in">`rm(list=ls())`</span> permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función <span class="in">`options(scipen=999)`</span> desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.</span>
+<span id="cb81-122"><a href="#cb81-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-123"><a href="#cb81-123" aria-hidden="true" tabindex="-1"></a>**Datos**</span>
+<span id="cb81-124"><a href="#cb81-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-125"><a href="#cb81-125" aria-hidden="true" tabindex="-1"></a>Las bases de datos se pueden cargar de un archivo local o en línea. Para este caso utilizaremos un archivo en línea que viene en formato RData: **latinobarometro2020.RData**. &lt;span class="sidenote"&gt;**Abrir bases de datos en otros formatos**: Los formatos mas comunes en que se almacenan las bases de datos son .dta (Stata),  .sav (Spss) y RData (R). Para abrir desde R utlilizamos la librería <span class="in">`haven`</span> y sus funciones read_dta y read_sav según corresponda. Ej: <span class="in">`datos &lt;- read_dta("base_casen.dta")`</span>. Recordar antes instalar/cargar la librería: <span class="in">`pacman::p_load(haven)`</span>   <span class="kw">&lt;/span&gt;</span></span>
+<span id="cb81-126"><a href="#cb81-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-127"><a href="#cb81-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE, }</span></span>
+<span id="cb81-128"><a href="#cb81-128" aria-hidden="true" tabindex="-1"></a><span class="co">#cargamos la base de datos desde internet</span></span>
+<span id="cb81-129"><a href="#cb81-129" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"</span>))</span>
+<span id="cb81-130"><a href="#cb81-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-131"><a href="#cb81-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-132"><a href="#cb81-132" aria-hidden="true" tabindex="-1"></a>o de manera local:</span>
+<span id="cb81-133"><a href="#cb81-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-136"><a href="#cb81-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-137"><a href="#cb81-137" aria-hidden="true" tabindex="-1"></a>latinobarometro2020 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"../files/data/external_data/latinobarometro2020.dta"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb81-138"><a href="#cb81-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-139"><a href="#cb81-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-140"><a href="#cb81-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-141"><a href="#cb81-141" aria-hidden="true" tabindex="-1"></a>La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (latinobarometro2020):</span>
+<span id="cb81-142"><a href="#cb81-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-143"><a href="#cb81-143" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/basecargada.png)</span></span>
+<span id="cb81-144"><a href="#cb81-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-145"><a href="#cb81-145" aria-hidden="true" tabindex="-1"></a>Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, <span class="in">`r dim(latinobarometro2020)`</span> ).</span>
+<span id="cb81-146"><a href="#cb81-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-149"><a href="#cb81-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-150"><a href="#cb81-150" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(latinobarometro2020) <span class="co"># dimension de la base</span></span>
+<span id="cb81-151"><a href="#cb81-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-152"><a href="#cb81-152" aria-hidden="true" tabindex="-1"></a>Y si se quiere revisar en formato de planilla de datos:</span>
+<span id="cb81-153"><a href="#cb81-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-156"><a href="#cb81-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-157"><a href="#cb81-157" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(latinobarometro2020)</span>
+<span id="cb81-158"><a href="#cb81-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-159"><a href="#cb81-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-160"><a href="#cb81-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Selección de variables a utilizar</span></span>
+<span id="cb81-161"><a href="#cb81-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-162"><a href="#cb81-162" aria-hidden="true" tabindex="-1"></a>Este paso consiste en crear un subset reducido de datos que contenga solo las variables de interés. Para ello:</span>
+<span id="cb81-163"><a href="#cb81-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-164"><a href="#cb81-164" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Se identifica el nombre de las variables que registran la información de preguntas o items del instrumento: esto aparece en el libro de códigos y/o en el cuestionario, o también se puede hacer buscando en la base de datos mediante alguna palabra clave asociada a la pregunta. Por ejemplo, si queremos buscar variables asociadas a educación, utilizamos la función <span class="in">`find_var`</span> (de <span class="in">`sjmisc`</span>, librería que cargamos en el paso 1), que nos entrega nombre de la variable en columna var.name. Por ejemplo, si buscamos alguna variable asociada al concepto _Confianza_:</span>
+<span id="cb81-165"><a href="#cb81-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-168"><a href="#cb81-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-169"><a href="#cb81-169" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="at">data =</span> latinobarometro2020,<span class="st">"Confianza"</span>)</span>
+<span id="cb81-170"><a href="#cb81-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-171"><a href="#cb81-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-172"><a href="#cb81-172" aria-hidden="true" tabindex="-1"></a>Nos informa que hay una serie de variables relacionadas con confianza interpersonal y con instituciones. Probemos con la variable <span class="in">`p13st_e`</span>.</span>
+<span id="cb81-173"><a href="#cb81-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-174"><a href="#cb81-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-175"><a href="#cb81-175" aria-hidden="true" tabindex="-1"></a>Mediante la función <span class="in">`select`</span> de <span class="in">`dplyr`</span>, seleccionamos cada una de nuestras variables de interés y creamos una nueva base con el nombre <span class="in">`proc_data`</span>, donde "proc" hace referencia a base procesada:</span>
+<span id="cb81-176"><a href="#cb81-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-179"><a href="#cb81-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-180"><a href="#cb81-180" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> latinobarometro2020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(p13st_e, <span class="co"># Confianza en el Gobierno</span></span>
+<span id="cb81-181"><a href="#cb81-181" aria-hidden="true" tabindex="-1"></a>                          p13st_d, <span class="co"># Confianza en el congreso</span></span>
+<span id="cb81-182"><a href="#cb81-182" aria-hidden="true" tabindex="-1"></a>                          p13st_f, <span class="co"># Confianza en el Poder Judicial</span></span>
+<span id="cb81-183"><a href="#cb81-183" aria-hidden="true" tabindex="-1"></a>                          p13st_g, <span class="co"># Confianza en los partidos políticos</span></span>
+<span id="cb81-184"><a href="#cb81-184" aria-hidden="true" tabindex="-1"></a>                          reeduc_1,<span class="co"># nivel educacional</span></span>
+<span id="cb81-185"><a href="#cb81-185" aria-hidden="true" tabindex="-1"></a>                          sexo,<span class="co"># sexo</span></span>
+<span id="cb81-186"><a href="#cb81-186" aria-hidden="true" tabindex="-1"></a>                          edad,<span class="co"># edad</span></span>
+<span id="cb81-187"><a href="#cb81-187" aria-hidden="true" tabindex="-1"></a>                          idenpa) <span class="co"># pais </span></span>
+<span id="cb81-188"><a href="#cb81-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-189"><a href="#cb81-189" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprobar</span></span>
+<span id="cb81-190"><a href="#cb81-190" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_data)</span>
+<span id="cb81-191"><a href="#cb81-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-192"><a href="#cb81-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-193"><a href="#cb81-193" aria-hidden="true" tabindex="-1"></a>Mediante el comando <span class="in">`get_label`</span> obtenemos el atributo label de las variables.</span>
+<span id="cb81-194"><a href="#cb81-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-197"><a href="#cb81-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-198"><a href="#cb81-198" aria-hidden="true" tabindex="-1"></a>sjlabelled<span class="sc">::</span><span class="fu">get_label</span>(proc_data)</span>
+<span id="cb81-199"><a href="#cb81-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-200"><a href="#cb81-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-201"><a href="#cb81-201" aria-hidden="true" tabindex="-1"></a>Podemos ver que son largas o con códigos poco informativos, por lo tanto, es necesario cambiarlas por etiquetas más cortas y de fácil identificación.</span>
+<span id="cb81-202"><a href="#cb81-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-203"><a href="#cb81-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
+<span id="cb81-204"><a href="#cb81-204" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"</span>))</span>
+<span id="cb81-205"><a href="#cb81-205" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> latinobarometro2020 <span class="sc">%&gt;%</span> <span class="fu">select</span>(p13st_e, <span class="co"># Confianza en el Gobierno</span></span>
+<span id="cb81-206"><a href="#cb81-206" aria-hidden="true" tabindex="-1"></a>                          p13st_d, <span class="co"># Confianza en el congreso</span></span>
+<span id="cb81-207"><a href="#cb81-207" aria-hidden="true" tabindex="-1"></a>                          p13st_f, <span class="co"># Confianza en el Poder Judicial</span></span>
+<span id="cb81-208"><a href="#cb81-208" aria-hidden="true" tabindex="-1"></a>                          p13st_g, <span class="co"># Confianza en los partidos políticos</span></span>
+<span id="cb81-209"><a href="#cb81-209" aria-hidden="true" tabindex="-1"></a>                          reeduc_1,<span class="co"># nivel educacional</span></span>
+<span id="cb81-210"><a href="#cb81-210" aria-hidden="true" tabindex="-1"></a>                          sexo,<span class="co"># sexo</span></span>
+<span id="cb81-211"><a href="#cb81-211" aria-hidden="true" tabindex="-1"></a>                          edad,<span class="co"># edad</span></span>
+<span id="cb81-212"><a href="#cb81-212" aria-hidden="true" tabindex="-1"></a>                          idenpa) <span class="co"># pais </span></span>
+<span id="cb81-213"><a href="#cb81-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-214"><a href="#cb81-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-215"><a href="#cb81-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-216"><a href="#cb81-216" aria-hidden="true" tabindex="-1"></a>Para facilitar el análisis, vamos a filtrar la base de datos para quedarnos solo con los casos de Chile. Para esto utilizamos la función <span class="in">`filter`</span> de <span class="in">`dplyr`</span>. Si revisamos el libro de códigos, el identificador de Chile es 152</span>
+<span id="cb81-217"><a href="#cb81-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-220"><a href="#cb81-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-221"><a href="#cb81-221" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(idenpa<span class="sc">==</span><span class="dv">152</span>)</span>
+<span id="cb81-222"><a href="#cb81-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-223"><a href="#cb81-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-224"><a href="#cb81-224" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Procesamiento de variables</span></span>
+<span id="cb81-225"><a href="#cb81-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-226"><a href="#cb81-226" aria-hidden="true" tabindex="-1"></a>Para el procesamiento de cada variable se seguirá el siguiente flujo de trabajo:</span>
+<span id="cb81-227"><a href="#cb81-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-228"><a href="#cb81-228" aria-hidden="true" tabindex="-1"></a>a. Descriptivo general</span>
+<span id="cb81-229"><a href="#cb81-229" aria-hidden="true" tabindex="-1"></a>b. Recodificación: de casos perdidos y otros valores (en caso necesario)</span>
+<span id="cb81-230"><a href="#cb81-230" aria-hidden="true" tabindex="-1"></a>c. Etiquetado: cambio de nombres de variables y valores (en caso necesario)</span>
+<span id="cb81-231"><a href="#cb81-231" aria-hidden="true" tabindex="-1"></a>d. Otros ajustes</span>
+<span id="cb81-232"><a href="#cb81-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-233"><a href="#cb81-233" aria-hidden="true" tabindex="-1"></a>Y se recomienda también un descriptivo final para revisar que el procesamiento de cada variable está ok.</span>
+<span id="cb81-234"><a href="#cb81-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-235"><a href="#cb81-235" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.1 Confianza en el Gobierno</span></span>
+<span id="cb81-236"><a href="#cb81-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-237"><a href="#cb81-237" aria-hidden="true" tabindex="-1"></a>En Latinobarómetro, lass variables que permiten medir la Confianza en instituciones políticas en Chile son las siguientes:</span>
+<span id="cb81-238"><a href="#cb81-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-239"><a href="#cb81-239" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_e`</span><span class="co">]</span>: "P13ST.E Confianza en el Gobierno" (1 = Mucha; 4 = Ninguna)</span>
+<span id="cb81-240"><a href="#cb81-240" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_d`</span><span class="co">]</span>: "P13ST.D Confianza en el Congreso" (1 = Mucha; 4 = Ninguna)</span>
+<span id="cb81-241"><a href="#cb81-241" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_f`</span><span class="co">]</span>: "P13ST.F Confianza en el Poder Judicial" (1 = Mucha; 4 = Ninguna)</span>
+<span id="cb81-242"><a href="#cb81-242" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`p13st_g`</span><span class="co">]</span>: "P13ST.G Confianza en los Partidos Políticos" (1 = Mucha; 4 = Ninguna) </span>
+<span id="cb81-243"><a href="#cb81-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-244"><a href="#cb81-244" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
+<span id="cb81-245"><a href="#cb81-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-246"><a href="#cb81-246" aria-hidden="true" tabindex="-1"></a>Para los descriptivos se utilizará la función <span class="in">`frq`</span>, de la librería <span class="in">`sjmisc`</span>:</span>
+<span id="cb81-247"><a href="#cb81-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-250"><a href="#cb81-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-251"><a href="#cb81-251" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>p13st_e)</span>
+<span id="cb81-252"><a href="#cb81-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-253"><a href="#cb81-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-254"><a href="#cb81-254" aria-hidden="true" tabindex="-1"></a>En esta variable vemos valores asociados a la opción "No contesta" (-2) y "No sabe" (-1), que corresponde definirlos como casos perdidos (en el caso de R, como casos NA). El resto de los valores y etiquetas se encuentran en un orden contraintuitivo (mayor valor indica menos confianza), así que en la recodificiación nos haremos cargo de los casos perdidos y de reordenar las categorías.</span>
+<span id="cb81-255"><a href="#cb81-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-256"><a href="#cb81-256" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_</span>
+<span id="cb81-257"><a href="#cb81-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-258"><a href="#cb81-258" aria-hidden="true" tabindex="-1"></a>Para recodificar utilizamos la función <span class="in">`recode`</span>, de la librería <span class="in">`car`</span></span>
+<span id="cb81-259"><a href="#cb81-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-262"><a href="#cb81-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-263"><a href="#cb81-263" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_e <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_e, <span class="st">"c(-2,-1)=NA"</span>)</span>
+<span id="cb81-264"><a href="#cb81-264" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_d <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_d, <span class="st">"c(-2,-1)=NA"</span>)</span>
+<span id="cb81-265"><a href="#cb81-265" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_f <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_f, <span class="st">"c(-2,-1)=NA"</span>)</span>
+<span id="cb81-266"><a href="#cb81-266" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_g <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_g, <span class="st">"c(-2,-1)=NA"</span>)</span>
+<span id="cb81-267"><a href="#cb81-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-268"><a href="#cb81-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-269"><a href="#cb81-269" aria-hidden="true" tabindex="-1"></a>**nota**: con la función <span class="in">`set_na`</span> de la librería <span class="in">`sjmisc`</span> podemos recodificar toda la base de datos con un solo código, pero debemos estar completamente segur-s de que estos valores no tienen otra categoría asociada en otra variable.</span>
+<span id="cb81-270"><a href="#cb81-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-271"><a href="#cb81-271" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb81-272"><a href="#cb81-272" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb81-273"><a href="#cb81-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-274"><a href="#cb81-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-275"><a href="#cb81-275" aria-hidden="true" tabindex="-1"></a>Para reordenar las categorías volvemos a utilizar la función <span class="in">`recode`</span>, de la librería <span class="in">`car`</span></span>
+<span id="cb81-276"><a href="#cb81-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-279"><a href="#cb81-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-280"><a href="#cb81-280" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_e <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_e, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
+<span id="cb81-281"><a href="#cb81-281" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_d <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_d, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
+<span id="cb81-282"><a href="#cb81-282" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_f <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_f, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
+<span id="cb81-283"><a href="#cb81-283" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>p13st_g <span class="ot">&lt;-</span> <span class="fu">recode</span>(proc_data<span class="sc">$</span>p13st_g, <span class="st">"1=3; 2=2; 3=1; 4=0"</span>)</span>
+<span id="cb81-284"><a href="#cb81-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-285"><a href="#cb81-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-286"><a href="#cb81-286" aria-hidden="true" tabindex="-1"></a>_c - Etiquetado_</span>
+<span id="cb81-287"><a href="#cb81-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-288"><a href="#cb81-288" aria-hidden="true" tabindex="-1"></a>Vamos a dar un nombre más sustantivo a las variables con la función <span class="in">`rename`</span>, de la librería <span class="in">`dplyr`</span>:</span>
+<span id="cb81-289"><a href="#cb81-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-292"><a href="#cb81-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-293"><a href="#cb81-293" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="st">"conf_gob"</span><span class="ot">=</span>p13st_e, <span class="co"># Confianza en el gobierno</span></span>
+<span id="cb81-294"><a href="#cb81-294" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"conf_cong"</span><span class="ot">=</span>p13st_d, <span class="co"># Confianza en el congreso</span></span>
+<span id="cb81-295"><a href="#cb81-295" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"conf_jud"</span><span class="ot">=</span>p13st_f, <span class="co"># Confianza en el Poder Judicial</span></span>
+<span id="cb81-296"><a href="#cb81-296" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"conf_partpol"</span><span class="ot">=</span>p13st_g) <span class="co"># Confianza en los partidos políticos </span></span>
+<span id="cb81-297"><a href="#cb81-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-298"><a href="#cb81-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-299"><a href="#cb81-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-300"><a href="#cb81-300" aria-hidden="true" tabindex="-1"></a>**nota**: recodificación más rápida si estamos segur-s de todos los valores</span>
+<span id="cb81-301"><a href="#cb81-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-302"><a href="#cb81-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb81-303"><a href="#cb81-303" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"conf"</span>)), <span class="sc">~</span>(<span class="dv">4</span><span class="sc">-</span>.))</span>
+<span id="cb81-304"><a href="#cb81-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-305"><a href="#cb81-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-306"><a href="#cb81-306" aria-hidden="true" tabindex="-1"></a>Además de cambiar el nombre, queremos cambiar las etiquetas de las variables.</span>
+<span id="cb81-307"><a href="#cb81-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-310"><a href="#cb81-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-311"><a href="#cb81-311" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_gob <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_gob,<span class="at">label =</span> <span class="st">"Confianza: Gobierno"</span>)</span>
+<span id="cb81-312"><a href="#cb81-312" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_gob)</span>
+<span id="cb81-313"><a href="#cb81-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-314"><a href="#cb81-314" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_cong  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_cong, <span class="at">label =</span> <span class="st">"Confianza: Congreso"</span>)</span>
+<span id="cb81-315"><a href="#cb81-315" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_cong)</span>
+<span id="cb81-316"><a href="#cb81-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-317"><a href="#cb81-317" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_jud  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_jud, <span class="at">label =</span> <span class="st">"Confianza: Poder judicial"</span>)</span>
+<span id="cb81-318"><a href="#cb81-318" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_jud)</span>
+<span id="cb81-319"><a href="#cb81-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-320"><a href="#cb81-320" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_partpol  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_partpol, <span class="at">label =</span> <span class="st">"Confianza: Partidos politicos"</span>)</span>
+<span id="cb81-321"><a href="#cb81-321" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_partpol)</span>
+<span id="cb81-322"><a href="#cb81-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-323"><a href="#cb81-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-324"><a href="#cb81-324" aria-hidden="true" tabindex="-1"></a>_d. Otros ajustes_</span>
+<span id="cb81-325"><a href="#cb81-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-326"><a href="#cb81-326" aria-hidden="true" tabindex="-1"></a>Para este caso vamos a crear una variable que sea la suma de los cuatro items de confianza.</span>
+<span id="cb81-327"><a href="#cb81-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-330"><a href="#cb81-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-331"><a href="#cb81-331" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_inst <span class="ot">&lt;-</span> (proc_data<span class="sc">$</span>conf_gob<span class="sc">+</span>proc_data<span class="sc">$</span>conf_cong<span class="sc">+</span>proc_data<span class="sc">$</span>conf_jud<span class="sc">+</span>proc_data<span class="sc">$</span>conf_partpol)</span>
+<span id="cb81-332"><a href="#cb81-332" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(proc_data<span class="sc">$</span>conf_inst)</span>
+<span id="cb81-333"><a href="#cb81-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-334"><a href="#cb81-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-337"><a href="#cb81-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-338"><a href="#cb81-338" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>conf_inst)</span>
+<span id="cb81-339"><a href="#cb81-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-340"><a href="#cb81-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-341"><a href="#cb81-341" aria-hidden="true" tabindex="-1"></a>Vemos que una etiqueta de la variable anterior.</span>
+<span id="cb81-342"><a href="#cb81-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-345"><a href="#cb81-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-346"><a href="#cb81-346" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_inst  <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>conf_inst, <span class="at">label =</span> <span class="st">"Confianza en instituciones"</span>)</span>
+<span id="cb81-347"><a href="#cb81-347" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-348"><a href="#cb81-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-349"><a href="#cb81-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-350"><a href="#cb81-350" aria-hidden="true" tabindex="-1"></a>_Revisión final_</span>
+<span id="cb81-351"><a href="#cb81-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-352"><a href="#cb81-352" aria-hidden="true" tabindex="-1"></a>Nuevamente un descriptivo de cada variable para confirmar que el procesamiento está ok:</span>
+<span id="cb81-353"><a href="#cb81-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-356"><a href="#cb81-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-357"><a href="#cb81-357" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_gob)</span>
+<span id="cb81-358"><a href="#cb81-358" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_cong)</span>
+<span id="cb81-359"><a href="#cb81-359" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_inst)</span>
+<span id="cb81-360"><a href="#cb81-360" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-361"><a href="#cb81-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-362"><a href="#cb81-362" aria-hidden="true" tabindex="-1"></a>Vemos que los valores (labels) de cada categoría de las primeras variables que recodificamos no se corresponden con el nuevo valor. Para re-etiquetar valores usamos la función <span class="in">`set_labels`</span>, de la librería <span class="in">`sjlabelled`</span></span>
+<span id="cb81-363"><a href="#cb81-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-366"><a href="#cb81-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-367"><a href="#cb81-367" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_gob <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_gob,</span>
+<span id="cb81-368"><a href="#cb81-368" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb81-369"><a href="#cb81-369" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb81-370"><a href="#cb81-370" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb81-371"><a href="#cb81-371" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb81-372"><a href="#cb81-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-373"><a href="#cb81-373" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_cong <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_cong,</span>
+<span id="cb81-374"><a href="#cb81-374" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb81-375"><a href="#cb81-375" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb81-376"><a href="#cb81-376" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb81-377"><a href="#cb81-377" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb81-378"><a href="#cb81-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-379"><a href="#cb81-379" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_jud <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_jud,</span>
+<span id="cb81-380"><a href="#cb81-380" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb81-381"><a href="#cb81-381" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb81-382"><a href="#cb81-382" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb81-383"><a href="#cb81-383" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb81-384"><a href="#cb81-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-385"><a href="#cb81-385" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>conf_partpol <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>conf_partpol,</span>
+<span id="cb81-386"><a href="#cb81-386" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Ninguna"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb81-387"><a href="#cb81-387" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Poca"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb81-388"><a href="#cb81-388" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Algo"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb81-389"><a href="#cb81-389" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mucha"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb81-390"><a href="#cb81-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-391"><a href="#cb81-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-392"><a href="#cb81-392" aria-hidden="true" tabindex="-1"></a>y volvemos a revisar</span>
+<span id="cb81-393"><a href="#cb81-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-396"><a href="#cb81-396" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-397"><a href="#cb81-397" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_gob)</span>
+<span id="cb81-398"><a href="#cb81-398" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>conf_cong)</span>
+<span id="cb81-399"><a href="#cb81-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-400"><a href="#cb81-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-401"><a href="#cb81-401" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 4.2. Educación</span></span>
+<span id="cb81-402"><a href="#cb81-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-403"><a href="#cb81-403" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`reeduc_1`</span><span class="co">]</span> = REEDUC.1 Nivel de estudios alcanzado - Entrevistado (recodificado)</span>
+<span id="cb81-404"><a href="#cb81-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-405"><a href="#cb81-405" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
+<span id="cb81-406"><a href="#cb81-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-409"><a href="#cb81-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-410"><a href="#cb81-410" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>reeduc_1)</span>
+<span id="cb81-411"><a href="#cb81-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-412"><a href="#cb81-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-413"><a href="#cb81-413" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_</span>
+<span id="cb81-414"><a href="#cb81-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-415"><a href="#cb81-415" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Vemos que no hay datos perdidos</span>
+<span id="cb81-416"><a href="#cb81-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-417"><a href="#cb81-417" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Valores</span>
+<span id="cb81-418"><a href="#cb81-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-419"><a href="#cb81-419" aria-hidden="true" tabindex="-1"></a>Para hacer más fácil el análisis, recodificamos en tres categorías (en este caso decisión arbitraria. Se debería tener una razón teórica para recodificar)</span>
+<span id="cb81-420"><a href="#cb81-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-421"><a href="#cb81-421" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-422"><a href="#cb81-422" aria-hidden="true" tabindex="-1"></a><span class="in">1.  Analfabeto                                =   Educacion basica    =   1</span></span>
+<span id="cb81-423"><a href="#cb81-423" aria-hidden="true" tabindex="-1"></a><span class="in">2   Básica incompleta                         =   Educacion basica    =   1</span></span>
+<span id="cb81-424"><a href="#cb81-424" aria-hidden="true" tabindex="-1"></a><span class="in">3.  Básica completa                           =   Educacion basica    =   1</span></span>
+<span id="cb81-425"><a href="#cb81-425" aria-hidden="true" tabindex="-1"></a><span class="in">4.  Secundaria, media, técnica incompleta     =   Educacion media     =   2</span></span>
+<span id="cb81-426"><a href="#cb81-426" aria-hidden="true" tabindex="-1"></a><span class="in">5.  Secundaria, media, técnica completa       =   Educacion media     =   2</span></span>
+<span id="cb81-427"><a href="#cb81-427" aria-hidden="true" tabindex="-1"></a><span class="in">6.  Superior incompleta                       =   Educacion superior  =   3</span></span>
+<span id="cb81-428"><a href="#cb81-428" aria-hidden="true" tabindex="-1"></a><span class="in">7.  Superior completa                         =   Educacion superior  =   3</span></span>
+<span id="cb81-429"><a href="#cb81-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-430"><a href="#cb81-430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-433"><a href="#cb81-433" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-434"><a href="#cb81-434" aria-hidden="true" tabindex="-1"></a><span class="co"># recodificacion usando funcion 'recode' de la libreria car</span></span>
+<span id="cb81-435"><a href="#cb81-435" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>reeduc_1 <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_data<span class="sc">$</span>reeduc_1, <span class="st">"c(1,2,3)=1; c(4,5)=2; c(6,7)=3"</span>)</span>
+<span id="cb81-436"><a href="#cb81-436" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-437"><a href="#cb81-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-438"><a href="#cb81-438" aria-hidden="true" tabindex="-1"></a>Comprobar con un nuevo descriptivo:</span>
+<span id="cb81-439"><a href="#cb81-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-442"><a href="#cb81-442" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-443"><a href="#cb81-443" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>reeduc_1)</span>
+<span id="cb81-444"><a href="#cb81-444" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-445"><a href="#cb81-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-446"><a href="#cb81-446" aria-hidden="true" tabindex="-1"></a>Se observa que los valores coinciden con la recodificación (los casos se acumulan entre las categorías 1 y 3), pero las etiquetas ahora no coinciden; se soluciona en el siguiente paso.</span>
+<span id="cb81-447"><a href="#cb81-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-448"><a href="#cb81-448" aria-hidden="true" tabindex="-1"></a>_c. Etiquetado_</span>
+<span id="cb81-449"><a href="#cb81-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-450"><a href="#cb81-450" aria-hidden="true" tabindex="-1"></a>Para re-etiquetar valores usamos la función <span class="in">`set_labels`</span>, de la librería <span class="in">`sjlabelled`</span></span>
+<span id="cb81-451"><a href="#cb81-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-454"><a href="#cb81-454" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-455"><a href="#cb81-455" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>reeduc_1 <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>reeduc_1,</span>
+<span id="cb81-456"><a href="#cb81-456" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Educacion basica"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb81-457"><a href="#cb81-457" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educacion media"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb81-458"><a href="#cb81-458" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Educacion superior"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb81-459"><a href="#cb81-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-460"><a href="#cb81-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-461"><a href="#cb81-461" aria-hidden="true" tabindex="-1"></a>Luego renombramos la variable con un nombre más sustantivo</span>
+<span id="cb81-462"><a href="#cb81-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-465"><a href="#cb81-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-466"><a href="#cb81-466" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> <span class="fu">rename</span>(proc_data,<span class="st">"educacion"</span><span class="ot">=</span>reeduc_1)</span>
+<span id="cb81-467"><a href="#cb81-467" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-468"><a href="#cb81-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-469"><a href="#cb81-469" aria-hidden="true" tabindex="-1"></a>Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.</span>
+<span id="cb81-470"><a href="#cb81-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-473"><a href="#cb81-473" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-474"><a href="#cb81-474" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>educacion)</span>
+<span id="cb81-475"><a href="#cb81-475" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>educacion <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>educacion,<span class="at">label =</span> <span class="st">"Educación"</span>)</span>
+<span id="cb81-476"><a href="#cb81-476" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-477"><a href="#cb81-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-478"><a href="#cb81-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-479"><a href="#cb81-479" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.3. Sexo</span></span>
+<span id="cb81-480"><a href="#cb81-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-481"><a href="#cb81-481" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`sexo`</span><span class="co">]</span>  =   SEXO Sexo</span>
+<span id="cb81-482"><a href="#cb81-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-483"><a href="#cb81-483" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
+<span id="cb81-484"><a href="#cb81-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-487"><a href="#cb81-487" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-488"><a href="#cb81-488" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>sexo)</span>
+<span id="cb81-489"><a href="#cb81-489" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-490"><a href="#cb81-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-491"><a href="#cb81-491" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_</span>
+<span id="cb81-492"><a href="#cb81-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-493"><a href="#cb81-493" aria-hidden="true" tabindex="-1"></a>En general esta variable no tiene problemas de casos perdidos ni de etiquetas, pero de todas maneras vamos a hacer un cambio de acuerdo a convenciones en análisis de datos, donde por lo general hombres tienen valor 0 y mujeres 1:</span>
+<span id="cb81-494"><a href="#cb81-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-497"><a href="#cb81-497" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-498"><a href="#cb81-498" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>sexo <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_data<span class="sc">$</span>sexo, <span class="st">"1=0;2=1"</span>)</span>
+<span id="cb81-499"><a href="#cb81-499" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-500"><a href="#cb81-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-501"><a href="#cb81-501" aria-hidden="true" tabindex="-1"></a>_c. Etiquetado_</span>
+<span id="cb81-502"><a href="#cb81-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-503"><a href="#cb81-503" aria-hidden="true" tabindex="-1"></a>Y ahora cambiamos las etiquetas de acuerdo a la recodificación anterior:</span>
+<span id="cb81-504"><a href="#cb81-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-507"><a href="#cb81-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-508"><a href="#cb81-508" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>sexo <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(proc_data<span class="sc">$</span>sexo,</span>
+<span id="cb81-509"><a href="#cb81-509" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Hombre"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb81-510"><a href="#cb81-510" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Mujer"</span><span class="ot">=</span><span class="dv">1</span>))</span>
+<span id="cb81-511"><a href="#cb81-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-512"><a href="#cb81-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-513"><a href="#cb81-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-514"><a href="#cb81-514" aria-hidden="true" tabindex="-1"></a>También queremos cambiar la etiqueta de la variable.</span>
+<span id="cb81-515"><a href="#cb81-515" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-518"><a href="#cb81-518" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-519"><a href="#cb81-519" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>sexo)</span>
+<span id="cb81-520"><a href="#cb81-520" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>sexo <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>sexo,<span class="at">label =</span> <span class="st">"Sexo"</span>)</span>
+<span id="cb81-521"><a href="#cb81-521" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-522"><a href="#cb81-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-523"><a href="#cb81-523" aria-hidden="true" tabindex="-1"></a>Revisar con un nuevo descriptivo:</span>
+<span id="cb81-524"><a href="#cb81-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-527"><a href="#cb81-527" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-528"><a href="#cb81-528" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>sexo)</span>
+<span id="cb81-529"><a href="#cb81-529" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-530"><a href="#cb81-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-531"><a href="#cb81-531" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.4 Edad</span></span>
+<span id="cb81-532"><a href="#cb81-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-533"><a href="#cb81-533" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">`edad`</span><span class="co">]</span>  =   EDAD Edad.</span>
+<span id="cb81-534"><a href="#cb81-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-535"><a href="#cb81-535" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-536"><a href="#cb81-536" aria-hidden="true" tabindex="-1"></a>_a. Descriptivo_</span>
+<span id="cb81-537"><a href="#cb81-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-540"><a href="#cb81-540" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-541"><a href="#cb81-541" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(proc_data<span class="sc">$</span>edad)</span>
+<span id="cb81-542"><a href="#cb81-542" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-543"><a href="#cb81-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-544"><a href="#cb81-544" aria-hidden="true" tabindex="-1"></a>_b. Recodificación_: no es necesario en este caso</span>
+<span id="cb81-545"><a href="#cb81-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-546"><a href="#cb81-546" aria-hidden="true" tabindex="-1"></a>_c. Etiquetado_</span>
+<span id="cb81-547"><a href="#cb81-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-548"><a href="#cb81-548" aria-hidden="true" tabindex="-1"></a>Cambio la etiqueta de la variable.</span>
+<span id="cb81-549"><a href="#cb81-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-552"><a href="#cb81-552" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-553"><a href="#cb81-553" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(proc_data<span class="sc">$</span>edad)</span>
+<span id="cb81-554"><a href="#cb81-554" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>edad <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> proc_data<span class="sc">$</span>edad,<span class="at">label =</span> <span class="st">"Edad"</span>)</span>
+<span id="cb81-555"><a href="#cb81-555" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-556"><a href="#cb81-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-557"><a href="#cb81-557" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Generación de base de datos procesada para el análisis</span></span>
+<span id="cb81-558"><a href="#cb81-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-559"><a href="#cb81-559" aria-hidden="true" tabindex="-1"></a>Antes de guardar la base procesada, revisamos nuevamente todas las variables con una tabla descriptiva general mediante la función <span class="in">`stargazer`</span> (de la librería homónima)</span>
+<span id="cb81-560"><a href="#cb81-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-561"><a href="#cb81-561" aria-hidden="true" tabindex="-1"></a>Primero vamos a reformatear el objeto proc_data como base de datos (as.data.frame), paso necesario para que sea reconocido como tal por <span class="in">`stargazer`</span></span>
+<span id="cb81-562"><a href="#cb81-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-563"><a href="#cb81-563" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-566"><a href="#cb81-566" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-567"><a href="#cb81-567" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(proc_data)</span>
+<span id="cb81-568"><a href="#cb81-568" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(proc_data, <span class="at">type=</span><span class="st">"text"</span>)</span>
+<span id="cb81-569"><a href="#cb81-569" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-570"><a href="#cb81-570" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"alert alert-info"</span><span class="kw">&gt;</span></span>
+<span id="cb81-571"><a href="#cb81-571" aria-hidden="true" tabindex="-1"></a>Si se desea modificar las columnas que aparecen en la tabla se puede ocupar la opción <span class="in">`summary.stat`</span>, donde se pueden especificar:</span>
+<span id="cb81-572"><a href="#cb81-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-573"><a href="#cb81-573" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"max" maximum</span>
+<span id="cb81-574"><a href="#cb81-574" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"mean" mean</span>
+<span id="cb81-575"><a href="#cb81-575" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"median" median</span>
+<span id="cb81-576"><a href="#cb81-576" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"min" minimum</span>
+<span id="cb81-577"><a href="#cb81-577" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"n" number of observations</span>
+<span id="cb81-578"><a href="#cb81-578" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"p25" 25th percentile</span>
+<span id="cb81-579"><a href="#cb81-579" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"p75" 75th percentile</span>
+<span id="cb81-580"><a href="#cb81-580" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"sd" standard deviation</span>
+<span id="cb81-581"><a href="#cb81-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-582"><a href="#cb81-582" aria-hidden="true" tabindex="-1"></a>Por ejemplo, si quiero una tabla solo con promedio, n, sd y p75: <span class="in">`stargazer(data, type="text", summary.stat = c("mean", "n", "sd", "p75"))`</span></span>
+<span id="cb81-583"><a href="#cb81-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-584"><a href="#cb81-584" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb81-585"><a href="#cb81-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-586"><a href="#cb81-586" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Guardar base de datos procesada: en carpeta local <span class="kw">&lt;span</span> <span class="er">class</span><span class="ot">=</span><span class="st">"sidenote"</span><span class="kw">&gt;</span>La ruta hacia su carpeta local si está trabajando en windows debería ser algo como "C:/Users/Lenovo/Clases/y aquí nombre del archivo a grabar<span class="kw">&lt;/span&gt;</span></span>
+<span id="cb81-587"><a href="#cb81-587" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-588"><a href="#cb81-588" aria-hidden="true" tabindex="-1"></a>El comando para guardar es <span class="in">`save`</span>:</span>
+<span id="cb81-589"><a href="#cb81-589" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-590"><a href="#cb81-590" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb81-591"><a href="#cb81-591" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(proc_data,<span class="at">file =</span> <span class="st">"[ruta hacia carpeta local en su computador]/ELSOC_ess_merit2016.RData"</span>)</span>
+<span id="cb81-592"><a href="#cb81-592" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-593"><a href="#cb81-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-594"><a href="#cb81-594" aria-hidden="true" tabindex="-1"></a>En este caso, seguimos una estructura de carpetas de datos, separando en una carpeta los datos originales, y en otra (proc) los datos procesados:</span>
+<span id="cb81-595"><a href="#cb81-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-596"><a href="#cb81-596" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-597"><a href="#cb81-597" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb81-598"><a href="#cb81-598" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(proc_data,<span class="at">file =</span> <span class="st">"files/data/latinobarometro_proc.RData"</span>)</span>
+<span id="cb81-599"><a href="#cb81-599" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-600"><a href="#cb81-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-601"><a href="#cb81-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-602"><a href="#cb81-602" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descriptivos básicos de las variables</span></span>
+<span id="cb81-603"><a href="#cb81-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-604"><a href="#cb81-604" aria-hidden="true" tabindex="-1"></a>Podemos conocer ciertas medidas de tendencia central utilizando algunas funciones de <span class="in">`dplyr`</span></span>
+<span id="cb81-605"><a href="#cb81-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-606"><a href="#cb81-606" aria-hidden="true" tabindex="-1"></a><span class="fu">### Media por grupos</span></span>
+<span id="cb81-607"><a href="#cb81-607" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-610"><a href="#cb81-610" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-611"><a href="#cb81-611" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(conf_inst, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb81-612"><a href="#cb81-612" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-613"><a href="#cb81-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-616"><a href="#cb81-616" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-617"><a href="#cb81-617" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">group_by</span>(educacion) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="fu">mean</span>(conf_inst, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb81-618"><a href="#cb81-618" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-619"><a href="#cb81-619" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-620"><a href="#cb81-620" aria-hidden="true" tabindex="-1"></a><span class="fu">### Representación</span></span>
+<span id="cb81-621"><a href="#cb81-621" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-624"><a href="#cb81-624" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-625"><a href="#cb81-625" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb81-626"><a href="#cb81-626" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>conf_inst, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb81-627"><a href="#cb81-627" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

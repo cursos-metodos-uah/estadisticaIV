@@ -41,6 +41,24 @@ El documento de **código de preparación** posee 5 partes, más una sección de
 
 5. Generación de base de datos preparada para el análisis.
 
+<div class="alert alert-info">
+**De rutas, estructura de carpetas y otros **
+
+- **Encontrando la ruta a carpeta local**: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar "Propiedades", en la ventana emergente debería aparecer la ruta hacia la carpeta en "Ubicación". Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)
+
+- **Sobre los "slashes" (`\` o `/`)**: en la ruta las carpetas y el archivo final aparecen separados por slashes, que según el sistema utilizado pueden ser _slash_ (`/`) o _backslash_ (`\`). En R por defecto se usa _slash_, pero en Windows _backslash_, por lo que si se usa Windows hay que reemplazarlos por _backslash_ o también puede ser por un doble _slash_ (`//`).
+
+- Por temas de compatibilidad general, en las rutas se recomienda evitar tildes, eñes, espacios, mayúsculas y guiones bajos (_).
+
+- **Estructura de carpetas**: para mantener el orden se sugiere seguir un protocolo de estructura de carpetas de proyecto, para lo que recomendamos el protocolo [IPO](https://lisa-coes.com/ipo-protocol/), y que se adapta al flujo de trabajo presentado anteriormente. Básicamente son tres carpetas: **input**, **procesamiento**, **output**. En la carpeta input crear la subcarpeta data-orig para guardar datos originales, y data-proc para los procesados. En procesamiento se guardan los archivos de código y en output las tablas y los gráficos.
+
+![](../files/img/ipo-hex.png)
+
+
+<div>
+
+
+
 Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos.
 
 En el ejemplo vamos a procesar variables de confianza en instituciones políticas y variables de caracterización sociodemográfica utilizando los datos de la encuesta [Latinobarómetro](https://www.latinobarometro.org/lat.jsp) .
@@ -114,11 +132,11 @@ latinobarometro2020 <- read_dta("../files/data/external_data/latinobarometro2020
 ```
 
 
-La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (elsoc_2016):
+La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (latinobarometro2020):
 
 ![](images/basecargada.png)
 
-Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, `r dim(latinobarometro2020)[1]` casos y `r dim(latinobarometro2020)[2]` variables).
+Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, `r dim(latinobarometro2020)` ).
 
 ```{r}
 dim(latinobarometro2020) # dimension de la base
@@ -511,20 +529,6 @@ En este caso, seguimos una estructura de carpetas de datos, separando en una car
 ```{r eval=FALSE}
 save(proc_data,file = "files/data/latinobarometro_proc.RData")
 ```
-
-<div class="alert alert-info">
-**De rutas, estructura de carpetas y otros **
-
-- **Encontrando la ruta a carpeta local**: lo más fácil es crear la carpeta donde se desean guardar los datos desde el administrador de archivos del computador. Luego, posicionarse con el cursor sobre la carpeta y seleccionar "Propiedades", en la ventana emergente debería aparecer la ruta hacia la carpeta en "Ubicación". Copiar esa ruta y agregar al final el nombre de la carpeta (separada por slash)
-
-- **Sobre los "slashes" (`\` o `/`)**: en la ruta las carpetas y el archivo final aparecen separados por slashes, que según el sistema utilizado pueden ser _slash_ (`/`) o _backslash_ (`\`). En R por defecto se usa _slash_, pero en Windows _backslash_, por lo que si se usa Windows hay que reemplazarlos por _backslash_ o también puede ser por un doble _slash_ (`//`).
-
-- Por temas de compatibilidad general, en las rutas se recomienda evitar tildes, eñes, espacios, mayúsculas y guiones bajos (_).
-
-- **Estructura de carpetas**: para mantener el orden se sugiere seguir un protocolo de estructura de carpetas de proyecto, para lo que recomendamos el protocolo [IPO](https://lisa-coes.com/ipo-protocol/), y que se adapta al flujo de trabajo presentado al principio de este práctico. Básicamente son tres carpetas: **input**, **procesamiento**, **output**. En la carpeta input crear la subcarpeta data-orig para guardar datos originales, y data-proc para los procesados. En procesamiento se guardan los archivos de código y en output las tablas y los gráficos.
-
-
-<div>
 
 
 ## Descriptivos básicos de las variables
