@@ -505,7 +505,58 @@ ggplot(datos, aes(x =educacion, y = promedio, color=sexo, shape=sexo)) +
 ## Unir bases de datos
 
 ```{r}
-load("files/data/data_wvs.rdata")
+load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData")) #Cargar base de datos
+load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/data_wvs.RData")) #Cargar base de datos
+
+context_data <- wvs %>% group_by(B_COUNTRY) %>% 
+  summarise(gdp = mean(GDPpercap1, na.rm = TRUE),
+         life_exp = mean(lifeexpect, na.rm = TRUE),
+         gini = mean(giniWB, na.rm = TRUE)) %>% 
+  rename(idenpa=B_COUNTRY)
+context_data$idenpa <- as.numeric(context_data$idenpa)
+
+
+proc_data <- proc_data %>% group_by(idenpa) %>% 
+  summarise(promedio = mean(conf_inst, na.rm = TRUE))
+
+data1 <- merge(proc_data, context_data, by="idenpa")
+data2 <- right_join(proc_data, context_data, by="idenpa")
+data3 <- full_join(proc_data, context_data, by="idenpa")
+data <- left_join(proc_data, context_data, by="idenpa")
+
+data <- data %>%
+  mutate(idenpa = as.character(idenpa)) %>%
+  mutate(idenpa = case_when(
+    idenpa == "32" ~ "Argentina",
+    idenpa == "68" ~ "Bolivia",
+    idenpa == "76" ~ "Brasil",
+    idenpa == "152" ~ "Chile",
+    idenpa == "170" ~ "Colombia",
+    idenpa == "188" ~ "Costa Rica",
+    idenpa == "214" ~ "Cuba",
+    idenpa == "218" ~ "República Dominicana",
+    idenpa == "222" ~ "Ecuador",
+    idenpa == "320" ~ "El Salvador",
+    idenpa == "340" ~ "Guatemala",
+    idenpa == "484" ~ "Honduras",
+    idenpa == "558" ~ "México",
+    idenpa == "591" ~ "Nicaragua",
+    idenpa == "600" ~ "Panamá",
+    idenpa == "604" ~ "Paraguay",
+    idenpa == "858" ~ "Uruguay",
+    idenpa == "862" ~ "Venezuela"))
+
+data$gdp <- as.numeric(data$gdp)
+data$gdp[data$gdp==0] <- NA
+data <- na.omit(data)
 ```
 
+```{r}
+data %>%
+  ggplot(aes(x = gdp, y = promedio, label = idenpa)) +
+  geom_point() +
+  geom_text(vjust = -0.5) +
+  labs(x = "GDP", y = "Promedio") +
+  theme_bw()
+```
 
