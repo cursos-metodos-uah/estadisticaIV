@@ -105,74 +105,32 @@
     "text": "En esta sección podrán encontrar todas las clases del curso. Se irán subiendo semana a semana."
   },
   {
-    "objectID": "content/02-content.html#lecturas",
-    "href": "content/02-content.html#lecturas",
-    "title": "Clase 2",
+    "objectID": "content/03-content.html#lecturas",
+    "href": "content/03-content.html#lecturas",
+    "title": "Clase 3",
+    "section": "Lecturas",
+    "text": "Lecturas"
+  },
+  {
+    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 3",
+    "section": "Moore: 1.Comprensión de los datos (1-54)",
+    "text": "Moore: 1.Comprensión de los datos (1-54)"
+  },
+  {
+    "objectID": "content/01-content.html#lecturas",
+    "href": "content/01-content.html#lecturas",
+    "title": "Presentación",
     "section": "Lecturas",
     "text": "Lecturas\nR for Data Science"
   },
   {
-    "objectID": "assignment/index.html",
-    "href": "assignment/index.html",
-    "title": "Trabajos",
+    "objectID": "assignment/05-taller.html",
+    "href": "assignment/05-taller.html",
+    "title": "Taller 5",
     "section": "",
-    "text": "En esta sección se encuentran las instrucciones de los Trabajos a realizar durante el curso.\n\nEvaluaciones\nEl curso tendrá cinco instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):\n4 trabajos individuales acumulativos (15% c/u).\n1 presentación de resultados (10%).\nLa nota ponderada de las evaluaciones equivaldrá al 70% de la nota del curso y el examen final al 30% restante.\n\n\nSobre temas y datos\nEl tema de trabajo es libre. Sin embargo, de modo de lograr una mayor colaboración desde el equipo docente a sus trabajos, sugerimos desarrollar los siguientes temas:\n\nDesigualdad social, Estratificación social, justicia distributiva, percepción de desigualdad\nEducación cívica, política educativa\nCohesión social, sociología política, economía gig\n\nLa base de datos a utilizar también es libre, pero recomendamos las siguientes:\n\nEstudio Longitudinal Social de Chile (Ola 1 2016)\nCASEN 2022\nSIMCE\nLAPOP\nLATINOBARÓMETRO"
-  },
-  {
-    "objectID": "assignment/04-taller.html",
-    "href": "assignment/04-taller.html",
-    "title": "Taller 4",
-    "section": "",
-    "text": "Practicar la construcción de escalas y reflexionar en torno a la fiabilidad y la validez del instrumento."
-  },
-  {
-    "objectID": "assignment/04-taller.html#constructos",
-    "href": "assignment/04-taller.html#constructos",
-    "title": "Taller 4",
-    "section": "Constructos:",
-    "text": "Constructos:\n\nFrecuencia en que se habla de política con amig_s.\nGrado de importancia otorgado a conocer a las personas indicadas para salir adelante en la vida.\nGrado de acuerdo sobre recortar los gastos gubernamentales.\nProbabilidad de mantenerse en un trabajo no satisfactorio por el beneficio de la vida familiar.\nGrado de acuerdo con la frase “En general, Chile es mejor que el resto de los países latinoamericanos”.\nGrado de importancia asignado a tener un trabajo con altos ingresos.\nGrado de acuerdo frente a la reducción de la regulación económica por parte del gobierno.\nGrado de acuerdo frente a la frase “me siento orgullos_ de ser chilen_”.\nFrecuencia en que se trabaja por un tema que le afecta a sí mism_ o alguien de su comunidad.\nGrado de importancia otorgado a venir de una familia adinerada para salir adelante en la vida.\nProbabilidad de renunciar a una buena oportunidad laboral en beneficio de la vida familiar.\nGrado de acuerdo frente a la frase “prefiero haber nacido en Chile, en lugar de cualquier otro país latinoamericano”.\nGrado de importancia de tener un alto nivel educativo para salir adelante en la vida.\nGrado de importancia otorgado a tener un trabajo seguro.\nFrecuencia en que se intenta convencer a otr_s de lo que se piensa políticamente.\nGrado de acuerdo frente a la ampliación de tratados de libre comercio firmados por el gobierno.\nProbabilidad de trabajar menos horas para trabajar en labores domésticas.\nGrado de acuerdo con la frase “El gobierno debiese apoyar más a las empresas nacionales que a las compañías internacionales”.\nFrecuencia en que se trabaja para un partido político o candidat_.\nGrado de importancia de trabajar duro para salir adelante en la vida.\nGrado de importancia otorgado a tener buenas oportunidades para hacer carrera profesional."
-  },
-  {
-    "objectID": "assignment/02-taller.html",
-    "href": "assignment/02-taller.html",
-    "title": "Taller 2",
-    "section": "",
-    "text": "Reforzar los procedimientos de operacionalización y construcción de indicadores sociales."
-  },
-  {
-    "objectID": "assignment/02-taller.html#indicadores",
-    "href": "assignment/02-taller.html#indicadores",
-    "title": "Taller 2",
-    "section": "Indicadores:",
-    "text": "Indicadores:\n\nTasa de ocupación informal: porcentaje de Ocupados Informales respecto al total de los Ocupados del periodo de referencia (INE, 2021). Ello involucra a todas las personas cuyo trabajo no cuenta con características como un contrato escrito, pago a través de liquidaciones de sueldo, entre otros.\nDistribución de población indígena por comuna: porcentaje de habitantes en cada comuna que se identifican como pertenecientes a un pueblo indígena.\nConcentración de jefas de hogar según composición familiar: porcentaje de mujeres que adoptan el rol de jefas de hogar en hogares de distinta composición familiar (unipersonal, nuclear sin hij_s, nuclear con hij_s y monomaternal) respecto del total de jefas de hogar.\nÍndice de hacinamiento: razón entre el número de personas y el número de habitaciones usadas como dormitorios en una vivienda.\nTasa de atención médica ante problema de salud: porcentaje de personas que, habiendo tenido un problema de salud, pudieron recibir atención médica."
-  },
-  {
-    "objectID": "assignment/02-taller.html#ejemplo-de-trabajo",
-    "href": "assignment/02-taller.html#ejemplo-de-trabajo",
-    "title": "Taller 2",
-    "section": "Ejemplo de trabajo",
-    "text": "Ejemplo de trabajo\nIndicador: Tasa de Inflación\nDefinición: Variación porcentual de un Índice de Precios de Consumo (IPC) respecto del periodo anterior. El IPC es un indicador que mide la variación media de bienes y servicios durante un período de tiempo determinado en una economía en específico.\nVariables necesarias: Precios de los bienes y servicios incluidos en la estimación del IPC para el periodo por analizar y el periodo anterior.\nFormalización:\n\\[TI = \\frac{IPC1-IPC0}{IPC0} * 100\\]\ndonde:\nTI = Tasa de Inflación,\nIPC1 = IPC del periodo por analizar\nIPC0 = IPC del periodo anterior\nPosibles valores: (- ∞, +∞) medidos en porcentaje (%).\nInterpretación: un valor positivo indica un aumento medio relativo del conjunto de precios de los bienes y servicios incluidos en la estimación del IPC, mientras que un valor negativo indica una disminución media relativa del conjunto de precios de los bienes y servicios incluidos en la estimación del IPC. Por ejemplo, una tasa de inflación de un 3,4% indica que, en promedio, el conjunto de los precios de bienes y servicios incluidos en la estimación del IPC aumentó en un 3.4% respecto del periodo anterior. Así, si un producto X tenía un precio de $1.000 en el periodo anterior, su precio en el periodo analizado debiese aproximarse a 1.000*1.034 = $1.034.\nLimitaciones: La definición de bienes y servicios incluidos en la estimación del IPC puede estar sujeta a lo que el gobierno o l_s funcionari_s del Estado consideren indispensable en los gastos mensuales de un hogar, dejando fuera algunos que pudiesen tener igual relevancia.\nPotencialidades: Permite medir de forma precisa los requerimientos de un hogar promedio mensual en relación a sus gastos fundamentales, por lo que hace posible conocer el estado de una economía en lo que respecta a su consumo.\nEj. de PP: Transferencias directas a hogares de bajos ingresos, para facilitar la satisfacción de necesidades básicas. Subvención gubernamental del precio de los productos con mayor aumento de precios entre ambos periodos."
-  },
-  {
-    "objectID": "assignment/01-trabajo.html",
-    "href": "assignment/01-trabajo.html",
-    "title": "Trabajo 1. Reporte en Quarto",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.\n\n\n\n\nTítulo: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 1000 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/01-trabajo.html#objetivos-del-trabajo",
-    "href": "assignment/01-trabajo.html#objetivos-del-trabajo",
-    "title": "Trabajo 1. Reporte en Quarto",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/01-trabajo.html#secciones-del-trabajo",
-    "href": "assignment/01-trabajo.html#secciones-del-trabajo",
-    "title": "Trabajo 1. Reporte en Quarto",
-    "section": "",
-    "text": "Título: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 1000 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+    "text": "Objetivo del taller\nIniciar el desarrollo del segundo trabajo grupal asociado a construcción de cuestionarios.\n\n\nInstrucciones:\nEn sus grupos de trabajo, ustedes deben:\n\nDefinir un tema principal a partir del cual elaborarán el cuestionario (por ejemplo: condiciones y estrategias de estudio, actitudes y prácticas deportivas, entre otros). La elección del tema es libre y depende de los intereses de quienes conformen el grupo.\nBuscar en internet al menos tres encuestas o cuestionarios que aborden temas similares al que han elegido. En base a sus respectivos documentos metodológicos, deben especificar:\n\n\nNombre de la encuesta;\nAño(s) y país(es) en que se ha levantado;\nInstitución/organismo/etc. encargado de su ejecución;\nObjetivos de la encuesta;\nPoblación objetivo;\nPrincipales variables del estudio; y\nRecuento de los módulos del cuestionario, junto a un breve resumen que dé cuenta de los temas abordados en cada uno.\n\n\nPara cada cuestionario revisado, señalar al menos dos variables que puedan ser útiles para el cuestionario que elaborarán en el transcurso del segundo trabajo. Deben incluir el enunciado y sus respectivas alternativas de respuesta.\nEn base a lo revisado anteriormente, y pensando en el cuestionario que elaborarán en el marco del trabajo, definan:\n\n\nObjetivo de su estudio;\nPoblación objetivo a la cual está dirigido; y\nPrincipales variables a considerar.\n\n\nEn una hoja deben especificar el título Taller 5, el nombre de l_s integrantes del equipo que están presentes en el taller, y sus respectivas respuestas. Tendrán hasta las 13:25 para realizar el taller."
   },
   {
     "objectID": "assignment/03-taller.html",
@@ -196,30 +154,86 @@
     "text": "Ejemplo de trabajo\nConstructo: Índice de confianza en instituciones\nUnidad de análisis: Sujetos/individuos\nDimensiones: 2 dimensiones: a) instituciones políticas; b) instituciones civiles\nVariables necesarias:\n¿Cuánto confía usted en las siguientes instituciones?\n\nPresidente (Ordinal; nada-poco-bastante-mucho)\nPartidos políticos (Ordinal; nada-poco-bastante-mucho)\nONGs (Ordinal; nada-poco-bastante-mucho)\nPoder judicial (Ordinal; nada-poco-bastante-mucho)\nBomberos (Ordinal; nada-poco-bastante-mucho)\nIglesia (Ordinal; nada-poco-bastante-mucho)\n\nOperacionalización:\n\nFormalización:\n\\[CI = CIC + CIP = C. Bomberos + C. ONGs + C. Iglesia + C. Poder judicial + C. Partidos + C. Presidente\\] \\[CI = CIC + CIP =  [0, 3]      +     [0, 3]   +     [0,3]     +          [0, 3]          +      [0, 3]     +       [0,3] \\]\nPosibles valores: [0, 18].\nNivel de medición: Intervalar (discutible)\nInterpretación: Menores valores indican nada o poca confianza en instituciones, mientras que los valores más altos indican bastante o mucha confianza en instituciones. Por un lado, una persona puede tener un grado de confianza en instituciones de 1 (al haber respondido “nada” de confianza en la mayoría de las instituciones y “Algo” de confianza en una de ellas), lo que da cuenta de un bajo grado de confianza en las instituciones. Por otro lado, una persona puede tener un grado de confianza en instituciones de 15 (al haber respondido “Mucha” confianza en 5 instituciones y “Nada” confianza en las otras tres), lo que da cuenta de un alto nivel de confianza en las instituciones.\nValidez: Dado que no se incorporan todas las posibles instituciones, el índice de Confianza en Instituciones creado no lograría cubrir el constructo totalmente, quedando fuera, por ejemplo, las instituciones militares o de fuerzas de orden. No obstante, permite medir de buena forma la confianza en las instituciones civiles y políticas."
   },
   {
-    "objectID": "assignment/05-taller.html",
-    "href": "assignment/05-taller.html",
-    "title": "Taller 5",
+    "objectID": "assignment/01-trabajo.html",
+    "href": "assignment/01-trabajo.html",
+    "title": "Trabajo 1. Reporte en Quarto",
     "section": "",
-    "text": "Objetivo del taller\nIniciar el desarrollo del segundo trabajo grupal asociado a construcción de cuestionarios.\n\n\nInstrucciones:\nEn sus grupos de trabajo, ustedes deben:\n\nDefinir un tema principal a partir del cual elaborarán el cuestionario (por ejemplo: condiciones y estrategias de estudio, actitudes y prácticas deportivas, entre otros). La elección del tema es libre y depende de los intereses de quienes conformen el grupo.\nBuscar en internet al menos tres encuestas o cuestionarios que aborden temas similares al que han elegido. En base a sus respectivos documentos metodológicos, deben especificar:\n\n\nNombre de la encuesta;\nAño(s) y país(es) en que se ha levantado;\nInstitución/organismo/etc. encargado de su ejecución;\nObjetivos de la encuesta;\nPoblación objetivo;\nPrincipales variables del estudio; y\nRecuento de los módulos del cuestionario, junto a un breve resumen que dé cuenta de los temas abordados en cada uno.\n\n\nPara cada cuestionario revisado, señalar al menos dos variables que puedan ser útiles para el cuestionario que elaborarán en el transcurso del segundo trabajo. Deben incluir el enunciado y sus respectivas alternativas de respuesta.\nEn base a lo revisado anteriormente, y pensando en el cuestionario que elaborarán en el marco del trabajo, definan:\n\n\nObjetivo de su estudio;\nPoblación objetivo a la cual está dirigido; y\nPrincipales variables a considerar.\n\n\nEn una hoja deben especificar el título Taller 5, el nombre de l_s integrantes del equipo que están presentes en el taller, y sus respectivas respuestas. Tendrán hasta las 13:25 para realizar el taller."
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.\n\n\n\n\nTítulo: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 1000 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
   },
   {
-    "objectID": "content/01-content.html#lecturas",
-    "href": "content/01-content.html#lecturas",
-    "title": "Presentación",
+    "objectID": "assignment/01-trabajo.html#objetivos-del-trabajo",
+    "href": "assignment/01-trabajo.html#objetivos-del-trabajo",
+    "title": "Trabajo 1. Reporte en Quarto",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga la introducción y planteamiento de un problema de investigación, fundamentado a través de referencias automáticas desde Zotero. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/01-trabajo.html#secciones-del-trabajo",
+    "href": "assignment/01-trabajo.html#secciones-del-trabajo",
+    "title": "Trabajo 1. Reporte en Quarto",
+    "section": "",
+    "text": "Título: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 1000 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/02-taller.html",
+    "href": "assignment/02-taller.html",
+    "title": "Taller 2",
+    "section": "",
+    "text": "Reforzar los procedimientos de operacionalización y construcción de indicadores sociales."
+  },
+  {
+    "objectID": "assignment/02-taller.html#indicadores",
+    "href": "assignment/02-taller.html#indicadores",
+    "title": "Taller 2",
+    "section": "Indicadores:",
+    "text": "Indicadores:\n\nTasa de ocupación informal: porcentaje de Ocupados Informales respecto al total de los Ocupados del periodo de referencia (INE, 2021). Ello involucra a todas las personas cuyo trabajo no cuenta con características como un contrato escrito, pago a través de liquidaciones de sueldo, entre otros.\nDistribución de población indígena por comuna: porcentaje de habitantes en cada comuna que se identifican como pertenecientes a un pueblo indígena.\nConcentración de jefas de hogar según composición familiar: porcentaje de mujeres que adoptan el rol de jefas de hogar en hogares de distinta composición familiar (unipersonal, nuclear sin hij_s, nuclear con hij_s y monomaternal) respecto del total de jefas de hogar.\nÍndice de hacinamiento: razón entre el número de personas y el número de habitaciones usadas como dormitorios en una vivienda.\nTasa de atención médica ante problema de salud: porcentaje de personas que, habiendo tenido un problema de salud, pudieron recibir atención médica."
+  },
+  {
+    "objectID": "assignment/02-taller.html#ejemplo-de-trabajo",
+    "href": "assignment/02-taller.html#ejemplo-de-trabajo",
+    "title": "Taller 2",
+    "section": "Ejemplo de trabajo",
+    "text": "Ejemplo de trabajo\nIndicador: Tasa de Inflación\nDefinición: Variación porcentual de un Índice de Precios de Consumo (IPC) respecto del periodo anterior. El IPC es un indicador que mide la variación media de bienes y servicios durante un período de tiempo determinado en una economía en específico.\nVariables necesarias: Precios de los bienes y servicios incluidos en la estimación del IPC para el periodo por analizar y el periodo anterior.\nFormalización:\n\\[TI = \\frac{IPC1-IPC0}{IPC0} * 100\\]\ndonde:\nTI = Tasa de Inflación,\nIPC1 = IPC del periodo por analizar\nIPC0 = IPC del periodo anterior\nPosibles valores: (- ∞, +∞) medidos en porcentaje (%).\nInterpretación: un valor positivo indica un aumento medio relativo del conjunto de precios de los bienes y servicios incluidos en la estimación del IPC, mientras que un valor negativo indica una disminución media relativa del conjunto de precios de los bienes y servicios incluidos en la estimación del IPC. Por ejemplo, una tasa de inflación de un 3,4% indica que, en promedio, el conjunto de los precios de bienes y servicios incluidos en la estimación del IPC aumentó en un 3.4% respecto del periodo anterior. Así, si un producto X tenía un precio de $1.000 en el periodo anterior, su precio en el periodo analizado debiese aproximarse a 1.000*1.034 = $1.034.\nLimitaciones: La definición de bienes y servicios incluidos en la estimación del IPC puede estar sujeta a lo que el gobierno o l_s funcionari_s del Estado consideren indispensable en los gastos mensuales de un hogar, dejando fuera algunos que pudiesen tener igual relevancia.\nPotencialidades: Permite medir de forma precisa los requerimientos de un hogar promedio mensual en relación a sus gastos fundamentales, por lo que hace posible conocer el estado de una economía en lo que respecta a su consumo.\nEj. de PP: Transferencias directas a hogares de bajos ingresos, para facilitar la satisfacción de necesidades básicas. Subvención gubernamental del precio de los productos con mayor aumento de precios entre ambos periodos."
+  },
+  {
+    "objectID": "assignment/04-taller.html",
+    "href": "assignment/04-taller.html",
+    "title": "Taller 4",
+    "section": "",
+    "text": "Practicar la construcción de escalas y reflexionar en torno a la fiabilidad y la validez del instrumento."
+  },
+  {
+    "objectID": "assignment/04-taller.html#constructos",
+    "href": "assignment/04-taller.html#constructos",
+    "title": "Taller 4",
+    "section": "Constructos:",
+    "text": "Constructos:\n\nFrecuencia en que se habla de política con amig_s.\nGrado de importancia otorgado a conocer a las personas indicadas para salir adelante en la vida.\nGrado de acuerdo sobre recortar los gastos gubernamentales.\nProbabilidad de mantenerse en un trabajo no satisfactorio por el beneficio de la vida familiar.\nGrado de acuerdo con la frase “En general, Chile es mejor que el resto de los países latinoamericanos”.\nGrado de importancia asignado a tener un trabajo con altos ingresos.\nGrado de acuerdo frente a la reducción de la regulación económica por parte del gobierno.\nGrado de acuerdo frente a la frase “me siento orgullos_ de ser chilen_”.\nFrecuencia en que se trabaja por un tema que le afecta a sí mism_ o alguien de su comunidad.\nGrado de importancia otorgado a venir de una familia adinerada para salir adelante en la vida.\nProbabilidad de renunciar a una buena oportunidad laboral en beneficio de la vida familiar.\nGrado de acuerdo frente a la frase “prefiero haber nacido en Chile, en lugar de cualquier otro país latinoamericano”.\nGrado de importancia de tener un alto nivel educativo para salir adelante en la vida.\nGrado de importancia otorgado a tener un trabajo seguro.\nFrecuencia en que se intenta convencer a otr_s de lo que se piensa políticamente.\nGrado de acuerdo frente a la ampliación de tratados de libre comercio firmados por el gobierno.\nProbabilidad de trabajar menos horas para trabajar en labores domésticas.\nGrado de acuerdo con la frase “El gobierno debiese apoyar más a las empresas nacionales que a las compañías internacionales”.\nFrecuencia en que se trabaja para un partido político o candidat_.\nGrado de importancia de trabajar duro para salir adelante en la vida.\nGrado de importancia otorgado a tener buenas oportunidades para hacer carrera profesional."
+  },
+  {
+    "objectID": "assignment/index.html",
+    "href": "assignment/index.html",
+    "title": "Trabajos",
+    "section": "",
+    "text": "En esta sección se encuentran las instrucciones de los Trabajos a realizar durante el curso.\n\nEvaluaciones\nEl curso tendrá cinco instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):\n4 trabajos individuales acumulativos (15% c/u).\n1 presentación de resultados (10%).\nLa nota ponderada de las evaluaciones equivaldrá al 70% de la nota del curso y el examen final al 30% restante.\n\n\nSobre temas y datos\nEl tema de trabajo es libre. Sin embargo, de modo de lograr una mayor colaboración desde el equipo docente a sus trabajos, sugerimos desarrollar los siguientes temas:\n\nDesigualdad social, Estratificación social, justicia distributiva, percepción de desigualdad\nEducación cívica, política educativa\nCohesión social, sociología política, economía gig\n\nLa base de datos a utilizar también es libre, pero recomendamos las siguientes:\n\nEstudio Longitudinal Social de Chile (Ola 1 2016)\nCASEN 2022\nSIMCE\nLAPOP\nLATINOBARÓMETRO"
+  },
+  {
+    "objectID": "content/02-content.html#lecturas",
+    "href": "content/02-content.html#lecturas",
+    "title": "Clase 2",
     "section": "Lecturas",
     "text": "Lecturas\nR for Data Science"
   },
   {
-    "objectID": "content/03-content.html#lecturas",
-    "href": "content/03-content.html#lecturas",
-    "title": "Clase 3",
+    "objectID": "content/04-content .html#lecturas",
+    "href": "content/04-content .html#lecturas",
+    "title": "Clase 4",
     "section": "Lecturas",
     "text": "Lecturas"
   },
   {
-    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "title": "Clase 3",
+    "objectID": "content/04-content .html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/04-content .html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 4",
     "section": "Moore: 1.Comprensión de los datos (1-54)",
     "text": "Moore: 1.Comprensión de los datos (1-54)"
   },
