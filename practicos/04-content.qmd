@@ -10,9 +10,9 @@ lang: es
 
 # Objetivo de la práctica
 
-Esta práctica asume como base el desarrollo de la [Práctica anterior](https://metod1-mcs.netlify.app/resource/02-resource.html), a la cual se hará referencia permanente.
+Esta práctica asume como base el desarrollo de la [Práctica anterior](https://r-data-analisis.netlify.app/practicos/03-content), a la cual se hará referencia permanente. Sin embargo, en esta oportunidad la base de datos contiene los datos de los 18 países participantes en la encuesta, no solo Chile. El código específico que cre esta base está disponible [acá](https://github.com/Kevin-carrasco/R-data-analisis/blob/main/practicos/latin_proc.R)
 
-En la [Práctica anterior](https://metod1-mcs.netlify.app/resource/02-resource.html) se desarrolló un código de preparación de datos que generó una base de datos procesada para el análisis. En esta **Práctica** comenzamos con el segundo momento de procesamiento de datos, que es el análisis propiamente tal. El análisis se divide en descripción de variables y contraste de hipótesis. En esta práctica nos enfocaremos en la primera fase, que llega hasta el punto 3 del código de análisis:
+En la [Práctica anterior](https://r-data-analisis.netlify.app/practicos/03-content) se desarrolló un código de preparación de datos que generó una base de datos procesada para el análisis. En esta **Práctica** comenzamos con el segundo momento de procesamiento de datos, que es el análisis propiamente tal. El análisis se divide en descripción de variables y contraste de hipótesis. En esta práctica nos enfocaremos en la primera fase, que llega hasta el punto 3 del código de análisis:
 
 ![](images/produccion2.png)
 
