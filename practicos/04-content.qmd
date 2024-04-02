@@ -56,7 +56,7 @@ load("ruta-hacia-carpeta-local/latinobarometro_proc.RData") #Cargar base de dato
 O también para esta práctica la podemos llamar directamente desde nuestro sitio web:
 
 ```{r }
-load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_proc.RData")) #Cargar base de datos
+load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData")) #Cargar base de datos
 ```
 
 -   Exploración inicial general de la base de datos
@@ -170,7 +170,56 @@ dim(proc_data)
 proc_data <-sjlabelled::copy_labels(proc_data,proc_data_original)
 ```
 
-### 3.2 Exploración de asociación entre variables
+### 3.2 Visualización de variables
+
+Para visualizar variables mediante gráficos, en R el paquete más comúnmente usado es ggplot2. La lógica detrás de este paquete es que funciona por capas. 
+
+```{r}
+ggplot()
+```
+
+```{r}
+ggplot(proc_data, aes(x = conf_inst))
+```
+
+```{r}
+proc_data %>% ggplot(aes(x = conf_inst)) + 
+  geom_bar()
+```
+
+```{r}
+proc_data %>% ggplot(aes(x = conf_inst)) + 
+  geom_bar(fill = "coral")
+```
+
+```{r}
+proc_data %>% ggplot(aes(x = conf_inst)) + 
+  geom_bar(fill = "coral")+
+  labs(title = "Confianza en instituciones",
+       x = "Confianza en instituciones",
+       y = "Frecuencia")
+```
+
+
+```{r}
+# Crear el gráfico usando ggplot2
+graph1 <- proc_data %>% ggplot(aes(x = conf_inst)) + 
+  geom_bar(fill = "coral")+
+  labs(title = "Confianza en instituciones",
+       x = "Confianza en instituciones",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph1
+
+# y lo podemos guardar:
+
+ggsave(graph1, file="files/img/graph1.png")
+
+```
+
+
+### 3.3 Exploración de asociación entre variables
 
 Dado que las hipótesis de investigación corresponden a asociación entre variables, antes de realizar el contraste de hipótesis se suele presentar un análisis descriptivo que explora las asociaciones entre variables.
 
@@ -221,10 +270,10 @@ proc_data %>% # se especifica la base de datos
   kable(, format = "markdown") # se genera la tabla
 ```
 
-Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `plot_grpfrq` de `sjPlot`:[sjPlot::plot_grpfrq]{.sidenote}
+Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `geom_boxplot` de `gplot2`:[sjPlot::plot_grpfrq]{.sidenote}
 
-```{r warning=FALSE}
-graph <- ggplot(proc_data, aes(x = educacion, y = conf_inst)) +
+```{r}
+graph <- ggplot(proc_data, aes(x =educacion, y = conf_inst)) +
   geom_boxplot() +
   labs(x = "Educación", y = "Confianza en instituciones") +
   theme_minimal()
@@ -236,27 +285,87 @@ graph
 ggsave(graph, file="files/img/graph.png")
 ```
 
-De manera alternativa, podemos seguir explorando nuestros datos con otros gráficos
-
-Para variables univariadas:
+Sin embargo, al ser los promedios similares no permite ver demasiadas diferencias... Probemos otro
 
 ```{r}
-graph1 <- sjPlot::plot_frq(proc_data$conf_inst,
-                 title = "Confianza en instituciones",
-                 type = "bar",
-                 axis.title = "Confianza en institucines",
-                 geom.colors = "coral") +
-  theme_bw()
-
-graph1
-
-# y lo podemos guardar:
-
-ggsave(graph1, file="files/img/graph1.png")
+ggplot(proc_data, aes(x =educacion, y = conf_inst)) +
+  geom_point() +
+  labs(x = "Educación", y = "Confianza en instituciones") +
+  theme_minimal()
 
 ```
 
-Para varias variables univariadas:
+En este gráfico cada punto representa una observación para cada categoría. Por lo tanto, al existir tantos valores difernetes en cada categoría, el gráfico tampoco nos presenta información sustantiva ¿Qué necesitamos hacer? Necesitamos obtener exactamente los datos que queremos graficar, esto es, el promedio por cada categoría. Volvamos a `group_by`
+
+```{r}
+datos <- proc_data %>% group_by(educacion) %>% 
+  summarise(promedio = mean(conf_inst))
+
+ggplot(datos, aes(x =educacion, y = promedio)) +
+  geom_point() +
+  labs(x = "Educación", y = "Confianza en instituciones") +
+  theme_minimal()+
+  ylim(0, 12)
+```
+
+Este gráfico entrega un poco más de información, pero al ver pocas diferencias en el promedio de cada categoría no se logran evidenciar
+
+```{r warning=FALSE}
+proc_data$idenpa <- factor(proc_data$idenpa,
+            labels=c("Argentina",
+         "Bolivia",
+         "Brasil",
+         "Chile",
+         "Colombia",
+         "Costa Rica",
+         "Cuba",
+         "República Dominicana",
+         "Ecuador",
+         "El Salvador",
+         "Guatemala",
+         "Honduras",
+         "México",
+         "Nicaragua",
+         "Panamá",
+         "Paraguay",
+         "Uruguay",
+         "Venezuela"),
+            levels=c("32",
+         "68",
+         "76",
+         "152",
+         "170",
+         "188",
+         "214",
+         "218",
+         "222",
+         "320",
+         "340",
+         "484",
+         "558",
+         "591",
+         "600",
+         "604",
+         "858",
+         "862"))
+
+
+graph_box <- ggplot(proc_data, aes(x = idenpa, y = conf_inst)) +
+  geom_boxplot() +
+  labs(x = "País", y = "Confianza en instituciones") +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotar las etiquetas del eje x
+
+graph_box
+
+# y lo podemos guardar:
+
+ggsave(graph_box, file="files/img/graph.png")
+```
+
+De manera alternativa, podemos seguir explorando nuestros datos con otros gráficos
+
+Para varias variables univariadas, tipo escala likert, una buena alternativa es el paquete sjPlot, en este caso la función plot_stackfrq:
 
 ```{r}
 graph2 <- sjPlot::plot_stackfrq(dplyr::select(proc_data, conf_gob,
@@ -273,12 +382,9 @@ graph2
 ggsave(graph2, file="files/img/graph2.png")
 ```
 
-
-Para asociación de dos variables:
+Para asociación de dos variables, retomemos el primer gráfico:
 
 ```{r}
-proc_data$sexo <- as_factor(proc_data$sexo)
-
 graph3 <- proc_data %>% ggplot(aes(x = conf_inst, fill = sexo)) + 
   geom_bar() +
   xlab("Confianza en instituciones") +
@@ -292,6 +398,17 @@ graph3
 
 ggsave(graph3, file="files/img/graph3.png")
 ```
+
+una forma alternativa:
+
+```{r}
+proc_data %>% ggplot(aes(x = conf_inst)) + 
+  geom_bar() +
+  xlab("Confianza en instituciones") +
+  ylab("Cantidad")+
+  facet_wrap(~sexo)
+```
+
 
 Para variables continuas
 
