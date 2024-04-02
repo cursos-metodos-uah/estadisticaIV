@@ -547,4 +547,3 @@ proc_data %>% dplyr::group_by(educacion) %>% summarise(mean(conf_inst, na.rm=TRU
 library(sjPlot)
 sjt.xtab(proc_data$educacion, proc_data$conf_inst, encoding = "UTF-8")
 ```
-

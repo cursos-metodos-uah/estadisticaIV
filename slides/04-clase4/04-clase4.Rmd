@@ -1,7 +1,7 @@
 ---
-title: "Metodología I"
-author: ".small[Juan Carlos Castillo <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2023"
+title: "R para análisis de datos"
+author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
+date: "1er Sem 2024"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -57,21 +57,19 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 
 .pull-left[
-# Metodología I
-## **.yellow[Juan Carlos Castillo]**
-## Magister Ciencias Sociales FACSO - UChile
-## 1er Sem 2023 
-## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
+# R para el análisis de datos
+## **Kevin Carrasco**
+## Sociología - UAH
+## 1er Sem 2024 
+## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
-    
+
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 4: Introducción inferencia estadística]
+## .yellow[Sesión 3: Introducción a la investigación cuantitativa]
 ![:scale 70%](../../files/img/eval-hires.png)
-
-
 
 ]
 
@@ -84,445 +82,277 @@ class: animated, fadeIn
 ---
 class: inverse, bottom, right, animated, slideInRight
 
-# Introducción a inferencia
 
-
----
-
-.pull-left-narrow[
-# Inferencia
-]
-
-
-.pull-right-wide[
-¿En qué medida se pueden relacionar resultados que se encuentran en un .green[(sub)conjunto de unidades] con lo que ocurre .red[en general]?]
-
---
-
-.pull-right-wide[
-Ej: si en un subconjunto de la población encuentro que el promedio de matemáticas es mayor en mujeres que en hombres ¿es esto un .orange[reflejo] de lo que ocurre en general, o se debe solo al .red[azar]? ¿se puede .green[extrapolar] a la poblacion?
-]
-
-???
-
-mapa y territorio, Borges
-lidiando con el caos y la incertidumbre
-la domesticación de la casualidad
-error
-
----
-# Ejercicio
-
-- tenemos una población de (ej.) 200
-
-- en esta población existen 6 niveles educacionales, homogéneamente distribuidos (cada nivel educacional equivale a a 1/6 de la población)
-
-- por lo tanto, el nivel educacional promedio de la población equivale a 1+2+3+4+5+6/6= 3.5
-
----
-# Ejercicio: Muestra aleatoria
-
-- cada persona selecciona al azar a 5 sujetos (5 dados) y les "pregunta" su nivel educacional (cara superior del dado luego de tirarlo)
-
-- sacar el promedio y desviación estándar de cada muestra
-
-- ¿qué tanto varían los promedios?
-
-
----
-.pull-left-narrow[
-
-![](https://multivariada.netlify.app/slides/images/inference1.png)
-]
-.pull-right-wide[
-
-## Conceptos claves de inferencia
-- La **inferencia** en estadística se refiere a la relación que existe entre los resultados obtenidos basados en nuestra muestra y la población
-
-{{content}}
-
-]
-
---
-
-- **¿En qué medida podemos hacer inferencias desde nuestra muestra a la población?**
-
-{{content}}
-
---
-
-- Un concepto central es la probabilidad de **ERROR**
-
-
----
-# Parámetros y estadísticos
-
+# .red[Sesión 4]
 <br>
 
-|                     	| Población (parámetro)  	| Muestra (estadístico)  	|
-|---------------------	|------------------------	|------------------------	|
-| Promedio            	|       $\mu$           	|   $\bar{x}$           	|
-| Varianza            	|        $\sigma²$      	|  $s²$                  	|
-| Desviación estándar 	|        $\sigma$        	| $s$                    	|
+Repaso sesión anterior
 
----
-# Bases de inferencia:
+Visualización de datos
 
-- dispersión: varianza y desviación estandar
+Tipos de tablas y tipos de gráficos
 
-- curva normal
-
-- error estándar
-
----
-.pull-left-narrow[
-# Dispersión:
-## Varianza
-]
-
-.pull-right-wide[
-
-![:scale 100%](https://multivariada.netlify.app/slides/02-bases/varianza2.png)
-]
-
-
----
-# Medidas de Dispersión
-
-.pull-left[
-
-## Varianza
-<br>
+Visualización de datos en R
 
 <br>
+<br>
+<br>
+<br>
+---
+class: inverse, bottom, right
 
-## Desviación estándar
-]
 
-.pull-right[
-
-$$s^2=\frac{\Sigma(x-\bar{x})²}{N-1}$$
-
+# .red[Sesión 4]
 <br>
 
-$$s=\sqrt \frac{\Sigma(x-\bar{x})²}{N-1}$$]
+.yellow[Repaso sesión anterior]
 
----
+Visualización de datos
 
-.pull-left-narrow[
-![](https://multivariada.netlify.app/slides/images/inference1.png)
+Tipos de tablas y tipos de gráficos
 
-]
-
-.pull-right-wide[
-.content-box-purple[
-
-## Desviación estándar y error estándar]
-- más que el promedio de la variable en nuestra **muestra**, en inferencia nos interesa estimar en qué medida ese promedio da cuenta del promedio de la **población**
-
-{{content}}
-
-]
-
---
-
-- contamos con **una muestra**, pero sabemos que otras muestras podrían haber sido extraídas, probablemente con distintos resultados.
-
----
-# Error estándar
-
-![](https://multivariada.netlify.app/slides/images/se_1.png)
----
-# Error estándar
-
-![](https://multivariada.netlify.app/slides/images/se_2.png)
----
-# Error estándar
-
-![](https://multivariada.netlify.app/slides/images/se_3.png)
----
-
-# Error estándar
-
-- ¿Cómo calculamos el error estándar a partir de **una** muestra?
-
-- Basados en el **teorema del límite central**, en muestras mayores a 30 la desviación estándar de los promedios (error estándar) equivale a:
-
-$$\sigma_{\bar{X}}=SE(error estándar)=\frac{s}{\sqrt{N}}$$
----
-class: inverse middle center
-
-# ¿Para qué nos sirve el 
-#.red[error estándar]?
-
----
-# Error, rangos y probabilidad
-
-
-.pull-left-narrow[
-.medium[
-
-- Nuestro promedio muestral $\bar{x}$ posee una distribución normal con una desviación estandar = SE (error estándar)
-
-- Esto nos permite calcular una probabilidad de error basados en los valores de la curva normal
-
-]
-]
-.pull-right-wide[
-.center[![:scale 95%](https://multivariada.netlify.app/slides/images/normal.png)]]
-
----
-# Error, rangos y probabilidad
-
-
-.pull-left[
-.center[![:scale 85%](https://multivariada.netlify.app/slides/images/normal.png)]]
-
-
-.pull-right[
-.medium[
-
-- Por ejemplo, $\bar{x}$ +/- 2 SE abarca aproximadamente el 95% de los valores probables
-
-- De otra manera, puedo dar un rango de valores donde se encuentra el promedio(+- 2 SE), con un nivel de confianza de 95%
-
-- ... o con una probabilidad de error p<0.05
-
-]
-]
-
----
-class: roja, bottom, right, slideInRight
-
-
-# Inferencia y diferencia entre promedios
-
-
----
-class: middle 
-.pull-left-narrow[
-.content-box-gray[
-# .red[¿Es posible traducir preguntas sustantivas a diferencias (de promedios) entre grupos?]
-]
-]
-
---
-
-.pull-right-wide[
-.right[ 
-
-Gran parte de las preguntas de investigación pueden traducirse a un lenguaje de .red[diferencias entre grupos]
-]
+Visualización de datos en R
 
 <br>
-
-.right[ 
-Si las diferencias se refieren a un constructo operacionalizado en forma de .red[variable continua], es posible obtener un promedio, y también promedios para distintos grupos]
-]
-
+<br>
+<br>
+<br>
 ---
-class: inverse center
 
-### En términos de investigación (con pretensión de generalización), no es relevante que dos promedios sean distintos en una .red[muestra], sino en la .yellow[población]
+## Medidas de tendencia Central
+
+* **Moda**: valor que ocurre más frecuentemente
 
 --
 
-### La probabilidad de encontrar diferencias en la población se asocia al concepto de .orange[significación estadística]
+* **Mediana**: valor medio de la distribución ordenada. Si N es par, entonces es el promedio de los valores medios
+
+--
+* **Media** o promedio aritmético: suma de los valores dividido por el total de casos
 
 ---
-.pull-left-narrow[
-# Inferencia y significación estadística
-]
+## Medidas de tendencia Central
 
-.pull-right-wide[
-- ¿Con qué nivel de **probabilidad** estamos dispuest_s a aceptar que las diferencias (entre promedios) son distintas de 0?
-]
+### Dispersión:
+
+* **Varianza**: promedio de la suma de las diferencias del promedio al cuadrado
+
+* **Desviación Estándar**:
+  - Raiz Cuadrada de la varianza.
+
+  - Expresada  en la mismas unidades que los puntajes de la escala original
+
+---
+class: middle, center
+
+# Más sobre datos, variables y varianza en:
+
+##-  [Moore: 1.Comprensión de los datos (1-54)](https://multivariada.netlify.app/docs/lecturas/moore_comprensiondelosdatos.pdf)
+
+---
+class: inverse, bottom, right
+
+
+# .red[Sesión 4]
+<br>
+
+Repaso sesión anterior
+
+.yellow[Visualización de datos]
+
+Tipos de tablas y tipos de gráficos
+
+Visualización de datos en R
+
+<br>
+<br>
+<br>
+<br>
+
+---
+## Visualización de datos
+
+La visualización de datos refiere a la forma que utilizamos para conocer y comunicar mediciones y resultados de análisis.
 
 --
 
-.pull-right-wide[
-- Por convención, una probabilidad de error (o valor *p*) de menos de 0.05 (1 de 20 veces)
-]
+Cumple tres objetivos principales:
+  * Exploración: Conocer descriptivos básicos o asociaciones entre variables
+  
+  * Modelamiento: Comparar estimaciones, determinar diferencias o explicaciones
 
---
-
-.pull-right-wide[
-- Esto significa una probabilidad de acierto/nivel de confianza de 95% (2 SE)
-]
----
-
-.center[![:scale 70%](https://multivariada.netlify.app/slides/images/inferencia1.png)]
-
+  * Comunicación: presentar resultados y atraer audiencias
 
 ---
-class: inverse right bottom
+## Visualización de datos
 
-# Inferencia e hipótesis
+La mejor visualización de datos es la que no requiere un esfuerzo para ser comprendida.
 
----
-class: middle
+Se debe evitar saturar con información. Todo lo que se visualiza debe servir para explicar lo que queremos.
 
-.pull-left-narrow[
-# Inferencia y prueba de hipótesis
-]
-
-.pull-right-wide[
-- La hipótesis nula (o $H_0$ ) se refiere a que las diferencias (de promedios) son = 0
-
-
-- Por eso, queremos rechazar $H_0$ para poder tener evidencia a favor de nuestra hipótesis
-
-- Para eso tenemos que establecer un nivel de probabilidad aceptable (al menos p<0.05)
-]
+Para comparar tablas o gráficos se deben utilizar las mismas escalas de medición y los mismos límites de los ejes.
 
 ---
-## Prueba de hipótesis 
+class: inverse, bottom, right
 
-Contrastamos la *hipótesis nula* (no hay diferencias de promedios entre grupos):
 
-$$H_{0}: \bar{X}_a -  \bar{X}_b= 0$$
+# .red[Sesión 4]
+<br>
 
-En relación a la siguiente hipótesis alternativa:
+Repaso sesión anterior
 
-$$H_{a}: \bar{X}_a -  \bar{X}_b \neq 0$$
+Visualización de datos
 
----
-class: middle
+.yellow[Tipos de tablas y tipos de gráficos]
 
-.pull-left-narrow[
-# Prueba _t_
-]
+Visualización de datos en R
 
-.pull-right-wide[
-- la prueba .red[_t_] nos permite establecer el nivel de error que estamos cometiendo al rechazar $H_0$
-
-- para ello, .red[_t_] se ajusta por la cantidad de unidades en la muestra (N), pero para un N>120 se aproxima a la distribución normal
-]
+<br>
+<br>
+<br>
+<br>
 
 ---
-## Inferencia, diferencias y prueba _t_
+## Tipos de tablas y tipos de gráficos
 
-.medium[
-- La prueba _t_ se utiliza para inferencias sobre diferencias de promedios  y básicamente es una razón entre
+* Descriptivos según tipo de variable
 
-.center[![:scale 40%](https://multivariada.netlify.app/slides/images/t1.png)]
-
-- Ya que la diferencia esperada si $H_0$ es verdadera es 0, entonces:
-
-$$t=\frac{\bar{X}_a -  \bar{X}_b}{SE(\bar{X}_a -  \bar{X}_b)}$$
+.small[
+|             	| Categórica                      	| Continua                  | Categ.(y)/Categ.(x)                    	  | Cont.(y)/Categ.(x)                              |
+|-------------	|---------------------------------	|-------------------------	|------------------------------------------------	|------------------------------------------	|
+| **Ejemplo** 	| **Estatus Ocupacional**          	| **Ingreso**                       	| **Estatus Ocupacional (Y) / Género (X)**       | **Ingreso (Y) / Género (X)**     |
+| Tabla       	| Frecuencias / porcentajes         | $\bar{X}$/sd ... o recodificar en categorías | Tabla de Contingencia  | Clasificar Y                                    |
+| Gráfico     	| Barras                          	| Histograma / boxplot      | Gráfico de barras condicionado            | Histograma, box plot condicionado             	|
 ]
 
 
----
-# Pasos
 
-1. obtener $\bar{X}_a -  \bar{X}_b$
-
-2. obtener SE (error estándar) de $\bar{X}_a -  \bar{X}_b$
-
-3.  calcular t: $t=\frac{\bar{X}_a -  \bar{X}_b}{SE(\bar{X}_a -  \bar{X}_b)}$
-
-4. determinar la probabilidad de error asociada al valor t
 
 ---
-## $SE(\bar{X}_a -  \bar{X}_b)$
+## Tipos de tablas y tipos de gráficos
 
-- Ej: para el caso simple de una variable dicotómica:
+Importancia de buenos gráficos
 
-$$SE=\sqrt{\frac{\sigma_{diff}}{n_a}+\frac{\sigma_{diff}}{n_b}}$$
 
-- Para lo cual se requiere calcular la desviación estandar de la diferencia:
-
-$$\sigma_{diff}=\frac{\sigma^2_{a}(n_a-1)+\sigma^2_{b}(n_b-1)}{n_a+n_b-2}$$
+![:scale 70%](../../files/img/pinera.jpg)
 
 ---
-# ¿Cómo utilizamos el valor _t_ ?
+## Tipos de tablas y tipos de gráficos
 
-- T ( $\bar{X}_a -  \bar{X}_b/SE_{\bar{X}_a -  \bar{X}_b}$ ) se compara con un  **valor crítico**
+Importancia de buenos gráficos
 
-- El valor crítico se obtiene de una tabla según el nivel de probabilidad de error $\alpha$ y los **grados de libertad** N-k-1 (siendo k el número de diferencias de promedios - o predictores presentes en un modelo)
-
-- Si nuestro T observado > valor crítico de T, entonces rechazamos $H_0$ al nivel de confianza establecido
+![:scale 70%](../../files/img/aprob_pres.jpg)
 
 ---
-# Valor crítico de T
+## Tipos de tablas y tipos de gráficos
 
-Imaginemos que nuestro $t=\frac{\bar{X}_a -  \bar{X}_b}{SE}=\frac{10}{4}=2.5$
+Importancia de buenos gráficos
 
-a) Nivel de confianza 95%
-
-b) N= 300 y una diferencia de promedios (k=1)
-
-En consecuencia tenemos un $\alpha = 0.05$ y $gl = 300 -1 - 1 = 298$
+![:scale 50%](../../files/img/bad_graph.png)
 
 ---
+## Tipos de tablas y tipos de gráficos
 
-.pull-left[
-# Valor crítico de T y "colas" de la curva
-.middle[
-![:scale 120%](https://multivariada.netlify.app/slides/07-inferencia/imagen4.png)
-]]
-
-.pull-right[
-- con el valor crítico de t se busca detectar diferencias en ambos sentidos (positivas y negativas)
-
-- por lo tanto, el nivel de confianza definido se divide en 2 al momento de contrastar con el valor crítico 
-
-- ej: para un nivel de confianza $\alpha=0.5$, queda en 0.25
-
+.small[
+Ejemplo tabla de descriptiva:
 ]
 
-
----
-# Valor crítico de T
-.medium[
-.pull-left[
-- Para un 95% de confianza 
-    - $\alpha$ =0.05
-    - 0.025 dos colas 
-    - valor crítico = 1- $\alpha$ = 0.975
-    
--  y grados de libertad 298, se busca en alguna [tabla de valores críticos de T](https://people.richland.edu/james/lecture/m170/tbl-t.html) ... o directamente en R:
-]
-
-.pull-right[
-
-```{r echo=TRUE}
-qt(0.975, 298)
+```{r echo=FALSE}
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/latinobarometro_proc.RData"))
+pacman::p_load(dplyr, stargazer, ggplot2, summarytools, kableExtra, sjPlot)
+proc_data <- as.data.frame(proc_data)
 ```
 
-- Nuestro T (2.5) es mayor que el T crítico (1.96), por lo tanto podemos rechazar $H_0$ con un 95% de confianza ... o con una probabilidad de error p<0.05 ]
+.small[
+```{r}
+sjmisc::descr(proc_data,
+      show = c("label","range", "mean", "sd", "n"))%>%
+      kbl(format = "markdown")
+```
 ]
+
+
 ---
-# Valor crítico de T
+## Tipos de tablas y tipos de gráficos
 
-Lo mismo pero para un $\alpha=0.01$ que equivale a un percentil = 0.995 (dos colas)
+.small[Ejemplo tabla de contingencia:]
 
-```{r echo=TRUE}
-qt(0.995, 297)
+```{r}
+sjPlot::sjt.xtab(proc_data$conf_gob, proc_data$sexo)
 ```
 
-En este caso, no podemos rechazar $H_0$ con un 99% de confianza.
+---
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico de barras:
+
+![:scale 40%](../../files/img/graph1.png)
+
+
 
 ---
-# Valor crítico de T
+## Tipos de tablas y tipos de gráficos
 
-- para simplificar, básicamente se utilizan 2 valores críticos de T / Z: 
-  - 1.96 para un $\alpha=0.05$
-  - 2.58 para un $\alpha=0.01$
+Ejemplo gráfico de barras condicionado:
 
-- por lo tanto, si el la diferencia de promedios se divide por el error estándar y da más que **1.96**, entonces es estadísitcamente significativo con una probabilidad de error **p <0.05**, y si es mayor de **2.58** es estadísitcamente significativo con una probabilidad de error **p <0.01**
+
+![:scale 40%](../../files/img/graph3.png)
+
 
 ---
-class: inverse
+## Tipos de tablas y tipos de gráficos
 
-.right[## .red[Resumen: inferencia de diferencias de promedios]
-]
-- conceptos centrales: error estándar de $\bar{X}_a -  \bar{X}_b$ y **valor T**
+Ejemplo Histograma:
 
-- el valor T se obtiene dividiendo la diferencia de promedios por el error estándar de esta misma diferencia
+![:scale 40%](../../files/img/graph4.png)
 
-- para muestras grandes, un T > 1.96 permite rechazar $H_0$ con una probabilidad de error p<0.05, y T > 2.58 con una probabilidad de error p<0.01
+
+---
+## Tipos de tablas y tipos de gráficos
+
+.small[Ejemplo gráfico de cajas:]
+
+![:scale 40%](../../files/img/graph.png)
+
+---
+
+... pero ojo! esto también avanza muy rápido
+
+---
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico alternativo de [twitter](https://twitter.com/RosanaFerrero/status/1635536429957758977):
+
+![:scale 60%](../../files/img/alternative_boxplot.png)
+
+---
+class: inverse, bottom, right
+
+
+# .red[Sesión 4]
+
+<br>
+
+Repaso sesión anterior
+
+Visualización de datos
+
+Tipos de tablas y tipos de gráficos
+
+.yellow[Visualización de datos en R]
+
+<br>
+<br>
+<br>
+<br>
+
+
+---
+## Recodificación de datos en R
+
+Guía de trabajo en:
+
+# .center[[**https://r-data-analisis.netlify.app/practicos/04-content**](https://r-data-analisis.netlify.app/practicos/04-content)]
 
 ---
 
@@ -530,18 +360,18 @@ class: inverse
 class: front
 
 .pull-left[
-# Metodología I
-## **.yellow[Juan Carlos Castillo]**
-## Magister Ciencias Sociales FACSO - UChile
-## 1er Sem 2023 
-## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
+# R para el análisis de datos
+## **Kevin Carrasco**
+## Sociología - UAH
+## 1er Sem 2024 
+## [.green[R-data-analisis.netlify.com]](https://R-data-analisis.netlify.com)
 ] 
-    
+
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 4: Introducción inferencia estadística]
+## .yellow[Sesión 4: Visualización de datos]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 

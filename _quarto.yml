@@ -79,6 +79,8 @@ website:
               file: content/02-content.qmd
             - text: "03: Clase 3"
               file: content/03-content.qmd
+            - text: "04: Clase 4"
+              file: content/04-content.qmd
 
     - title: "Prácticos"
       style: "docked"
@@ -96,6 +98,8 @@ website:
               file: practicos/02-content.qmd
             - text: "03: Práctico 3"
               file: practicos/03-content.qmd
+            - text: "04: Práctico 4"
+              file: practicos/04-content.qmd
 
     - title: "Herramientas"
       style: "docked"
