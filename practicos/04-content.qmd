@@ -270,7 +270,7 @@ proc_data %>% # se especifica la base de datos
   kable(, format = "markdown") # se genera la tabla
 ```
 
-Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `geom_boxplot` de `gplot2`:[sjPlot::plot_grpfrq]{.sidenote}
+Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `geom_boxplot` de `gplot2`:
 
 ```{r}
 graph <- ggplot(proc_data, aes(x =educacion, y = conf_inst)) +
@@ -427,4 +427,85 @@ graph4
 
 ggsave(graph4, file="files/img/graph4.png")
 ```
+
+y lo podemos complicar un poco más...
+
+### Asociación entre tres variables
+
+```{r}
+datos <- proc_data %>% group_by(educacion, sexo) %>% 
+  summarise(promedio = mean(conf_inst))
+
+ggplot(datos, aes(x =educacion, y = promedio)) +
+  geom_point() +
+  labs(x = "Educación", y = "Confianza en instituciones") +
+  theme_bw()+
+  ylim(0, 12)+
+  facet_wrap(~sexo)
+```
+
+o alternativamente...
+
+```{r}
+ggplot(datos, aes(x =sexo, y = promedio)) +
+  geom_point() +
+  labs(x = "Sexo", y = "Confianza en instituciones") +
+  theme_bw()+
+  ylim(0, 12)+
+  facet_wrap(~educacion)
+```
+
+Probemos otras agrupaciones. Por ejemplo, categorizar edad en grupos para estimar promedios grupales. Una función clave para lograr esto puede ser case_when de dplyr, combinándolo con mutate. Es decir, crear una nueva variable a partir de un condicional
+
+```{r}
+summary(proc_data$edad)
+
+proc_data <- proc_data %>% 
+  mutate(edad_groups = case_when(edad >=16 & edad<=25 ~ "Entre 16 y 25 años",
+                                 edad >=26 & edad<=39 ~ "Entre 26 y 39 años",
+                                 edad >=40 & edad<=65 ~ "Entre 40 y 65 años",
+                                 edad >65 ~ "Más de 65 años"))
+
+table(proc_data$edad_groups)
+```
+
+```{r}
+datos <- proc_data %>% group_by(educacion, edad_groups) %>% 
+  summarise(promedio = mean(conf_inst))
+
+ggplot(datos, aes(x =educacion, y = promedio)) +
+  geom_point() +
+  labs(x = "Educación", y = "Confianza en instituciones") +
+  theme_bw()+
+  ylim(0, 7)+
+  facet_wrap(~edad_groups)
+```
+
+```{r}
+datos <- proc_data %>% group_by(educacion, sexo, edad_groups) %>% 
+  summarise(promedio = mean(conf_inst))
+
+ggplot(datos, aes(x =educacion, y = promedio, color=sexo)) +
+  geom_point() +
+  labs(x = "Educación", y = "Confianza en instituciones") +
+  theme_bw()+
+  ylim(0, 7)+
+  facet_wrap(~edad_groups)
+```
+
+```{r}
+ggplot(datos, aes(x =educacion, y = promedio, color=sexo, shape=sexo)) +
+  geom_point() +
+  labs(x = "Educación", y = "Confianza en instituciones") +
+  theme_bw()+
+  ylim(0, 7)+
+  facet_wrap(~edad_groups)
+```
+
+## Unir bases de datos
+
+```{r}
+load("files/data/data_wvs.rdata")
+```
+
 
