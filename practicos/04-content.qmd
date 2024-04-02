@@ -56,7 +56,7 @@ load("ruta-hacia-carpeta-local/latinobarometro_proc.RData") #Cargar base de dato
 O también para esta práctica la podemos llamar directamente desde nuestro sitio web:
 
 ```{r }
-load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/latinobarometro_proc.RData")) #Cargar base de datos
+load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_proc.RData")) #Cargar base de datos
 ```
 
 -   Exploración inicial general de la base de datos
@@ -224,8 +224,10 @@ proc_data %>% # se especifica la base de datos
 Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `plot_grpfrq` de `sjPlot`:[sjPlot::plot_grpfrq]{.sidenote}
 
 ```{r warning=FALSE}
-graph <- plot_grpfrq(proc_data$conf_inst,proc_data$educacion,
-            type = "box")
+graph <- ggplot(proc_data, aes(x = educacion, y = conf_inst)) +
+  geom_boxplot() +
+  labs(x = "Educación", y = "Confianza en instituciones") +
+  theme_minimal()
 
 graph
 
@@ -261,7 +263,6 @@ graph2 <- sjPlot::plot_stackfrq(dplyr::select(proc_data, conf_gob,
                                  conf_cong,
                                  conf_jud,
                                  conf_partpol),
-                                 geom.colors = c("coral", "cadetblue"),
                                  title = "Confianza en instituciones políticas") +
   theme(legend.position="bottom")
 

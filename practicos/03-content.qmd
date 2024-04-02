@@ -397,13 +397,12 @@ Se observa que los valores coinciden con la recodificación (los casos se acumul
 
 _c. Etiquetado_
 
-Para re-etiquetar valores usamos la función `set_labels`, de la librería `sjlabelled`
+Para re-etiquetar valores usamos la función `factor`, de R base. Con esta función aprovechamos de transformar la variable educación en una variable categórica, que es lo que corresponde para una variable ordinal.
 
 ```{r}
-proc_data$reeduc_1 <- set_labels(proc_data$reeduc_1,
-            labels=c( "Educacion basica"=1,
-                      "Educacion media"=2,
-                      "Educacion superior"=3))
+proc_data$reeduc_1 <- factor(proc_data$reeduc_1,
+                             labels = c("Educacion basica", "Educacion media", "Educacion superior"),
+                             levels = c(1, 2, 3))
 ```
 
 Luego renombramos la variable con un nombre más sustantivo
@@ -443,9 +442,10 @@ _c. Etiquetado_
 Y ahora cambiamos las etiquetas de acuerdo a la recodificación anterior:
 
 ```{r}
-proc_data$sexo <- set_labels(proc_data$sexo,
-            labels=c( "Hombre"=0,
-                      "Mujer"=1))
+proc_data$sexo <- factor(proc_data$sexo,
+            labels=c( "Hombre",
+                      "Mujer"),
+            levels=c(0,1))
 ```
 
 
