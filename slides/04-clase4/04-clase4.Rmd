@@ -68,7 +68,7 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 3: Introducción a la investigación cuantitativa]
+## .yellow[Sesión 4: Visualización de datos]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 ]
@@ -346,6 +346,16 @@ Tipos de tablas y tipos de gráficos
 <br>
 <br>
 
+
+---
+## Recodificación de datos en R
+
+![](../../files/img/carpetas.png)
+
+---
+## Recodificación de datos en R
+
+![:scale 41%](../../files/img/ipo-hex.png)
 
 ---
 ## Recodificación de datos en R
