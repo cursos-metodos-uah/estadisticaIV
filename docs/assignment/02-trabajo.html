@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="R para Análisis estadístico">
 
-<title>R para Análisis estadístico - Taller 5</title>
+<title>R para Análisis estadístico - Trabajo 2. Procesamiento y visualización de análisis descriptivo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
 </style>
@@ -58,25 +58,24 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-submit-button-title": "Enviar"
   }
 }</script>
 
 
-<meta property="og:title" content="R para Análisis estadístico - Taller 5">
-<meta property="og:description" content="">
+<meta property="og:title" content="R para Análisis estadístico - Trabajo 2. Procesamiento y visualización de análisis descriptivo">
+<meta property="og:description" content="R para análisis estadístico">
 <meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta property="og:site-name" content="R para Análisis estadístico">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="R para Análisis estadístico - Taller 5">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="R para Análisis estadístico - Trabajo 2. Procesamiento y visualización de análisis descriptivo">
+<meta name="twitter:description" content="R para análisis estadístico">
 <meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -87,59 +86,106 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">R para Análisis estadístico</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
+    <a class="nav-link" href="../syllabus.html">
  <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html" rel="" target="">
+    <a class="nav-link" href="../schedule.html">
  <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html" rel="" target="">
+    <a class="nav-link" href="../content/index.html">
  <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../practicos/index.html" rel="" target="">
+    <a class="nav-link" href="../practicos/index.html">
  <span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../herramientas/index.html" rel="" target="">
+    <a class="nav-link" href="../herramientas/index.html">
  <span class="menu-text">Herramientas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignment/index.html" rel="" target="">
+    <a class="nav-link active" href="../assignment/index.html" aria-current="page">
  <span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://rstudio.cloud" rel="" target=""><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Trabajo 2. Procesamiento y visualización de análisis descriptivo</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Información general</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">Trabajos</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Trabajos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/01-trabajo.html" class="sidebar-item-text sidebar-link">Trabajo 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/02-trabajo.html" class="sidebar-item-text sidebar-link active">Trabajo 2</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#objetivo-del-taller" id="toc-objetivo-del-taller" class="nav-link active" data-scroll-target="#objetivo-del-taller">Objetivo del taller</a></li>
-  <li><a href="#instrucciones" id="toc-instrucciones" class="nav-link" data-scroll-target="#instrucciones">Instrucciones:</a></li>
+  <li><a href="#objetivos-del-trabajo" id="toc-objetivos-del-trabajo" class="nav-link active" data-scroll-target="#objetivos-del-trabajo">Objetivos del trabajo</a></li>
+  <li><a href="#instrucciones-generales" id="toc-instrucciones-generales" class="nav-link" data-scroll-target="#instrucciones-generales">Instrucciones generales</a></li>
   </ul>
 </nav>
     </div>
@@ -147,45 +193,81 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7">Taller 5</h1>
+<h1 class="title d-none d-lg-block display-7">Trabajo 2. Procesamiento y visualización de análisis descriptivo</h1>
+<p class="subtitle lead">R para análisis estadístico</p>
 
 <div class="date-block bg-assignment text-white p-2">
-  <p class="date">Due by 11:59 PM on jueves, 9 de noviembre de 2023</p>
+  <p class="date">Due by 11:59 PM on martes, 9 de abril de 2024</p>
 </div>
 </header>
 
-<section id="objetivo-del-taller" class="level1">
-<h1>Objetivo del taller</h1>
-<p>Iniciar el desarrollo del segundo trabajo grupal asociado a construcción de cuestionarios.</p>
+<section id="objetivos-del-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-del-trabajo">Objetivos del trabajo</h2>
+<p>El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión.</p>
 </section>
-<section id="instrucciones" class="level1">
-<h1>Instrucciones:</h1>
-<p>En sus grupos de trabajo, ustedes deben:</p>
-<ol type="1">
-<li><p>Definir un tema principal a partir del cual elaborarán el cuestionario (por ejemplo: condiciones y estrategias de estudio, actitudes y prácticas deportivas, entre otros). La elección del tema es libre y depende de los intereses de quienes conformen el grupo.</p></li>
-<li><p>Buscar en internet al menos tres encuestas o cuestionarios que aborden temas similares al que han elegido. En base a sus respectivos documentos metodológicos, deben especificar:</p></li>
-</ol>
-<ol type="a">
-<li><p>Nombre de la encuesta;</p></li>
-<li><p>Año(s) y país(es) en que se ha levantado;</p></li>
-<li><p>Institución/organismo/etc. encargado de su ejecución;</p></li>
-<li><p>Objetivos de la encuesta;</p></li>
-<li><p>Población objetivo;</p></li>
-<li><p>Principales variables del estudio; y</p></li>
-<li><p>Recuento de los módulos del cuestionario, junto a un breve resumen que dé cuenta de los temas abordados en cada uno.</p></li>
-</ol>
-<ol start="3" type="1">
-<li><p>Para cada cuestionario revisado, señalar al menos dos variables que puedan ser útiles para el cuestionario que elaborarán en el transcurso del segundo trabajo. Deben incluir el enunciado y sus respectivas alternativas de respuesta.</p></li>
-<li><p>En base a lo revisado anteriormente, y pensando en el cuestionario que elaborarán en el marco del trabajo, definan:</p></li>
-</ol>
-<ol type="a">
-<li><p>Objetivo de su estudio;</p></li>
-<li><p>Población objetivo a la cual está dirigido; y</p></li>
-<li><p>Principales variables a considerar.</p></li>
-</ol>
-<ol start="5" type="1">
-<li>En una hoja deben especificar el título Taller 5, el nombre de l_s integrantes del equipo que están presentes en el taller, y sus respectivas respuestas. Tendrán hasta las 13:25 para realizar el taller.</li>
-</ol>
+<section id="instrucciones-generales" class="level2">
+<h2 class="anchored" data-anchor-id="instrucciones-generales">Instrucciones generales</h2>
+<ul>
+<li><p>Descargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)</p></li>
+<li><p>Operacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.</p></li>
+<li><p>Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.</p></li>
+<li><p>No es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, pero es importante mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e <strong>interpretar</strong> estas tablas/gráficos.</p></li>
+</ul>
+<p>Entrega:</p>
+<ul>
+<li>Jueves 18 de Abril a través de Teams.</li>
+<li>Se debe enviar el link al repositorio de github</li>
+<li>No más de 5000 palabras</li>
+<li>Se deben mantener las referencias de la literatura / bases de datos revisadas</li>
+<li>atrasos, 0,5 por día de atraso.</li>
+</ul>
+<p>Rúbrica de evaluación:</p>
+<table class="table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 40%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ítem</th>
+<th>Objetivo</th>
+<th>Puntaje</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Cargar base de datos</td>
+<td>L-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R</td>
+<td>2pts</td>
+</tr>
+<tr class="even">
+<td>2. Selección de variables</td>
+<td>L-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación</td>
+<td>2pts</td>
+</tr>
+<tr class="odd">
+<td>3. Operacionalización de variables</td>
+<td>L-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)</td>
+<td>5pts</td>
+</tr>
+<tr class="even">
+<td>4. Visualización de resultados</td>
+<td>L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)</td>
+<td>6ptos</td>
+</tr>
+<tr class="odd">
+<td>5. Interpretación de resultados</td>
+<td>L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados</td>
+<td>3pts</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>-</td>
+<td>18puntos</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -218,23 +300,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -299,92 +367,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -428,9 +410,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
     <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/R-data-analisis">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
   </div>
 </footer>
