@@ -95,6 +95,6 @@ get_label(proc_data$edad)
 proc_data$edad <- set_label(x = proc_data$edad,label = "Edad")
 proc_data <- as.data.frame(proc_data)
 
-save(proc_data,file = "files/data/latinobarometro_total.RData")
+save(proc_data,file = "input/latinobarometro_total.RData")
 
 

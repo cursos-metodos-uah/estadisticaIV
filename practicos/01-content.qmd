@@ -12,48 +12,8 @@ lang: es
 
 Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
 
-## R y Rstudio
 
-### Guía de instalación
-
-1. Acceder a la página de [posit](https://posit.co/), desarrollador del software desde octubre de 2022. Link directo a la descarga [acá](https://posit.co/download/rstudio-desktop/).
-
-2. Instalar R y Rstudio
-
-![](images/installR1.png)
-
-  a) Descargar R 
-    
-  - Seleccionamos sistema operativo según corresponda
-    
-  ![](images/installR2.png)
-    
-  - Descargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.2.2
-  
-  ![](images/installR3.png)
-
-
-  b) Descargar RStudio
-    
-  - Descarga directa en la página de inicio
-    
-  c) Instalar ambos archivos siguiendo las instrucciones de instalación
-
-3. Abrir RStudio. Se debería ver similar a esto (o en blanco):
-
-![](images/installR4.png)
-
-::: callout-note
-
-Alternativa a lo anterior: https://posit.cloud/
-
-- Versión online de Rstudio
-
-- Utilizar en caso de problemas con PC
-
-:::
-
-4. Recomendaciones generales:
+## Recomendaciones generales:
 
 - evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables
 
@@ -195,6 +155,7 @@ E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que
 d <- filter(base, nombre=="Kevin" & anio==1996)
 sum(d$n)
 ```
+
 Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo
 
 ```{r}
@@ -222,86 +183,6 @@ guaguas %>%
 
 # Parte 2
 
-## Github
-
-## Descripción
-
-Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software). 
-
-::: callout-note
-
-El 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones de dólares. Al inicio, el cambio de propietario generó preocupaciones y la salida de algunos proyectos de este sitio; sin embargo, no fueron representativos. GitHub continúa siendo la plataforma más importante de colaboración para proyectos de código abierto.
-
-:::
-
-## Repositorios
-
-Un repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.
-
-Los repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.
-
-## Principales términos
-
-| Término          | Definición                                                                                           |
-|---------------|------------------------------------------------------------------------------------------------------|
-| Branch        | 	Una versión paralela del código contenido en el repositorio, pero que no afecta a la rama principal.|
-| Clonar        |	Para descargar una copia completa de los datos de un repositorio de GitHub.com, incluidas todas las versiones de cada archivo y carpeta.                                                                                   |
-| Fork          | Un nuevo repositorio que comparte la configuración de visibilidad y código con el repositorio «ascendente» original.|
-| Merge         | Para aplicar los cambios de una rama y en otra.                                       |
-| Pull request  | Una solicitud para combinar los cambios de una branch en otra.                                             |
-| Remote        | Un repositorio almacenado en GitHub, no en el equipo.                                                 |
-| Upstream      | La branch de un repositorio original que se ha *forkeado* o clonado. La branch correspondiente de la branch clonada o *forkeada* se denomina «descendente».                                            |
-
-
-## Crear cuenta e instalación
-
-1. Acceder a la página de [github](https://github.com/)
-
-Registrarse ingresando correo electrónico y siguiendo los pasos siguientes (crear contraseña y nombre de usuario)
-
-![](images/github1.png)
-
-La personalización de la cuenta se puede saltar haciendo click en **skip** abajo de la selección de opciones
-
-2. Descargar e instalar Github Desktop
-
-![](images/github2.png)
-
-## Crear repositorio
-
-En la página principal de [github](https://github.com/) hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios
-
-![](images/repos.png)
-
-Una vez accedemos a Tus repositorios hacemos click en New/Nuevo
-
-![](images/repos2.png)
-
-Luego le ponemos un nombre a nuestro repositorio, evitando siempre espacios, ñ y tíldes, y apretamos Crear repositorio
-
-![](images/repos3.png)
-
-## Github desktop
-
-Una vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio R-data-analisis en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.
-
-Para todas las siguientes veces, las instrucciones son estas:
-
-1- Apretamos Repositorio actual en la esquina superior izquierda
-
-2- Apretamos añadir
-
-3- Apretamos clonar repositorio...
-
-![](images/clonar.png)
-
-
-4- Seleccionamos nuestro repositorio
-
-5- seleccionamos la carpeta donde se almacenará. Siempre evitando tener tíldes, ñ y espacios en la dirección de almacenamiento.
-
-![](images/clonar2.png)
-
 ## Rproject
 
 Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la **reproducibilidad**. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el [protocolo IPO](https://lisa-coes.com/ipo-repro/).
@@ -321,66 +202,3 @@ Para crear un Rproject:
 5. Apretamos el botón de crear proyecto
 
 
-## Quarto
-
-Para crear un documento Quarto (.qmd)
-
-1. archivo -> nuevo archivo -> Quarto Document
-
-![](images/quarto.png)
-
-2. Ponemos un título a nuestro nuevo documento y opcionalmente nuestro nombre como autor
-
-![](images/quarto2.png)
-
-3. Esta vez como ejemplo no editaremos el documento y *renderizaremos* el ejemplo que nos da R. Para eso apretamos el botón **render**
-
-![](images/quarto3.png)
-
-**Renderizar** es el proceso mediante el cual R transforma nuestro *código* de quarto en un documento dinámico según el output que especifiquemos. En este caso fue .html, pero también puede ser .pdf, .txt o .doc (no recomendado)
-
-4. Al apretar render nos pedirá guardar nuestro script .qmd. Al hacerlo, nos aseguraremos de que lo guardamos en la misma carpeta del repositorio y Rproject, así como también de que no contenga espacios, ñ o tíldes.
-
-## Vuelta a Github desktop
-
-Ahora que tenemos nuestro documento renderizado en nuestro computador lo que nos interesa es subir todos los cambios que hicimos en nuestro repositorio a Github.
-
-1. Volvemos a abrir Github Desktop y podemos notar que en la barra de la izquierda han aparecido todos los cambios que hemos hecho en el repositorio: el archivo .Rproj (Rproject), el script .qmd y el .html creado al renderizar. Los demás se crean automáticamente en el proceso de renderizado.
-
-
-![](images/desktop.png)
-
-2. Le ponemos un nombre al Commit
-
-3. Apretamos Commit to main para guardar los cambios
-
-Un **Commit** es una acción de compromiso. Se refiere a que un autor/investigador se hará cargo de los cambios que se hicieron.
-
-4. Luego apretamos Publish Brand o Push origin según corresponda. Con esta acción actualizamos el repositorio en línea de Github.
-
-## Vuelta a github.com
-
-1. Podemos ver que en el repositorio en línea de github.com ya están arriba los documentos que creamos recién.
-
-![](images/pages.png)
-
-2. Ahora lo que nos interesa es crear una página de internet que nos permita visualizar el documento de Quarto que acabamos de crear. Para eso vamos a la opción Settings/ajustes
-
-3. Una vez en settings nos dirigimos a la sección de páginas (pages)
-
-![](images/pages2.png)
-
-4. Luego en la sección Branch apretamos el botón none/ninguno
-
-5. Seleccionamos la opción Main y luego Save/guardar. Con esto hacemos que github haga un *deploy* de nuestro repositorio, específicamente de nuestra *main branch*.
-
-6. Si actualizamos la página luego de uno o dos minutos, podemos ver que Github creo un sitio web para el repositorio. En este caso el enlace es [https://kevincarrascoq.github.io/R-data-analisis/](https://kevincarrascoq.github.io/R-data-analisis/). Que incluye primero el nombre usuario seguido de github.io y luego el nombre del repositorio /R-data/analisis. 
-
-Sin embargo, este enlace funciona como página principal de nuestro repositorio (más adelante veremos cómo editarla). En este momento, para llegar a nuestro documento renderizado de quarto, debemos agregar el nombre del archivo en el enlace que nos da Github, que en este caso es R-data-analisis.html.
-
-7. Por lo tanto, el enlace a nuestro documento es [https://kevincarrascoq.github.io/R-data-analisis/R-data-analisis.html](https://kevincarrascoq.github.io/R-data-analisis/R-data-analisis.html)
-
-
-
-
-# Próxima clase: Integración de todos estos programas + Quarto
