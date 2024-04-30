@@ -273,46 +273,32 @@
     "text": "Finding the CACE/LATE with IV/2SLS\nDoing that is super tedious though! What if there was an easier way to find the effect of the bed net program for just the compliers? We can do this with IV/2SLS regression by using assignment to treatment as an instrument.\nAssignment to treatment works as an instrument because it’s (1) relevant, since being told to use bed nets is probably highly correlated with using bed nets, (2) exclusive, since the only way that being told to use bed nets can cause changes in health is through the actual use of the bed nets, and (3) exogenous, since being told to use bed nets probably isn’t related to other things that cause health.\nHere’s a 2SLS regression with assignment to treatment as the instrument:\n\n\nCode\nmodel_2sls &lt;- iv_robust(health ~ bed_net | treatment, data = bed_nets)\ntidy(model_2sls)\n##             term estimate std.error statistic   p.value conf.low conf.high   df outcome\n## 1    (Intercept)    38.12    0.5151     74.01 0.000e+00    37.11     39.13 1998  health\n## 2 bed_netBed net    14.43    1.2538     11.51 1.038e-29    11.97     16.89 1998  health\n\n\nThe coefficient for bed_net is identical to the CACE that we found manually! Instrumental variables are helpful for isolated program effects to only compliers when you’re dealing with noncompliance."
   },
   {
-    "objectID": "content/03-content.html#lecturas",
-    "href": "content/03-content.html#lecturas",
-    "title": "Clase 3",
+    "objectID": "content/04-content.html#lecturas",
+    "href": "content/04-content.html#lecturas",
+    "title": "Clase 4",
     "section": "Lecturas",
     "text": "Lecturas"
   },
   {
-    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "title": "Clase 3",
+    "objectID": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 4",
     "section": "Moore: 1.Comprensión de los datos (1-54)",
     "text": "Moore: 1.Comprensión de los datos (1-54)"
   },
   {
-    "objectID": "content/01-content.html#lecturas",
-    "href": "content/01-content.html#lecturas",
-    "title": "Presentación",
+    "objectID": "content/02-content.html#lecturas",
+    "href": "content/02-content.html#lecturas",
+    "title": "Clase 2",
     "section": "Lecturas",
     "text": "Lecturas\nR for Data Science"
   },
   {
-    "objectID": "assignment/02-trabajo.html",
-    "href": "assignment/02-trabajo.html",
-    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
+    "objectID": "assignment/index.html",
+    "href": "assignment/index.html",
+    "title": "Trabajos",
     "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/02-trabajo.html#objetivos-del-trabajo",
-    "href": "assignment/02-trabajo.html#objetivos-del-trabajo",
-    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
-    "section": "",
-    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
-  },
-  {
-    "objectID": "assignment/02-trabajo.html#instrucciones-generales",
-    "href": "assignment/02-trabajo.html#instrucciones-generales",
-    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
-    "section": "Instrucciones generales",
-    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, pero es importante mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e interpretar estas tablas/gráficos.\n\nEntrega:\n\nJueves 18 de Abril a través de Teams.\nSe debe enviar el link al repositorio de github\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Cargar base de datos\nL-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R\n2pts\n\n\n2. Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n3. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)\n5pts\n\n\n4. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)\n6ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos"
+    "text": "En esta sección se encuentran las instrucciones de los Trabajos a realizar durante el curso.\n\nEvaluaciones\nEl curso tendrá cinco instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):\n4 trabajos individuales acumulativos (15% c/u).\n1 presentación de resultados (10%).\nLa nota ponderada de las evaluaciones equivaldrá al 70% de la nota del curso y el examen final al 30% restante.\n\n\nSobre temas y datos\nEl tema de trabajo es libre. Sin embargo, de modo de lograr una mayor colaboración desde el equipo docente a sus trabajos, sugerimos desarrollar los siguientes temas:\n\nDesigualdad social, Estratificación social, justicia distributiva, percepción de desigualdad\nEducación cívica, política educativa\nCohesión social, sociología política, economía gig\n\nLa base de datos a utilizar también es libre, pero recomendamos las siguientes:\n\nEstudio Longitudinal Social de Chile (Ola 1 2016)\nCASEN 2022\nSIMCE\nLAPOP\nLATINOBARÓMETRO"
   },
   {
     "objectID": "assignment/01-trabajo.html",
@@ -336,30 +322,44 @@
     "text": "Título: Breve, lo principal es hacer alusión al objeto central del estudio.\nIntroducción: Definición de la problemática a abordar, su relevancia y sus principales conceptos asociados (MÁXIMO 1000 palabras)\n\nEs importante considerar\n\nRelevancia del problema de investigación: además de que el “tema” pueda ser relevante (ej: aumento de desigualdad económica, disminución de niveles de participación), la relevancia del problema se refiere al aporte distintivo desde una perspectiva académica y disciplinar (sociología) (ej: “existe evidencia que los bajos niveles de participación se ven afectados por el nivel educacional (Pérez, 1999”).\nPrecisar el concepto central que se va a investigar: Ejemplo “vamos a estudiar participación política de estudiantes, entendiendo por ello la frecuencia de participación en actividades como marchas, tomas y en redes sociales”.\nPrecisar argumento / hipótesis central, que tiene que ver con el predictor principal: “Se espera que a medida que aumenta el nivel de percepción de desigualdad económica, aumenta la participación política de los/as estudiantes”\nSe deben incluir al menos 4 referencias correctamente citadas, según el procedimiento visto en clases de vinculación entre Zotero y RStudio\nEl documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
   },
   {
-    "objectID": "assignment/index.html",
-    "href": "assignment/index.html",
-    "title": "Trabajos",
+    "objectID": "assignment/02-trabajo.html",
+    "href": "assignment/02-trabajo.html",
+    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
     "section": "",
-    "text": "En esta sección se encuentran las instrucciones de los Trabajos a realizar durante el curso.\n\nEvaluaciones\nEl curso tendrá cinco instancias de evaluación (fechas en pestaña de planificación y en el programa del curso):\n4 trabajos individuales acumulativos (15% c/u).\n1 presentación de resultados (10%).\nLa nota ponderada de las evaluaciones equivaldrá al 70% de la nota del curso y el examen final al 30% restante.\n\n\nSobre temas y datos\nEl tema de trabajo es libre. Sin embargo, de modo de lograr una mayor colaboración desde el equipo docente a sus trabajos, sugerimos desarrollar los siguientes temas:\n\nDesigualdad social, Estratificación social, justicia distributiva, percepción de desigualdad\nEducación cívica, política educativa\nCohesión social, sociología política, economía gig\n\nLa base de datos a utilizar también es libre, pero recomendamos las siguientes:\n\nEstudio Longitudinal Social de Chile (Ola 1 2016)\nCASEN 2022\nSIMCE\nLAPOP\nLATINOBARÓMETRO"
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
   },
   {
-    "objectID": "content/02-content.html#lecturas",
-    "href": "content/02-content.html#lecturas",
-    "title": "Clase 2",
+    "objectID": "assignment/02-trabajo.html#objetivos-del-trabajo",
+    "href": "assignment/02-trabajo.html#objetivos-del-trabajo",
+    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
+    "section": "",
+    "text": "El objetivo de este trabajo es realizar un reporte dinámico a través de Quarto, que contenga el análisis descriptivo del problema de investigación propuesto en el Trabajo 1. El documento final debe ser subido a Github Pages y se debe enviar el link a este documento para su revisión."
+  },
+  {
+    "objectID": "assignment/02-trabajo.html#instrucciones-generales",
+    "href": "assignment/02-trabajo.html#instrucciones-generales",
+    "title": "Trabajo 2. Procesamiento y visualización de análisis descriptivo",
+    "section": "Instrucciones generales",
+    "text": "Instrucciones generales\n\nDescargar la base de datos que se utilizará en la investigación y guardarla en la carpeta correspondiente (input)\nOperacionalización: Script de R llamado “Preparacion” y guardado en la carpeta que corresponde (Procesamiento). Manipulación de datos para obtener las variables utilizadas en la investigación. Se espera que l-s estudiantes sean capaces de seleccionar las variables relevantes para la problemática escogida, agruparlas, reordenarlas y asignarles los nombres y etiquetas según corresponda.\nVisualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente responder, ejemplificar y/o demostrar los principales hallazgos de la investigación. Para esta primera entrega se espera que sean capaces de generar una tabla descriptiva que muestre las medidas de tendencia central de las variables utilizadas en la investigación, así como su contraparte de tablas de frecuencias en el caso de variables categóricas. También se espera que sean capaces de elaborar dos gráficos descriptivos que permitan visualizar la distribución de las principales variables de interés.\nNo es necesario elaborar un informe teórico sobre el tema de investigación. En la introducción de este reporte debe ir la propuesta elaborada en el Trabajo 1, pero es importante mencionar la fuente de datos utilizada. El objetivo del trabajo es que sean capaces de operacionalizar variables, escoger la mejor forma de visualizar sus medidas de tendencia central y/o frecuencias e interpretar estas tablas/gráficos.\n\nEntrega:\n\nJueves 18 de Abril a través de Teams.\nSe debe enviar el link al repositorio de github\nNo más de 5000 palabras\nSe deben mantener las referencias de la literatura / bases de datos revisadas\natrasos, 0,5 por día de atraso.\n\nRúbrica de evaluación:\n\n\n\n\n\n\n\n\nÍtem\nObjetivo\nPuntaje\n\n\n\n\n1. Cargar base de datos\nL-s estudiantes son capaces de descargar la base de datos y posteriormente cargarla en R\n2pts\n\n\n2. Selección de variables\nL-s estudiantes son capaces de seleccionar las variables relevantes según su problema de investigación\n2pts\n\n\n3. Operacionalización de variables\nL-s estudiantes son capaces de operacionalizar correctamente las variables de interés. Las variables deben tener un correcto nivel de medición (2pto), correcto paso a NA (1pto), correcto orden de medición, es decir, valores positivos como valores más altos (1pto) y etiquetas correctas (1pto)\n5pts\n\n\n4. Visualización de resultados\nL-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva (3ptos) y dos gráficos univariados (3ptos)\n6ptos\n\n\n5. Interpretación de resultados\nL-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados\n3pts\n\n\nTotal\n-\n18puntos"
+  },
+  {
+    "objectID": "content/01-content.html#lecturas",
+    "href": "content/01-content.html#lecturas",
+    "title": "Presentación",
     "section": "Lecturas",
     "text": "Lecturas\nR for Data Science"
   },
   {
-    "objectID": "content/04-content.html#lecturas",
-    "href": "content/04-content.html#lecturas",
-    "title": "Clase 4",
+    "objectID": "content/03-content.html#lecturas",
+    "href": "content/03-content.html#lecturas",
+    "title": "Clase 3",
     "section": "Lecturas",
     "text": "Lecturas"
   },
   {
-    "objectID": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "href": "content/04-content.html#moore-1.comprensión-de-los-datos-1-54",
-    "title": "Clase 4",
+    "objectID": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "href": "content/03-content.html#moore-1.comprensión-de-los-datos-1-54",
+    "title": "Clase 3",
     "section": "Moore: 1.Comprensión de los datos (1-54)",
     "text": "Moore: 1.Comprensión de los datos (1-54)"
   },

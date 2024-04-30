@@ -1,0 +1,13 @@
+---
+title: "Clase 6"
+date: "2024-04-30"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/06-clase6/06-clase6.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
