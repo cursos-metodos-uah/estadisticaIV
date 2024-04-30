@@ -27,7 +27,7 @@ Martes 02 | Unidad 2: Operacionalización y análisis descriptivo de datos  | Pr
 Martes 09 | Unidad 2: Operacionalización y análisis descriptivo de datos  | Práctico 5 |
 Martes 16 | Sesión de apoyo Trabajo N°2  | Trabajo 2 (18/04)  |
 Martes 23 | Unidad 3: Asociación de variables en R | Práctico 6 |
-Martes 30 | Unidad 3: Análisis estadístico inferencial en R | Práctico 7  |
+Martes 30 | Unidad 3: Indices y escalas | Práctico 7  |
 <font color="orange"> **Mayo** </font> |   |   |
 Martes 07 | Sesión de apoyo Trabajo N°3 | Trabajo 3 |
 Martes 14 | Unidad 4: Regresión lineal y regresión logística | Práctico 8 | 
