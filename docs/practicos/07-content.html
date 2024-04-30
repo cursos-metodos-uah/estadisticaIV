@@ -1620,8 +1620,8 @@ s11_09 0.86 0.10 0.02 0.01 0.01    0</code></pre>
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span> </span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">confianza_instituciones =</span> <span class="fu">sum</span>(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2<span class="sc">$</span>confianza_instituciones)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sintomatologia_depresiva =</span> <span class="fu">sum</span>(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2<span class="sc">$</span>sintomatologia_depresiva)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -2262,8 +2262,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb46-373"><a href="#cb46-373" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb46-374"><a href="#cb46-374" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data2 <span class="sc">%&gt;%</span> </span>
 <span id="cb46-375"><a href="#cb46-375" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb46-376"><a href="#cb46-376" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">confianza_instituciones =</span> <span class="fu">sum</span>(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))</span>
-<span id="cb46-377"><a href="#cb46-377" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2<span class="sc">$</span>confianza_instituciones)</span>
+<span id="cb46-376"><a href="#cb46-376" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sintomatologia_depresiva =</span> <span class="fu">sum</span>(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))</span>
+<span id="cb46-377"><a href="#cb46-377" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data2<span class="sc">$</span>sintomatologia_depresiva)</span>
 <span id="cb46-378"><a href="#cb46-378" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb46-379"><a href="#cb46-379" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-380"><a href="#cb46-380" aria-hidden="true" tabindex="-1"></a>¿Tiene sentido una escala de 9 a 45? No, por eso generalmente se recomienda que las variables ordinales partan en '0' para que el comienzo de la escala también sea 0. En ese caso, deberíamos recodificar las 9 variables en una escala de 0 a 4.</span>

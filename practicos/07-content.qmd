@@ -337,8 +337,8 @@ psych::alpha(data2)
 ```{r}
 data2 <- data2 %>% 
   rowwise() %>% 
-  mutate(confianza_instituciones = sum(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))
-summary(data2$confianza_instituciones)
+  mutate(sintomatologia_depresiva = sum(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))
+summary(data2$sintomatologia_depresiva)
 ```
 
 ¿Tiene sentido una escala de 9 a 45? No, por eso generalmente se recomienda que las variables ordinales partan en '0' para que el comienzo de la escala también sea 0. En ese caso, deberíamos recodificar las 9 variables en una escala de 0 a 4.
