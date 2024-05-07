@@ -110,6 +110,8 @@ website:
               file: practicos/06-content.qmd
             - text: "07: Práctico 7"
               file: practicos/07-content.qmd
+            - text: "08: Resumen"
+              file: practicos/resumen-content.qmd
 
     - title: "Herramientas"
       style: "docked"

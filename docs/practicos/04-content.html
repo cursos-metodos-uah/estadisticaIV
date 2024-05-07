@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -91,6 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
@@ -101,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:title" content="R para Análisis estadístico - Práctico 4. Visualización de variables">
 <meta property="og:description" content="R data analisis">
 <meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
-<meta property="og:site-name" content="R para Análisis estadístico">
+<meta property="og:site_name" content="R para Análisis estadístico">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:title" content="R para Análisis estadístico - Práctico 4. Visualización de variables">
 <meta name="twitter:description" content="R data analisis">
@@ -114,9 +121,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">R para Análisis estadístico</span>
     </a>
@@ -128,55 +135,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
- <span class="menu-text">Programa</span></a>
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html" rel="" target="">
- <span class="menu-text">Planificación</span></a>
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html" rel="" target="">
- <span class="menu-text">Clases</span></a>
+    <a class="nav-link" href="../content/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../practicos/index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Prácticos</span></a>
+    <a class="nav-link active" href="../practicos/index.html" aria-current="page"> 
+<span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../herramientas/index.html" rel="" target="">
- <span class="menu-text">Herramientas</span></a>
+    <a class="nav-link" href="../herramientas/index.html"> 
+<span class="menu-text">Herramientas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignment/index.html" rel="" target="">
- <span class="menu-text">Trabajos</span></a>
+    <a class="nav-link" href="../assignment/index.html"> 
+<span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://rstudio.cloud" rel="" target=""><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
+    <a class="nav-link" href="https://rstudio.cloud"> <i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/04-content.html">04: Práctico 4</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/04-content.html">04: Práctico 4</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -247,12 +254,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">07: Práctico 7</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../practicos/resumen-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08: Resumen</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -291,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practicos/01-content.html">Talleres</a></li><li class="breadcrumb-item"><a href="../practicos/04-content.html">04: Práctico 4</a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Práctico 4. Visualización de variables</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
 <p class="subtitle lead">R data analisis</p>
@@ -313,7 +326,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="presentación" class="level1">
 <h1>Presentación</h1>
@@ -342,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="librerías" class="level2">
 <h2 class="anchored" data-anchor-id="librerías">1. Librerías</h2>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(sjlabelled,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co">#Manipulacion de datos</span></span>
@@ -361,14 +376,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="cargar-base-de-datos">2. Cargar base de datos</h2>
 <p>Vamos a cargar la base de datos <strong>latinobarometro_proc.Rdata</strong>, que generamos durante la práctica anterior. Se puede llamar desde el directorio en que se guardó anteriormente dando la ruta completa:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"ruta-hacia-carpeta-local/latinobarometro_proc.RData"</span>) <span class="co">#Cargar base de datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>O también para esta práctica la podemos llamar directamente desde nuestro sitio web:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData"</span>)) <span class="co">#Cargar base de datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -377,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Exploración inicial general de la base de datos</li>
 </ul>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_data) <span class="co"># Muestra los nombres de las variables de la base de datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -385,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "conf_gob"     "conf_cong"    "conf_jud"     "conf_partpol" "educacion"   
 [6] "sexo"         "edad"         "idenpa"       "conf_inst"   </code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_data) <span class="co"># Dimensiones</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -419,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>a. Tabla descriptiva con <code>stargazer</code></strong><span class="sidenote">stargazer</span></p>
 <p>La función <code>stargazer</code> (de la librería del mismo nombre) permitirá mostrar los principales estadísticos descriptivos univariados de las variables: medidas de tendencia central (media), de dispersión (desviación estándar) y posición (mínimo, máximo, percentiles).</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(proc_data,<span class="at">type =</span> <span class="st">"text"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -446,7 +461,7 @@ conf_inst    18,768  3.303   2.851    0  12
 <p><strong>b. Tablas descriptivas con <code>descr</code>, librería sjmisc</strong><span class="sidenote">sjmisc::descr</span></p>
 <p>La opción básica de <code>descr</code> es la siguiente:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(proc_data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -479,7 +494,7 @@ conf_inst    18,768  3.303   2.851    0  12
 <p>En este caso utilizamos la forma <code>librería::función</code> (<code>sjmisc::descr</code>), ya que la función <code>descr</code> también existe en otras librerías y así nos aseguramos que la función utilizada es de esa librería específica.</p>
 <p>Seleccionamos algunas columnas específicas con información más relevante con la opción <code>show</code>. Además, agregamos la función <code>kable</code> para obtener una tabla que luego sea fácilmente publicable en distintos formatos (a profundizar en ejercicios posteriores):</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(proc_data,</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>))<span class="sc">%&gt;%</span></span>
@@ -608,7 +623,7 @@ conf_inst    18,768  3.303   2.851    0  12
 <p>Esta tercera opción nos ofrece una tabla aún más detallada, con gráficos para cada variable, las frecuencias para cada valor, y las etiquetas de las variables, por lo que es muy recomendable.</p>
 <p>Se específica de la siguiente manera:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>summarytools<span class="sc">::</span><span class="fu">dfSummary</span>(proc_data, <span class="at">plain.ascii =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -670,13 +685,14 @@ No   Variable        Label                           Stats / Values             
 </div>
 <p>Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva de publicación se verá así:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(<span class="fu">dfSummary</span>(proc_data, <span class="at">headings=</span><span class="cn">FALSE</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <div class="container st-container">
 
 <table class="table table-striped table-bordered st-table st-table-striped st-table-bordered st-multiline table-sm small" data-quarto-postprocess="true">
@@ -759,7 +775,7 @@ No   Variable        Label                           Stats / Values             
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAEoAAABmBAMAAACekBoPAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjnPu8tJAAAAYUlEQVRIx+3TwQkAIAwDQFdwBHUD3X83P/oQbChCxUryvkcDaQjvJuMMVRpKpaJypnS7jzgGSjpoVULHSkXlU+l2f/8fD75WVGVTn4rKr9LtPuIY/mOCanakovpD6Xb/YjrL94fJKza3HgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAEoAAABmBAMAAACekBoPAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC3mz5keAAAAYUlEQVRIx+3TwQkAIAwDQFdwBHUD3X83P/oQbChCxUryvkcDaQjvJuMMVRpKpaJypnS7jzgGSjpoVULHSkXlU+l2f/8fD75WVGVTn4rKr9LtPuIY/mOCanakovpD6Xb/YjrL94fJKza3HgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">19748 (97.7%)</td>
 <td style="text-align: center;">456 (2.3%)</td>
 </tr>
@@ -819,7 +835,7 @@ No   Variable        Label                           Stats / Values             
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAE4AAABmBAMAAACXe7p1AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjnPu8tJAAAAYUlEQVRIx+3TUQoAEBCEYVdwBNyA+99Nyotkd1KiNfP8PVj1O/f+orbuUpGX6egMOrQPr+2QE142uPW9mY7OrEP7uNXvTueSS9NH0NHZd2gfXtvBfgPg2r10dL85tI+XVwGxHpRFpWd8QgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAE4AAABmBAMAAACXe7p1AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC5/xsikAAAAYUlEQVRIx+3TUQoAEBCEYVdwBNyA+99Nyotkd1KiNfP8PVj1O/f+orbuUpGX6egMOrQPr+2QE142uPW9mY7OrEP7uNXvTueSS9NH0NHZd2gfXtvBfgPg2r10dL85tI+XVwGxHpRFpWd8QgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">19382 (95.9%)</td>
 <td style="text-align: center;">822 (4.1%)</td>
 </tr>
@@ -879,7 +895,7 @@ No   Variable        Label                           Stats / Values             
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAEcAAABmBAMAAABrbpG/AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjpWsprzAAAAZUlEQVRIx+3TwQkAIRADQEvQDm61A6//3vwIImhc5E5WSN7zcCVxzmYiylNRekGIiGwjVccDiv8cgRc1NL8uExFZR6qOH97dxjhljPovICK6Cqk6HlB+2p0sUBocRUR0CVJ13FoKqxeBS6K3x18AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAEcAAABmBAMAAABrbpG/AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC5/xsikAAAAZUlEQVRIx+3TwQkAIRADQEvQDm61A6//3vwIImhc5E5WSN7zcCVxzmYiylNRekGIiGwjVccDiv8cgRc1NL8uExFZR6qOH97dxjhljPovICK6Cqk6HlB+2p0sUBocRUR0CVJ13FoKqxeBS6K3x18AAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">19467 (96.4%)</td>
 <td style="text-align: center;">737 (3.6%)</td>
 </tr>
@@ -939,7 +955,7 @@ No   Variable        Label                           Stats / Values             
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAABmBAMAAAApLeIoAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjpWsprzAAAAZklEQVRYw+3TwQ3AIAxDUUaADSiM0P1364VThYJzaQP6PvMkYskpnZMmpw7RbzUIBCKG8O+8yMkfivmfL0PMu0IgEHGFf+dFTmxh3Wq3i0AgdhH+nS8f/iKUC95dIRCIvYR/5yfkAa300SyaNp4ZAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGEAAABmBAMAAAApLeIoAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC5/xsikAAAAZklEQVRYw+3TwQ3AIAxDUUaADSiM0P1364VThYJzaQP6PvMkYskpnZMmpw7RbzUIBCKG8O+8yMkfivmfL0PMu0IgEHGFf+dFTmxh3Wq3i0AgdhH+nS8f/iKUC95dIRCIvYR/5yfkAa300SyaNp4ZAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">19653 (97.3%)</td>
 <td style="text-align: center;">551 (2.7%)</td>
 </tr>
@@ -982,7 +998,7 @@ No   Variable        Label                           Stats / Values             
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAEoAAABOBAMAAAB1b51UAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjpWsprzAAAATklEQVRIx2NgGLxACTcQBAKoKmVjXMBoVNWoqiGoirh0L4gfDJgqJfyAYEiAQ2NU1aiqQaOKuBQ9dPIjNlUYIWE0qmpU1VBWRVy6H4wAAIxTUjSIDjDZAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAEoAAABOBAMAAAB1b51UAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC5/xsikAAAATklEQVRIx2NgGLxACTcQBAKoKmVjXMBoVNWoqiGoirh0L4gfDJgqJfyAYEiAQ2NU1aiqQaOKuBQ9dPIjNlUYIWE0qmpU1VBWRVy6H4wAAIxTUjSIDjDZAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">20201 (100.0%)</td>
 <td style="text-align: center;">3 (0.0%)</td>
 </tr>
@@ -1016,7 +1032,7 @@ No   Variable        Label                           Stats / Values             
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAFsAAAA3BAMAAACRLiuLAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjpWsprzAAAAQklEQVRIx2NgGNpAiQggKCgoAFWubEwQGI0qH1U+qnzglZOYtQWJA/RRTozbgUCB+JABgVHlo8pHlQ+wchKz9lAFAAczTLMlu/y5AAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAFsAAAA3BAMAAACRLiuLAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC8IwfgyAAAAQklEQVRIx2NgGNpAiQggKCgoAFWubEwQGI0qH1U+qnzglZOYtQWJA/RRTozbgUCB+JABgVHlo8pHlQ+wchKz9lAFAAczTLMlu/y5AAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">20204 (100.0%)</td>
 <td style="text-align: center;">0 (0.0%)</td>
 </tr>
@@ -1041,7 +1057,7 @@ No   Variable        Label                           Stats / Values             
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">81 distinct values</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjshtaplAAAAuklEQVRo3u3W2w2AIBBEUVrQDtQOpP/eFMOHL8BdVkPMncT4dzKRBXSOaNKtGUO6muywyXs/g4GBtYlVbfYzVtUOzAzrVauawlQNwf6OhRkzw9Q7AawNLEyDGRYgMANMfA/kMHE7MPkilDBRu4fY9rswWGHr27eHxdvKBosPmAIrzpoEm0rtwMDAwN7FsmeaFMu2AwMDk2LJ/anBku3AwBKzpsVu24F9i11WtAa7tPsvdvhuERtN4ogmC7zwaDNfy894AAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC8IwfgyAAAAuklEQVRo3u3W2w2AIBBEUVrQDtQOpP/eFMOHL8BdVkPMncT4dzKRBXSOaNKtGUO6muywyXs/g4GBtYlVbfYzVtUOzAzrVauawlQNwf6OhRkzw9Q7AawNLEyDGRYgMANMfA/kMHE7MPkilDBRu4fY9rswWGHr27eHxdvKBosPmAIrzpoEm0rtwMDAwN7FsmeaFMu2AwMDk2LJ/anBku3AwBKzpsVu24F9i11WtAa7tPsvdvhuERtN4ogmC7zwaDNfy894AAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">20204 (100.0%)</td>
 <td style="text-align: center;">0 (0.0%)</td>
 </tr>
@@ -1066,7 +1082,7 @@ No   Variable        Label                           Stats / Values             
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">18 distinct values</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjshtaplAAAAjUlEQVRo3u3YwQnAIAyFYVewG2g3aPbfraYo9dBYSAV7+N8x6ocQJGAIxJN4Z8sl0ZUHTEQOsMWY3dFRsw3Mvt3o4mBgYGBgYL/GdCAmL3aN0w7byzY/pmUwMDAbq891DlZLYGBgYGBgKzCdaWOsfdu0351kY3rqBaultgwGBgYGBgYGBgb2GctTEognJ4HHFnMHsjMvAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC8IwfgyAAAAjUlEQVRo3u3YwQnAIAyFYVewG2g3aPbfraYo9dBYSAV7+N8x6ocQJGAIxJN4Z8sl0ZUHTEQOsMWY3dFRsw3Mvt3o4mBgYGBgYL/GdCAmL3aN0w7byzY/pmUwMDAbq891DlZLYGBgYGBgKzCdaWOsfdu0351kY3rqBaultgwGBgYGBgYGBgb2GctTEognJ4HHFnMHsjMvAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">20204 (100.0%)</td>
 <td style="text-align: center;">0 (0.0%)</td>
 </tr>
@@ -1091,14 +1107,15 @@ No   Variable        Label                           Stats / Values             
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">13 distinct values</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBAkPOjshtaplAAAAnElEQVRo3u3YwQ2AIAyFYVbQDYQNcP/djJSEXjChRaPmfwcOkHyBA9A0BGJJLNkWXyqW9jNgYGBgYGBgYGBgYGBgYGCvw1ZLB6CLWbYKBgZ2IyZXPLoxxWQ3lhoDBvZRbLB/fo0NfvSPY3LYSZhMg/0JiypuTE1nMLAO1nmAbVgZp2Lqg6hlmANLbX9SGmY3pms6N6YXKxanJBBLDiJbwjYrlWODAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBQcSMC8IwfgyAAAAnElEQVRo3u3YwQ2AIAyFYVbQDYQNcP/djJSEXjChRaPmfwcOkHyBA9A0BGJJLNkWXyqW9jNgYGBgYGBgYGBgYGBgYGCvw1ZLB6CLWbYKBgZ2IyZXPLoxxWQ3lhoDBvZRbLB/fo0NfvSPY3LYSZhMg/0JiypuTE1nMLAO1nmAbVgZp2Lqg6hlmANLbX9SGmY3pms6N6YXKxanJBBLDiJbwjYrlWODAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">18768 (92.9%)</td>
 <td style="text-align: center;">1436 (7.1%)</td>
 </tr>
 </tbody>
 </table>
 
-<p>Generated by <a href="https://github.com/dcomtois/summarytools">summarytools</a> 1.0.1 (<a href="https://www.r-project.org/">R</a> version 4.3.2)<br>2024-04-09</p>
+<p>Generated by <a href="https://github.com/dcomtois/summarytools">summarytools</a> 1.0.1 (<a href="https://www.r-project.org/">R</a> version 4.3.2)<br>2024-05-07</p>
+</div>
 </div>
 </div>
 </div>
@@ -1114,7 +1131,7 @@ No   Variable        Label                           Stats / Values             
 <li>y por temas de funcionamiento de R, al realizar la operación de sacar casos perdidos, se borra toda la información de las etiquetas (labels), así que las recuperamos de la base original con el comando <code>copy_labels</code>, de la librería <code>sjlabelled</code>.</li>
 </ul>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>proc_data_original <span class="ot">&lt;-</span>proc_data</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1122,14 +1139,14 @@ No   Variable        Label                           Stats / Values             
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20204     9</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(proc_data))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4005</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span><span class="fu">na.omit</span>(proc_data)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1137,7 +1154,7 @@ No   Variable        Label                           Stats / Values             
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18765     9</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span>sjlabelled<span class="sc">::</span><span class="fu">copy_labels</span>(proc_data,proc_data_original)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1148,45 +1165,61 @@ No   Variable        Label                           Stats / Values             
 <h3 class="anchored" data-anchor-id="visualización-de-variables">3.2 Visualización de variables</h3>
 <p>Para visualizar variables mediante gráficos, en R el paquete más comúnmente usado es ggplot2. La lógica detrás de este paquete es que funciona por capas.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proc_data, <span class="fu">aes</span>(<span class="at">x =</span> conf_inst))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> conf_inst)) <span class="sc">+</span> </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> conf_inst)) <span class="sc">+</span> </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"coral"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> conf_inst)) <span class="sc">+</span> </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"coral"</span>)<span class="sc">+</span></span>
@@ -1195,11 +1228,15 @@ No   Variable        Label                           Stats / Values             
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el gráfico usando ggplot2</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>graph1 <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> conf_inst)) <span class="sc">+</span> </span>
@@ -1212,9 +1249,13 @@ No   Variable        Label                           Stats / Values             
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>graph1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details open="">
+</div>
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y lo podemos guardar:</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1239,12 +1280,11 @@ No   Variable        Label                           Stats / Values             
 <h4 class="anchored" data-anchor-id="tablas-de-contingencia-para-variables-categóricas">Tablas de contingencia para variables categóricas</h4>
 <p>Para tablas de contingencia categóricas utilizaremos la función sjt.xtab, de la librería <code>sjPlot</code>. Veamos primero una especificación simple: <span class="sidenote">sjPlot::sjt.xtab</span></p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-
 <table style="border-collapse:collapse; border:none;">
  <tbody><tr>
  <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">Educación</th>
@@ -1292,7 +1332,7 @@ No   Variable        Label                           Stats / Values             
 </div>
 <p>Al ejecutar el comando, el resultado aparece automáticamente en el visor de RStudio. A esta tabla podemos también agregar porcentajes de filas y/o columnas, según sea lo más relevante analizar. En general se recomienda agregar solo un porcentaje, de otra manera la tabla se satura de información. Además, vamos a quitar el pie de la tabla (conviene dejarlo solo si hay hipótesis asociadas al cruce simple entre las dos variables).</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(proc_data<span class="sc">$</span>educacion, proc_data<span class="sc">$</span>sexo,</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">show.col.prc=</span><span class="cn">TRUE</span>,</span>
@@ -1301,6 +1341,7 @@ No   Variable        Label                           Stats / Values             
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 25%">
@@ -1358,13 +1399,14 @@ No   Variable        Label                           Stats / Values             
 </table>
 </div>
 </div>
+</div>
 </section>
 <section id="tablas-de-promedio-de-variable-continua-por-una-categóricas" class="level4">
 <h4 class="anchored" data-anchor-id="tablas-de-promedio-de-variable-continua-por-una-categóricas">Tablas de promedio de variable continua por una categóricas</h4>
 <p>En ejemplo vamos a explorar datos de nuestra variable de confianza en instituciones <em>conf_inst</em> por los niveles educacionales <em>educacion</em>.</p>
 <p>Una forma rápida de explorar esto es mediante la función <code>tapply</code>, que nos entrega de manera simple el promedio de una variable por otra:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(proc_data<span class="sc">$</span>conf_inst, proc_data<span class="sc">$</span>educacion, mean)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1375,7 +1417,7 @@ No   Variable        Label                           Stats / Values             
 </div>
 <p>Aquí vemos en promedio de <em>conf_inst</em> para cada uno de los 3 niveles de la variable educación <em>educacion</em>. Si se estima conveniente este tipo de cruces se puede representar también en una tabla con más opciones de información y también de publicación. Para esto utilizaremos una función algo más compleja de la librería <code>dplyr</code>.<span class="sidenote">dplyr</span> Esta librería permite aplicar una serie de funciones concatenadas y enlazadas mediante el operador <code>%&gt;%</code>. El sentido de cada función aparece comentado abajo:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> <span class="co"># se especifica la base de datos</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(conf_inst,educacion) <span class="sc">%&gt;%</span> <span class="co"># se seleccionan las variables</span></span>
@@ -1418,7 +1460,7 @@ No   Variable        Label                           Stats / Values             
 </div>
 <p>Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función <code>geom_boxplot</code> de <code>gplot2</code>:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>graph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(proc_data, <span class="fu">aes</span>(<span class="at">x =</span>educacion, <span class="at">y =</span> conf_inst)) <span class="sc">+</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
@@ -1428,9 +1470,13 @@ No   Variable        Label                           Stats / Values             
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>graph</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details open="">
+</div>
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y lo podemos guardar:</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1442,7 +1488,7 @@ No   Variable        Label                           Stats / Values             
 </div>
 <p>Sin embargo, al ser los promedios similares no permite ver demasiadas diferencias… Probemos otro</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proc_data, <span class="fu">aes</span>(<span class="at">x =</span>educacion, <span class="at">y =</span> conf_inst)) <span class="sc">+</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -1450,12 +1496,16 @@ No   Variable        Label                           Stats / Values             
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>En este gráfico cada punto representa una observación para cada categoría. Por lo tanto, al existir tantos valores difernetes en cada categoría, el gráfico tampoco nos presenta información sustantiva ¿Qué necesitamos hacer? Necesitamos obtener exactamente los datos que queremos graficar, esto es, el promedio por cada categoría. Volvamos a <code>group_by</code></p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(educacion) <span class="sc">%&gt;%</span> </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio =</span> <span class="fu">mean</span>(conf_inst))</span>
@@ -1467,12 +1517,16 @@ No   Variable        Label                           Stats / Values             
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">12</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Este gráfico entrega un poco más de información, pero al ver pocas diferencias en el promedio de cada categoría no se logran evidenciar</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>idenpa <span class="ot">&lt;-</span> <span class="fu">factor</span>(proc_data<span class="sc">$</span>idenpa,</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Argentina"</span>,</span>
@@ -1522,9 +1576,13 @@ No   Variable        Label                           Stats / Values             
 <span id="cb41-46"><a href="#cb41-46" aria-hidden="true" tabindex="-1"></a>graph_box</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details open="">
+</div>
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y lo podemos guardar:</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1537,7 +1595,7 @@ No   Variable        Label                           Stats / Values             
 <p>De manera alternativa, podemos seguir explorando nuestros datos con otros gráficos</p>
 <p>Para varias variables univariadas, tipo escala likert, una buena alternativa es el paquete sjPlot, en este caso la función plot_stackfrq:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>graph2 <span class="ot">&lt;-</span> sjPlot<span class="sc">::</span><span class="fu">plot_stackfrq</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(proc_data, conf_gob,</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>                                 conf_cong,</span>
@@ -1549,9 +1607,13 @@ No   Variable        Label                           Stats / Values             
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>graph2</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details open="">
+</div>
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardamos</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1563,7 +1625,7 @@ No   Variable        Label                           Stats / Values             
 </div>
 <p>Para asociación de dos variables, retomemos el primer gráfico:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>graph3 <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> conf_inst, <span class="at">fill =</span> sexo)) <span class="sc">+</span> </span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
@@ -1575,9 +1637,13 @@ No   Variable        Label                           Stats / Values             
 <span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>graph3</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details open="">
+</div>
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardamos</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1589,7 +1655,7 @@ No   Variable        Label                           Stats / Values             
 </div>
 <p>una forma alternativa:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> conf_inst)) <span class="sc">+</span> </span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
@@ -1598,12 +1664,16 @@ No   Variable        Label                           Stats / Values             
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Para variables continuas</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>graph4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(proc_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(edad))) <span class="sc">+</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.6</span>, <span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"yellow"</span>) <span class="sc">+</span></span>
@@ -1614,9 +1684,13 @@ No   Variable        Label                           Stats / Values             
 <span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>graph4 </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<details open="">
+</div>
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardamos</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1633,7 +1707,7 @@ No   Variable        Label                           Stats / Values             
 <h3 class="anchored" data-anchor-id="asociación-entre-tres-variables">Asociación entre tres variables</h3>
 <p>con facet_wrap dividimos el gráfico en distintos paneles, según la cantidad de categorías que tenga una variable</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(educacion, sexo) <span class="sc">%&gt;%</span> </span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio =</span> <span class="fu">mean</span>(conf_inst))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1642,7 +1716,7 @@ No   Variable        Label                           Stats / Values             
 <pre><code>`summarise()` has grouped output by 'educacion'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span>educacion, <span class="at">y =</span> promedio)) <span class="sc">+</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -1652,12 +1726,16 @@ No   Variable        Label                           Stats / Values             
 <span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>o alternativamente…</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span>sexo, <span class="at">y =</span> promedio)) <span class="sc">+</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -1667,12 +1745,16 @@ No   Variable        Label                           Stats / Values             
 <span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>educacion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Probemos otras agrupaciones. Por ejemplo, categorizar edad en grupos para estimar promedios grupales. Una función clave para lograr esto puede ser case_when de dplyr, combinándolo con mutate. Es decir, crear una nueva variable a partir de un condicional</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(proc_data<span class="sc">$</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1680,7 +1762,7 @@ No   Variable        Label                           Stats / Values             
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   16.00   26.00   38.00   40.53   53.00  100.00 </code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> </span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edad_groups =</span> <span class="fu">case_when</span>(edad <span class="sc">&gt;=</span><span class="dv">16</span> <span class="sc">&amp;</span> edad<span class="sc">&lt;=</span><span class="dv">25</span> <span class="sc">~</span> <span class="st">"Entre 16 y 25 años"</span>,</span>
@@ -1698,7 +1780,7 @@ Entre 16 y 25 años Entre 26 y 39 años Entre 40 y 65 años     Más de 65 años
 </div>
 <p>Ahora creamos este gráfico</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(educacion, edad_groups) <span class="sc">%&gt;%</span> </span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio =</span> <span class="fu">mean</span>(conf_inst))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1707,7 +1789,7 @@ Entre 16 y 25 años Entre 26 y 39 años Entre 40 y 65 años     Más de 65 años
 <pre><code>`summarise()` has grouped output by 'educacion'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span>educacion, <span class="at">y =</span> promedio)) <span class="sc">+</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -1717,12 +1799,16 @@ Entre 16 y 25 años Entre 26 y 39 años Entre 40 y 65 años     Más de 65 años
 <span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>edad_groups)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>y lo podemos seguir complicando, por ejemplo, agregando otra variable en el gráfico</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(educacion, sexo, edad_groups) <span class="sc">%&gt;%</span> </span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio =</span> <span class="fu">mean</span>(conf_inst))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1731,7 +1817,7 @@ Entre 16 y 25 años Entre 26 y 39 años Entre 40 y 65 años     Más de 65 años
 <pre><code>`summarise()` has grouped output by 'educacion', 'sexo'. You can override using
 the `.groups` argument.</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span>educacion, <span class="at">y =</span> promedio, <span class="at">color=</span>sexo)) <span class="sc">+</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -1741,12 +1827,16 @@ the `.groups` argument.</code></pre>
 <span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>edad_groups)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Con ‘color’ (gráfico anterior) solo se diferencia la variable según color. Con ‘shape’ (gráfico siguiente) también se diferencia según la forma de la representación</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span>educacion, <span class="at">y =</span> promedio, <span class="at">color=</span>sexo, <span class="at">shape=</span>sexo)) <span class="sc">+</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -1756,12 +1846,16 @@ the `.groups` argument.</code></pre>
 <span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>edad_groups)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Y tenemos aún un problema… las categorías del eje x se están solapando. Eso lo podemos corregir modificando el ángulo del eje x.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> educacion, <span class="at">y =</span> promedio, <span class="at">color =</span> sexo, <span class="at">shape =</span> sexo)) <span class="sc">+</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -1772,7 +1866,11 @@ the `.groups` argument.</code></pre>
 <span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1785,7 +1883,7 @@ the `.groups` argument.</code></pre>
 <h3 class="anchored" data-anchor-id="retomando-desde-el-comienzo">Retomando desde el comienzo</h3>
 <p>Cargamos ambas bases de datos desde internet</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData"</span>)) <span class="co">#Cargar base de datos</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/data_wvs.RData"</span>)) <span class="co">#Cargar base de datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1793,7 +1891,7 @@ the `.groups` argument.</code></pre>
 </div>
 <p>Para trabajar con ambas bases, agruparemos las variables de interés por país, por lo que ya no trabajaremos directamente con individuos.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>context_data <span class="ot">&lt;-</span> wvs <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(B_COUNTRY) <span class="sc">%&gt;%</span> <span class="co"># Agrupar por país</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">gdp =</span> <span class="fu">mean</span>(GDPpercap1, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># Promedio de GDP per capita</span></span>
@@ -1811,28 +1909,28 @@ the `.groups` argument.</code></pre>
 <section id="probemos-merge" class="level3">
 <h3 class="anchored" data-anchor-id="probemos-merge">Probemos merge</h3>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">merge</span>(proc_data, context_data, <span class="at">by=</span><span class="st">"idenpa"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>data tiene 12 observaciones y 5 variables. En el fondo lo que hace es vincular solo aquellos casos que tienen datos disponibles para ambas bases originales</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(proc_data, context_data, <span class="at">by=</span><span class="st">"idenpa"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>data1 tiene 64 observaciones y 5 variables. Esta función lo que hace es mantener todos los valores de la base de la ‘derecha’ (los 64 originales) y añadir los de la ‘izquierda’ con la identificación que corresponde. Para el resto de países que no tienen valores en la base del latinobarómetro, los agrega como NA</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(proc_data, context_data, <span class="at">by=</span><span class="st">"idenpa"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>data2 tiene 18 observaciones y 5 variables. Esta función es el proceso inverso de right_join. Mantiene todos los valores de la base de la ‘izquierda’ y los vincula con los de la ‘derecha’ cuando corresponde. Para el resto de países de latinobarómetro que no tienen casos en WVS, los deja como NA en las nuevas varaibles</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">full_join</span>(proc_data, context_data, <span class="at">by=</span><span class="st">"idenpa"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1841,7 +1939,7 @@ the `.groups` argument.</code></pre>
 <p>¿Cuál es la mejor opción para este caso?</p>
 <p>Vamos a quedarnos con la función original de R base ‘merge’ ya que para poder visualizar y representar resultados en un gráfico, en este ejemplo solo nos interesa mostrar aquellos casos completos.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">idenpa =</span> <span class="fu">as.character</span>(idenpa)) <span class="sc">%&gt;%</span></span>
@@ -1870,7 +1968,7 @@ the `.groups` argument.</code></pre>
 </details>
 </div>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdp, <span class="at">y =</span> promedio, <span class="at">label =</span> idenpa)) <span class="sc">+</span></span>
@@ -1880,7 +1978,11 @@ the `.groups` argument.</code></pre>
 <span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="04-content_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-content_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -2022,10 +2124,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/R-analisis-datos\.netlify\.app");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2035,8 +2154,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2048,7 +2176,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2092,6 +2343,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2117,6 +2369,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2211,16 +2489,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb78-33"><a href="#cb78-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Librerías</span></span>
 <span id="cb78-34"><a href="#cb78-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-35"><a href="#cb78-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,message=FALSE,warning=FALSE}</span></span>
-<span id="cb78-36"><a href="#cb78-36" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(sjlabelled,</span>
-<span id="cb78-37"><a href="#cb78-37" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co">#Manipulacion de datos</span></span>
-<span id="cb78-38"><a href="#cb78-38" aria-hidden="true" tabindex="-1"></a>              stargazer, <span class="co">#Tablas</span></span>
-<span id="cb78-39"><a href="#cb78-39" aria-hidden="true" tabindex="-1"></a>              sjmisc, <span class="co"># Tablas</span></span>
-<span id="cb78-40"><a href="#cb78-40" aria-hidden="true" tabindex="-1"></a>              summarytools, <span class="co"># Tablas</span></span>
-<span id="cb78-41"><a href="#cb78-41" aria-hidden="true" tabindex="-1"></a>              kableExtra, <span class="co">#Tablas</span></span>
-<span id="cb78-42"><a href="#cb78-42" aria-hidden="true" tabindex="-1"></a>              sjPlot, <span class="co">#Tablas y gráficos</span></span>
-<span id="cb78-43"><a href="#cb78-43" aria-hidden="true" tabindex="-1"></a>              corrplot, <span class="co"># Correlaciones</span></span>
-<span id="cb78-44"><a href="#cb78-44" aria-hidden="true" tabindex="-1"></a>              sessioninfo, <span class="co"># Información de la sesión de trabajo</span></span>
-<span id="cb78-45"><a href="#cb78-45" aria-hidden="true" tabindex="-1"></a>              ggplot2) <span class="co"># Para la mayoría de los gráficos</span></span>
+<span id="cb78-36"><a href="#cb78-36" aria-hidden="true" tabindex="-1"></a><span class="in">pacman::p_load(sjlabelled,</span></span>
+<span id="cb78-37"><a href="#cb78-37" aria-hidden="true" tabindex="-1"></a><span class="in">               dplyr, #Manipulacion de datos</span></span>
+<span id="cb78-38"><a href="#cb78-38" aria-hidden="true" tabindex="-1"></a><span class="in">              stargazer, #Tablas</span></span>
+<span id="cb78-39"><a href="#cb78-39" aria-hidden="true" tabindex="-1"></a><span class="in">              sjmisc, # Tablas</span></span>
+<span id="cb78-40"><a href="#cb78-40" aria-hidden="true" tabindex="-1"></a><span class="in">              summarytools, # Tablas</span></span>
+<span id="cb78-41"><a href="#cb78-41" aria-hidden="true" tabindex="-1"></a><span class="in">              kableExtra, #Tablas</span></span>
+<span id="cb78-42"><a href="#cb78-42" aria-hidden="true" tabindex="-1"></a><span class="in">              sjPlot, #Tablas y gráficos</span></span>
+<span id="cb78-43"><a href="#cb78-43" aria-hidden="true" tabindex="-1"></a><span class="in">              corrplot, # Correlaciones</span></span>
+<span id="cb78-44"><a href="#cb78-44" aria-hidden="true" tabindex="-1"></a><span class="in">              sessioninfo, # Información de la sesión de trabajo</span></span>
+<span id="cb78-45"><a href="#cb78-45" aria-hidden="true" tabindex="-1"></a><span class="in">              ggplot2) # Para la mayoría de los gráficos</span></span>
 <span id="cb78-46"><a href="#cb78-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb78-47"><a href="#cb78-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-48"><a href="#cb78-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Cargar base de datos</span></span>
@@ -2228,13 +2506,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb78-50"><a href="#cb78-50" aria-hidden="true" tabindex="-1"></a>Vamos a cargar la base de datos **latinobarometro_proc.Rdata**, que generamos durante la práctica anterior. Se puede llamar desde el directorio en que se guardó anteriormente dando la ruta completa:</span>
 <span id="cb78-51"><a href="#cb78-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-52"><a href="#cb78-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb78-53"><a href="#cb78-53" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"ruta-hacia-carpeta-local/latinobarometro_proc.RData"</span>) <span class="co">#Cargar base de datos</span></span>
+<span id="cb78-53"><a href="#cb78-53" aria-hidden="true" tabindex="-1"></a><span class="in">load("ruta-hacia-carpeta-local/latinobarometro_proc.RData") #Cargar base de datos</span></span>
 <span id="cb78-54"><a href="#cb78-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb78-55"><a href="#cb78-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-56"><a href="#cb78-56" aria-hidden="true" tabindex="-1"></a>O también para esta práctica la podemos llamar directamente desde nuestro sitio web:</span>
 <span id="cb78-57"><a href="#cb78-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-58"><a href="#cb78-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
-<span id="cb78-59"><a href="#cb78-59" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData"</span>)) <span class="co">#Cargar base de datos</span></span>
+<span id="cb78-59"><a href="#cb78-59" aria-hidden="true" tabindex="-1"></a><span class="in">load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/files/data/latinobarometro_total.RData")) #Cargar base de datos</span></span>
 <span id="cb78-60"><a href="#cb78-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb78-61"><a href="#cb78-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-62"><a href="#cb78-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Exploración inicial general de la base de datos</span>
@@ -2321,11 +2599,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb78-153"><a href="#cb78-153" aria-hidden="true" tabindex="-1"></a>Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva de publicación se verá así:</span>
 <span id="cb78-154"><a href="#cb78-154" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-155"><a href="#cb78-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE }</span></span>
-<span id="cb78-156"><a href="#cb78-156" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(<span class="fu">dfSummary</span>(proc_data, <span class="at">headings=</span><span class="cn">FALSE</span>))</span>
+<span id="cb78-156"><a href="#cb78-156" aria-hidden="true" tabindex="-1"></a><span class="in">view(dfSummary(proc_data, headings=FALSE))</span></span>
 <span id="cb78-157"><a href="#cb78-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb78-158"><a href="#cb78-158" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-159"><a href="#cb78-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb78-160"><a href="#cb78-160" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">dfSummary</span>(proc_data, <span class="at">headings =</span> <span class="cn">FALSE</span>), <span class="at">method =</span> <span class="st">"render"</span>)</span>
+<span id="cb78-160"><a href="#cb78-160" aria-hidden="true" tabindex="-1"></a><span class="in">print(dfSummary(proc_data, headings = FALSE), method = "render")</span></span>
 <span id="cb78-161"><a href="#cb78-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb78-162"><a href="#cb78-162" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-163"><a href="#cb78-163" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Nota sobre casos perdidos (NAs) [na.omit(data)]{.sidenote}</span></span>
@@ -2489,56 +2767,56 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb78-349"><a href="#cb78-349" aria-hidden="true" tabindex="-1"></a>Este gráfico entrega un poco más de información, pero al ver pocas diferencias en el promedio de cada categoría no se logran evidenciar</span>
 <span id="cb78-350"><a href="#cb78-350" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-351"><a href="#cb78-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE}</span></span>
-<span id="cb78-352"><a href="#cb78-352" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>idenpa <span class="ot">&lt;-</span> <span class="fu">factor</span>(proc_data<span class="sc">$</span>idenpa,</span>
-<span id="cb78-353"><a href="#cb78-353" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Argentina"</span>,</span>
-<span id="cb78-354"><a href="#cb78-354" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Bolivia"</span>,</span>
-<span id="cb78-355"><a href="#cb78-355" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Brasil"</span>,</span>
-<span id="cb78-356"><a href="#cb78-356" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Chile"</span>,</span>
-<span id="cb78-357"><a href="#cb78-357" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Colombia"</span>,</span>
-<span id="cb78-358"><a href="#cb78-358" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Costa Rica"</span>,</span>
-<span id="cb78-359"><a href="#cb78-359" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Cuba"</span>,</span>
-<span id="cb78-360"><a href="#cb78-360" aria-hidden="true" tabindex="-1"></a>         <span class="st">"República Dominicana"</span>,</span>
-<span id="cb78-361"><a href="#cb78-361" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Ecuador"</span>,</span>
-<span id="cb78-362"><a href="#cb78-362" aria-hidden="true" tabindex="-1"></a>         <span class="st">"El Salvador"</span>,</span>
-<span id="cb78-363"><a href="#cb78-363" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Guatemala"</span>,</span>
-<span id="cb78-364"><a href="#cb78-364" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Honduras"</span>,</span>
-<span id="cb78-365"><a href="#cb78-365" aria-hidden="true" tabindex="-1"></a>         <span class="st">"México"</span>,</span>
-<span id="cb78-366"><a href="#cb78-366" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Nicaragua"</span>,</span>
-<span id="cb78-367"><a href="#cb78-367" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Panamá"</span>,</span>
-<span id="cb78-368"><a href="#cb78-368" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Paraguay"</span>,</span>
-<span id="cb78-369"><a href="#cb78-369" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Uruguay"</span>,</span>
-<span id="cb78-370"><a href="#cb78-370" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Venezuela"</span>),</span>
-<span id="cb78-371"><a href="#cb78-371" aria-hidden="true" tabindex="-1"></a>            <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"32"</span>,</span>
-<span id="cb78-372"><a href="#cb78-372" aria-hidden="true" tabindex="-1"></a>         <span class="st">"68"</span>,</span>
-<span id="cb78-373"><a href="#cb78-373" aria-hidden="true" tabindex="-1"></a>         <span class="st">"76"</span>,</span>
-<span id="cb78-374"><a href="#cb78-374" aria-hidden="true" tabindex="-1"></a>         <span class="st">"152"</span>,</span>
-<span id="cb78-375"><a href="#cb78-375" aria-hidden="true" tabindex="-1"></a>         <span class="st">"170"</span>,</span>
-<span id="cb78-376"><a href="#cb78-376" aria-hidden="true" tabindex="-1"></a>         <span class="st">"188"</span>,</span>
-<span id="cb78-377"><a href="#cb78-377" aria-hidden="true" tabindex="-1"></a>         <span class="st">"214"</span>,</span>
-<span id="cb78-378"><a href="#cb78-378" aria-hidden="true" tabindex="-1"></a>         <span class="st">"218"</span>,</span>
-<span id="cb78-379"><a href="#cb78-379" aria-hidden="true" tabindex="-1"></a>         <span class="st">"222"</span>,</span>
-<span id="cb78-380"><a href="#cb78-380" aria-hidden="true" tabindex="-1"></a>         <span class="st">"320"</span>,</span>
-<span id="cb78-381"><a href="#cb78-381" aria-hidden="true" tabindex="-1"></a>         <span class="st">"340"</span>,</span>
-<span id="cb78-382"><a href="#cb78-382" aria-hidden="true" tabindex="-1"></a>         <span class="st">"484"</span>,</span>
-<span id="cb78-383"><a href="#cb78-383" aria-hidden="true" tabindex="-1"></a>         <span class="st">"558"</span>,</span>
-<span id="cb78-384"><a href="#cb78-384" aria-hidden="true" tabindex="-1"></a>         <span class="st">"591"</span>,</span>
-<span id="cb78-385"><a href="#cb78-385" aria-hidden="true" tabindex="-1"></a>         <span class="st">"600"</span>,</span>
-<span id="cb78-386"><a href="#cb78-386" aria-hidden="true" tabindex="-1"></a>         <span class="st">"604"</span>,</span>
-<span id="cb78-387"><a href="#cb78-387" aria-hidden="true" tabindex="-1"></a>         <span class="st">"858"</span>,</span>
-<span id="cb78-388"><a href="#cb78-388" aria-hidden="true" tabindex="-1"></a>         <span class="st">"862"</span>))</span>
+<span id="cb78-352"><a href="#cb78-352" aria-hidden="true" tabindex="-1"></a><span class="in">proc_data$idenpa &lt;- factor(proc_data$idenpa,</span></span>
+<span id="cb78-353"><a href="#cb78-353" aria-hidden="true" tabindex="-1"></a><span class="in">            labels=c("Argentina",</span></span>
+<span id="cb78-354"><a href="#cb78-354" aria-hidden="true" tabindex="-1"></a><span class="in">         "Bolivia",</span></span>
+<span id="cb78-355"><a href="#cb78-355" aria-hidden="true" tabindex="-1"></a><span class="in">         "Brasil",</span></span>
+<span id="cb78-356"><a href="#cb78-356" aria-hidden="true" tabindex="-1"></a><span class="in">         "Chile",</span></span>
+<span id="cb78-357"><a href="#cb78-357" aria-hidden="true" tabindex="-1"></a><span class="in">         "Colombia",</span></span>
+<span id="cb78-358"><a href="#cb78-358" aria-hidden="true" tabindex="-1"></a><span class="in">         "Costa Rica",</span></span>
+<span id="cb78-359"><a href="#cb78-359" aria-hidden="true" tabindex="-1"></a><span class="in">         "Cuba",</span></span>
+<span id="cb78-360"><a href="#cb78-360" aria-hidden="true" tabindex="-1"></a><span class="in">         "República Dominicana",</span></span>
+<span id="cb78-361"><a href="#cb78-361" aria-hidden="true" tabindex="-1"></a><span class="in">         "Ecuador",</span></span>
+<span id="cb78-362"><a href="#cb78-362" aria-hidden="true" tabindex="-1"></a><span class="in">         "El Salvador",</span></span>
+<span id="cb78-363"><a href="#cb78-363" aria-hidden="true" tabindex="-1"></a><span class="in">         "Guatemala",</span></span>
+<span id="cb78-364"><a href="#cb78-364" aria-hidden="true" tabindex="-1"></a><span class="in">         "Honduras",</span></span>
+<span id="cb78-365"><a href="#cb78-365" aria-hidden="true" tabindex="-1"></a><span class="in">         "México",</span></span>
+<span id="cb78-366"><a href="#cb78-366" aria-hidden="true" tabindex="-1"></a><span class="in">         "Nicaragua",</span></span>
+<span id="cb78-367"><a href="#cb78-367" aria-hidden="true" tabindex="-1"></a><span class="in">         "Panamá",</span></span>
+<span id="cb78-368"><a href="#cb78-368" aria-hidden="true" tabindex="-1"></a><span class="in">         "Paraguay",</span></span>
+<span id="cb78-369"><a href="#cb78-369" aria-hidden="true" tabindex="-1"></a><span class="in">         "Uruguay",</span></span>
+<span id="cb78-370"><a href="#cb78-370" aria-hidden="true" tabindex="-1"></a><span class="in">         "Venezuela"),</span></span>
+<span id="cb78-371"><a href="#cb78-371" aria-hidden="true" tabindex="-1"></a><span class="in">            levels=c("32",</span></span>
+<span id="cb78-372"><a href="#cb78-372" aria-hidden="true" tabindex="-1"></a><span class="in">         "68",</span></span>
+<span id="cb78-373"><a href="#cb78-373" aria-hidden="true" tabindex="-1"></a><span class="in">         "76",</span></span>
+<span id="cb78-374"><a href="#cb78-374" aria-hidden="true" tabindex="-1"></a><span class="in">         "152",</span></span>
+<span id="cb78-375"><a href="#cb78-375" aria-hidden="true" tabindex="-1"></a><span class="in">         "170",</span></span>
+<span id="cb78-376"><a href="#cb78-376" aria-hidden="true" tabindex="-1"></a><span class="in">         "188",</span></span>
+<span id="cb78-377"><a href="#cb78-377" aria-hidden="true" tabindex="-1"></a><span class="in">         "214",</span></span>
+<span id="cb78-378"><a href="#cb78-378" aria-hidden="true" tabindex="-1"></a><span class="in">         "218",</span></span>
+<span id="cb78-379"><a href="#cb78-379" aria-hidden="true" tabindex="-1"></a><span class="in">         "222",</span></span>
+<span id="cb78-380"><a href="#cb78-380" aria-hidden="true" tabindex="-1"></a><span class="in">         "320",</span></span>
+<span id="cb78-381"><a href="#cb78-381" aria-hidden="true" tabindex="-1"></a><span class="in">         "340",</span></span>
+<span id="cb78-382"><a href="#cb78-382" aria-hidden="true" tabindex="-1"></a><span class="in">         "484",</span></span>
+<span id="cb78-383"><a href="#cb78-383" aria-hidden="true" tabindex="-1"></a><span class="in">         "558",</span></span>
+<span id="cb78-384"><a href="#cb78-384" aria-hidden="true" tabindex="-1"></a><span class="in">         "591",</span></span>
+<span id="cb78-385"><a href="#cb78-385" aria-hidden="true" tabindex="-1"></a><span class="in">         "600",</span></span>
+<span id="cb78-386"><a href="#cb78-386" aria-hidden="true" tabindex="-1"></a><span class="in">         "604",</span></span>
+<span id="cb78-387"><a href="#cb78-387" aria-hidden="true" tabindex="-1"></a><span class="in">         "858",</span></span>
+<span id="cb78-388"><a href="#cb78-388" aria-hidden="true" tabindex="-1"></a><span class="in">         "862"))</span></span>
 <span id="cb78-389"><a href="#cb78-389" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-390"><a href="#cb78-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-391"><a href="#cb78-391" aria-hidden="true" tabindex="-1"></a>graph_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(proc_data, <span class="fu">aes</span>(<span class="at">x =</span> idenpa, <span class="at">y =</span> conf_inst)) <span class="sc">+</span></span>
-<span id="cb78-392"><a href="#cb78-392" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb78-393"><a href="#cb78-393" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"País"</span>, <span class="at">y =</span> <span class="st">"Confianza en instituciones"</span>) <span class="sc">+</span></span>
-<span id="cb78-394"><a href="#cb78-394" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb78-395"><a href="#cb78-395" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))  <span class="co"># Rotar las etiquetas del eje x</span></span>
+<span id="cb78-391"><a href="#cb78-391" aria-hidden="true" tabindex="-1"></a><span class="in">graph_box &lt;- ggplot(proc_data, aes(x = idenpa, y = conf_inst)) +</span></span>
+<span id="cb78-392"><a href="#cb78-392" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_boxplot() +</span></span>
+<span id="cb78-393"><a href="#cb78-393" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(x = "País", y = "Confianza en instituciones") +</span></span>
+<span id="cb78-394"><a href="#cb78-394" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal()+</span></span>
+<span id="cb78-395"><a href="#cb78-395" aria-hidden="true" tabindex="-1"></a><span class="in">  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotar las etiquetas del eje x</span></span>
 <span id="cb78-396"><a href="#cb78-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-397"><a href="#cb78-397" aria-hidden="true" tabindex="-1"></a>graph_box</span>
+<span id="cb78-397"><a href="#cb78-397" aria-hidden="true" tabindex="-1"></a><span class="in">graph_box</span></span>
 <span id="cb78-398"><a href="#cb78-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-399"><a href="#cb78-399" aria-hidden="true" tabindex="-1"></a><span class="co"># y lo podemos guardar:</span></span>
+<span id="cb78-399"><a href="#cb78-399" aria-hidden="true" tabindex="-1"></a><span class="in"># y lo podemos guardar:</span></span>
 <span id="cb78-400"><a href="#cb78-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-401"><a href="#cb78-401" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(graph_box, <span class="at">file=</span><span class="st">"files/img/graph.png"</span>)</span>
+<span id="cb78-401"><a href="#cb78-401" aria-hidden="true" tabindex="-1"></a><span class="in">ggsave(graph_box, file="files/img/graph.png")</span></span>
 <span id="cb78-402"><a href="#cb78-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb78-403"><a href="#cb78-403" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-404"><a href="#cb78-404" aria-hidden="true" tabindex="-1"></a>De manera alternativa, podemos seguir explorando nuestros datos con otros gráficos</span>
@@ -2812,13 +3090,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-left">
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/R-data-analisis">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/R-data-analisis">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+</div>
   </div>
 </footer>
+
 
 
 
