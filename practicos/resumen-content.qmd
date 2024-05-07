@@ -362,7 +362,7 @@ En la @tbl-sjmisc podemos observar los descriptivos generales de la base de dato
 Y si queremos visualizar algo más:
 
 ```{r}
-#| label: plot-descriptivos
+#| label: fig-descriptivos
 #| fig-cap: "Frecuencias Cohesión barrial"
 proc_data %>% dplyr::select(ideal, integracion, identificacion, pertenencia) %>% 
   sjPlot::plot_stackfrq()+
@@ -370,7 +370,7 @@ proc_data %>% dplyr::select(ideal, integracion, identificacion, pertenencia) %>%
 
 ```
 
-En la @plot-descriptivos podemos ver la distribución de las variables de cohesión barrial, donde se puede observar que más del 65% de la muestra está de acuerdo o totalmente de acuerdo con las afirmaciones indicadas.
+En la @fig-descriptivos podemos ver la distribución de las variables de cohesión barrial, donde se puede observar que más del 65% de la muestra está de acuerdo o totalmente de acuerdo con las afirmaciones indicadas.
 
 ### Asociación de variables
 
@@ -391,14 +391,14 @@ corrplot.mixed(M)
 o podemos ver específicamente la asociación de las variables de cohesión barrial
 
 ```{r}
-#| label: cor-cohesion
+#| label: fig-cor-cohesion
 #| fig-cap: "Correlación Cohesión barrial"
 
 M2 <- cor(dplyr::select(proc_data, ideal, integracion, identificacion, pertenencia), use = "complete.obs")
 corrplot.mixed(M2)
 ```
 
-La @cor-cohesion muestra que la asociación de las cuatro variables de cohesión barrial es alta y positiva, según Cohen (1998). En general el tamaño de efecto varía entre 0.58 la más baja y 0.69 la más alta.
+La @fig-cor-cohesion muestra que la asociación de las cuatro variables de cohesión barrial es alta y positiva, según Cohen (1998). En general el tamaño de efecto varía entre 0.58 la más baja y 0.69 la más alta.
 
 ### Construcción de escala
 
@@ -418,7 +418,7 @@ summary(proc_data$cohesion_barrial)
 y la podemos visualizar en un gráfico:
 
 ```{r}
-#| label: plot-cohesion
+#| label: fig-plot-cohesion
 #| fig-cap: "Histograma Cohesión barrial"
 
 
@@ -429,7 +429,7 @@ ggplot(proc_data, aes(x = cohesion_barrial)) +
   ylab("Cantidad")
 ```
 
-La @plot-cohesion muestra la distribución de la nueva escala de Cohesión Barrial que construimos. En general, la mayor concentración de casos está en la categoría 12 y que sumado a un promedio de 10.33 según los descriptivos anteriores, podríamos afirmar que la cohesión barrial en Chile es alta.
+La @fig-plot-cohesion muestra la distribución de la nueva escala de Cohesión Barrial que construimos. En general, la mayor concentración de casos está en la categoría 12 y que sumado a un promedio de 10.33 según los descriptivos anteriores, podríamos afirmar que la cohesión barrial en Chile es alta.
 
 # Subir a github
 
