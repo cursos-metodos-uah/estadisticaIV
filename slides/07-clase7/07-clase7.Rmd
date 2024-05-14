@@ -395,6 +395,25 @@ R2
 texreg::knitreg(reg1, caption="")
 ```
 
+---
+
+```{r echo=FALSE}
+data <- as.data.frame(cbind(data,
+              edad=c(25,20,20,30,45,30,45,40)))
+```
+
+
+```{r results='asis'}
+reg2 <- lm(Ingreso~Educacion+edad, data = data)
+texreg::knitreg(reg2, caption="")
+```
+
+---
+
+## Parcialización
+
+.center[![:scale 50%](../../files/img/ingresoeducexp.png)]
+
 
 ---
 
