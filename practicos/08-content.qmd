@@ -30,6 +30,12 @@ pacman::p_load(dplyr, car, sjmisc, sjPlot, sjlabelled, stargazer, kableExtra, co
 load("files/elsoc2016_proc.RData")
 ```
 
+o desde internet:
+
+```{r eval=FALSE}
+load(url("https://github.com/Kevin-carrasco/R-data-analisis/raw/main/practicos/files/elsoc2016_proc.RData"))
+```
+
 ## Análisis descriptivo
 
 ```{r}
@@ -65,7 +71,7 @@ colnames(M) <-c("(A)", "(B)","(C)", "(D)")
 
 ```{r}
 #| label: cor-complete
-#| fig-cap: "Cohesión variables elsoc 2016"
+#| fig-cap: "Correlación variables elsoc 2016"
 
 corrplot::corrplot(M,
   method = "color", # Cambia los círculos por color completo de cada cuadrante
@@ -105,7 +111,7 @@ El sentido de la recta que resume de mejor manera la relación entre dos variabl
 
 ¿Cómo funciona esto con nuestro ejemplo?
 
-```{r warning=FALSE}
+```{r warning=FALSE, error=FALSE, message=FALSE}
 #Grafico x1 = ACT
 graph1 <- ggplot(proc_data, aes(x = edad, y = cohesion_barrial)) +
   geom_point(size = 1) +  # Puntos
