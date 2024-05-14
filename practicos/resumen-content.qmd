@@ -431,6 +431,11 @@ ggplot(proc_data, aes(x = cohesion_barrial)) +
 
 La @fig-plot-cohesion muestra la distribución de la nueva escala de Cohesión Barrial que construimos. En general, la mayor concentración de casos está en la categoría 12 y que sumado a un promedio de 10.33 según los descriptivos anteriores, podríamos afirmar que la cohesión barrial en Chile es alta.
 
+```{r echo=FALSE}
+save(proc_data, file = "files/elsoc2016_proc.RData")
+```
+
+
 # Subir a github
 
 Una vez que tenemos nuestro cambios hechos, vamos a Github desktop y seguimos los siguientes pasos:
