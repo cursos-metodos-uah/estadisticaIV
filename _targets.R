@@ -3,7 +3,7 @@ library(tarchetypes)
 suppressPackageStartupMessages(library(tidyverse))
 
 class_number <- "SOC01020-1"
-base_url <- "https://investigacion-cuantitativa.netlify.app"
+base_url <- "https://r-data-analisis.netlify.app"
 page_suffix <- ".html"
 
 options(tidyverse.quiet = TRUE,
