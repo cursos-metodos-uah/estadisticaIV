@@ -83,18 +83,6 @@
     ]
   },
   {
-    "objectID": "practicos/09-content.html#variables-dummy",
-    "href": "practicos/09-content.html#variables-dummy",
-    "title": "09: Regresión lineal y valores predichos",
-    "section": "Variables dummy",
-    "text": "Variables dummy\nUna forma de pasar una variable categórica a dummies es con la función dummy_cols del paquete fastDummies\n\n\nCódigo\nelsoc &lt;- dummy_cols(elsoc, select_columns = \"quintilemiss\")\nhead(elsoc[,16:22])\n\n\n  quintilemiss quintilemiss_Quintil 1 quintilemiss_Quintil 2\n1    Quintil 1                      1                      0\n2    Quintil 5                      0                      0\n3    Quintil 1                      1                      0\n4    Quintil 5                      0                      0\n5      Missing                      0                      0\n6    Quintil 3                      0                      0\n  quintilemiss_Quintil 3 quintilemiss_Quintil 4 quintilemiss_Quintil 5\n1                      0                      0                      0\n2                      0                      0                      1\n3                      0                      0                      0\n4                      0                      0                      1\n5                      0                      0                      0\n6                      1                      0                      0\n  quintilemiss_Missing\n1                    0\n2                    0\n3                    0\n4                    0\n5                    1\n6                    0\n\n\n¿cómo hacerlo para una variable numérica?\nTambién existen muchas formas, como por ejemplo establecer como punto de corte la media o la mediana, o ver la distribución de las respuestas y tratar de establecer una distribución homogénea entre las dos nuevas categorías. Otra opción es utilizar alguna fuente externa que nos permita establecer un punto de corte.\n\n\nCódigo\nsummary(elsoc$ing_pcap)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  12000  100000  166667  263058  300000 5025000     196 \n\n\nPor ejemplo, el Ministerio de Desarrollo Social y Familia establece en $31 la línea de la pobreza en términos de ingreso por persona equivalente, que corresponde al ingreso total del hogar dividido por el número de personas. En nuestro caso, una forma de hacer esta agrupación de valores es con la función case_when del paquete dplyr (similar a ifelse).\n\n\nCódigo\nelsoc &lt;- elsoc %&gt;% rowwise() %&gt;%  mutate(linea_pobreza = case_when(ing_pcap&lt;=129964~0,\n                                                                   ing_pcap&gt;129964~1,\n                                                                   TRUE ~ NA))\ntable(elsoc$linea_pobreza)\n\n\n\n   0    1 \n1337 2215",
-    "crumbs": [
-      "Prácticos",
-      "Talleres",
-      "10: Prácttico 9"
-    ]
-  },
-  {
     "objectID": "practicos/09-content.html#cálculo-de-valores-predichos",
     "href": "practicos/09-content.html#cálculo-de-valores-predichos",
     "title": "09: Regresión lineal y valores predichos",

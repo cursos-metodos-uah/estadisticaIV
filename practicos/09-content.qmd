@@ -139,32 +139,6 @@ elsoc$quintilemiss <- factor(elsoc$quintilemiss ,levels = c(1,2,3,4,5,6),labels 
 elsoc %>% group_by(quintilemiss) %>% summarise(n=n())
 ```
 
-## Variables dummy
-
-Una forma de pasar una variable categórica a dummies es con la función dummy_cols del paquete fastDummies
-
-```{r}
-elsoc <- dummy_cols(elsoc, select_columns = "quintilemiss")
-head(elsoc[,16:22])
-```
-
-¿cómo hacerlo para una variable *numérica*?
-
-También existen muchas formas, como por ejemplo establecer como punto de corte la media o la mediana, o ver la distribución de las respuestas y tratar de establecer una distribución homogénea entre las dos nuevas categorías. Otra opción es utilizar alguna fuente externa que nos permita establecer un punto de corte.
-
-```{r}
-summary(elsoc$ing_pcap)
-```
-
-Por ejemplo, el Ministerio de Desarrollo Social y Familia establece en $31 la línea de la pobreza en términos de ingreso por persona equivalente, que corresponde al ingreso total del hogar dividido por el número de personas. En nuestro caso, una forma de hacer esta agrupación de valores es con la función case_when del paquete dplyr (similar a ifelse).
-
-```{r}
-elsoc <- elsoc %>% rowwise() %>%  mutate(linea_pobreza = case_when(ing_pcap<=129964~0,
-                                                                   ing_pcap>129964~1,
-                                                                   TRUE ~ NA))
-table(elsoc$linea_pobreza)
-```
-
 # Regresión lineal
 
 veamos primero las diferencias de usar cada tipo de variable de ingreso
