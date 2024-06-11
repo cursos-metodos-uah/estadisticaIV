@@ -118,8 +118,10 @@ website:
               file: practicos/resumen-content.qmd
             - text: "09: Práctico 8"
               file: practicos/08-content.qmd
-            - text: "10: Prácttico 9"
+            - text: "10: Práctico 9"
               file: practicos/09-content.qmd
+            - text: "11: Práctico 10"
+              file: practicos/10-content.qmd
 
     - title: "Herramientas"
       style: "docked"

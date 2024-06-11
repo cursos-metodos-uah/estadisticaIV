@@ -1,0 +1,57 @@
+---
+title: "Cohesión barrial"
+author: "Kevin Carrasco"
+format:
+  revealjs: 
+    theme: moon
+editor: visual
+---
+
+# Introducción
+
+Esta es una introducción de ejemplo
+
+# Descriptivos
+
+:::: {.columns}
+
+::: {.column width="50%"}
+La variable principal es
+:::
+
+::: {.column width="50%"}
+Que se ve afectada por otras variables
+:::
+
+::::
+# Análisis
+
+## Correlacional
+
+Acá correlacional o bivariados
+
+![](output/graphs/grafico1.png)
+
+## Regresiones
+
+:::: {.columns}
+
+::: {.column width="50%"}
+El gráfico muestra que por cada año que aumenta la edad, la variable dependiente aumenta en 0.05 unidades, con un 99% de confianza.
+:::
+
+::: {.column width="50%"}
+![](output/graphs/grafico2.png)
+:::
+
+::::
+
+## Conclusión
+
+::: {.incremental}
+- En esta investigación quisimos demostrar...
+- Nuestros principales resultados indican que...
+:::
+
+# Muchas gracias!
+
