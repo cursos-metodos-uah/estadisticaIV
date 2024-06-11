@@ -39,7 +39,19 @@
     "href": "practicos/10-content.html",
     "title": "10: Presentaciones en Quarto",
     "section": "",
-    "text": "El objetivo de esta práctica es revisar el proceso de elaboración de una presentación mediante documentos dinámicos, específicamente mediante Quarto. La guía oficial para elaborar este documento la puedes revisar acá\nPrimero, veamos un ejemplo:",
+    "text": "El objetivo de esta práctica es revisar el proceso de elaboración de una presentación mediante documentos dinámicos, específicamente mediante Quarto. La guía oficial para elaborar este documento la puedes revisar acá\n\n\n\n\n\n\nNota\n\n\n\nPara presentar resultados de una investigación, lo más fácil es anteriormente haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output.\nSi recordamos de los prácticos anteriores, suponiendo que estamos trabajando en nuestro archivo de análisis, dentro de la carpeta de procesamiento, el código estándar para exportar gráficos es el siguiente:\n\n\nCódigo\ngraph1 &lt;- data %&gt;% ggplot2::ggplot(aes(x=conf_inst))+\n                            geom_bar()\n\nggsave(graph1, file=\"output/graphs/graph1.png\")\n\n\nDe esta forma guardamos nuestro gráfico en la carpeta output, dentro de una segunda subcarpeta ‘graphs’.",
+    "crumbs": [
+      "Prácticos",
+      "Talleres",
+      "11: Práctico 10"
+    ]
+  },
+  {
+    "objectID": "practicos/10-content.html#ejemplo",
+    "href": "practicos/10-content.html#ejemplo",
+    "title": "10: Presentaciones en Quarto",
+    "section": "Ejemplo:",
+    "text": "Ejemplo:",
     "crumbs": [
       "Prácticos",
       "Talleres",
@@ -87,7 +99,7 @@
     "href": "practicos/10-content.html#templates-y-otros",
     "title": "10: Presentaciones en Quarto",
     "section": "Templates y otros",
-    "text": "Templates y otros\nPodemos cambiar el estilo completo de la presentación cambiando el Tema (‘theme’) dentro del YAML del inicio. Por ejemplo:\n\n---\ntitle: \"Cohesión barrial\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs: \n    theme: dark\neditor: visual\n---\nOtras opciones de temas son:\n\nbeige\nblood\ndark\ndefault\nleague\nmoon\nnight\nserif\nsimple\nsky\nsolarized\n\n10- Probemos alguno en nuestro ejemplo y volvemos a renderizar:\n\n\nVarios\nY podemos probar algunas otras cosas para personalizar aún más nuestras presentaciones:\n---\ntitle: \"Cohesión barrial en Chile\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs:\n    slideNumber: true # Número de slide abajo a la derecha\neditor: visual\ntitle-slide-attributes:\n    data-background-image: input/cohesion.jpg # Agregar una imagen al comienzo de la presentación\n    data-background-size: contain\n    data-background-opacity: \"0.1\" # Qué tan difuminada se ve la imagen (0.1 es lo menor)\nbibliography: cohesion.bib # Agregar nuestra bibligrofía\nlink-citations: TRUE # Que la bibliografía tenga links automáticos\n---",
+    "text": "Templates y otros\nPodemos cambiar el estilo completo de la presentación cambiando el Tema (‘theme’) dentro del YAML del inicio. Por ejemplo:\n\n---\ntitle: \"Cohesión barrial\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs: \n    theme: dark\neditor: visual\n---\nOtras opciones de temas son:\n\nbeige\nblood\ndark\ndefault\nleague\nmoon\nnight\nserif\nsimple\nsky\nsolarized\n\n10- Probemos alguno en nuestro ejemplo y volvemos a renderizar:\n\n\nVarios\nY podemos probar algunas otras cosas para personalizar aún más nuestras presentaciones:\n---\ntitle: \"Cohesión barrial en Chile\"\nauthor: \"Kevin Carrasco\"\nformat:\n  revealjs:\n    slideNumber: true # Número de slide abajo a la derecha\neditor: visual\ntitle-slide-attributes:\n    data-background-image: input/cohesion.jpg # Agregar una imagen al comienzo de la presentación\n    data-background-size: contain\n    data-background-opacity: \"0.1\" # Qué tan difuminada se ve la imagen (0.1 es lo menor)\nbibliography: cohesion.bib # Agregar nuestra bibligrofía\nlink-citations: TRUE # Que la bibliografía tenga links automáticos\n---\n\n\n\n\n\n\nNota\n\n\n\nSi guardamos el archivo de presentación en la carpeta raíz (junto al archivo .Rproject) y subimos todos los documentos a github, entonces el link estandar para visualizar la presentación debería ser:\nhttps://kevin-carrasco.github.io/ipo/presentacion.html",
     "crumbs": [
       "Prácticos",
       "Talleres",

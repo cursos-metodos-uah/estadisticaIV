@@ -10,12 +10,29 @@ lang: es
 
 El objetivo de esta práctica es revisar el proceso de elaboración de una presentación mediante documentos dinámicos, específicamente mediante Quarto. La guía oficial para elaborar este documento la puedes revisar [acá](https://quarto.org/docs/presentations/)
 
-Primero, veamos un ejemplo:
+::: callout-note
 
-<iframe src="https://kevin-carrasco.github.io/ipo/presentacion.html#/title-slide" height="550" width="100%" allowfullscreen="true"></iframe>
+Para presentar resultados de una investigación, lo más fácil es anteriormente haber exportado nuestros gráficos como imagen y almacenarlos en la carpeta output.
 
+Si recordamos de los prácticos anteriores, suponiendo que estamos trabajando en nuestro archivo de análisis, dentro de la carpeta de procesamiento, el código estándar para exportar gráficos es el siguiente:
+
+```{r eval=FALSE}
+graph1 <- data %>% ggplot2::ggplot(aes(x=conf_inst))+
+                            geom_bar()
+
+ggsave(graph1, file="output/graphs/graph1.png")
+```
+
+De esta forma guardamos nuestro gráfico en la carpeta output, dentro de una segunda subcarpeta 'graphs'.
+
+:::
 
 # Quarto presentations
+
+
+## Ejemplo:
+
+<iframe src="https://kevin-carrasco.github.io/ipo/presentacion.html#/title-slide" height="550" width="100%" allowfullscreen="true"></iframe>
 
 ## Bases
 
@@ -194,3 +211,10 @@ link-citations: TRUE # Que la bibliografía tenga links automáticos
 
 ```
 
+::: callout-note
+
+Si guardamos el archivo de presentación en la carpeta raíz (junto al archivo .Rproject) y subimos todos los documentos a github, entonces el link estandar para visualizar la presentación debería ser:
+
+[https://kevin-carrasco.github.io/ipo/presentacion.html](https://kevin-carrasco.github.io/ipo/presentacion.html)
+
+:::
