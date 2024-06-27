@@ -1,0 +1,29 @@
+---
+title: "Examen"
+subtitle: "R para análisis estadístico"
+linktitle: "Examen"
+date: "2024-06-25"
+lang: es
+---
+
+# Examen
+
+La investigación final (examen) de este curso representa el 30% de la nota final.
+
+Esta investigación consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo realizado en las tareas del curso, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones.
+
+Por lo tanto, esta investigación debe incluir los 4 trabajos anteriores en un solo documento, sumando una sección final de conclusiones.
+
+A continuación se detalla la rubrica específica de evaluación:
+
+| Ítem | Objetivo | Puntaje |
+|------|----------|---------|
+|1. Introducción y bibliografía automática | L-s estudiantes plantean un problema de investigación relevante y lo justifican con bibliografía automatizada (Trabajo 1) |  2pts |
+|2. Operacionalización de variables   | L-s estudiantes son capaces de operacionalizar correctamente las variables de interés. (Trabajo 2)     |     2pts    |
+|3. Visualización de resultados       | L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva y dos gráficos univariados (Trabajo 2)| 2ptos|
+|4. Asociación de variables  | L-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico  (trabajo 3)      |   2ptos      |
+|5. Construcción de índices y escalas | L-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna (Trabajo 3) | 2ptos |
+|6. Estimación de modelos de regresión| L-s estudiantes son capaces de reportar y visualizar correctamente distintos modelos de regresión  (Trabajo 4) |   3ptos      |
+|7. Interpretación de resultados      | L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados       |  5pts       |
+| Total|- |18puntos|
+
