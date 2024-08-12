@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="R para Análisis estadístico">
+<meta name="description" content="Estadística IV">
 
-<title>R para Análisis estadístico - Noticias</title>
+<title>Estadística IV - Examen</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="..//files/icon-512.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,74 +69,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-news-table .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-date","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-news-table'] = new List('listing-news-table', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Noticias y mensajes importantes Estadística Correlacional" href="index.xml" data-external="1"><meta property="og:title" content="R para Análisis estadístico - Noticias">
-<meta property="og:description" content="Departamento de Sociología de la Universidad Alberto">
-<meta property="og:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
-<meta property="og:site_name" content="R para Análisis estadístico">
+<meta property="og:title" content="Estadística IV - Examen">
+<meta property="og:description" content="R para análisis estadístico">
+<meta property="og:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
+<meta property="og:site_name" content="Estadística IV">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="R para Análisis estadístico - Noticias">
-<meta name="twitter:description" content="Departamento de Sociología de la Universidad Alberto">
-<meta name="twitter:image" content="https://R-analisis-datos.netlify.app/files/social-image-sp23.png">
+<meta name="twitter:title" content="Estadística IV - Examen">
+<meta name="twitter:description" content="R para análisis estadístico">
+<meta name="twitter:image" content="https://estadisticaIV.netlify.app/files/social-image-sp23.png">
 <meta name="twitter:creator" content="@KevinCarrascoQ1">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -151,7 +91,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">R para Análisis estadístico</span>
+    <span class="navbar-title">Estadística IV</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
@@ -197,127 +137,96 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#examen" id="toc-examen" class="nav-link active" data-scroll-target="#examen">Examen</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Noticias</h1>
+<header id="title-block-header">
+<h1 class="title display-7">Examen</h1>
+<p class="subtitle lead">R para análisis estadístico</p>
+
+<div class="date-block bg-assignment text-white p-2">
+  <p class="date">Due by 11:59 PM on martes, 25 de junio de 2024</p>
 </div>
-
-
-
-<div class="quarto-title-meta column-page">
-
-    
-  
-    
-  </div>
-  
-
-
 </header>
 
 
-<div id="listing-news-table" class="quarto-listing quarto-listing-container-table">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-news-table-sort" class="form-select" aria-label="Ordenar por" onchange="window['quarto-listings']['listing-news-table'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Ordenar por</option>
-       <option value="index" data-direction="asc">Por defecto</option>
-         <option value="listing-date-sort" data-direction="asc">
-          Fecha - Menos reciente
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Fecha - Más reciente
-        </option>
-         <option value="listing-title-sort" data-direction="asc">
-          Título
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<table class="quarto-listing-table table table-hover">
+<section id="examen" class="level1">
+<h1>Examen</h1>
+<p>La investigación final (examen) de este curso representa el 30% de la nota final.</p>
+<p>Esta investigación consiste en una evaluación final individual que aplica los conocimientos y herramientas entregadas a lo largo del curso y en las tareas realizadas, a un proyecto de investigación de elección por el/la estudiante. Se espera que este proyecto incluya todo el trabajo realizado en las tareas del curso, así como la incorporación de comentarios y sugerencias de retroalimentación de las evaluaciones.</p>
+<p>Por lo tanto, esta investigación debe incluir los 4 trabajos anteriores en un solo documento, sumando una sección final de conclusiones.</p>
+<p>A continuación se detalla la rubrica específica de evaluación:</p>
+<table class="table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 40%">
+<col style="width: 36%">
+</colgroup>
 <thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Fecha</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Título</a>
-</th>
-<th>
-Categorías
-</th>
+<tr class="header">
+<th>Ítem</th>
+<th>Objetivo</th>
+<th>Puntaje</th>
 </tr>
 </thead>
-<tbody class="list">
-<tr data-index="0" data-categories="comenzando" data-listing-date-sort="1691380800000" data-listing-file-modified-sort="1709079726154" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Bienvenid_s a clases!" data-listing-filename-sort="2023-01-09_welcome.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-date">lunes agosto 7, 2023 at 12:00 AM</span>
-</td>
-<td>
-<a href="../news/2023-01-09_welcome.html" class="title listing-title">Bienvenid_s a clases!</a>
-</td>
-<td>
-<span class="listing-categories">comenzando</span>
-</td>
+<tbody>
+<tr class="odd">
+<td>1. Introducción y bibliografía automática</td>
+<td>L-s estudiantes plantean un problema de investigación relevante y lo justifican con bibliografía automatizada (Trabajo 1)</td>
+<td>2pts</td>
 </tr>
-<tr data-index="1" data-categories="info" data-listing-date-sort="1691380800000" data-listing-file-modified-sort="1709079726154" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Informaciones de la semana" data-listing-filename-sort="2023-08-14_infos.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-date">lunes agosto 7, 2023 at 12:00 AM</span>
-</td>
-<td>
-<a href="../news/2023-08-14_infos.html" class="title listing-title">Informaciones de la semana</a>
-</td>
-<td>
-<span class="listing-categories">info</span>
-</td>
+<tr class="even">
+<td>2. Operacionalización de variables</td>
+<td>L-s estudiantes son capaces de operacionalizar correctamente las variables de interés. (Trabajo 2)</td>
+<td>2pts</td>
+</tr>
+<tr class="odd">
+<td>3. Visualización de resultados</td>
+<td>L-s estudiantes son capaces de visualizar correctamente las variables de interés. Se espera que el reporte incluya una tabla descriptiva y dos gráficos univariados (Trabajo 2)</td>
+<td>2ptos</td>
+</tr>
+<tr class="even">
+<td>4. Asociación de variables</td>
+<td>L-s estudiantes son capaces de reportar y visualizar correctamente la asociación entre sus variables. Se espera que el reporte incluya al menos una tabla y/o gráfico (trabajo 3)</td>
+<td>2ptos</td>
+</tr>
+<tr class="odd">
+<td>5. Construcción de índices y escalas</td>
+<td>L-s estudiantes son capaces de construir al menos un índice ponderado (reportando un autor o informe que justifique la ponderación) y/o una escala con el reporte de su consistencia interna (Trabajo 3)</td>
+<td>2ptos</td>
+</tr>
+<tr class="even">
+<td>6. Estimación de modelos de regresión</td>
+<td>L-s estudiantes son capaces de reportar y visualizar correctamente distintos modelos de regresión (Trabajo 4)</td>
+<td>3ptos</td>
+</tr>
+<tr class="odd">
+<td>7. Interpretación de resultados</td>
+<td>L-s estudiantes son capaces de interpretar correctamente las tablas y gráficos presentados</td>
+<td>5pts</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>-</td>
+<td>18puntos</td>
 </tr>
 </tbody>
 </table>
-<div class="listing-no-matching d-none">
-No hay resultados
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Suscribirse!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Puedes usar un lector de feeds como <a href="https://feedly.com/">Feedly</a> o un servicio <a href="https://www.google.com/search?q=rss+to+email">RSS-to-email</a> como <a href="https://blogtrottr.com/">Blogtrottr</a> para suscribirte a cualquiera de estos mensajes. ::: {.grid}</p>
-<div class="g-col-12 g-col-md-2">
-<p class="download-btn">
-<a class="btn btn-danger btn-sm" href="https://R-analisis-datos.netlify.app/news/index.xml" role="button"><i class="fa-solid fa-square-rss" aria-label="square-rss"></i> RSS</a>
-</p>
-</div>
-<div class="g-col-12 g-col-md-10">
-<p>
-<input class="form-control" type="text" value="https://R-analisis-datos.netlify.app/news/index.xml" onclick="this.select()" readonly="">
-</p>
-</div>
-</div>
-</div>
-<p>:::</p>
 
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -401,7 +310,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/R-analisis-datos\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/estadisticaIV\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -733,13 +642,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2024 by Kevin Carrasco &amp; Daniela Olivares<br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/R-data-analisis">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/cursos-metodos-uah/estadisticaIV">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
 </div>
   </div>
 </footer>
