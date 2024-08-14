@@ -13,7 +13,7 @@ knitr:
       
 format: 
   revealjs:
-    logo: images/lisa-logo1.png
+    logo: eval-hires.png
     slide-number: true
     theme: [pp.scss]
     title-slide-attributes:
