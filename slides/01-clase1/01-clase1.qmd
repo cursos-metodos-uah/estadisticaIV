@@ -30,7 +30,7 @@ editor:
 
 ::: {.columns .v-center-container}
 ::: {.column width="20%"}
-
+![](eval-hires.png)
 :::
 
 ::: {.column width="80%"}
@@ -309,11 +309,11 @@ B. *Protocolo* reproducible
 [https://lisa-coes.github.io/presentaciones/escuela-elsoc-julio2024/taller-elsoc-julio2024.html](https://lisa-coes.github.io/presentaciones/escuela-elsoc-julio2024/taller-elsoc-julio2024.html)
 
 
-## {data-background-color="black"}
+##  {data-background-color="black"}
 
 ::: {.columns .v-center-container}
 ::: {.column width="20%"}
-![](qr.png){width="80%" fig-align="right"} <br> ![](images/lisa-logo1.png){width="80%" fig-align="left"}
+![](eval-hires.png)
 :::
 
 ::: {.column width="80%"}
@@ -322,9 +322,10 @@ Introducción al flujo de investigación reproducible
 :::
 
 ### Estadística IV
+
 ------------------------------------------------------------------------
 
-Sociología - Universidad Alberto Hurtado
+Universidad Alberto Hurtado
 
 Kevin Carrasco - COES
 :::

@@ -7,6 +7,27 @@
     "text": "Proximamente…"
   },
   {
+    "objectID": "slides/ejemplo.html#correlacional",
+    "href": "slides/ejemplo.html#correlacional",
+    "title": "Cohesión barrial",
+    "section": "Correlacional",
+    "text": "Correlacional\nAcá correlacional o bivariados"
+  },
+  {
+    "objectID": "slides/ejemplo.html#regresiones",
+    "href": "slides/ejemplo.html#regresiones",
+    "title": "Cohesión barrial",
+    "section": "Regresiones",
+    "text": "Regresiones\n\n\nEl gráfico muestra que por cada año que aumenta la edad, la variable dependiente aumenta en 0.05 unidades, con un 99% de confianza."
+  },
+  {
+    "objectID": "slides/ejemplo.html#conclusión",
+    "href": "slides/ejemplo.html#conclusión",
+    "title": "Cohesión barrial",
+    "section": "Conclusión",
+    "text": "Conclusión\n\n\nEn esta investigación quisimos demostrar…\nNuestros principales resultados indican que…"
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Planificación",
@@ -357,6 +378,160 @@
       "Información general",
       "Actividades prácticas en R"
     ]
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section",
+    "href": "slides/01-clase1/01-clase1.html#section",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Introducción al flujo de investigación reproducible\n\nEstadística IV\n\nUniversidad Alberto Hurtado\nKevin Carrasco - COES"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#ciencia-abierta",
+    "href": "slides/01-clase1/01-clase1.html#ciencia-abierta",
+    "title": "Estadística IV",
+    "section": "Ciencia abierta",
+    "text": "Ciencia abierta"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#sitio-web",
+    "href": "slides/01-clase1/01-clase1.html#sitio-web",
+    "title": "Estadística IV",
+    "section": "Sitio web",
+    "text": "Sitio web"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#reproducibilidad",
+    "href": "slides/01-clase1/01-clase1.html#reproducibilidad",
+    "title": "Estadística IV",
+    "section": "Reproducibilidad",
+    "text": "Reproducibilidad\n\nEs la posibilidad de regenerar de manera independiente los resultados usando los materiales originales de una investigación ya publicada.\nEn términos simples: obtener los mismos resultados de una investigación utilizando los mismos datos."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#qué-porcentaje-de-los-estudios-publicados-son-reproducibles",
+    "href": "slides/01-clase1/01-clase1.html#qué-porcentaje-de-los-estudios-publicados-son-reproducibles",
+    "title": "Estadística IV",
+    "section": "¿Qué porcentaje de los estudios publicados son reproducibles?",
+    "text": "¿Qué porcentaje de los estudios publicados son reproducibles?\n\n\n\n\nAlrededor de un 40%! dependiendo de la disciplina"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#hay-crisis-de-reproducibilidad",
+    "href": "slides/01-clase1/01-clase1.html#hay-crisis-de-reproducibilidad",
+    "title": "Estadística IV",
+    "section": "¿Hay crisis de reproducibilidad?",
+    "text": "¿Hay crisis de reproducibilidad?\n\n\n\n\nFuente: Baker (2016) 1,500 scientists lift the lid on reproducibility - Nature"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#y-en-la-práctica-cómo-afecta-la-reproducibilidad",
+    "href": "slides/01-clase1/01-clase1.html#y-en-la-práctica-cómo-afecta-la-reproducibilidad",
+    "title": "Estadística IV",
+    "section": "¿y en la práctica cómo afecta la reproducibilidad?",
+    "text": "¿y en la práctica cómo afecta la reproducibilidad?\n\n\n\n\nBreznau, et. al, (2023) coordinó una investigación con 161 investigadores de 73 equipos de investigación.\nLos equipos informaron tanto hallazgos numéricos como conclusiones sustanciales muy diversas"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#alternativas",
+    "href": "slides/01-clase1/01-clase1.html#alternativas",
+    "title": "Estadística IV",
+    "section": "Alternativas",
+    "text": "Alternativas\n\n\n\nA. ad-hoc\n\ncada investigador define numero de archivos, nombres, carpetas y organización\nexplicar al resto cómo se organiza\ndocumentar en un archivo cómo se organiza\n\n–&gt; reproducibilidad y transparencia LIMITADA\n\n\n\nB. Protocolo reproducible\n\nestructura de carpetas y archivos interconectados que refieren a reglas conocidas (estándares)\nautocontenido: toda la información necesaria para la reproducibilidad se encuentra en la carpeta raíz o directorio de trabajo."
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#propuesta-protocolo-ipo",
+    "href": "slides/01-clase1/01-clase1.html#propuesta-protocolo-ipo",
+    "title": "Estadística IV",
+    "section": "Propuesta: Protocolo IPO",
+    "text": "Propuesta: Protocolo IPO"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#estructura-ipo",
+    "href": "slides/01-clase1/01-clase1.html#estructura-ipo",
+    "title": "Estadística IV",
+    "section": "Estructura IPO",
+    "text": "Estructura IPO"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#mayores-detalles-y-plantilla-de-carpetas",
+    "href": "slides/01-clase1/01-clase1.html#mayores-detalles-y-plantilla-de-carpetas",
+    "title": "Estadística IV",
+    "section": "Mayores detalles y plantilla de carpetas:",
+    "text": "Mayores detalles y plantilla de carpetas:\n\nhttps://lisa-coes.com/ipo-repro/\nhttps://github.com/lisa-coes/ipo"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#carpeta-autocontenida",
+    "href": "slides/01-clase1/01-clase1.html#carpeta-autocontenida",
+    "title": "Estadística IV",
+    "section": "Carpeta autocontenida",
+    "text": "Carpeta autocontenida\n\nproyecto autocontenido: reproducible sin necesidad de archivos externos\nrequisito: establecer directorio de trabajo\n\nposición de referencia de todas las operaciones al interior del proyecto\ntambién llamado directorio raíz"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#directorio-de-trabajo",
+    "href": "slides/01-clase1/01-clase1.html#directorio-de-trabajo",
+    "title": "Estadística IV",
+    "section": "Directorio de trabajo",
+    "text": "Directorio de trabajo\n\nej. forma tradicional en hoja de código R:\n\nsetwd(ruta-a-carpeta-de-proyecto)\nproblemas: hace referencia a ruta local en el computador donde se está trabajando, por lo tanto no es reproducible y se debe evitar\n\nalternativa sugerida en R: RStudio Projects"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#rstudio-projects",
+    "href": "slides/01-clase1/01-clase1.html#rstudio-projects",
+    "title": "Estadística IV",
+    "section": "RStudio Projects",
+    "text": "RStudio Projects\n\nLa funcionalidad Projects de RStudio permite establecer claramente un directorio de trabajo de manera eficiente\nPara ello, genera un archivo de extensión .Rproj en el directorio raiz de la carpeta del proyecto\nLuego se facilita acceder a la carpeta del proyecto en RStudio ejecutando desde el administrador de archivos del computador (file manager) el archivo .Rproj\npara comprobar, ejecutar getwd() y debería dar la ruta hacia la carpeta del proyecto"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-3",
+    "href": "slides/01-clase1/01-clase1.html#section-3",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "La escritura en texto simple (como Markdown o Quarto) permite implementar un sistema de control de versiones, además de herramientas de respaldo, colaboración y comunicación"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#el-origen-abriendo-un-sistema-operativo",
+    "href": "slides/01-clase1/01-clase1.html#el-origen-abriendo-un-sistema-operativo",
+    "title": "Estadística IV",
+    "section": "El origen: Abriendo un sistema operativo",
+    "text": "El origen: Abriendo un sistema operativo\n\n\n\n\n\nLinus Torvalds, 1991 (21 años)\nCrea sistema operativo libre (Linux) y lo abre a la colaboración. Postea:\n\n“I’m doing a (free) operating system (just a hobby, won’t be big and professional…”\n\nTED talk"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#git",
+    "href": "slides/01-clase1/01-clase1.html#git",
+    "title": "Estadística IV",
+    "section": "Git",
+    "text": "Git\n\n\n\n\n\nes una especie de memoria o registro local que guarda información sobre:\n\nquién hizo un cambio\ncuándo lo hizo\nqué hizo\n\nmantiene la información de todos los cambios en la historia de la carpeta / repositorio local\nse puede sincronizar con un repositorio remoto (ej. Github)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#gitgithub",
+    "href": "slides/01-clase1/01-clase1.html#gitgithub",
+    "title": "Estadística IV",
+    "section": "Git/github",
+    "text": "Git/github\n\nactualmente, Git / Github posee más de 100 millones de repositorios\nmayor fuente de código en el mundo\nha transitado desde el mundo de desarrollo de software hacia distintos ámbitos de trabajo colaborativo y abierto\nentorno de trabajo que favorece la ciencia abierta"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-4",
+    "href": "slides/01-clase1/01-clase1.html#section-4",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Git no es un registro de versiones de archivos específicos, sino de una carpeta completa\nGuarda “fotos” de momentos específicos de la carpeta, y esta foto se saca mediante un commit"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#commits",
+    "href": "slides/01-clase1/01-clase1.html#commits",
+    "title": "Estadística IV",
+    "section": "Commits",
+    "text": "Commits\n\nEl commit es el procedimiento fundamental del control de versiones\nGit no registra cualquier cambio que se “guarda”, sino los que se “comprometen” (commit).\nEn un commit\n\nse seleccionan los archivos cuyo cambio se desea registrar (stage)\nse registra lo que se está comprometiendo en el cambio (mensaje de commit)"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#cuándo-hacer-un-commit",
+    "href": "slides/01-clase1/01-clase1.html#cuándo-hacer-un-commit",
+    "title": "Estadística IV",
+    "section": "¿Cuándo hacer un commit?",
+    "text": "¿Cuándo hacer un commit?\n\nsegún conveniencia\nsugerencias:\n\nque sea un momento que requiera registro (momento de foto)\nno para cambios menores\nno esperar muchos cambios distintos que puedan hacer perder el sentido del commit"
+  },
+  {
+    "objectID": "slides/01-clase1/01-clase1.html#section-6",
+    "href": "slides/01-clase1/01-clase1.html#section-6",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Introducción al flujo de investigación reproducible\n\nEstadística IV\n\nUniversidad Alberto Hurtado\nKevin Carrasco - COES"
   },
   {
     "objectID": "syllabus.html",
