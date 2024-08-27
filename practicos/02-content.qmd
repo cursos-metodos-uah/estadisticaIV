@@ -1,0 +1,161 @@
+---
+title: "Análisis de correspondencia simple"
+date: "2024-08-21"
+lang: es
+output:
+  number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE)
+```
+
+# Objetivo de la práctica
+
+
+
+## Recursos de la práctica
+
+
+
+# Preparación datos
+
+Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.
+
+```{r librerias, collapse=TRUE}
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Tablas
+               psych, # Correlaciones
+               DescTools, # Tablas
+               gginference, # Visualizacion 
+               rempsyc, # Reporte
+               broom) # Varios
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+Cargamos los datos directamente desde internet.
+
+```{r datos}
+#cargamos la base de datos desde internet
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) 
+
+dim(elsoc_long_2016_2022.2)
+```
+
+Contamos con 29 variables (columnas) y 3000 observaciones (filas).
+
+
+```{r}
+proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="1") %>% 
+  select(c02, # Confianza generalizada
+         m01# nivel educacional
+         )
+
+proc_data <- proc_data %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+# Comprobar
+names(proc_data)
+
+proc_data$educacion <- car::recode(proc_data$m01, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+
+proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion,
+            labels=c( "Educacion básica"=1,
+                      "Educación media"=2,
+                      "Educación superior"=3))
+
+sjmisc::frq(proc_data$educacion)
+```
+
+
+# Tablas de contingencia
+
+Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.
+
+Con ella, podemos obtener en las celdas las frecuencias **conjuntas** entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X. 
+
+Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias **marginales**.
+
+Veamos un ejemplo con `ss_salud` y `universitaria`:
+
+```{r}
+sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$c02, 
+                 show.summary = F, emph.total = T, encoding = "UTF-8")
+```
+
+Sumado a esto, tenemos:
+
+- _Frecuencias absolutas_: números que aparencen en la tabla (ya sean conjuntas o marginales)
+- _Frecuencias porcentuales_: 
+          
+  * porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
+  * porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
+  * porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
+
+Veamos cómo incorporar el porcentaje fila y columna en la tabla.
+
+```{r}
+sjPlot::sjt.xtab(var.row = proc_data$educacion, 
+                 var.col = proc_data$c02, 
+                 show.summary = F, 
+                 emph.total = T, 
+                 show.row.prc = T, # porcentaje fila
+                 show.col.prc = T, # porcentaje columna
+                 encoding= "UTF-8")
+```
+
+Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde. 
+
+# Prueba de hipótesis con Chi-cuadrado
+
+cálculo directo en R:
+
+```{r, collapse=TRUE}
+chi_results <- chisq.test(table(proc_data$educacion, proc_data$c02))
+
+stats.table <- tidy(chi_results, conf_int = T)
+nice_table(stats.table)
+```
+
+Visualicemos la distribución de esta prueba y su zona de rechazo.
+
+```{r}
+ggchisqtest(chi_results)
+```
+
+# Análisis de correspondencias simple
+
+```{r}
+pacman::p_load(ade4, FactoMineR, factoextra)
+```
+
+```{r}
+proc_data <- proc_data %>% select(-m01)
+tabla <- table(proc_data)
+chisq.test(tabla)
+ACS <- CA(tabla, graph = FALSE)
+```
+
+```{r}
+#Perfiles fila
+variables_fila=get_ca_row(ACS)
+
+#Nube de individuos fila
+fviz_ca_row(ACS, repel = TRUE)+ggtitle("") + ylab("Eje 2(22.9%)")+xlab("Eje 1(77.1%)")+ylim(-0.6,1.5)+xlim(-1.1,1.4)
+```
+
+```{r}
+#Perfiles columna
+variables_columna=get_ca_col(ACS)
+#Nube de individuos columna
+fviz_ca_col(ACS)+ggtitle("")+ylab("Eje 2(22.9%)")+xlab("Eje 1(77.1%)")+ylim(-0.5,1)+xlim(-0.9,1.3)
+```
+
+```{r}
+#Representación simultánea
+fviz_ca_biplot(ACS, repel = TRUE)+ggtitle("")+ylab("Eje 2(22.9%)")+xlab("Eje 1(77.1%)")+ylim(-0.2,0.2)+xlim(-0.3,0.3)
+```
+
+
