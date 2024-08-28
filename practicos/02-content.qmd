@@ -14,11 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Objetivo de la práctica
 
-
-
-## Recursos de la práctica
-
-
+La siguiente práctica tiene el objetivo de introducir la idea central del análisis de correspondencia. Por esta razón. Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social del Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.
 
 # Preparación datos
 
@@ -88,7 +84,7 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$c29,
 Sumado a esto, tenemos:
 
 - _Frecuencias absolutas_: números que aparencen en la tabla (ya sean conjuntas o marginales)
-- _Frecuencias porcentuales_: 
+- _Frecuencias relativas_: 
           
   * porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
   * porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
@@ -159,12 +155,12 @@ variables_columna$inertia
 fviz_ca_col(ACS)+ggtitle("")+ylab("Eje 2(11.55%)")+xlab("Eje 1(88.45%)")+ylim(-0.5,.5)+xlim(-0.5,.5)
 ```
 
-```{r}
+```{r fig.width=10, fig.height=10}
 #Representación simultánea
 plot.CA(ACS)
 ```
 
-```{r}
+```{r eval=FALSE, echo=FALSE}
 coords_filas <- ACS$row$coord
 coords_triangulo <- coords_filas[c("Básica", "Media", "Universitaria"), ]
 
