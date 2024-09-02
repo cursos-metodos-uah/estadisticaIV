@@ -60,6 +60,8 @@ website:
       - icon: cloud-fill
         href: "https://rstudio.cloud"
         aria-label: RStudio.cloud
+      - text: "Ayudantías"
+        file: ayudantías/index.qmd
 
   sidebar:
 
@@ -159,6 +161,22 @@ website:
 #            - text: "Examen"
 #              file: assignment/06-examen.qmd
 
+    - title: "Ayudantías"
+      style: "docked"
+      search: false
+      background: dark
+      contents:
+        - section: "Información general"
+          contents:
+            - recurso/index.qmd
+        - section: "Recursos ayudantía"
+#          contents:
+#            - text: "Guía 1: R"
+#              file: recurso/01-ayudantias.qmd
+#            - text: "Guía 2: Códigos"
+#              file: recurso/02-ayudantías.qmd
+#            - text: "Guía 3: Aplicación de los contenidos del curso"
+#              file: recurso/03-ayudantías.qmd
 
   page-footer:
     left: |
