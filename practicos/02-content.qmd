@@ -1,6 +1,6 @@
 ---
 title: "Análisis de correspondencia simple"
-date: "2024-08-21"
+date: "2024-08-28"
 lang: es
 output:
   number_sections: true
@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Objetivo de la práctica
 
-La siguiente práctica tiene el objetivo de introducir la idea central del análisis de correspondencia. Por esta razón. Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social del Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.
+La siguiente práctica tiene el objetivo de introducir la idea central del análisis de correspondencia. Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.
 
 # Preparación datos
 

@@ -1,0 +1,253 @@
+---
+title: "Análisis de correspondencia múltiple"
+date: "2024-09-04"
+lang: es
+output:
+  number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE)
+```
+
+# Objetivo de la práctica
+
+La siguiente práctica tiene el objetivo de introducir la idea central del análisis de correspondencia. Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile (2019) con el objetivo de analizar agrupaciones de variables categóricas nominales.
+
+# Preparación datos
+
+Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.
+
+```{r librerias, collapse=TRUE}
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Tablas
+               psych, # Correlaciones
+               DescTools, # Tablas
+               ggplot2, # graficos en general
+               broom,
+               rempsyc,
+               FactoMineR, # analisis de correspondencia 
+               factoextra # analisis de correspondencia
+               )
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+Cargamos los datos directamente desde internet.
+
+```{r datos}
+#cargamos la base de datos desde internet
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) 
+
+dim(elsoc_long_2016_2022.2)
+```
+
+Contamos con 750 variables (columnas) y 18035 observaciones (filas).
+
+```{r}
+proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="4") %>% 
+  select(constitucion=c29, # Confianza generalizada
+         educacion=m01,# nivel educacional
+         coalicion=c17, # coalicion politica
+         aut_demo=c25 # autoritarismo o democracia
+         ) 
+
+proc_data <- proc_data %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+# Comprobar
+names(proc_data)
+
+proc_data$educacion <- car::recode(proc_data$educacion, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+
+proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion,
+            labels=c( "Educación básica"=1,
+                      "Educación media"=2,
+                      "Educación superior"=3))
+
+proc_data$constitucion <- sjlabelled::set_labels(proc_data$constitucion,
+            labels=c( "Expertos"=1,
+                      "Parlamento"=2,
+                      "Asamblea"=3))
+
+proc_data$coalicion <- sjlabelled::set_labels(proc_data$coalicion,
+            labels=c( "Chile vamos"=1,
+                      "Nueva mayoría"=2,
+                      "Frente amplio"=3,
+                      "Otro"=4,
+                      "Ninguno"=5))
+
+proc_data$aut_demo <- sjlabelled::set_labels(proc_data$aut_demo,
+            labels=c( "Democracia"=1,
+                      "Autoritarismo"=2,
+                      "Da lo mismo"=3,
+                      "Ninguno"=4))
+
+sjmisc::frq(proc_data$educacion)
+sjmisc::frq(proc_data$constitucion)
+sjmisc::frq(proc_data$coalicion)
+sjmisc::frq(proc_data$aut_demo)
+
+proc_data <- proc_data %>%
+  mutate(across(everything(), sjlabelled::as_label))
+```
+
+
+# Tablas de contingencia
+
+```{r}
+sjPlot::sjt.xtab(var.row = proc_data$educacion, 
+                 var.col = proc_data$constitucion, 
+                 show.summary = F, 
+                 emph.total = T, 
+                 show.row.prc = T, # porcentaje fila
+                 show.col.prc = T, # porcentaje columna
+                 encoding= "UTF-8")
+```
+
+# Prueba de hipótesis con Chi-cuadrado
+
+cálculo directo en R:
+
+```{r, collapse=TRUE}
+chi_results1 <- chisq.test(table(proc_data$educacion, proc_data$constitucion))
+stats.table <- tidy(chi_results1)
+nice_table(stats.table)
+```
+
+```{r}
+chi_results2 <- chisq.test(table(proc_data$educacion, proc_data$coalicion))
+stats.table <- tidy(chi_results1)
+nice_table(stats.table)
+```
+
+```{r}
+chi_results3 <- chisq.test(table(proc_data$constitucion, proc_data$coalicion))
+stats.table <- tidy(chi_results3)
+nice_table(stats.table)
+```
+
+# Análisis de correspondencias simple
+
+```{r}
+tabla <- prop.table(table(proc_data$educacion, proc_data$constitucion))
+dimnames(tabla) <- list(educacion=c("Básica", "Media", "Universitaria"),
+                        constitucion=c("Expertos", "Parlamento", "Asamblea")
+                        )
+tabla
+ACS <- CA(tabla, ncp=2, graph = FALSE)
+```
+
+```{r fig.width=10, fig.height=10}
+#Representación simultánea
+plot.CA(ACS)
+```
+
+## Probemos otra correspondencia simple
+
+```{r}
+tabla <- prop.table(table(proc_data$educacion, proc_data$aut_demo))
+dimnames(tabla) <- list(educacion=c("Básica", "Media", "Universitaria"),
+                        aut_demo=c("Democracia", "Autoritarismo", "Da lo mismo","Ninguno")
+                        )
+tabla
+ACS <- CA(tabla, ncp=2, graph = FALSE)
+```
+
+```{r fig.width=10, fig.height=10}
+#Representación simultánea
+plot.CA(ACS)
+```
+
+## Y con más categorías de respuesta?
+
+```{r}
+tabla <- prop.table(table(proc_data$educacion, proc_data$coalicion))
+dimnames(tabla) <- list(educacion=c("Básica", "Media", "Universitaria"),
+                        coalicion=c("Chile vamos", "Nueva mayoría", "Frente Amplio", "Otro", "Ninguno")
+                        )
+tabla
+ACS <- CA(tabla, ncp=2, graph = FALSE)
+```
+
+```{r fig.width=10, fig.height=10}
+#Representación simultánea
+plot.CA(ACS)
+```
+
+## Y si juntamos otras? ¿cuál sería nuestra variable dependiente?
+
+```{r}
+tabla <- prop.table(table(proc_data$coalicion, proc_data$aut_demo))
+dimnames(tabla) <- list(coalicion=c("Chile vamos", "Nueva mayoría", "Frente Amplio", "Otro", "Ninguno"),
+                        aut_demo=c("Democracia", "Autoritarismo", "Da lo mismo","Ninguno")
+                        )
+tabla
+ACS <- CA(tabla, ncp=3, graph = FALSE)
+```
+
+```{r fig.width=10, fig.height=10}
+#Representación simultánea
+plot.CA(ACS)
+```
+
+# Análisis de correspondencia múltiple
+
+```{r}
+ACM <- dplyr::select(proc_data, constitucion, coalicion, aut_demo) %>% na.omit() %>% 
+    MCA(, graph = FALSE)
+print(ACM)
+```
+
+## Eigen values / Varianza
+
+Siguiendo la lógica del análisis que existe en el Análisis de Componentes Principales, que permite “reducir” las dimensiones de un data frame a partir de generar nuevos ejes o componentes que sirven a manera de “resumen” de las variables cuantitativas originales, en el análisis MCA también es posible construir dichos componentes o ejes a partir de variables categóricas.
+
+Una vez que se generan los nuevos componentes, es importante identificar la capacidad explicativa del total de los casos que cada una proporciona. Para ello es importante revisar la proporción de varianzas que “retiene” cada una de estas dimensiones o ejes. Y puede ser extraído a partir de la función get_eigenvalue() de la siguiente manera:
+
+```{r}
+eig_val <- factoextra::get_eigenvalue(ACM)
+head(eig_val)
+```
+
+En la tabla anterior se muestran del lado de las columnas los componentes o ejes nuevos, resultados del análisis MCA, mientras que en la primer columna se muestran los eigenvalores o el tamaño de las varianzas que explica cada uno, mientras que en la segunda columna se muestra el porcentaje de la varianza total que es explicado por cada eje o dimensión. En la tercer columna se muestra el porcentaje de varianza acumulado.
+
+También es posible visualizar los porcentajes de inercia explicados por cada dimensión MCA, a partir de usar el comando fviz_screeplot(), con el que se puede crear un “scree plot.”
+
+```{r}
+fviz_screeplot(ACM, addlabels = TRUE)
+```
+
+## Representación gráfica
+
+```{r}
+fviz_mca_var(ACM, #objeto tipo lista con resultados mca
+             col.var = "cos2", #definición de los colores a partir del valor cos2
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"), #definición de la paleta de colores
+             repel = TRUE, # evitar solapamientos de etiquetas,
+             max.overlaps = "ggrepel.max.overlaps", #aumentar el tamaño de solapamientos
+             ggtheme = theme_minimal()
+             )
+```
+
+## Con todas las variables 
+
+```{r}
+ACM <- proc_data %>% na.omit() %>% 
+    MCA(, graph = FALSE)
+```
+
+```{r}
+fviz_screeplot(ACM, addlabels = TRUE)
+```
+
+```{r}
+fviz_mca_var(ACM, #objeto tipo lista con resultados mca
+             col.var = "cos2", #definición de los colores a partir del valor cos2
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"), #definición de la paleta de colores
+             repel = TRUE, # evitar solapamientos de etiquetas,
+             max.overlaps = "ggrepel.max.overlaps", #aumentar el tamaño de solapamientos
+             ggtheme = theme_minimal()
+             )
+```

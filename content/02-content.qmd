@@ -1,0 +1,17 @@
+---
+title: "Presentación"
+date: "2024-08-21"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/02-clase2/sesion_01__chi_cuadrado.pdf height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+
+## Lecturas
+
+[R for Data Science](https://es.r4ds.hadley.nz/introducci%C3%B3n.html)
