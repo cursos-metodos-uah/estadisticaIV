@@ -137,12 +137,27 @@ dimnames(tabla) <- list(educacion=c("Básica", "Media", "Universitaria"),
                         )
 tabla
 ACS <- CA(tabla, ncp=2, graph = FALSE)
+summary(ACS)
 ```
+
+La salida del análisis de correspondencia simple nos entrega distintos atributos que es interesante mirar:
+
+* Eigenvalues: En un ACS tenemos un 'autovalor' por cada dimensión que nos entrega la varianza total de las variables que representa nuestro análisis y, además, un porcentaje de la varianza asociado a cada dimensión.
+
+* En cada fila y columna, nos entrega distintos valores, de los cuales nos interesan dos principales 'ctr' y 'cos2'.
+
+  - ctr: Es la contribución que cada categoría de la variable le da a cada dimensión (horizontal o vertical)
+  
+  - cos2: Es nuestra medida de calidad de nuestra medición. De la misma forma que la 'contribución', cada variable le entrega una mayor o menor calidad a nuestro análisis.
+  
+Ahora veamos estos mismos valores en un gráfico:
 
 ```{r fig.width=10, fig.height=10}
 #Representación simultánea
 plot.CA(ACS)
 ```
+
+Tenemos las mismas dos dimensiones, una horizontal (Dim 1) que representa el 88.45% de la varianza de nuestras variables y una dimensión vertical (Dim 2) que representa el 11.5% de la varianza. Esto se representa gráficamente en que la mayoría de las variables están más distantes horizontalmente que verticalmente. Además, la mayor contribución a la varianza de la dimensión 1 está por las categorías Universitaria (33.024), Básica (66.923) y Parlamento (94.558)
 
 ## Probemos otra correspondencia simple
 
@@ -153,6 +168,7 @@ dimnames(tabla) <- list(educacion=c("Básica", "Media", "Universitaria"),
                         )
 tabla
 ACS <- CA(tabla, ncp=2, graph = FALSE)
+summary(ACS)
 ```
 
 ```{r fig.width=10, fig.height=10}
@@ -169,6 +185,7 @@ dimnames(tabla) <- list(educacion=c("Básica", "Media", "Universitaria"),
                         )
 tabla
 ACS <- CA(tabla, ncp=2, graph = FALSE)
+summary(ACS)
 ```
 
 ```{r fig.width=10, fig.height=10}
@@ -197,7 +214,7 @@ plot.CA(ACS)
 ```{r}
 ACM <- dplyr::select(proc_data, constitucion, coalicion, aut_demo) %>% na.omit() %>% 
     MCA(, graph = FALSE)
-print(ACM)
+summary(ACM)
 ```
 
 ## Eigen values / Varianza
@@ -208,28 +225,35 @@ Una vez que se generan los nuevos componentes, es importante identificar la capa
 
 ```{r}
 eig_val <- factoextra::get_eigenvalue(ACM)
-head(eig_val)
+head(eig_val, 10)
 ```
 
 En la tabla anterior se muestran del lado de las columnas los componentes o ejes nuevos, resultados del análisis MCA, mientras que en la primer columna se muestran los eigenvalores o el tamaño de las varianzas que explica cada uno, mientras que en la segunda columna se muestra el porcentaje de la varianza total que es explicado por cada eje o dimensión. En la tercer columna se muestra el porcentaje de varianza acumulado.
 
-También es posible visualizar los porcentajes de inercia explicados por cada dimensión MCA, a partir de usar el comando fviz_screeplot(), con el que se puede crear un “scree plot.”
+También es posible visualizar los porcentajes de varianza explicados por cada dimensión MCA, a partir de usar el comando fviz_screeplot(), con el que se puede crear un “scree plot.”
 
 ```{r}
 fviz_screeplot(ACM, addlabels = TRUE)
 ```
 
+Si una dimensión explica, por ejemplo, el 14.1% de la inercia o varianza, significa que la mayoría de la variabilidad en las relaciones entre categorías puede entenderse a través de esta dimensión.
+
+Es importante interpretar el contenido de cada dimensión. A menudo, la primera dimensión puede representar la principal diferencia entre grupos de categorías (por ejemplo, ideología política en una encuesta de actitudes), mientras que la segunda dimensión podría representar una diferencia secundaria (como la educación o el nivel socioeconómico).
+
+
 ## Representación gráfica
 
 ```{r}
 fviz_mca_var(ACM, #objeto tipo lista con resultados mca
-             col.var = "cos2", #definición de los colores a partir del valor cos2
+             col.var = "contrib", #definición de los colores a partir del valor cos2
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"), #definición de la paleta de colores
              repel = TRUE, # evitar solapamientos de etiquetas,
              max.overlaps = "ggrepel.max.overlaps", #aumentar el tamaño de solapamientos
              ggtheme = theme_minimal()
              )
 ```
+
+Podemos interpretar este gráfico de una forma similar al de un ACS, pero además podemos identificar de mejor manera la agrupación de ciertas categorías de variables. ¿Existe algún patrón que identificar?
 
 ## Con todas las variables 
 
