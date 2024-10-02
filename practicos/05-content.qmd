@@ -307,7 +307,7 @@ data2 <- data2 %>%
   set_na(., na = c(-888, -999)) %>% 
   na.omit()
 
-data2 <- data2 %>% mutate_at(vars(starts_with("conf")), ~(4-.))
+data2 <- data2 %>% mutate_at(vars(starts_with("s11")), ~(5-.))
 ```
 
 
@@ -330,7 +330,7 @@ Podemos observar que todas las correlaciones son positivas, por lo que no quedar
 
 #### Alfa de Chronbach
 
-Primero, estimaremos la consistencia interna de cada dimensión con un **Alfa de Chronbach**.
+estimaremos la consistencia interna de cada dimensión con un **Alfa de Chronbach**.
 
 ```{r}
 psych::alpha(data2)
@@ -343,4 +343,4 @@ data2 <- data2 %>%
 summary(data2$sintomatologia_depresiva)
 ```
 
-¿Tiene sentido una escala de 9 a 45? No, por eso generalmente se recomienda que las variables ordinales partan en '0' para que el comienzo de la escala también sea 0. En ese caso, deberíamos recodificar las 9 variables en una escala de 0 a 4.
+
