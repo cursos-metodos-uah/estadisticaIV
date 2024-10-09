@@ -168,11 +168,11 @@ website:
       contents:
         - section: "Información general"
           contents:
-            - ayudantia/index.qmd
+            - ayudantias/index.qmd
         - section: "Recursos ayudantía"
-#          contents:
-#            - text: "Guía 1: R"
-#              file: recurso/01-ayudantias.qmd
+          contents:
+            - text: "Guía 1: R"
+              file: ayudantias/ayudantia1.qmd
 #            - text: "Guía 2: Códigos"
 #              file: recurso/02-ayudantías.qmd
 #            - text: "Guía 3: Aplicación de los contenidos del curso"
