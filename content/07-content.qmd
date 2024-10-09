@@ -1,0 +1,14 @@
+---
+title: "Presentación"
+date: "2024-10-09"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/07-clase7/07-clase7.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+

@@ -1,7 +1,7 @@
 ---
-title: "Estadística IV"
-author: ".small[Kevin Carrasco & Daniela Olivares<br>]"
-date: "2do Sem 2024"
+title: "Metodología I"
+author: ".small[Juan Carlos Castillo <br><br> Departamento de Sociología - UCH / COES <br><br>]"
+date: "1er Sem 2023"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -58,20 +58,21 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 
 .pull-left[
-# Estadística IV
-## **Kevin Carrasco & Daniela Olivares**
-## **María Fernanda Nuñez**
-## Sociología - UAH
-## 2do Sem 2024 
-## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
+# Metodología I
+## **.yellow[Juan Carlos Castillo]**
+## Magister Ciencias Sociales FACSO - UChile
+## 1er Sem 2023 
+## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
 ] 
-
+    
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 7: análisis factorial exploratorio]
+## .yellow[Sesión 6: Índices y análisis factorial]
 ![:scale 70%](../../files/img/eval-hires.png)
+
+
 
 ]
 
@@ -87,9 +88,112 @@ class: inverse, bottom, right, animated, slideInRight
 # Resumen clase anterior
 
 ---
+# Asociación: covarianza / correlación (II)
+
+\begin{align*}
+Covarianza = cov(x,y) &= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}\\
+\\
+Correlación=r &= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)\sigma_x \sigma_y }\\ \\
+alternativamente=r &= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar{y})^{2}}}
+\end{align*}
+
+---
+# Correlación
+
+- medida de asociación lineal entre variables
+
+- estandarizada
+
+- varía entre -1 y +1:
+
+  - positiva: a medida que aumenta una, aumenta la otra
+
+  -     negativa: a medida que aumenta una, disminuye la otra
+
+  - cero: no hay evidencia de asociación lineal entre las variables
+
+---
+# Nube de puntos (scatterplot) y correlación
+
+.center[![](https://multivariada.netlify.app/slides/images/correlacion2.png)]
+
+---
+.pull-left-narrow[
+# Cuarteto de Anscombe
+
+Para todos: r=0.816
+]
+
+.pull-right-wide[ 
+```{r echo=FALSE}
+pacman::p_load(stargazer,tidyverse,gridExtra,ggplot2,gridExtra,broom,
+car,lmtest,sandwich,interplot,ape,multiwayvcov)
+a1<-lm(y1~x1,data=anscombe)
+a2<-lm(y2~x2,data=anscombe)
+a3<-lm(y3~x3,data=anscombe)
+a4<-lm(y4~x4,data=anscombe)
+
+```
+
+```{r echo=FALSE , fig.width=10, fig.height=6  }
+# 4 nubes de puntos con las rectas de regresión.
+F1 <- ggplot(anscombe)+aes(x1,y1)+geom_point()+
+geom_abline(intercept=3,slope=0.5) + xlim(4, 19) + ylim(4, 13)
+
+F2 <- ggplot(anscombe)+aes(x2,y2)+geom_point()+
+geom_abline(intercept=3,slope=0.5) + xlim(4, 19) + ylim(4, 13)
+
+F3 <- ggplot(anscombe)+aes(x3,y3)+geom_point()+
+  geom_abline(intercept=3,slope=0.5) + xlim(4, 19) + ylim(4, 13)
+
+F4 <- ggplot(anscombe)+aes(x4,y4)+geom_point()+
+  geom_abline(intercept=3,slope=0.5) + xlim(4, 19) + ylim(4, 13)
+
+# Mostrar los 4 gráficos en una figura
+grid.arrange(F1,F2,F3,F4, ncol = 2)
+```
+]
+
+---
+class: inverse
+## Resumen
+
+- asociación entre variables y correlación
+
+- correlación y causalidad
+
+- linealidad
+
+- significación y tamaño de efecto
+
+- coeficientes alternativos
+
+---
+class: inverse,right
+
+# **.red[Contenidos]**
+
+<br>
+<br>
+### 1. Índices
+### 2. Análisis factorial
+
+---
+class: inverse,right
+
+# **.red[Contenidos]**
+
+<br>
+<br>
+
+### 1. .yellow[Índices]
+### 2. Análisis factorial
+
+
+---
 class: middle center
 
-# ¿Por qué usar baterías de variables?
+# ¿Por qué usar baterías?
 
 ---
 class: middle center
@@ -146,13 +250,18 @@ class: middle
 ---
 # Análisis de indicadores en baterías
 
-.tiny[
+.pull-left-narrow[
 
-```{r}
-load("../../files/data/generated_data/atribpob.RData")
-tab_corr(data, triangle = "lower")
-```
+2\. .red[Bivariado]: tablas/gráficos de correlaciones
 
+(`corrplot`)
+]
+
+.pull-right-wide[
+.center[
+![:scale 85%](../../files/img/slides/corrplot.png)
+
+]
 ]
 
 ---
@@ -171,8 +280,28 @@ tab_corr(data, triangle = "lower")
 ![:scale 100%](../../files/img/slides/bateria-atrib-pob.png)
 ]
 
--   Cuando el atributo se mide con más de una pregunta, se puede
+---
+# Error total de encuesta
+.center[
+![:scale 60%](../../files/img/slides/ratswd-errors.png)
+]
+
+(Groves et al, 2010, en RATSWD WP 245, 2015)
+
+---
+class: middle
+
+.pull-left-narrow[
+# Preguntas y error de medición
+]
+
+.pull-right-wide[
+.content-box-red[
+-   En este marco se asume que el **indicador es distinto del atributo**, y que la medición del atributo o variable latente conlleva error
+
+-   Cuando la el atributo se mide con más de una pregunta, se puede
     intentar estimar la **variable latente** mediante índices o           técnicas de **análisis factorial**
+]]
 
 ---
 # Medición y error
@@ -201,11 +330,48 @@ class: inverse center
 
 ### Distintas maneras, pero todas se basan en la técnica de la .red[correlación]
 
+---
+-   varianza
+$$\sigma^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2} {n-1}=\frac{\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})} {n-1}$$
+
+-   covarianza
+$$cov(x,y) = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}$$
+- correlación
+
+$$r= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)\sigma_x \sigma_y }$$
+
 
 ---
 class: bottom right
 
 ## .red[Correlaciones, baterías y dimensiones subyacentes]
+
+---
+# Matriz de correlaciones (1)
+
+.center[
+  ![:scale 60%](../../files/img/slides/cormat1.png)
+
+Matriz hipotética de indicadores que miden un mismo constructo
+
+]
+
+---
+# Ej. Matriz de correlaciones (2)
+
+.center[
+  ![:scale 60%](../../files/img/slides/cormat2.png)
+
+Matriz hipotética de indicadores que miden constructos independientes
+]
+
+---
+# Ej. Matriz de correlaciones (3)
+
+.center[
+  ![:scale 60%](../../files/img/slides/cormat3.png)
+
+Matriz hipotética de variables que miden dos constructos independientes]
 
 ---
 class: inverse
@@ -214,23 +380,148 @@ class: inverse
 
 ### 1. analizar la .red[matriz de correlaciones] antes de generar cualquiér técnica de reducción de información (ej: crear índice)
 
-### 2. evaluar la posibilidad de generar algún tipo de .red[índice] que resuma la información
+### 2. evaluar la posibilidad de generación algún tipo de .red[índice] que resuma la información
+---
+# Datos ejemplo
+
+- batería atribuciones de pobreza, encuesta "Desigualdad, Justicia y Participación Política" - FONDECYT Iniciación 11121203 (2013-2015) [Social justice and citizenship participation](https://jc-castillo.com/project/fondecyt-iniciacion/)
+
+.center[
+![:scale 100%](../../files/img/slides/bateria-atrib-pob.png)
+]
+
 ---
 
 ```{r echo=FALSE}
 pacman::p_load(sjmisc,lavaan,haven,dplyr,sjPlot, sjlabelled, summarytools, psych)
 ```
 
+```{r eval=FALSE, echo=TRUE }
+load("input/data/data-proc.Rdata")
+descr(data)
+```
+
+.small[
+```{r echo=FALSE, results='asis'}
+load("../../files/data/generated_data/atribpob.RData")
+sjmisc::descr(data,
+      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
+      kable(.,"markdown")
+```
+]
+
+---
+## Gráfico barras frecuencia porcentual
+
+```{r echo=TRUE}
+plot_stackfrq(data)
+```
+---
+## Ajustando dimensiones
+
+````
+```{r echo=TRUE, fig.height=5, fig.width=12}`r ''`
+plot_stackfrq(data)
+```
+````
+
+.center[
+```{r echo=FALSE, fig.height=5, fig.width=12}
+plot_stackfrq(data)
+```
+]
+
+---
+## Ajustes adicionales
+
+.medium[
+````
+```{r echo=TRUE, fig.height=5, fig.width=12}`r ''`
+plot_stackfrq(data, sort.frq = "last.desc", geom.colors = "OrRd") +
+theme(legend.position="bottom")
+```
+````
+]
+
+.center[
+```{r echo=FALSE, fig.height=5, fig.width=12}
+plot_stackfrq(data, sort.frq = "last.desc", geom.colors = "OrRd") + theme(legend.position="bottom")
+```
+]
+
+---
+## Matriz de correlaciones
+
+.medium[
+
+```{r echo=TRUE}
+cormat <- cor(data)
+cormat
+
+```
+
+No resulta ya que requiere que no existan casos perdidos
+
+]
+
+---
 ## Matriz de correlaciones
 
 Entonces:
 
+```{r echo=TRUE}
+cormat <- cor(na.omit(data))
+cormat
+
+```
+
+---
+## Matriz de correlaciones (Formato publicable)
+
 .tiny[
 ```{r}
-load("../../files/data/generated_data/atribpob.RData")
-
-tab_corr(data, triangle = "lower")
+tab_corr(data)
 ```
+]
+
+---
+## Matriz de correlaciones - gráfico
+
+```{r}
+corrplot::corrplot(cormat)
+```
+
+---
+## Matriz de correlaciones - gráfico ajustado
+
+
+.pull-left-narrow[
+.small[
+```{r eval=FALSE, echo=TRUE}
+  corrplot::corrplot(cormat,
+    method = "color",
+    addCoef.col = "#000390",
+    type = "upper",
+    tl.col = "black",
+    col=colorRampPalette(c("white","#0068DC"))(8),
+    bg = "white",
+    na.label = "-")
+```
+]]
+
+.pull-right-wide[
+.center[
+```{r echo=FALSE, fig.height=8}
+  corrplot::corrplot(cormat,
+    method = "color",
+    addCoef.col = "#000390",
+    type = "upper",
+    tl.col = "black",
+    col=colorRampPalette(c("white","#0068DC"))(8),
+    bg = "white",
+    na.label = "-")
+```
+]
 ]
 
 ---
@@ -239,34 +530,7 @@ class: inverse bottom right
 ## .red[Hacia la construcción de un índice]
 
 ---
-
-## ¿Qué es un índice?
-
---
-
-* Es una medida estadística que permite agregar una o más variables de **distinta** naturaleza para sintetizar la parte esencial de la información contenida en un fenómeno.
-
-* Se utiliza para simplificar y resumir datos complejos en una forma más manejable y comprensible
-
----
-.pull-left-narrow[
-### Ejemplo índice no ponderado]
-
-.pull-right-wide[
-.center[![:scale 100%](../../files/img/casen2009.png)]
-]
----
-.pull-left-narrow[
-### Ejemplo índice ponderado]
-
-
-.center[![:scale 75%](../../files/img/casen2016.png)]
-
-
----
 # Alpha de Cronbach
-
---
 
 - índice de consistencia interna de una batería
 
@@ -279,7 +543,6 @@ class: inverse bottom right
 - más información [aquí](https://rpubs.com/jboscomendoza/alfa_cronbach_r#:~:text=El%20Alfa%20de%20Cronbach%20nos,apuntando%E2%80%9D%20en%20la%20misma%20direcci%C3%B3n.)
 
 ---
-
 # Alpha de Cronbach
 
 .pull-left[
@@ -324,7 +587,6 @@ class: inverse bottom right
 - tema valores perdidos:
   - para perder el mínimo de casos se recomienda realizar índice aún con casos que no hayan respondido algún item
   - ya que esto distorsionaría el puntaje si fuera sumado, se hace un índice promedio, especificando que se calcule aún con valores perdidos
-  
 
 ---
 # Índice de atribución interna (Promedio)
@@ -350,41 +612,11 @@ data %>% slice(11:15)
 ]
 
 ---
-
-# Sin embargo...
-
-.pull-left[
-.small[
-```{r warning=FALSE, echo=TRUE}
-alpha <-
-  psych::alpha(dplyr::select(data,
-                      falthab,
-                      faltesf,
-                      malasue))
-alpha$total$raw_alpha
-```
-]
-]
-
-.pull-right[
-.small[
-```{r warning=FALSE, echo=TRUE}
-alpha <-
-  psych::alpha(dplyr::select(data, 
-                      sisecon,
-                      siseduc))
-
-alpha$total$raw_alpha
-```
-]
-]
-
----
 class: inverse
 
 ## Resumen índices
 
-- baterías y dimensiones subyacentes (latentes)
+- baterías y dimensiones subyacentes
 
 - evaluación de consistencia interna (previo a construcción de índices)
 
@@ -398,7 +630,8 @@ class: inverse,right
 <br>
 <br>
 
-### 1. .yellow[Análisis factorial exploratorio]
+### 1. Índices
+### 2. .yellow[Análisis factorial]
 
 ---
 
@@ -418,7 +651,6 @@ class: middle
 ]
 ]
 ---
-
 class: middle
 
 .pull-left-narrow[
@@ -433,8 +665,6 @@ class: middle
 ]
 ]
 ---
---- 
-
 # Factor común
 
 .pull-left[
@@ -450,21 +680,21 @@ class: middle
 <br>
 $$X=T+E$$
 
+$$\sigma^{2}_{x}=\sigma^{2}_{t} + \sigma^{2}_{e}$$
+
 Donde
 - X= puntaje observado,
 - T= puntaje verdadero, y
 - E= error
 
 ]
-
 ---
-
 # Modelo de factor común
 
 .pull-left[
 -   La existencia de un solo ítem por constructo no permite aislar puntaje verdadero del error
 
--   Si existen más ítems, podemos estimar un **análisis factorial** y
+-   Si existen más ítems, el **análisis factorial** y
     distinguir entre **varianza común** (compartida con otros indicadores) y **varianza única** (o error)
 ]
 
@@ -473,7 +703,6 @@ Donde
   ![](../../files/img/slides/figure1efa.jpg)
 ]
 ]
-
 ---
 class: middle
 
@@ -571,8 +800,8 @@ class: middle
 
 ]
 
----
 
+---
 # Ejemplo Brown 2006 (Chap.2)
 
 .center[
@@ -589,18 +818,32 @@ class: middle
 
 ]
 
+
 ---
-# Ejemplo
+# Modelo estadístico
 
-.small[
+$$y_{j}= \lambda_{j1} \eta_{1} + \lambda_{j2} \eta_{2} + ... + \lambda_{jm} \eta_{m} + \varepsilon_{j}$$
 
-```{r}
-fa <- dplyr::select(data, falthab,faltesf,malasue,sisecon,siseduc)
-tab_fa(fa, rotation = "varimax",show.comm = TRUE, title = "Análisis factorial atribuciones de pobreza")
+_Donde_
 
-```
+-   $\eta$ : factor
 
-]
+-   $\lambda_{jm}$ : carga factorial que relaciona al
+    indicador *j* con el factor $\eta$
+
+-   $\varepsilon_{j}$ : varianza que es única al indicador
+    $y_{j}$
+
+
+---
+# Aplicado al ejemplo de Brown 2006:
+
+Reproduccion de matriz de correlaciones a patir de los parámetros del
+modelo. Ejemplo Brown 2006 cap. 2:
+
+-   VAR(D1)= $\sigma_{11}=\lambda_{11}^{2}\psi_{11} + \varepsilon_{1}=.83^{2}(1) + .31 = 1.00$
+
+-   COV(D1,D2)= $\sigma_{21}=\lambda_{11}\psi_{11}\lambda_{21}=(.83)(1)(.84) =.70$
 
 ---
 
@@ -646,7 +889,7 @@ class: middle
 -   **Proporción de varianza** explicada por el factor = eigenvalue /
     número de indicadores
     ]
-    
+
 ---
 class: middle
 
@@ -696,50 +939,27 @@ class: middle
 -   Nivel de correlaciones de la matriz: test de esfericidad de Bartlett
 
     -   se utiliza para evaluar la hipótesis que la matriz de
-        correlaciones es una matriz identidad (en la diagonal=1 y bajo la
-        diagonal=0)
+        correlaciones es una matriz identidad (diagonal 1 y bajo la
+        diagonal 0)
 
-    -   se busca significación (p $<$ 0.05), ya que se espera que las
+    -   se busca significación (p $<$ 0.05)ya que se espera que las
         variables estén correlacionadas
 
 
 ---
-# Métodos de extracción
-
-
-En el análisis factorial exploratorio (AFE), los **métodos de extracción** se refieren a las técnicas que se utilizan para determinar los factores/ variables latentes a las variables observadas. Los tres métodos principales son:
+# Metodos de extracción
 
 -   **Factores principales**
 
--   **Factores principales iterados**
+-   **Factores principales iterados**: estima comunalidades iterativamente,
+    reemplazandolas en la matriz de correlaciones a partir de las
+    comunalidades estimadas desde los factor loadings
 
--   **Maximum likelihood**
-
----
-# Métodos de extracción
-
--   **Factores principales**
-
-Este es uno de los métodos más comunes para la extracción de factores. Se basa en la descomposición de la matriz de correlaciones para identificar los factores que explican la mayor cantidad de varianza compartida por las variables. Es útil cuando el objetivo es reducir la dimensionalidad manteniendo el máximo de información posible.
-
----
-# Métodos de extracción
-
--   **Factores principales iterados**: 
-
-Este método es una variante del anterior. Estima las **comunalidades** (la cantidad de varianza de cada variable explicada por los factores) iterativamente. Reemplaza los valores iniciales de las comunalidades en la matriz de correlaciones con las comunalidades estimadas a partir de los **factor loadings** (cargas factoriales) y repite el proceso hasta que se alcance una solución estable. Este método mejora la precisión de la estimación de los factores.
-
----
-# Métodos de extracción
-
--   **Maximum likelihood**: 
-
-Este método busca encontrar los parámetros del modelo que maximicen la probabilidad de que los datos observados sean replicados por el modelo factorial. Es útil cuando se quiere hacer inferencia estadística sobre los factores, ya que permite realizar pruebas de hipótesis y obtener intervalos de confianza para los factores y sus cargas. Es más robusto, pero requiere que los datos cumplan ciertos supuestos como normalidad multivariada.
-
+-   **Maximum likelihood**: maximiza la posibilidad de que los parametros reproduzcan los datos observados
 ---
 # Instrumentos y criterios de selección del número de factores
 
--   Criterio de Kaiser: eigenvalues (cantidad de varianza explicada por cada factor) mayores a 1
+-   Criterio de Kaiser: eigenvalues mayores a 1
 
 -   Scree plot (gráfico de sedimentación)
 
@@ -768,7 +988,6 @@ Este método busca encontrar los parámetros del modelo que maximicen la probabi
 ]
 ]
 
-
 ---
 class: roja
 # Resumen
@@ -784,29 +1003,28 @@ class: roja
 ---
 class: inverse middle
 
-## .red[Práctica análisis factorial exploratorio]
-[.yellow[https://estadisticaiv.netlify.app/practicos/06-content]](https://estadisticaiv.netlify.app/practicos/06-content)
+## .red[Práctica análisis factorial]
+[.yellow[encuestas-sociales.netlify.app/resource/05-resource.html]](https://encuestas-sociales.netlify.app//resource/05-resource.html)
 
 ---
 class: front
 
-
-
 .pull-left[
-# Estadística IV
-## **Kevin Carrasco & Daniela Olivares**
-## **María Fernanda Nuñez**
-## Sociología - UAH
-## 2do Sem 2024 
-## [.green[estadisticaiv.netlify.com]](https://estadisticaiv.netlify.com)
+# Metodología I
+## **.yellow[Juan Carlos Castillo]**
+## Magister Ciencias Sociales FACSO - UChile
+## 1er Sem 2023 
+## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
 ] 
-
+    
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 7: Análisis factorial exploratorio]
+## .yellow[Sesión 6: Índices y análisis factorial]
 ![:scale 70%](../../files/img/eval-hires.png)
+
+
 
 ]
 

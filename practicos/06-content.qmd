@@ -1,0 +1,228 @@
+---
+title: "Práctico 6. Análisis factorial Exploratorio"
+subtitle: "Estadística IV"
+linktitle: "Práctico 6: AFE"
+date: "2024-10-01"
+lang: es
+---
+
+# Análisis factorial exploratorio (AFE)
+
+## Presentación
+
+Para el taller práctico de hoy utilizaremos la base de datos del Estudio Longitudinal Social de Chile, realizado por el Centro de estudios del conflicto y la cohesión social [COES](https://coes.cl/).
+
+El Estudio Longitudinal Social del Chile [ELSOC](https://coes.cl/encuesta-panel/), único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad, tiene una representación de la población nacional urbana, donde se obtuvo una muestra original de **2927** casos en el año 2016 y mantiene **1728** en 2022, además de una muestra de refresco en 2018.
+
+## Objetivo general
+
+El objetivo de este ejercicio práctico es comprender y estimar un análisis factorial exploratorio con el fin de reducir la dimensionalidad de una batería de variables.
+
+## Cargar paquetes
+
+```{r}
+pacman::p_load(tidyverse, #Conjunto de paquetes, sobre todo dplyr y ggplot2
+               car, #Para recodificar
+               haven,
+               summarytools, #Para descriptivos
+               sjmisc,
+               psych,     # para Alfa de Chronbach
+               sjPlot,
+               psy, # scree plot function
+               nFactors, # parallel
+               GPArotation, # Rotación
+               sjlabelled)
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+
+### Cargar base de datos
+
+```{r }
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) #Cargar base de datos
+```
+
+### Visualización de datos
+
+```{r}
+dim(elsoc_long_2016_2022.2)
+```
+
+Debido a la naturaleza longitudinal de ELSOC, la base de datos contiene 18035 casos (las mismas personas durante 6 años) y 750 variables (las mismas variables en 6 periodos distintos). Por lo tanto, para simplificar el proceso de análisis de este práctico trabajaremos solo con los casos y variables de quienes participaron en la cuarta ola (2019)
+
+## Datos y variables
+
+Para estimar AFE, utilizaremos específicamente el módulo de **Género**. De este módulo utilizaremos un concepto en particular llamado *Sexismo* con los ítems:
+
+- Grado de acuerdo: Mujeres son mas refinadas
+
+- Grado de acuerdo: Mujeres deberian ser protegidas
+
+- Grado de acuerdo: Mujeres consiguen privilegios en nombre de igualdad
+
+- Grado de acuerdo: Mujeres derrotadas se quejan de discriminacion
+
+
+La idea general es ver si esque todas estas variables miden algún tipo de *sexismo* o si esque existen dimensiones subyacentes.
+
+## Filtrar base de datos
+
+Filtraremos la base de datos para quedarnos con las observaciones correspondientes solamente a la ola 4, y además seleccionaremos los ítems de interés.
+
+```{r}
+data <- elsoc_long_2016_2022.2 %>% filter(ola==4) %>%  # seleccionamos solo los casos de la ola 1
+  select(son_refinadas=g01_01,
+         ser_protegidas=g01_02,
+         consiguen_privilegios=g01_03,
+         quejan_discriminacion=g01_04
+         )
+
+head(data)
+table(data$son_refinadas)
+table(data$ser_protegidas)
+table(data$consiguen_privilegios)
+table(data$quejan_discriminacion)
+```
+
+Estos ítems cuentan con las mismas categorías de respuesta: (1) totalmente desacuerdo, a (5) Totalmente de acuerdo. Además de los valores codificados como -888 y -999.
+
+### Recodificar
+
+Recodificamos los valores -888 y -999 en NA y eliminamos los NAs.
+
+```{r, message=FALSE, warning=FALSE}
+data$son_refinadas <- car::recode(data$son_refinadas, "c(-999,-888)=NA")
+data$ser_protegidas <- car::recode(data$ser_protegidas, "c(-999,-888)=NA")
+data$consiguen_privilegios <- car::recode(data$consiguen_privilegios, "c(-999,-888)=NA")
+data$quejan_discriminacion <- car::recode(data$quejan_discriminacion, "c(-999,-888)=NA")
+
+data$son_refinadas <- set_labels(data$son_refinadas,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+
+data$ser_protegidas <- set_labels(data$ser_protegidas,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+
+data$consiguen_privilegios <- set_labels(data$consiguen_privilegios,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+
+data$quejan_discriminacion <- set_labels(data$quejan_discriminacion,
+            labels=c( "Totalmente desacuerdo"=1,
+                      "Desacuerdo"=2,
+                      "Ni de acuerdo ni desacuerdo"=3,
+                      "De acuerdo"=4,
+                      "Totalmente de acuerdo"=5))
+```
+
+## Análisis
+
+```{r}
+data %>% 
+  plot_stackfrq() + theme(legend.position="bottom")
+```
+
+
+### Estimar correlación
+
+```{r}
+tab_corr(data, triangle = "lower")
+```
+
+Podemos observar que todas las correlaciones son positivas, por lo que no quedaron ítems invertidos.
+
+## Análisis factorial exploratorio
+
+¿Qué se puede deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes? No hay claridad de grupos de indicadores asociados entre sí.
+
+### Test de adecuación de matriz para AFE
+
+KMO (Kaiser, Meyer, Olkin Measure of Sampling Adequacy):
+
+* Varía entre 0 y 1. Contrasta si las correlaciones parciales entre las variables son pequeñas
+
+* Valores pequeños (menores a 0.5) indican que los datos no serían adecuados para AFE, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables.
+
+```{r}
+corMat  <- data %>% 
+  cor(use = "complete.obs")  # estimar matriz pearson
+
+KMO(corMat)
+```
+
+En este caso las correlaciones son altas, por lo que los datos sí son adecuados para AFE.
+
+### Nivel de correlaciones de la matriz: test de esfericidad de Barlett
+
+Se utiliza para evluar la hipótesis que la matriz de correlaciones es una matriz identidad (diagonal=1 y bajo la diagonal=0)
+
+* Se busca significación (p < 0.05) ya que se espera que las variables estén correlacionadas
+
+```{r}
+cortest.bartlett(corMat, n = 3417)
+```
+
+En este caso el valor p es 0, así que hay significación estadística
+
+### Selección de número de factores
+```{r}
+scree.plot(data)
+```
+
+```{r}
+fa.parallel(corMat, n.obs=3417)
+```
+
+### Extracción
+
+- ejes principales
+```{r}
+fac_pa <- fa(r = data, nfactors = 2, fm= "pa")
+#summary(fac_pa)
+fac_pa
+```
+
+- Maximum likelihood
+
+Maximiza la posibilidad de que los parámetros reproduzcan los datos observados
+
+```{r}
+fac_ml <- fa(r = data, nfactors = 2, fm= "ml")
+fac_ml
+```
+
+### Rotación
+
+- Varimax (ortogonal)
+```{r}
+fac_ml_var <- fa(r = data, nfactors = 2, fm= "ml", rotate="varimax") # ortogonal
+fac_ml_var
+```
+
+- Promax (oblicua)
+```{r}
+fac_ml_pro <- fa(r = data, nfactors = 2, fm= "ml", rotate="promax")
+fac_ml_pro
+```
+
+### Casi automático con sjPlot
+
+```{r}
+sjPlot::tab_fa(data, method = "ml", rotation = "promax", show.comm = TRUE, title = "Análisis factorial de sexismo")
+```
+
+Luego de realizar el Análisis factorial exploratorio existen varias alternativas sobre los pasos a seguir. Por ejemplo, es posible estimar un promedio simple entre cada una de las variables de los factores. Otra opción es estimar **puntajes factoriales**.
+
+
