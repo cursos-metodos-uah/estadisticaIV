@@ -89,8 +89,8 @@ website:
               file: content/06-content.qmd
             - text: "07: Clase 7"
               file: content/07-content.qmd
-#            - text: "08: Clase 8"
-#              file: content/08-content.qmd
+            - text: "08: Clase 8"
+              file: content/08-content.qmd
 
     - title: "Prácticos"
       style: "docked"
@@ -114,8 +114,8 @@ website:
               file: practicos/05-content.qmd
             - text: "06: Práctico 6"
               file: practicos/06-content.qmd
-#            - text: "07: Práctico 7"
-#              file: practicos/07-content.qmd
+            - text: "07: Práctico 7"
+              file: practicos/07-content.qmd
 #            - text: "08: Resumen"
 #              file: practicos/resumen-content.qmd
 #            - text: "09: Práctico 8"

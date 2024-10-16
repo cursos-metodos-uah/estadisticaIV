@@ -1,0 +1,14 @@
+---
+title: "Presentación"
+date: "2024-10-16"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/08-clase8/08-clase8.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+

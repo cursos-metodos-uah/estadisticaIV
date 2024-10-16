@@ -54,7 +54,7 @@ Debido a la naturaleza longitudinal de ELSOC, la base de datos contiene 18035 ca
 
 ## Datos y variables
 
-Para estimar AFE, utilizaremos específicamente el módulo de **Género**. De este módulo utilizaremos un concepto en particular llamado *Sexismo* con los ítems:
+Para estimar AFE, utilizaremos específicamente el módulo de **Ciudadanía**. De este módulo utilizaremos un concepto en particular llamado *Confianza en instituciones* con los ítems:
 
 - Grado de acuerdo: Mujeres son mas refinadas
 
@@ -64,8 +64,7 @@ Para estimar AFE, utilizaremos específicamente el módulo de **Género**. De es
 
 - Grado de acuerdo: Mujeres derrotadas se quejan de discriminacion
 
-
-La idea general es ver si esque todas estas variables miden algún tipo de *sexismo* o si esque existen dimensiones subyacentes.
+La idea general es ver si esque todas estas variables miden algún tipo de *Confianza en instituciones* o si esque existen dimensiones subyacentes.
 
 ## Filtrar base de datos
 
