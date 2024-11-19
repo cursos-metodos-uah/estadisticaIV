@@ -1,0 +1,15 @@
+---
+title: "Presentación"
+date: "2024-10-30"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/09-clase9/sesion_09__conglomerados.pdf height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+
+
